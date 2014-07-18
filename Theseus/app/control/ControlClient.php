@@ -11,4 +11,18 @@ namespace control;
 
 class ControlClient {
 
-} 
+    /** @var   */
+    private $db;
+
+    public function __construct($db){
+        $this->$db = $db;
+    }
+
+    public function add(){
+
+    }
+    public function delete(){
+
+    }
+    public fucntion
+}
