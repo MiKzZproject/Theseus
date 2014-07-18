@@ -8,25 +8,32 @@
 
 
 namespace control;
+
 use model\Client;
 
-class ControlClient {
+class ControlClient
+{
 
-    /** @var   */
-    private $db;
+    /** @var */
+    private $bdd;
 
     /**
      * @param $db
      */
-    public function __construct($db){
-        $this->$db = $db;
+    public function __construct($bdd)
+    {
+        $this->bdd = $bdd;
     }
 
-    public function add(Client $client){
+    /**
+     * @param Client $client
+     * @return bool
+     */
+    public function add(Client $client)
+    {
 
-        $req = $this->db->prepare("INSER INTO client (nom,prenom,dateNaissance,adresse,cp,ville,mail,tel,mdp)
-                                   VALUES(:nom,:prenom,:dateNassaince,:adresse,:cp,:ville,:mail,:tel,:mdp);
-                                            ");
+        $req = $this->bdd->prepare("INSERT INTO client (nom,prenom,dateNaissance,adresse,cp,ville,mail,tel,mdp)
+                                   VALUES(:nom,:prenom,:dateNaissance,:adresse,:cp,:ville,:mail,:tel,:mdp)");
         $req->bindValue(':nom', $client->getNom());
         $req->bindValue(':prenom', $client->getPrenom());
         $req->bindValue(':dateNaissance', $client->getDateNaissance());
@@ -36,13 +43,22 @@ class ControlClient {
         $req->bindValue(':mail', $client->getMail());
         $req->bindValue(':tel', $client->getTel());
         $req->bindValue(':mdp', $client->getMdp());
-        $req->execute();
-        $red = $req->fetchAll();
-    }
-    public function delete(){
+        if ($req->execute()) {
+            return true;
+        } else {
+            return false;
+            //log
+        }
 
     }
-    public function modify(){
+
+    public function delete()
+    {
+
+    }
+
+    public function modify()
+    {
 
     }
 }

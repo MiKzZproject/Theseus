@@ -5,7 +5,6 @@
  * Date: 18/07/14
  * Time: 14:10
  */
-namespace config;
 
 try
 {
