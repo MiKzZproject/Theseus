@@ -10,7 +10,7 @@ require '../../vendor/autoload.php';
 require_once "config/config.php";
 
 use model\Client;
-use control\ControlClient;
+use control\Control;
 
 $array = ["nom"=>"sususususuus",
     "prenom"=>"sususususuus",
@@ -20,31 +20,9 @@ $array = ["nom"=>"sususususuus",
 ];
 
 $client = new client($array);
-$Controlclient = new ControlClient($bdd);
+$Control = new Control($bdd);
 
-$test = $Controlclient->add($client);
+$test = $Control->add($client);
 
 var_dump($test);
 
-
-
-
-
-
-
-use model\Produit;
-use control\ControlProduit;
-
-
-$array = [
-    "id" => 8,
-    "marque" => "aaa",
-];
-
-$produit = new \model\Produit($array);
-var_dump($produit);
-$controlProduit = new ControlProduit($bdd);
-$test2 = $controlProduit->add($produit);
-
-
-var_dump($test2);

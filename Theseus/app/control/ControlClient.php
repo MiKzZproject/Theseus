@@ -44,7 +44,9 @@ class ControlClient
         $req->bindValue(':tel', $client->getTel());
         $req->bindValue(':mdp', $client->getMdp());
         if ($req->execute()) {
+            $client->setId($this->bdd->lastInsertId('client'));
             return true;
+
         } else {
             return false;
             //log
@@ -52,8 +54,16 @@ class ControlClient
 
     }
 
-    public function delete()
+    public function delete($id)
     {
+        $req = $this->bdd->prepare("DELETE FROM client WHERE id = :id");
+        $req->bindValue(':id', $id);
+        if ($req->execute()) {
+            return true;
+        } else {
+            return false;
+            //log
+        }
 
     }
 
