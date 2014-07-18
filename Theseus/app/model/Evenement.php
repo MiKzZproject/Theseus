@@ -25,7 +25,7 @@ class Evenement
     /** @var  datetime */
     private $dateHeures;
     /** @var int */
-    private $placete;
+    private $places;
 
     /**
      * @param array $array
