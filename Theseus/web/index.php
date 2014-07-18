@@ -7,14 +7,7 @@
  */
 
 require '../../vendor/autoload.php';
+require_once "config/config.php";
 
-use model\Client;
 
-$array = [
-    "id" => 8,
-    "prenom" => "ta mere",
-];
 
-$test= new \model\Client($array);
-
-var_dump($test);
