@@ -27,3 +27,24 @@ $test = $Controlclient->add($client);
 var_dump($test);
 
 
+
+
+
+
+
+use model\Produit;
+use control\ControlProduit;
+
+
+$array = [
+    "id" => 8,
+    "marque" => "aaa",
+];
+
+$produit = new \model\Produit($array);
+var_dump($produit);
+$controlProduit = new ControlProduit($bdd);
+$test2 = $controlProduit->add($produit);
+
+
+var_dump($test2);
