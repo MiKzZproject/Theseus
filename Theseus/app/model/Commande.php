@@ -10,7 +10,7 @@ namespace model;
 class Commande {
     private $id;
     private $id_client;
-    private $dateCommande;
+    private $date_commande;
     private $livrer;
 
     function __construct($array)
@@ -64,16 +64,17 @@ class Commande {
      */
     public function getDateCommande()
     {
-        return $this->dateCommande;
+        return $this->date_commande;
     }
 
     /**
-     * @param mixed $dateCommande
+     * @param mixed $date_commande
      */
-    public function setDateCommande($dateCommande)
+    public function setDateCommande($date_commande)
     {
-        $this->dateCommande = $dateCommande;
+        $this->date_commande = $date_commande;
     }
+
 
     /**
      * @return mixed
