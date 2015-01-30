@@ -17,12 +17,17 @@ class Admin {
     private $niveau;
 
 
-    function __construct($id, $login, $mdp, $niveau)
-    {
-        $this->id = $id;
-        $this->login = $login;
-        $this->mdp = $mdp;
-        $this->niveau = $niveau;
+    public function __construct($array){
+        $this->hydrate($array);
+    }
+
+    public function hydrate(array $array){
+        foreach ($array as $cle => $valeur) {
+            $method = 'set' . ucfirst($cle);
+            if (method_exists($this, $method)) {
+                $this->$method($valeur);
+            }
+        }
     }
 
     /**
