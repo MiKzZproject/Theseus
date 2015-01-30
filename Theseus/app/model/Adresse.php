@@ -22,23 +22,15 @@ class Adresse {
         setVille($array['ville']);
     }
 
-    public function hydrate(array $donnees)
+    public function hydrate(array $array)
     {
-        if (isset($donnees['id']))
-        {
-            $this->setId($donnees['id']);
-        }
-        if (isset($donnees['rue'])) {
-            $this->setNom($donnees['rue']);
-        }
-        if (isset($donnees['cp'])) {
-            $this->setNom($donnees['rue']);
-        }
-        if (isset($donnees['ville'])) {
-            $this->setNom($donnees['rue']);
+        foreach ($array as $cle => $valeur) {
+            $method = 'set' . ucfirst($cle);
+            if (method_exists($this, $method)) {
+                $this->$method($valeur);
+            }
         }
     }
-
     /**
      * @return mixed
      */
@@ -50,7 +42,7 @@ class Adresse {
     /**
      * @param mixed $id
      */
-    public function setId($id)
+    private function setId($id)
     {
         $this->id = $id;
     }
@@ -68,7 +60,7 @@ class Adresse {
     /**
      * @param mixed $rue
      */
-    public function setRue($rue)
+    private function setRue($rue)
     {
         $this->rue = $rue;
     }
@@ -84,7 +76,7 @@ class Adresse {
     /**
      * @param mixed $cp
      */
-    public function setCp($cp)
+    private function setCp($cp)
     {
         $this->cp = $cp;
     }
@@ -100,12 +92,9 @@ class Adresse {
     /**
      * @param mixed $ville
      */
-    public function setVille($ville)
+    private function setVille($ville)
     {
         $this->ville = $ville;
     }
-
-
-
 
 }
