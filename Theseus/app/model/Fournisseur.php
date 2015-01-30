@@ -13,19 +13,21 @@ class Fournisseur {
 
     private $id;
     private $nom;
-    private $adresse;
-    private $ville;
-    private $cp;
-    private $tel;
+    private $id_adresse;
 
-    function __construct($id, $nom, $adresse, $ville, $cp, $tel)
+
+    function __construct($array)
     {
-        $this->id = $id;
-        $this->nom = $nom;
-        $this->adresse = $adresse;
-        $this->ville = $ville;
-        $this->cp = $cp;
-        $this->tel = $tel;
+        $this->hydrate($array);
+    }
+
+    public function hydrate(array $array){
+        foreach ($array as $cle => $valeur) {
+            $method = 'set' . ucfirst($cle);
+            if (method_exists($this, $method)) {
+                $this->$method($valeur);
+            }
+        }
     }
 
 
