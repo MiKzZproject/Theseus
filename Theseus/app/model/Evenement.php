@@ -12,9 +12,9 @@ namespace model;
 class Evenement {
 
     private $id;
-    private $id_adresse;
+    private $idAdresse;
     private $libelle;
-    private $date_heure;
+    private $dateHeure;
     private $place;
 
     function __construct($array)
@@ -25,7 +25,9 @@ class Evenement {
     public function hydrate(array $array){
         foreach ($array as $cle => $valeur) {
             $method = 'set' . ucfirst($cle);
+            var_dump($method);
             if (method_exists($this, $method)) {
+
                 $this->$method($valeur);
             }
         }
@@ -52,15 +54,15 @@ class Evenement {
      */
     public function getIdAdresse()
     {
-        return $this->id_adresse;
+        return $this->idAdresse;
     }
 
     /**
      * @param mixed $id_adresse
      */
-    public function setIdAdresse($id_adresse)
+    public function setIdAdresse($idAdresse)
     {
-        $this->id_adresse = $id_adresse;
+        $this->idAdresse = $idAdresse;
     }
 
     /**
@@ -84,15 +86,15 @@ class Evenement {
      */
     public function getDateHeure()
     {
-        return $this->date_heure;
+        return $this->dateHeure;
     }
 
     /**
      * @param mixed $date_heure
      */
-    public function setDateHeure($date_heure)
+    public function setDateHeure($dateHeure)
     {
-        $this->date_heure = $date_heure;
+        $this->dateHeure = $dateHeure;
     }
 
     /**

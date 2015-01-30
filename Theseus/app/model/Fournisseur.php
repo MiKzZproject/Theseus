@@ -13,7 +13,7 @@ class Fournisseur {
 
     private $id;
     private $nom;
-    private $id_adresse;
+    private $idAdresse;
 
 
     function __construct($array)
@@ -46,6 +46,24 @@ class Fournisseur {
     {
         $this->id = $id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIdAdresse()
+    {
+        return $this->idAdresse;
+    }
+
+    /**
+     * @param mixed $idAdresse
+     */
+    public function setIdAdresse($idAdresse)
+    {
+        $this->idAdresse = $idAdresse;
+    }
+
+
 
     /**
      * @return mixed

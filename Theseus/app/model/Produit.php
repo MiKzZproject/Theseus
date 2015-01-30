@@ -12,7 +12,7 @@ namespace model;
 class Produit {
 
     private $id;
-    private $id_fournisseur;
+    private $idFournisseur;
     private $marque;
     private $type;
     private $modele;
@@ -57,16 +57,18 @@ class Produit {
      */
     public function getIdFournisseur()
     {
-        return $this->id_fournisseur;
+        return $this->idFournisseur;
     }
 
     /**
-     * @param mixed $id_fournisseur
+     * @param mixed $idFournisseur
      */
-    public function setIdFournisseur($id_fournisseur)
+    public function setIdFournisseur($idFournisseur)
     {
-        $this->id_fournisseur = $id_fournisseur;
+        $this->idFournisseur = $idFournisseur;
     }
+
+
 
     /**
      * @return mixed
