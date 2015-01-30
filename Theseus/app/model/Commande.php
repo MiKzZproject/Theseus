@@ -9,7 +9,7 @@ namespace model;
 
 class Commande {
     private $id;
-    private $id_client;
+    private $idClient;
     private $dateCommande;
     private $livrer;
 
@@ -48,15 +48,15 @@ class Commande {
      */
     public function getIdClient()
     {
-        return $this->id_client;
+        return $this->idClient;
     }
 
     /**
-     * @param mixed $id_client
+     * @param mixed $idClient
      */
-    public function setIdClient($id_client)
+    public function setIdClient($idClient)
     {
-        $this->id_client = $id_client;
+        $this->idClient = $idClient;
     }
 
     /**
@@ -68,13 +68,12 @@ class Commande {
     }
 
     /**
-     * @param mixed $date_commande
+     * @param mixed $dateCommande
      */
     public function setDateCommande($dateCommande)
     {
         $this->dateCommande = $dateCommande;
     }
-
 
     /**
      * @return mixed
@@ -91,6 +90,7 @@ class Commande {
     {
         $this->livrer = $livrer;
     }
+
 
 
 }
