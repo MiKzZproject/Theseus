@@ -16,10 +16,7 @@ class Adresse {
     private $ville;
 
     public function __construct($array){
-        setId($array['id']);
-        setRue($array['rue']);
-        setCp($array['cp']);
-        setVille($array['ville']);
+        $this->hydrate($array);
     }
 
     public function hydrate(array $array)

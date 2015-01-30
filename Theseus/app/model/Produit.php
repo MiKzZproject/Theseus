@@ -12,6 +12,7 @@ namespace model;
 class Produit {
 
     private $id;
+    private $id_fournisseur;
     private $marque;
     private $type;
     private $modele;
@@ -20,16 +21,18 @@ class Produit {
     private $prix;
     private $stock;
 
-    function __construct($id, $marque, $type, $modele, $libelle, $description, $prix, $stock)
+    function __construct($array)
     {
-        $this->id = $id;
-        $this->marque = $marque;
-        $this->type = $type;
-        $this->modele = $modele;
-        $this->libelle = $libelle;
-        $this->description = $description;
-        $this->prix = $prix;
-        $this->stock = $stock;
+        $this->hydrate($array);
+    }
+
+    public function hydrate(array $array){
+        foreach ($array as $cle => $valeur) {
+            $method = 'set' . ucfirst($cle);
+            if (method_exists($this, $method)) {
+                $this->$method($valeur);
+            }
+        }
     }
 
 
@@ -47,6 +50,22 @@ class Produit {
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdFournisseur()
+    {
+        return $this->id_fournisseur;
+    }
+
+    /**
+     * @param mixed $id_fournisseur
+     */
+    public function setIdFournisseur($id_fournisseur)
+    {
+        $this->id_fournisseur = $id_fournisseur;
     }
 
     /**

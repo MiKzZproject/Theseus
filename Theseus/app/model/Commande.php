@@ -9,6 +9,7 @@ namespace model;
 
 class Commande {
     private $id;
+    private $id_client;
     private $dateCommande;
     private $livrer;
 
@@ -40,6 +41,22 @@ class Commande {
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdClient()
+    {
+        return $this->id_client;
+    }
+
+    /**
+     * @param mixed $id_client
+     */
+    public function setIdClient($id_client)
+    {
+        $this->id_client = $id_client;
     }
 
     /**
