@@ -9,22 +9,32 @@
 require '../../vendor/autoload.php';
 require_once "config/config.php";
 
-use model\Produit;
+?>
 
-$array = array(
-    "id" => "1",
-    "idFournisseur" => "1",
-    "marque" => "sdfsdfsdf",
-    "marque" => "sdfsdfsdf",
-    "type" => "sdfsdfsdf",
-    "modele" => "sdfsdfsdf",
-    "libelle" => "dfgdfg",
-    "description" => "sdfsdfsdf",
-    "prix" => "sdfsddfgdfgdfgfsdf",
-    "stock" => "sdfsdfgdfgdfdfgdfsdf",
-
-);
-$fourn= new Produit($array);
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Theseus</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 
-var_dump($fourn);
+</head>
+<body>
+  <header>
+
+
+  </header>
+  <section>
+
+  </section>
+  <footer>
+
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>
