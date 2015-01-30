@@ -12,14 +12,10 @@ class Commande {
     private $dateCommande;
     private $livrer;
 
-    function __construct($livrer, $id, $dateCommande)
+    function __construct($array)
     {
-        $this->livrer = $livrer;
-        $this->id = $id;
-        $this->dateCommande = $dateCommande;
+        $this->hydrate($array);
     }
-
-
 
     public function hydrate(array $array){
         foreach ($array as $cle => $valeur) {
