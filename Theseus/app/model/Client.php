@@ -13,14 +13,14 @@ namespace model;
 class Client {
 
     private $id;
-    private $idAdresse;
+    private $id_adresse;
     private $nom;
     private $prenom;
-    private $dateNaissance;
+    private $date_naissance;
     private $tel;
     private $email;
     private $pwd;
-    private $dateInscription;
+    private $date_inscription;
     private $newsletters;
     private $alert;
 
@@ -58,18 +58,16 @@ class Client {
      */
     public function getIdAdresse()
     {
-        return $this->idAdresse;
+        return $this->id_adresse;
     }
 
     /**
-     * @param mixed $idAdresse
+     * @param mixed $id_adresse
      */
-    public function setIdAdresse($idAdresse)
+    public function setIdAdresse($id_adresse)
     {
-        $this->idAdresse = $idAdresse;
+        $this->id_adresse = $id_adresse;
     }
-
-
 
     /**
      * @return mixed
@@ -108,17 +106,16 @@ class Client {
      */
     public function getDateNaissance()
     {
-        return $this->dateNaissance;
+        return $this->date_naissance;
     }
 
     /**
-     * @param mixed $dateNaissance
+     * @param mixed $date_naissance
      */
-    public function setDateNaissance($dateNaissance)
+    public function setDateNaissance($date_naissance)
     {
-        $this->dateNaissance = $dateNaissance;
+        $this->date_naissance = $date_naissance;
     }
-
 
     /**
      * @return mixed
@@ -173,18 +170,16 @@ class Client {
      */
     public function getDateInscription()
     {
-        return $this->dateInscription;
+        return $this->date_inscription;
     }
 
     /**
-     * @param mixed $dateInscription
+     * @param mixed $date_inscription
      */
-    public function setDateInscription($dateInscription)
+    public function setDateInscription($date_inscription)
     {
-        $this->dateInscription = $dateInscription;
+        $this->date_inscription = $date_inscription;
     }
-
-
 
     /**
      * @return mixed

@@ -9,8 +9,8 @@ namespace model;
 
 class Commande {
     private $id;
-    private $idClient;
-    private $dateCommande;
+    private $id_client;
+    private $date_commande;
     private $livrer;
 
     function __construct($array)
@@ -48,15 +48,15 @@ class Commande {
      */
     public function getIdClient()
     {
-        return $this->idClient;
+        return $this->id_client;
     }
 
     /**
-     * @param mixed $idClient
+     * @param mixed $id_client
      */
-    public function setIdClient($idClient)
+    public function setIdClient($id_client)
     {
-        $this->idClient = $idClient;
+        $this->id_client = $id_client;
     }
 
     /**
@@ -64,16 +64,17 @@ class Commande {
      */
     public function getDateCommande()
     {
-        return $this->dateCommande;
+        return $this->date_commande;
     }
 
     /**
-     * @param mixed $dateCommande
+     * @param mixed $date_commande
      */
-    public function setDateCommande($dateCommande)
+    public function setDateCommande($date_commande)
     {
-        $this->dateCommande = $dateCommande;
+        $this->date_commande = $date_commande;
     }
+
 
     /**
      * @return mixed
@@ -90,7 +91,6 @@ class Commande {
     {
         $this->livrer = $livrer;
     }
-
 
 
 }
