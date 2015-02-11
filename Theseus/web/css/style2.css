@@ -10,15 +10,15 @@
 
 /* Common style */
 .grid figure {
+	width: 48%;
+	height: 350px;
 	position: relative;
 	float: left;
 	overflow: hidden;
-	margin: 10px 1%;
+	/*margin: 10px 1%;*/
 	min-width: 320px;
 	max-width: 480px;
 	max-height: 360px;
-	width: 48%;
-	height: auto;
 	background: #3085a3;
 	text-align: center;
 	cursor: pointer;

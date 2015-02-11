@@ -31,24 +31,24 @@ require_once "config/config.php";
       <h2>Events</h2>
       <div class="grid">
         <figure class="effect-goliath">
-          <img src="img/products/Calendar.jpg" alt=prochain-evenement"/>
+          <img src="img/products/testPaysage2.jpg" alt=paysage2"/>
           <figcaption>
             <h2>Prochain évènement</h2>
-            <p><a href="#">View more</a></p>
+            <p><a href="#">En savoir +</a></p>
           </figcaption>
         </figure>
         <figure class="effect-goliath">
-          <img src="img/products/Nexus7WirelessKeyboardCase.jpg" alt="Nexus7WirelessKeyboardCase"/>
+          <img src="img/products/bulles.png" alt="bulles"/>
           <figcaption>
             <h2>Produits phares</h2>
-            <p><a href="#">View more</a></p>
+            <p><a href="#">En savoir +</a></p>
           </figcaption>
         </figure>
         <figure class="effect-goliath">
-          <img src="img/products/Newsletter.jpg" alt="Newsletter"/>
+          <img src="img/products/testPaysage.jpg" alt="paysage"/>
           <figcaption>
             <h2>News et alertes</h2>
-            <p><a href="#">View more</a></p>
+            <p><a href="#">En savoir +</a></p>
           </figcaption>
         </figure>
       </div>
