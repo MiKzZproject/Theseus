@@ -25,29 +25,58 @@ require_once "config/config.php";
 </head>
 <body>
   <header>
-      <section id="logo"><img src="img/logo.png"></section>
-      <section id="header_slogan">
-          <h1>THESEUS</h1>
-          <h2>Le meilleur du High-Tech</h2>
-      </section>
-      <section id="header_block">
-          <fieldset>
-              <legend>Connexion</legend>
-              <div>
-                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>
-                  <p>Espace Client</p>
-              </div>
+    <section id="logo"><img src="img/logo.png"></section>
+    <section id="header_slogan">
+        <h1>THESEUS</h1>
+        <h2>Le meilleur du High-Tech</h2>
+    </section>
+    <section id="header_block">
+        <fieldset>
+            <legend>Connexion</legend>
+            <div>
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>
+                <p>Espace Client</p>
+            </div>
 
-          </fieldset>
-          <fieldset>
-              <legend>Panier</legend>
-              <div>
-                  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><br>
-                  <p>2 Articles</p>
-              </div>
-          </fieldset>
-      </section>
+        </fieldset>
+        <fieldset>
+            <legend>Panier</legend>
+            <div>
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><br>
+                <p>2 Articles</p>
+            </div>
+        </fieldset>
+    </section>
+    <nav class="navbar navbar-custom navbar-static-top" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle navbar-collapse" data-toggle="collapse" data-target="#menu-collapse"> 
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+         <a class="navbar-brand" href="#">Home</a>
+      </div>
 
+      <div class="collapse navbar-collapse" id="menu-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Nos Produits</a></li>
+          <li><a href="#">Nos Events</a></li>
+          <li><a href="#">Mon Compte</a></li>
+        </ul>
+        <form class="navbar-form navbar-right" role="search">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+              </button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </nav>
   </header>
   <section id="news-demo">
     <article>
