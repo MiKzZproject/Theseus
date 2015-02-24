@@ -17,19 +17,38 @@ require_once "config/config.php";
   <meta charset="utf-8">
 
   <title>Theseus</title>
-  <link rel="stylesheet" href="css/slippry.css">
+  <link rel="stylesheet" href="css/slippry.css">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/style2.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 
 </head>
 <body>
   <header>
+      <section id="logo"><img src="img/logo.png"></section>
+      <section id="header_slogan">
+          <h1>THESEUS</h1>
+          <h2>Le meilleur du High-Tech</h2>
+      </section>
+      <section id="header_block">
+          <fieldset>
+              <legend>Connexion</legend>
+              <div>
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>
+                  <p>Espace Client</p>
+              </div>
 
+          </fieldset>
+          <fieldset>
+              <legend>Panier</legend>
+              <div>
+                  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><br>
+                  <p>2 Articles</p>
+              </div>
+          </fieldset>
+      </section>
 
   </header>
-  
   <section id="news-demo">
     <article>
       <div class="text-content">
@@ -56,27 +75,28 @@ require_once "config/config.php";
       <div class="image-content"><img src="img/slider/slide3.jpg" alt="slide3"></div>
     </article>
   </section>
-
-
-  <section>
-      <h2>Events</h2>
+  <section id="event">
+      <div>
+          <h3>Produits phares</h3>
+          <h3>Produits phares</h3>
+          <h3>News et alertes</h3>
+      </div>
       <div class="grid">
         <figure class="effect-goliath">
-          <img src="img/others/testPaysage2.jpg" alt=paysage2"/>
+          <img src="img/products/panasonic-lumix-fz1000.jpg" alt=paysage2"/>
           <figcaption>
-            <h2>Prochain évènement</h2>
             <p><a href="#">En savoir +</a></p>
           </figcaption>
         </figure>
         <figure class="effect-goliath">
-          <img src="img/others/bulles.png" alt="bulles"/>
+          <img src="img/products/lacieDD.jpg" alt="bulles"/>
           <figcaption>
             <h2>Produits phares</h2>
             <p><a href="#">En savoir +</a></p>
           </figcaption>
         </figure>
         <figure class="effect-goliath">
-          <img src="img/others/testPaysage.jpg" alt="paysage"/>
+          <img src="img/products/DDcorsair-voyager-air-2.jpg" alt="paysage"/>
           <figcaption>
             <h2>News et alertes</h2>
             <p><a href="#">En savoir +</a></p>
@@ -86,6 +106,24 @@ require_once "config/config.php";
   </section>
 
   <footer>
+      <section id="footer_reseau">
+          <h3>Nous suivre : </h3><br>
+          <a href="//plus.google.com/u/0/104188505974959376188?prsrc=3"
+             rel="publisher" target="_top" style="text-decoration:none;">
+              <img src="//ssl.gstatic.com/images/icons/gplus-64.png" alt="Google+" style="border:0;width:64px;height:64px;"/>
+          </a>
+          <a href="http://www.facebook.com/sharer.php?u=<url to share>&t=<title of content>">&nbsp;&nbsp;<img id="facebook" src="img/reseau/facebook.png"></a>
+          <a href="http://www.facebook.com/sharer.php?u=<url to share>&t=<title of content>">&nbsp;&nbsp;<img id="twitter" src="img/reseau/twitter.png"></a>
+      </section><!--
+      --><section id="footer_text">Copyright ©Theseus 2014 <br>Tous drois sont réservés</section><!--
+      --><section id="footer_terme">
+          <h3>Termes et conditions : </h3>
+          <div>
+              <a href="">Faq</a><br>
+              <a href="">CGV</a><br>
+                  <a href="">Contact</a>
+          </div>
+      </section>
 
   </footer>
 

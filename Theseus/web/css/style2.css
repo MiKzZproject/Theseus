@@ -6,11 +6,12 @@
 .grid {
 	position: relative;
 	clear: both;
-	margin: 0 auto;
-	padding: 1em 0 4em;
-	max-width: 1000px;
+	padding: 0 0em;
 	list-style: none;
 	text-align: center;
+    width:100%;
+    margin:auto;
+    height:200px;
 }
 
 /* Common style */
@@ -20,7 +21,7 @@
 	position: relative;
 	float: left;
 	overflow: hidden;
-	/*margin: 10px 1%;*/
+	margin: 10px 1px;
 	min-width: 320px;
 	max-width: 480px;
 	max-height: 360px;
@@ -95,7 +96,7 @@
 
 figure.effect-goliath {
 	width: 33%;
-	background: #d9df44;
+	background: #FFFFFF;
 }
 
 figure.effect-goliath img,
@@ -111,10 +112,7 @@ figure.effect-goliath img {
 
 figure.effect-goliath h2,
 figure.effect-goliath p {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	padding: 30px;
+
 }
 
 figure.effect-goliath p {
@@ -144,7 +142,7 @@ figure.effect-goliath:hover p {
 }
 
 /* Media queries */
-@media screen and (max-width: 50em) {
+@media screen and (max-width: 70em) {
 	.content {
 		padding: 0 10px;
 		text-align: center;

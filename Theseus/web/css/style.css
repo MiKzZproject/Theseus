@@ -1,18 +1,151 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: Calibri;
 }
-
 header {
     height: 140px;
-    background-color: azure;
+    background-color: white;
+    padding-bottom:20px;
+}
+#event{
+    height: auto;
+    min-height:500px;
 }
 
-section {
-    height: 500px;
-    background-color:bisque;
+/* style DU HEADER */
+header section{
+    display:inline-block;
+    vertical-align: middle;
+    width:30%;
 }
-footer {
-    height: 140px;
-    background-color: fuchsia;
+header #logo{
+    padding:10px;
+}
+
+header #logo img{
+    width: 220px;
+}
+#header_block{
+    width:38%;
+    text-align:right;
+}
+
+fieldset div{
+    display: inline-block;
+    vertical-align: top;
+    font-size:30px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 15px;
+    line-height:9px;
+}
+fieldset div:hover{
+   background-color: #30bbf2;
+    color:white;
+    cursor:pointer;
+}
+
+fieldset div p {
+    font-size: 15px;
+    display: inline;
+    margin:0;
+}
+header fieldset{
+    display: inline-block;
+    margin : 0 35px;
+    text-align: center;
+}
+fieldset legend{
+    text-align: center;
+}
+#header_slogan h2{
+    font-size:25px;
+    color: #028ec9;
+
+}
+#header_slogan h1{
+    font-size:45px;
+
+}
+/* FIN style DU HEADER */
+
+/* style DU footer */
+footer{
+    width:100%;
+    background-color: #028ec9;
+    padding-bottom : 25px;
+    color:#FFFFFF;
+}
+footer section{
+    display:inline-block;
+    vertical-align: middle;
+}
+#footer_reseau{
+    width:38%;
+    text-align:center;
+}
+#footer_reseau a:hover{
+    opacity: 0.7;
+}
+#facebook{
+    width:65px;
+}
+#twitter{
+    width:72px;
+}
+footer a:hover{
+    text-decoration:none;
+}
+#footer_text{
+    width:24%;
+    text-align:center;
+    font-size: 1.2em;
+}
+#footer_terme{
+    width:38%;
+    text-align:center;
+}
+#footer_terme div {
+    display:inline-block;
+    width:30%;
+    border : 1px solid white;
+    border-radius: 8px;
+}
+#footer_terme a{
+    color:white;
+}
+#footer_terme a:hover{
+    color:#aaa;
+}
+footer h3{
+    font-weight: 400;
+    font-size: 1.5em;
+
+}
+/* FIn style DU footer */
+
+@media (max-width: 1024px) {
+    /* CSS appliqué aux petits écrans */
+    #footer_reseau,#footer_terme,#footer_text {
+        display: block;
+        margin:auto;
+        width:100%;
+        margin-bottom:25px;
+    }
+}
+
+
+/** event ***/
+#event h2{
+    margin-left:50px;
+}
+#event h3{
+    font-size: 30px;
+    display:inline-block;
+    width:33%;
+    text-align:center;
+}
+figure.effect-goliath:hover ~ h3{
+    border-top:5px solid #028ec9;
 }
