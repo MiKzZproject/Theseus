@@ -108,18 +108,21 @@ require_once "config/config.php";
   <section id="event">
     <div class="grid">
       <figure class="effect-goliath">
+        <h2>Produits phares</h2>
         <img src="img/products/panasonic-lumix-fz1000.jpg" alt="paysage2"/>
         <figcaption>
           <p><a href="#">En savoir +</a></p>
         </figcaption>
       </figure>
       <figure class="effect-goliath">
+        <h2>Events</h2>
         <img src="img/products/lacieDD.jpg" alt="bulles"/>
         <figcaption>
           <p><a href="#">En savoir +</a></p>
         </figcaption>
       </figure>
       <figure class="effect-goliath">
+        <h2>News et alertes</h2>
         <img src="img/products/DDcorsair-voyager-air-2.jpg" alt="paysage"/>
         <figcaption>
           <p><a href="#">En savoir +</a></p>

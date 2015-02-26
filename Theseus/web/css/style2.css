@@ -16,18 +16,14 @@
 
 /* Common style */
 .grid figure {
-	width: 48%;
-
+	width: 33%;
 	height: 100%;
 	position: relative;
 	float: left;
 	overflow: hidden;
 	margin: 10px 1px;
-	min-width: 275px;
-	max-width: 480px;
-	max-height: 360px;
+	max-height: 480px;
 	background: #3085a3;
-	text-align: center;
 	cursor: pointer;
 }
 
@@ -151,7 +147,20 @@ figure.effect-goliath:hover p {
 		display: inline-block;
 		float: none;
 		margin: 10px auto;
-		width: 100%;
+		width: 40%;
+	}
+}
+@media screen and (max-width: 700px) {
+	.content {
+		padding: 0 10px;
+		text-align: center;
+	}
+	.grid figure {
+		display: inline-block;
+		float: none;
+		min-width: 275px;
+		margin: 10px auto;
+		width: 50%;
 	}
 }
 
@@ -214,7 +223,7 @@ figure.effect-goliath:hover p {
 	display: block;
 	color: #222;
 }
-@media (max-width: 767px) {
+@media (max-width: 850px) {
     /* CSS appliqué aux petits écrans */
 	.text-content {
 		display: none;
