@@ -45,9 +45,9 @@ CREATE TABLE IF NOT EXISTS `adresse` (
   `adresse` varchar(255) NOT NULL,
   `ville` varchar(255) NOT NULL,
   `cp` int(5) NOT NULL,
-  `id_client` int(11) unsigned NOT NULL,
+  `idClient` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_client` (`id_client`)
+  KEY `idClient` (`idClient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -60,11 +60,11 @@ CREATE TABLE IF NOT EXISTS `client` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) DEFAULT NULL,
   `prenom` varchar(255) DEFAULT NULL,
-  `date_naissance` date DEFAULT NULL,
+  `dateNaissance` date DEFAULT NULL,
   `tel` int(10) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `pwd` varchar(255) NOT NULL,
-  `date_inscription` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dateInscription` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `newsletters` tinyint(1) DEFAULT NULL,
   `alerte` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `client` (
 
 CREATE TABLE IF NOT EXISTS `commande` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `date_commande` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dateCommande` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `livrer` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -90,13 +90,13 @@ CREATE TABLE IF NOT EXISTS `commande` (
 --
 
 CREATE TABLE IF NOT EXISTS `commande_produit` (
-  `id_commande` int(11) unsigned NOT NULL,
-  `id_client` int(11) unsigned NOT NULL,
-  `id_produit` int(11) unsigned NOT NULL,
+  `idCommande` int(11) unsigned NOT NULL,
+  `idClient` int(11) unsigned NOT NULL,
+  `idProduit` int(11) unsigned NOT NULL,
   `quantite` int(11) NOT NULL,
-  PRIMARY KEY (`id_commande`,`id_client`,`id_produit`),
-  KEY `id_client` (`id_client`),
-  KEY `id_produit` (`id_produit`)
+  PRIMARY KEY (`idCommande`,`idClient`,`idProduit`),
+  KEY `idClient` (`idClient`),
+  KEY `idProduit` (`idProduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -108,10 +108,12 @@ CREATE TABLE IF NOT EXISTS `commande_produit` (
 CREATE TABLE IF NOT EXISTS `evenement` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `libelle` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `adresse` varchar(255) DEFAULT NULL,
   `cp` int(11) DEFAULT NULL,
-  `ville` int(11) DEFAULT NULL,
-  `dateHeure` datetime DEFAULT NULL,
+  `ville` varchar(255) DEFAULT NULL,
+  `dateDebut` datetime DEFAULT NULL,
+  `dateFin` datetime DEFAULT NULL,
   `place` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -122,12 +124,12 @@ CREATE TABLE IF NOT EXISTS `evenement` (
 -- Structure de la table `even_client`
 --
 
-CREATE TABLE IF NOT EXISTS `even_client` (
-  `id_event` int(11) unsigned NOT NULL,
-  `id_client` int(11) unsigned NOT NULL,
+CREATE TABLE IF NOT EXISTS `event_client` (
+  `idEvent` int(11) unsigned NOT NULL,
+  `idClient` int(11) unsigned NOT NULL,
   `participer` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id_event`,`id_client`),
-  KEY `id_client` (`id_client`)
+  PRIMARY KEY (`idEvent`,`idClient`),
+  KEY `idClient` (`idClient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -136,12 +138,12 @@ CREATE TABLE IF NOT EXISTS `even_client` (
 -- Structure de la table `even_produit`
 --
 
-CREATE TABLE IF NOT EXISTS `even_produit` (
-  `id_evenement` int(11) unsigned NOT NULL,
-  `id_produit` int(11) unsigned NOT NULL,
+CREATE TABLE IF NOT EXISTS `event_produit` (
+  `idEvenement` int(11) unsigned NOT NULL,
+  `idProduit` int(11) unsigned NOT NULL,
   `stock` int(11) NOT NULL,
-  PRIMARY KEY (`id_evenement`,`id_produit`),
-  KEY `id_produit` (`id_produit`)
+  PRIMARY KEY (`idEvenement`,`idProduit`),
+  KEY `idProduit` (`idProduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -167,11 +169,11 @@ CREATE TABLE IF NOT EXISTS `fournisseur` (
 --
 
 CREATE TABLE IF NOT EXISTS `fournisseur_produit` (
-  `id_fournisseur` int(11) unsigned NOT NULL,
-  `id_produit` int(11) unsigned NOT NULL,
-  `prix_fournisseur` decimal(6,2) NOT NULL,
-  PRIMARY KEY (`id_fournisseur`,`id_produit`),
-  KEY `id_produit` (`id_produit`)
+  `idFournisseur` int(11) unsigned NOT NULL,
+  `idProduit` int(11) unsigned NOT NULL,
+  `prixFournisseur` decimal(6,2) NOT NULL,
+  PRIMARY KEY (`idFournisseur`,`idProduit`),
+  KEY `idProduit` (`idProduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -189,9 +191,9 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `description` varchar(255) DEFAULT NULL,
   `prix` decimal(6,2) NOT NULL,
   `stock` int(11) NOT NULL,
-  `id_fournisseur` int(11) unsigned NOT NULL,
+  `idFournisseur` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_fournisseur` (`id_fournisseur`)
+  KEY `idFournisseur` (`idFournisseur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
@@ -202,42 +204,42 @@ CREATE TABLE IF NOT EXISTS `produit` (
 -- Contraintes pour la table `adresse`
 --
 ALTER TABLE `adresse`
-  ADD CONSTRAINT `adresse_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
+  ADD CONSTRAINT `adresse_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `client` (`id`);
 
 --
 -- Contraintes pour la table `commande_produit`
 --
 ALTER TABLE `commande_produit`
-  ADD CONSTRAINT `commande_produit_ibfk_3` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id`),
-  ADD CONSTRAINT `commande_produit_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id`),
-  ADD CONSTRAINT `commande_produit_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
+  ADD CONSTRAINT `commande_produit_ibfk_3` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`id`),
+  ADD CONSTRAINT `commande_produit_ibfk_1` FOREIGN KEY (`idCommande`) REFERENCES `commande` (`id`),
+  ADD CONSTRAINT `commande_produit_ibfk_2` FOREIGN KEY (`idClient`) REFERENCES `client` (`id`);
 
 --
 -- Contraintes pour la table `even_client`
 --
-ALTER TABLE `even_client`
-  ADD CONSTRAINT `even_client_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`),
-  ADD CONSTRAINT `even_client_ibfk_1` FOREIGN KEY (`id_event`) REFERENCES `evenement` (`id`);
+ALTER TABLE `event_client`
+  ADD CONSTRAINT `even_client_ibfk_2` FOREIGN KEY (`idClient`) REFERENCES `client` (`id`),
+  ADD CONSTRAINT `even_client_ibfk_1` FOREIGN KEY (`idEvent`) REFERENCES `evenement` (`id`);
 
 --
 -- Contraintes pour la table `even_produit`
 --
-ALTER TABLE `even_produit`
-  ADD CONSTRAINT `even_produit_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id`),
-  ADD CONSTRAINT `even_produit_ibfk_1` FOREIGN KEY (`id_evenement`) REFERENCES `evenement` (`id`);
+ALTER TABLE `event_produit`
+  ADD CONSTRAINT `even_produit_ibfk_2` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`id`),
+  ADD CONSTRAINT `even_produit_ibfk_1` FOREIGN KEY (`idEvenement`) REFERENCES `evenement` (`id`);
 
 --
 -- Contraintes pour la table `fournisseur_produit`
 --
 ALTER TABLE `fournisseur_produit`
-  ADD CONSTRAINT `fournisseur_produit_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id`),
-  ADD CONSTRAINT `fournisseur_produit_ibfk_1` FOREIGN KEY (`id_fournisseur`) REFERENCES `fournisseur` (`id`);
+  ADD CONSTRAINT `fournisseur_produit_ibfk_2` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`id`),
+  ADD CONSTRAINT `fournisseur_produit_ibfk_1` FOREIGN KEY (`idFournisseur`) REFERENCES `fournisseur` (`id`);
 
 --
 -- Contraintes pour la table `produit`
 --
 ALTER TABLE `produit`
-  ADD CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`id_fournisseur`) REFERENCES `fournisseur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`idFournisseur`) REFERENCES `fournisseur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
