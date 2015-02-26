@@ -20,9 +20,8 @@ require_once "config/config.php";
   <link rel="stylesheet" href="css/slippry.css">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/style2.css">
-
-
 </head>
+
 <body>
   <header>
     <section id="logo"><img src="img/logo.png"></section>
@@ -78,6 +77,7 @@ require_once "config/config.php";
       </div>
     </nav>
   </header>
+
   <section id="news-demo">
     <article>
       <div class="text-content">
@@ -104,56 +104,49 @@ require_once "config/config.php";
       <div class="image-content"><img src="img/slider/slide3.jpg" alt="slide3"></div>
     </article>
   </section>
+  
   <section id="event">
-      <div>
-          <h3>Produits phares</h3>
-          <h3>Produits phares</h3>
-          <h3>News et alertes</h3>
-      </div>
-      <div class="grid">
-        <figure class="effect-goliath">
-          <img src="img/products/panasonic-lumix-fz1000.jpg" alt=paysage2"/>
-          <figcaption>
-            <p><a href="#">En savoir +</a></p>
-          </figcaption>
-        </figure>
-        <figure class="effect-goliath">
-          <img src="img/products/lacieDD.jpg" alt="bulles"/>
-          <figcaption>
-            <h2>Produits phares</h2>
-            <p><a href="#">En savoir +</a></p>
-          </figcaption>
-        </figure>
-        <figure class="effect-goliath">
-          <img src="img/products/DDcorsair-voyager-air-2.jpg" alt="paysage"/>
-          <figcaption>
-            <h2>News et alertes</h2>
-            <p><a href="#">En savoir +</a></p>
-          </figcaption>
-        </figure>
-      </div>
+    <div class="grid">
+      <figure class="effect-goliath">
+        <img src="img/products/panasonic-lumix-fz1000.jpg" alt="paysage2"/>
+        <figcaption>
+          <p><a href="#">En savoir +</a></p>
+        </figcaption>
+      </figure>
+      <figure class="effect-goliath">
+        <img src="img/products/lacieDD.jpg" alt="bulles"/>
+        <figcaption>
+          <p><a href="#">En savoir +</a></p>
+        </figcaption>
+      </figure>
+      <figure class="effect-goliath">
+        <img src="img/products/DDcorsair-voyager-air-2.jpg" alt="paysage"/>
+        <figcaption>
+          <p><a href="#">En savoir +</a></p>
+        </figcaption>
+      </figure>
+    </div>
   </section>
 
   <footer>
-      <section id="footer_reseau">
-          <h3>Nous suivre : </h3><br>
-          <a href="//plus.google.com/u/0/104188505974959376188?prsrc=3"
-             rel="publisher" target="_top" style="text-decoration:none;">
-              <img src="//ssl.gstatic.com/images/icons/gplus-64.png" alt="Google+" style="border:0;width:64px;height:64px;"/>
-          </a>
-          <a href="http://www.facebook.com/sharer.php?u=<url to share>&t=<title of content>">&nbsp;&nbsp;<img id="facebook" src="img/reseau/facebook.png"></a>
-          <a href="http://www.facebook.com/sharer.php?u=<url to share>&t=<title of content>">&nbsp;&nbsp;<img id="twitter" src="img/reseau/twitter.png"></a>
-      </section><!--
-      --><section id="footer_text">Copyright ©Theseus 2014 <br>Tous drois sont réservés</section><!--
-      --><section id="footer_terme">
-          <h3>Termes et conditions : </h3>
-          <div>
-              <a href="">Faq</a><br>
-              <a href="">CGV</a><br>
-                  <a href="">Contact</a>
-          </div>
-      </section>
-
+    <section id="footer_reseau">
+        <h3>Nous suivre : </h3><br>
+        <a href="//plus.google.com/u/0/104188505974959376188?prsrc=3"
+           rel="publisher" target="_top" style="text-decoration:none;">
+            <img src="//ssl.gstatic.com/images/icons/gplus-64.png" alt="Google+" style="border:0;width:64px;height:64px;"/>
+        </a>
+        <a href="http://www.facebook.com/sharer.php?u=<url to share>&t=<title of content>">&nbsp;&nbsp;<img id="facebook" src="img/reseau/facebook.png"></a>
+        <a href="http://www.facebook.com/sharer.php?u=<url to share>&t=<title of content>">&nbsp;&nbsp;<img id="twitter" src="img/reseau/twitter.png"></a>
+    </section><!--
+    --><section id="footer_text">Copyright ©Theseus 2014 <br>Tous drois sont réservés</section><!--
+    --><section id="footer_terme">
+        <h3>Termes et conditions : </h3>
+        <div>
+            <a href="">Faq</a><br>
+            <a href="">CGV</a><br>
+                <a href="">Contact</a>
+        </div>
+    </section>
   </footer>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
