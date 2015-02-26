@@ -73,10 +73,125 @@ require_once "config/config.php";
 </header>
 <section>
     <h1>Nos Events</h1>
-    <div id="event-1">
+    <div class="jumbotron">
+        <h3>Le Yoyo Palais de Tokyo</h3>
+        <h5>Samedi 10 octobre 2015 - 19h30</h5>
+        <h5>Type de produits : Smartphones et Tablettes</h5>
+        <div class="alert alert-success" role="alert">
+            <a href="#" class="alert-link">Evènement OUVERT</a>
+        </div>
 
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+            En savoir +
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Le Yoyo Palais de Tokyo - 10 octobre 2015 - 19h30</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="miniature-salle">
+                            <img src="img/salles/yoyo-palais-de-tokyo.jpg"/>
+                        </div>
+                        Lieu : Le Yoyo Palais de Tokyo<br/>
+                        Date : 10 octobre 2015 - 19h30<br/>
+                        Adresse : 13, avenue du Président Wilson 75116 Paris<br/>
+                        Produits : Smartphones et Tablettes<br/>
+                        Description : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum congue mi sed convallis. Mauris lacinia ultricies porttitor. In sit amet nisi diam. Nam eros sem, cursus ac viverra eu, vehicula ac mi. Donec vitae erat malesuada, viverra arcu at, consequat metus. Curabitur consectetur, nisl nec tempus rhoncus, nibh ipsum varius ex, et iaculis erat metus vel felis. Vestibulum turpis elit, malesuada at nunc at, posuere ultricies felis. Sed in euismod est. Ut sit amet mi pretium, vestibulum elit non, rhoncus lectus. Mauris ut ex viverra, efficitur nisl sed, fermentum velit. Proin malesuada ex nisl. Proin neque sem, volutpat at blandit id, tempus sit amet lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vel justo ex. Morbi at odio et urna pharetra rutrum.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-primary">S'inscrire à l'évènement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <div class="jumbotron">
+        <h3>Le Départ </h3>
+        <h5>Samedi 24 octobre 2015 - 20h00</h5>
+        <h5>Type de produits : Photos et Vidéos</h5>
+        <div class="alert alert-success" role="alert">
+            <a href="#" class="alert-link">Evènement OUVERT</a>
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
+            En savoir +
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Le Yoyo Palais de Tokyo - 10 octobre 2015 - 19h30</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="miniature-salle">
+                            <img src="img/salles/le-depart.jpg"/>
+                        </div>
+                        Lieu : Le Départ<br/>
+                        Date : 24 octobre 2015 - 20h00<br/>
+                        Adresse : 34-36, rue du Départ 75015 Paris<br/>
+                        Produits : Photos et Vidéos<br/>
+                        Description : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum congue mi sed convallis. Mauris lacinia ultricies porttitor. In sit amet nisi diam. Nam eros sem, cursus ac viverra eu, vehicula ac mi. Donec vitae erat malesuada, viverra arcu at, consequat metus. Curabitur consectetur, nisl nec tempus rhoncus, nibh ipsum varius ex, et iaculis erat metus vel felis. Vestibulum turpis elit, malesuada at nunc at, posuere ultricies felis. Sed in euismod est. Ut sit amet mi pretium, vestibulum elit non, rhoncus lectus. Mauris ut ex viverra, efficitur nisl sed, fermentum velit. Proin malesuada ex nisl. Proin neque sem, volutpat at blandit id, tempus sit amet lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vel justo ex. Morbi at odio et urna pharetra rutrum.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-primary">S'inscrire à l'évènement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <h3>Pavillon Daunou</h3>
+        <h5>Samedi 7 février 2015 - 19h00</h5>
+        <h5>Type de produits : Casques audios</h5>
+        <div class="alert alert-danger" role="alert">
+            <a href="#" class="alert-link">Evènement FERME</a>
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal3">
+            En savoir +
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Pavillon Daunou - 7 février 2015 - 19h00</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="miniature-salle">
+                            <img src="img/salles/pavillon-daunou.jpg"/>
+                        </div>
+                        Lieu : Pavillon Daunou<br/>
+                        Date : 7 février 2015 - 19h00<br/>
+                        Adresse : 18, rue Daunou 75002 Paris<br/>
+                        Produits : Casques audios<br/>
+                        Description : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum congue mi sed convallis. Mauris lacinia ultricies porttitor. In sit amet nisi diam. Nam eros sem, cursus ac viverra eu, vehicula ac mi. Donec vitae erat malesuada, viverra arcu at, consequat metus. Curabitur consectetur, nisl nec tempus rhoncus, nibh ipsum varius ex, et iaculis erat metus vel felis. Vestibulum turpis elit, malesuada at nunc at, posuere ultricies felis. Sed in euismod est. Ut sit amet mi pretium, vestibulum elit non, rhoncus lectus. Mauris ut ex viverra, efficitur nisl sed, fermentum velit. Proin malesuada ex nisl. Proin neque sem, volutpat at blandit id, tempus sit amet lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc vel justo ex. Morbi at odio et urna pharetra rutrum.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-primary">S'inscrire à l'évènement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <footer>

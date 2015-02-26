@@ -262,4 +262,12 @@ figure.effect-goliath:hover ~ h3{
   color: #ffffff;
 }
 
-/** fin navbar **/ 
+/** fin navbar **/
+
+
+/** Page EVENTS **/
+
+#miniature-salle img{
+    height: 90px;
+    width: 90px;
+}
