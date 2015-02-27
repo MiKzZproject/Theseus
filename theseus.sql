@@ -121,24 +121,24 @@ CREATE TABLE IF NOT EXISTS `evenement` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `even_client`
+-- Structure de la table `evenement_client`
 --
 
-CREATE TABLE IF NOT EXISTS `event_client` (
-  `idEvent` int(11) unsigned NOT NULL,
+CREATE TABLE IF NOT EXISTS `evenement_client` (
+  `idEvenement` int(11) unsigned NOT NULL,
   `idClient` int(11) unsigned NOT NULL,
   `participer` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`idEvent`,`idClient`),
+  PRIMARY KEY (`idEvenement`,`idClient`),
   KEY `idClient` (`idClient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `even_produit`
+-- Structure de la table `evenement_produit`
 --
 
-CREATE TABLE IF NOT EXISTS `event_produit` (
+CREATE TABLE IF NOT EXISTS `evenement_produit` (
   `idEvenement` int(11) unsigned NOT NULL,
   `idProduit` int(11) unsigned NOT NULL,
   `stock` int(11) NOT NULL,
@@ -215,18 +215,18 @@ ALTER TABLE `commande_produit`
   ADD CONSTRAINT `commande_produit_ibfk_2` FOREIGN KEY (`idClient`) REFERENCES `client` (`id`);
 
 --
--- Contraintes pour la table `even_client`
+-- Contraintes pour la table `evenement_client`
 --
-ALTER TABLE `event_client`
-  ADD CONSTRAINT `even_client_ibfk_2` FOREIGN KEY (`idClient`) REFERENCES `client` (`id`),
-  ADD CONSTRAINT `even_client_ibfk_1` FOREIGN KEY (`idEvent`) REFERENCES `evenement` (`id`);
+ALTER TABLE `evenement_client`
+  ADD CONSTRAINT `evenement_client_ibfk_2` FOREIGN KEY (`idClient`) REFERENCES `client` (`id`),
+  ADD CONSTRAINT `evenement_client_ibfk_1` FOREIGN KEY (`idEvenement`) REFERENCES `evenement` (`id`);
 
 --
--- Contraintes pour la table `even_produit`
+-- Contraintes pour la table `evenement_produit`
 --
-ALTER TABLE `event_produit`
-  ADD CONSTRAINT `even_produit_ibfk_2` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`id`),
-  ADD CONSTRAINT `even_produit_ibfk_1` FOREIGN KEY (`idEvenement`) REFERENCES `evenement` (`id`);
+ALTER TABLE `evenement_produit`
+  ADD CONSTRAINT `evenement_produit_ibfk_2` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`id`),
+  ADD CONSTRAINT `evenement_produit_ibfk_1` FOREIGN KEY (`idEvenement`) REFERENCES `evenement` (`id`);
 
 --
 -- Contraintes pour la table `fournisseur_produit`
