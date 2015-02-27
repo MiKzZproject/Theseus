@@ -55,5 +55,20 @@ class ControlAdmin {
         return $admins;
     }
 
+    public function addAdmin($admin){
+        $req = $this->db->prepare('INSERT INTO admin (login,pass,email,niveau) values (:login,:pass,:email,:niveau)');
+        $req->bindValue(':login',$admin->getLogin());
+        $req->bindValue(':pass',$admin->getPass());
+        $req->bindValue(':email',$admin->getEmail());
+        $req->bindValue(':niveau',$admin->getNiveau());
+
+        $req->execute();
+    }
+    public function deleteAdmin($id){
+        $req = $this->db->prepare('DELETE FROM admin WHERE id = :id');
+        $req->bindValue(':id',$id);
+        $req->execute();
+    }
+
 
 }

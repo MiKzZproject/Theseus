@@ -6,6 +6,7 @@ $admins = $controlAdmin->getAdmins();
 if($_SESSION['admin']->getNiveau() == 1){
     ?>
     <h3>Gestion des Administrateurs</h3><br><br>
+    <span id="adminResult"></span>
     <button class="btn btn-success" data-toggle="modal" data-target="#addProduitModal">Ajouter un admin</button><br><br>
 
     <table class="table table-striped">
@@ -25,8 +26,8 @@ if($_SESSION['admin']->getNiveau() == 1){
             <td><?php echo $admin->getPass() ?></td>
             <td><?php echo $admin->getEmail() ?></td>
             <td><?php echo $admin->getNiveau() ?></td>
-            <td><span style="color:orange" class="glyphicon glyphicon-edit" aria-hidden="true"></span></td>
-            <td><span style="color:red" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+            <td><span class="click" onclick="adminUpdate('<?php echo $admin->getNiveau() ?>')"><span style="color:orange" class="glyphicon glyphicon-edit" aria-hidden="true"></span></span></td>
+            <td><span class="click" onclick="adminDelete('<?php echo $admin->getId() ?>')"><span style="color:red" class="glyphicon glyphicon-remove" aria-hidden="true"></span></span></td>
         </tr>
         <?php
     }
@@ -50,13 +51,13 @@ if($_SESSION['admin']->getNiveau() == 1){
             </div>
             <div class="modal-body">
                 Login : <br>
-                <input class="form-control" type="text"><br><br>
+                <input id="adminAdd_login" class="form-control" type="text"><br><br>
                 Pass : <br>
-                <input class="form-control" type="password"><br><br>
+                <input id="adminAdd_pass" class="form-control" type="password"><br><br>
                 Email : <br>
-                <input class="form-control" type="email"><br><br>
+                <input id="adminAdd_email" class="form-control" type="email"><br><br>
                 Niveau : <br>
-                <select class="form-control">
+                <select id="adminAdd_niveau" class="form-control">
                     <option value="1">Powers</option>
                     <option value="2">Evenements</option>
                     <option value="3"¨>Produits</option>
@@ -66,8 +67,9 @@ if($_SESSION['admin']->getNiveau() == 1){
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" onclick="addProduit" class="btn btn-primary">Ajouter l'admin</button>
+                <button type="button" onclick="adminAdd()" class="btn btn-primary">Ajouter l'admin</button>
             </div>
         </div>
     </div>
 </div>
+<script src="js/admin.js"></script>

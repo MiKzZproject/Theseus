@@ -15,6 +15,7 @@ class Categorie {
     private $id;
     private $nom;
     private $image;
+    private $description;
 
     public function __construct($array){
         $this->hydrate($array);
@@ -76,4 +77,21 @@ class Categorie {
     {
         $this->id = $id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
 }

@@ -42,6 +42,7 @@ class ControlCategorie {
     public function addCategorie($categorie){
         $req = $this->bdd->prepare('INSERT INTO categorie values (:nom,:image)');
         $req->bindValue(':nom',$categorie->getNom());
+        $req->bindValue(':nom',$categorie->getDescription());
         $req->bindValue(':image',$categorie->getImage());
     }
 }
