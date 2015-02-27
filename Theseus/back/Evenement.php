@@ -1,44 +1,45 @@
 <?php
     require('config/config.php');
-$controlProduit = new \control\ControlProduit($bdd);
-$produits = $controlProduit->getProduits();
+$controlEvenement = new \control\ControlEvenement($bdd);
+$evenements = $controlEvenement->getEvenements();
 ?>
-<h3>Gestion des produits</h3><br><br>
+<h3>Gestion des Evenements</h3><br><br>
 
-<button class="btn btn-success" data-toggle="modal" data-target="#addProduitModal">Ajouter un produit</button><br><br>
+<button class="btn btn-success" data-toggle="modal" data-target="#addProduitModal">Ajouter un Evenements</button><br><br>
 
 <div class="block_recherche">
     <input id="produit_recherche" class="form-control" type="text" placeholder="Recherche">&nbsp;<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
     <select id="produit_recherche_type" class="form-control">
         <option value="libelle">Libelle</option>
-        <option value="marque">Marque</option>
-        <option value="marque">Category</option>
+        <option value="marque">date</option>
     </select>
     <br><br>
 </div>
 <table class="table table-striped">
         <tr>
-            <td>id</td>
-            <td>libelle</td>
-            <td>marque</td>
-            <td>categoryId</td>
-            <td>description</td>
-            <td>prix</td>
-            <td>stock</td>
-            <td></td>
-            <td></td>
+            <td>Id</td>
+            <td>Libelle</td>
+            <td>Description</td>
+            <td>Adresse</td>
+            <td>Cp</td>
+            <td>Ville</td>
+            <td>DateDebut</td>
+            <td>DateFin</td>
+            <td>Places</td>
         </tr>
         <?php
-        foreach($produits as $produit){
+        foreach($evenements as $evenement){
             ?>
             <tr>
-                <td><?php echo $produit->getId(); ?></td>
-                <td><?php echo $produit->getLibelle(); ?></td>
-                <td><?php echo $produit->getMarque(); ?></td>
-                <td><?php echo $produit->getCategoryId(); ?></td>
-                <td><?php echo $produit->getDescription(); ?></td>
-                <td><?php echo $produit->getPrix(); ?></td>
-                <td><?php echo $produit->getStock(); ?></td>
+                <td><?php echo $evenement->getId(); ?></td>
+                <td><?php echo $evenement->getLibelle(); ?></td>
+                <td><?php echo $evenement->getDescription(); ?></td>
+                <td><?php echo $evenement->getAdresse(); ?></td>
+                <td><?php echo $evenement->getCp(); ?></td>
+                <td><?php echo $evenement->getVille(); ?></td>
+                <td><?php echo $evenement->getDateDebut(); ?></td>
+                <td><?php echo $evenement->getDateFin(); ?></td>
+                <td><?php echo $evenement->getPlaces(); ?></td>
                 <td><span style="color:orange" class="glyphicon glyphicon-edit" aria-hidden="true"></span></td>
                 <td><span style="color:red" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
 

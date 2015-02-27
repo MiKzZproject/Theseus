@@ -1,4 +1,6 @@
-
+<?php
+    use model\Admin;
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -15,14 +17,14 @@
 
 <?php
 session_start();
-
-if(isset($_SESSION['admin']) && $_SESSION['admin'] == "1"){
+if(isset($_SESSION['admin'])){
     ?>
     <button class="btn btn-warning" onclick="deconnexion()">Deconnection</button>
     <section id="admin_page">
     </section>
     <br><br>
     <section id="menu">
+        <span id="login_result"></span>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <!-- Brand a nd toggle get grouped for better mobile display -->
@@ -40,6 +42,7 @@ if(isset($_SESSION['admin']) && $_SESSION['admin'] == "1"){
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active" class="navbar-brand"><a onclick="window.location.hash='#produit';gestionPage('produit');">Produits</a></li>
+                        <li><a onclick="window.location.hash='#categorie';gestionPage('categorie');">Catégories</a></li>
                         <li><a onclick="window.location.hash='#reservation';gestionPage('reservation');">Réservations</a></li>
                         <li><a onclick="window.location.hash='#evenement';gestionPage('evenement');">Evènements</a></li>
                         <li><a onclick="window.location.hash='#admin';gestionPage('admin');">Admin</a></li>

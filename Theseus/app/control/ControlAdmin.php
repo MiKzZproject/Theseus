@@ -8,6 +8,8 @@
 
 namespace control;
 
+use model\Admin;
+
 class ControlAdmin {
 
     private $db;
@@ -30,6 +32,17 @@ class ControlAdmin {
             return false;
         }
 
+    }
+    public function getClient($array){
+        $req = $this->db->prepare('SELECT * FROM admin WHERE login = :login AND pass = :pass');
+        $req->bindValue(':login', $array['login']);
+        $req->bindValue(':pass', $array['pass']);
+        $req->execute();
+
+        if($result = $req->fetch()){
+            $admin = new Admin($result);
+        }
+        return $admin;
     }
 
 

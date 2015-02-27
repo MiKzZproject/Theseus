@@ -13,7 +13,8 @@ class Admin {
 
     private $id;
     private $login;
-    private $mdp;
+    private $pass;
+    private $email;
     private $niveau;
 
 
@@ -65,17 +66,33 @@ class Admin {
     /**
      * @return mixed
      */
-    public function getMdp()
+    public function getPass()
     {
-        return $this->mdp;
+        return $this->pass;
     }
 
     /**
-     * @param mixed $mdp
+     * @param mixed $pass
      */
-    public function setMdp($mdp)
+    public function setPass($pass)
     {
-        $this->mdp = $mdp;
+        $this->pass = $pass;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 
     /**
@@ -93,8 +110,6 @@ class Admin {
     {
         $this->niveau = $niveau;
     }
-
-
 
 
 }
