@@ -20,7 +20,8 @@ class ControlEvenement {
     }
 
     public function getEvenements(){
-        $req = $this->bdd->prepare('SELECT * FROM evenement');
+        $req = $this->bdd->prepare('SELECT *
+                                    FROM evenement');
         $req->execute();
         while($result = $req->fetch()){
             $evenement = new Evenement($result);
@@ -30,7 +31,16 @@ class ControlEvenement {
     }
 
     public function addEvenement($evenement){
-        $req = $this->bdd->prepare('INSERT INTO evenement (libelle,description,adresse,cp,ville,dateDebut,dateFin,place,image) values ( :libelle, :description, :adresse, :cp, :ville, :dateDebut, :dateFin, :place, :image');
+        $req = $this->bdd->prepare('INSERT INTO evenement (libelle,description,adresse,cp,ville,dateDebut,dateFin,place,image)
+                                    VALUES (:libelle,
+                                            :description,
+                                            :adresse,
+                                            :cp,
+                                            :ville,
+                                            :dateDebut,
+                                            :dateFin,
+                                            :place,
+                                            :image)');
         $req->bindValue(':libelle',$evenement->getLibelle());
         $req->bindValue(':description',$evenement->getDescription());
         $req->bindValue(':adresse',$evenement->getAdresse());
@@ -42,6 +52,43 @@ class ControlEvenement {
         $req->bindValue(':image',$evenement->getImage());
 
         $req->execute();
+
     }
 
+    public function updateEvenement($evenement){
+        $req = $this->bdd->prepare('UPDATE evenement
+                                    SET libelle = :libelle,
+                                        description = :description,
+                                        adresse = :adresse,
+                                        cp = :cp,
+                                        ville = :ville,
+                                        dateDebut = :dateDebut,
+                                        dateFin = :dateFin,
+                                        place = :place,
+                                        image = :image
+                                    WHERE id = :id ');
+        $req->bindValue(':id',$evenement->getId());
+        $req->bindValue(':libelle',$evenement->getLibelle());
+        $req->bindValue(':description',$evenement->getDescription());
+        $req->bindValue(':adresse',$evenement->getAdresse());
+        $req->bindValue(':cp',$evenement->getCp());
+        $req->bindValue(':ville',$evenement->getVille());
+        $req->bindValue(':dateDebut',$evenement->getDateDebut());
+        $req->bindValue(':dateFin',$evenement->getDateFin());
+        $req->bindValue(':place',$evenement->getPlace());
+        $req->bindValue(':image',$evenement->getImage());
+
+        $req->execute();
+
+    }
+
+    public function deleteEvenement($id){
+        $req = $this->bdd->prepare('DELETE
+                                    FROM evenement
+                                    WHERE id = :id ');
+        $req->bindValue(':id',$id->getId());
+
+        $req->execute();
+
+    }
 }

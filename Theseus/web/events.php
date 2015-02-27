@@ -11,8 +11,8 @@ require_once "config/config.php";
 
 
 $controlEvenement = new \control\ControlEvenement($bdd);
-
 $evenements = $controlEvenement->getEvenements();
+
 ?>
 
 <!doctype html>
