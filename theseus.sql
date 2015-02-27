@@ -181,6 +181,7 @@ CREATE TABLE IF NOT EXISTS `evenement_produit` (
 CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
