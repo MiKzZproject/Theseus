@@ -33,7 +33,7 @@ class ControlAdmin {
         }
 
     }
-    public function getClient($array){
+    public function getAdmin($array){
         $req = $this->db->prepare('SELECT * FROM admin WHERE login = :login AND pass = :pass');
         $req->bindValue(':login', $array['login']);
         $req->bindValue(':pass', $array['pass']);
@@ -43,6 +43,16 @@ class ControlAdmin {
             $admin = new Admin($result);
         }
         return $admin;
+    }
+    public function getAdmins(){
+        $req = $this->db->prepare('SELECT * FROM admin');
+        $req->execute();
+
+        while($result = $req->fetch()){
+            $admin = new Admin($result);
+            $admins[] = $admin;
+        }
+        return $admins;
     }
 
 

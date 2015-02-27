@@ -8,7 +8,7 @@ if(isset($_POST['login']) && isset($_POST['pass'])){
         "pass" => $_POST['pass'],
     );
     if($controlAdmin->connection($array)){
-        $admin = $controlAdmin->getClient($array);
+        $admin = $controlAdmin->getAdmin($array);
        $_SESSION['admin'] = $admin;
         ?>
         <script>window.location.href='index.php'</script>

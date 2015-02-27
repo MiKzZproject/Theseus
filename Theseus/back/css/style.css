@@ -1,6 +1,7 @@
 body{
     text-align:center;
     background-color:#EEEEEE;
+    overflow: scroll;
 }
 h1{
     text-decoration: underline;
@@ -23,7 +24,7 @@ h1{
 #page{
     background-color: white;
     padding:30px;
-    width:800px;
+    width:1000px;
     margin:auto;
 
 }
