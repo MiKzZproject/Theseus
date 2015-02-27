@@ -1,0 +1,42 @@
+body{
+    text-align:center;
+    background-color:#EEEEEE;
+}
+h1{
+    text-decoration: underline;
+}
+
+#login{
+    background-color: #FFFFFF;
+    width:60%;
+    margin:auto;
+    padding:30px;
+}
+#login h4{
+    color:red;
+}
+#menu{
+    width :500px;
+    margin: auto;
+}
+
+#page{
+    background-color: white;
+    padding:30px;
+    width:800px;
+    margin:auto;
+
+}
+.block_recherche {
+    width: 70%;
+    margin:auto;
+}
+.block_recherche input,.block_recherche select{
+    display:inline-block;
+}
+#produit_recherche{
+    width : 200px;
+}
+#produit_recherche_type{
+    width:100px;
+}
