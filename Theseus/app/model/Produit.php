@@ -15,10 +15,12 @@ class Produit
     private $id;
     private $libelle;
     private $marque;
-    private $categoryId;
+    private $idCategorie;
+    private $modele;
     private $description;
     private $prix;
     private $stock;
+    private $image;
 
     function __construct($array)
     {
@@ -33,94 +35,150 @@ class Produit
                 $this->$method($valeur);
             }
         }
-    }/**
- * @return mixed
- */
-public function getId()
-{
-    return $this->id;
-}/**
- * @param mixed $id
- */
-public function setId($id)
-{
-    $this->id = $id;
-}/**
- * @return mixed
- */
-public function getLibelle()
-{
-    return $this->libelle;
-}/**
- * @param mixed $libelle
- */
-public function setLibelle($libelle)
-{
-    $this->libelle = $libelle;
-}/**
- * @return mixed
- */
-public function getMarque()
-{
-    return $this->marque;
-}/**
- * @param mixed $marque
- */
-public function setMarque($marque)
-{
-    $this->marque = $marque;
-}/**
- * @return mixed
- */
-public function getDescription()
-{
-    return $this->description;
-}/**
- * @param mixed $description
- */
-public function setDescription($description)
-{
-    $this->description = $description;
-}/**
- * @return mixed
- */
-public function getPrix()
-{
-    return $this->prix;
-}/**
- * @param mixed $prix
- */
-public function setPrix($prix)
-{
-    $this->prix = $prix;
-}/**
- * @return mixed
- */
-public function getStock()
-{
-    return $this->stock;
-}/**
- * @param mixed $stock
- */
-public function setStock($stock)
-{
-    $this->stock = $stock;
-}
+    }
 
-/**
- * @return mixed
- */
-public function getCategoryId()
-{
-    return $this->categoryId;
-}
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-/**
- * @param mixed $categoryId
- */
-public function setCategoryId($categoryId)
-{
-    $this->categoryId = $categoryId;
-}
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
-}
+    /**
+     * @return mixed
+     */
+    public function getLibelle()
+    {
+        return $this->libelle;
+    }
+
+    /**
+     * @param mixed $libelle
+     */
+    public function setLibelle($libelle)
+    {
+        $this->libelle = $libelle;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMarque()
+    {
+        return $this->marque;
+    }
+
+    /**
+     * @param mixed $marque
+     */
+    public function setMarque($marque)
+    {
+        $this->marque = $marque;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdCategorie()
+    {
+        return $this->idCategorie;
+    }
+
+    /**
+     * @param mixed $idCategorie
+     */
+    public function setIdCategorie($idCategorie)
+    {
+        $this->idCategorie = $idCategorie;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getModele()
+    {
+        return $this->modele;
+    }
+
+    /**
+     * @param mixed $modele
+     */
+    public function setModele($modele)
+    {
+        $this->modele = $modele;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * @param mixed $prix
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    /**
+     * @param mixed $stock
+     */
+    public function setStock($stock)
+    {
+        $this->stock = $stock;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+ }

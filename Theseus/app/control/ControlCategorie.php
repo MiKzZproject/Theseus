@@ -40,9 +40,24 @@ class ControlCategorie {
     }
 
     public function addCategorie($categorie){
-        $req = $this->bdd->prepare('INSERT INTO categorie values (:nom,:image)');
+        $req = $this->bdd->prepare('INSERT INTO categorie values (null, :nom,:image)');
         $req->bindValue(':nom',$categorie->getNom());
         $req->bindValue(':nom',$categorie->getDescription());
         $req->bindValue(':image',$categorie->getImage());
+        return $req->execute();
+    }
+
+    public function updateCategorie($categorie) {
+        $req = $this->bdd->prepare('UPDATE categorie SET nom = :nom, image=:image WHERE id=:id');
+        $req->bindValue(':id',$categorie->getId());
+        $req->bindValue(':nom',$categorie->getNom());
+        $req->bindValue(':image',$categorie->getImage());
+        return $req->execute();
+    }
+
+    public function deleteCategorie($id) {
+        $req = $this->bdd->prepare('DELETE FROM categorie WHERE id=:id');
+        $req->bindValue(':id',$id);
+        return $req->execute();
     }
 }

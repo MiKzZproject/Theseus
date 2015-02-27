@@ -29,17 +29,39 @@ class ControlProduit {
         return $produits;
     }
 
-
     public function addProduit($produit){
-        $req = $this->bdd->prepare('INSERT INTO produit values (:id,:libelle,:marque,:categoryId,:description,:prix,:stock');
-        $req->bindValue(':id',$produit->getId());
-        $req->bindValue(':libelle',$produit->getId());
-        $req->bindValue(':categoryId',$produit->getId());
-        $req->bindValue(':description',$produit->getId());
-        $req->bindValue(':prix',$produit->getId());
-        $req->bindValue(':stock',$produit->getId());
-        $req->execute();
+        $req = $this->bdd->prepare('INSERT INTO produit values (null,:libelle,:marque,:idCategorie,:modele,:description,:prix,:stock,:image)');
+        $req->bindValue(':libelle',$produit->getLibelle());
+        $req->bindValue(':marque',$produit->getMarque());
+        $req->bindValue(':idCategorie',$produit->getIdCategorie());
+        $req->bindValue(':modele',$produit->getModele());
+        $req->bindValue(':description',$produit->getDescription());
+        $req->bindValue(':prix',$produit->getPrix());
+        $req->bindValue(':stock',$produit->getStock());
+        $req->bindValue(':image',$produit->getImage());
+        return $req->execute();
     }
 
+    public function updateProduit($produit){
+        $req = $this->bdd->prepare('UPDATE produit SET  libelle = :libelle,marque=:marque, idCategorie=:idCategorie, modele=:modele,
+                                                        description=:description, prix=:prix, stock=:stock, image=:image
+                                                        WHERE id=:id');
+        $req->bindValue(':id',$produit->getId());
+        $req->bindValue(':libelle',$produit->getLibelle());
+        $req->bindValue(':marque',$produit->getMarque());
+        $req->bindValue(':modele',$produit->getModele());
+        $req->bindValue(':idCategorie',$produit->getIdCategorie());
+        $req->bindValue(':description',$produit->getDescription());
+        $req->bindValue(':prix',$produit->getPrix());
+        $req->bindValue(':stock',$produit->getStock());
+        $req->bindValue(':image',$produit->getImage());
+        return $req->execute();
+    }
+
+    public function deleteProduit($id){
+        $req = $this->bdd->prepare('DELETE FROM produit WHERE id=:id');
+        $req->bindValue(':id', $id);
+        return $req->execute();
+    }
 
 }
