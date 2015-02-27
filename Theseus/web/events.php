@@ -9,14 +9,14 @@
 require '../../vendor/autoload.php';
 require_once "config/config.php";
 
-include('dbconnect.php');
+//include('dbconnect.php');
 
 ?>
 
 <!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
 
     <title>Theseus - Events</title>
     <link rel="stylesheet" href="css/slippry.css">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -87,8 +87,8 @@ include('dbconnect.php');
         ?>
         <div class="jumbotron">
             <h3><?php echo $event->libelle; ?></h3>
-            <h5>Samedi 10 octobre 2015 - 19h30</h5>
-            <h5>Type de produits : Smartphones et Tablettes</h5><img src="img/others/tablette.jpg"><img src="img/others/smartphone.jpg">
+            <h5><?php echo $event->dateDebut; ?></h5>
+            <h5>Type de produits : </h5><img src="img/others/tablette.jpg"><img src="img/others/smartphone.jpg">
             <div class="alert alert-success" role="alert">
                 <a href="#" class="alert-link">Evènement OUVERT</a>
             </div>
@@ -104,15 +104,15 @@ include('dbconnect.php');
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Le Yoyo Palais de Tokyo - 10 octobre 2015 - 19h30</h4>
+                            <h4 class="modal-title" id="myModalLabel"><?php echo $event->libelle; ?> - <?php echo $event->dateDebut; ?></h4>
                         </div>
                         <div class="modal-body">
                             <div id="miniature-salle">
-                                <img src="<?php echo $event->image; ?> "/>
+                                <img src="<?php echo $event->image; ?>"/>
                             </div>
-                            Lieu : Le Yoyo Palais de Tokyo<br/>
-                            Date : <?php echo $event->dateDebut; ?>     <?php echo $event->dateFin; ?><br />
-                            Adresse :   <?php echo $event->adresse; ?> <?php echo $event->cp; ?><?php echo $event->ville; ?><br />
+                            Lieu : <?php echo $event->libelle; ?><br/>
+                            Date : <?php echo $event->dateDebut; ?> jusqu'à <?php echo $event->dateFin; ?><br />
+                            Adresse :   <?php echo $event->adresse; ?> - <?php echo $event->cp; ?><?php echo $event->ville; ?><br />
                             Produits : Smartphones et Tablettes<br/>
                             Description : <?php echo $event->description; ?>
                         </div>
