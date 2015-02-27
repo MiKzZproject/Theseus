@@ -31,7 +31,7 @@ class ControlProduit {
 
 
     public function addProduit($produit){
-        $req = $this->bdd->prepare('INSER INTO produit values (:id,,:libelle,:marque,:categoryId,:description,:prix,:stock');
+        $req = $this->bdd->prepare('INSERT INTO produit values (:id,:libelle,:marque,:categoryId,:description,:prix,:stock');
         $req->bindValue(':id',$produit->getId());
         $req->bindValue(':libelle',$produit->getId());
         $req->bindValue(':categoryId',$produit->getId());
