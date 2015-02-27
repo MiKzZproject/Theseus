@@ -29,10 +29,35 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `admin` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `login` varchar(255) NOT NULL,
-  `mdp` varchar(255) NOT NULL,
-  `niveau` int(1) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `niveau` int(1) NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produit`
+--
+
+CREATE TABLE IF NOT EXISTS `produit` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(255) DEFAULT NULL,
+  `marque` varchar(255) DEFAULT NULL,
+  `idCategorie` int(11) unsigned DEFAULT NULL,
+  `modele` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `prix` decimal(6,2) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idCategorie` (`idCategorie`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
 
 -- --------------------------------------------------------
 
@@ -115,6 +140,7 @@ CREATE TABLE IF NOT EXISTS `evenement` (
   `dateDebut` datetime DEFAULT NULL,
   `dateFin` datetime DEFAULT NULL,
   `place` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -152,49 +178,26 @@ CREATE TABLE IF NOT EXISTS `evenement_produit` (
 -- Structure de la table `fournisseur`
 --
 
-CREATE TABLE IF NOT EXISTS `fournisseur` (
+CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) DEFAULT NULL,
-  `adresse` varchar(255) DEFAULT NULL,
-  `ville` varchar(255) DEFAULT NULL,
-  `cp` int(5) DEFAULT NULL,
-  `tel` int(10) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `fournisseur_produit`
+-- Structure de la table `categorie_produit`
 --
 
-CREATE TABLE IF NOT EXISTS `fournisseur_produit` (
-  `idFournisseur` int(11) unsigned NOT NULL,
+CREATE TABLE IF NOT EXISTS `categorie_produit` (
+  `idCategorie` int(11) unsigned NOT NULL,
   `idProduit` int(11) unsigned NOT NULL,
-  `prixFournisseur` decimal(6,2) NOT NULL,
-  PRIMARY KEY (`idFournisseur`,`idProduit`),
+  PRIMARY KEY (`idCategorie`,`idProduit`),
   KEY `idProduit` (`idProduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Structure de la table `produit`
---
-
-CREATE TABLE IF NOT EXISTS `produit` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `marque` varchar(255) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL,
-  `modele` varchar(255) DEFAULT NULL,
-  `libelle` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `prix` decimal(6,2) NOT NULL,
-  `stock` int(11) NOT NULL,
-  `idFournisseur` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idFournisseur` (`idFournisseur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Contraintes pour les tables exportées
@@ -229,59 +232,17 @@ ALTER TABLE `evenement_produit`
   ADD CONSTRAINT `evenement_produit_ibfk_1` FOREIGN KEY (`idEvenement`) REFERENCES `evenement` (`id`);
 
 --
--- Contraintes pour la table `fournisseur_produit`
+-- Contraintes pour la table `categorie_produit`
 --
-ALTER TABLE `fournisseur_produit`
-  ADD CONSTRAINT `fournisseur_produit_ibfk_2` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`id`),
-  ADD CONSTRAINT `fournisseur_produit_ibfk_1` FOREIGN KEY (`idFournisseur`) REFERENCES `fournisseur` (`id`);
+ALTER TABLE `categorie_produit`
+  ADD CONSTRAINT `categorie_produit_ibfk_2` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`id`),
+  ADD CONSTRAINT `categorie_produit_ibfk_1` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`id`);
 
 --
 -- Contraintes pour la table `produit`
 --
 ALTER TABLE `produit`
-  ADD CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`idFournisseur`) REFERENCES `fournisseur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
-/******* DENRIERE TABLE *******/
--- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
---
--- Client :  127.0.0.1
--- Généré le :  Ven 27 Février 2015 à 09:47
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Base de données :  `theseus`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `admin`
---
-
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id` int(9) NOT NULL,
-  `login` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  ADD CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contenu de la table `admin`
@@ -290,31 +251,29 @@ CREATE TABLE IF NOT EXISTS `admin` (
 INSERT INTO `admin` (`id`, `login`, `pass`, `email`) VALUES
 (0, 'test', 'pass', 'test@test.fr');
 
--- --------------------------------------------------------
 
 --
--- Structure de la table `produit`
+-- Contenu de la table `categorie`
 --
 
-CREATE TABLE IF NOT EXISTS `produit` (
-  `id` int(9) NOT NULL AUTO_INCREMENT,
-  `libelle` varchar(250) NOT NULL,
-  `marque` varchar(250) NOT NULL,
-  `category_id` int(9) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `prix` float NOT NULL,
-  `stock` int(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+INSERT INTO `categorie` (`id`, `nom`, `image`) VALUES
+(NULL, 'TV', NULL),
+(NULL, 'Smartphone', NULL),
+(NULL, 'Appareil photo', NULL),
+(NULL, 'Drone', NULL);
 
 --
 -- Contenu de la table `produit`
 --
 
-INSERT INTO `produit` (`id`, `libelle`, `marque`, `category_id`, `description`, `prix`, `stock`) VALUES
-(1, 'Iphone 6 S 32 Go', 'Apple', 1, 'sdfsdfs', 650, 142),
-(2, 'Samsung Galaxy note 2 ', 'Sammsung', 1, 'sdfsfsdf', 350, 22);
+INSERT INTO `produit` (`id`, `libelle`, `marque`, `idCategorie`, `description`, `prix`, `stock`) VALUES
+(1, 'Iphone 6 S 32 Go', 'Apple', 2, 'sdfsdfs', 650, 142),
+(2, 'Samsung Galaxy note 2 ', 'Sammsung', 2, 'sdfsfsdf', 350, 22);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Contenu de la table `evenement`
+--
+
+INSERT INTO `evenement` (`id`, `libelle`, `description`, `adresse`, `cp`, `ville`, `dateDebut`, `dateFin`, `place`, `image`) VALUES
+(1, 'Le Yoyo Palais de Tokyo', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum congue mi sed convallis. Mauris lacinia ultricies porttitor. In sit amet nisi diam. Nam eros sem, cursus ac viverra eu, vehicula ac mi. Donec vitae erat malesuada, viverra arcu at, consequat metus.', '13, avenue du Président Wilson', 75116, 'Paris', '2015-10-10 19:30:00', '2015-10-11 02:00:00', 350, 'img/salles/yoyo-palais-de-tokyo.jpg'),
+(2, 'Le Départ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum congue mi sed convallis. Mauris lacinia ultricies porttitor. In sit amet nisi diam. Nam eros sem, cursus ac viverra eu, vehicula ac mi. Donec vitae erat malesuada, viverra arcu at, consequat metus.', '34-36, rue du Départ', 75015, 'Paris', '2015-10-24 20:00:00', '2015-10-24 23:59:00', 270, 'img/salles/le-depart.jpg');
