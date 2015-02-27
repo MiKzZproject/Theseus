@@ -19,7 +19,8 @@ class Evenement {
     private $ville;
     private $dateDebut;
     private $dateFin;
-    private $places;
+    private $place;
+    private $image;
 
 
     function __construct($array)
@@ -168,17 +169,33 @@ class Evenement {
     /**
      * @return mixed
      */
-    public function getPlaces()
+    public function getPlace()
     {
-        return $this->places;
+        return $this->place;
     }
 
     /**
-     * @param mixed $places
+     * @param mixed $place
      */
-    public function setPlaces($places)
+    public function setPlace($place)
     {
-        $this->places = $places;
+        $this->place = $place;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 
 

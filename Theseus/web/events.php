@@ -110,7 +110,7 @@ $evenements = $controlEvenement->getEvenements();
                             </div>
                             Lieu : <?php echo $evenement->getLibelle(); ?><br/>
                             Date : <?php echo $evenement->getDateDebut(); ?> - <?php echo $evenement->getDateFin(); ?><br />
-                            Adresse :   <?php echo $evenement->getAdresse(); ?> - <?php echo $evenement->getCp(); ?><?php echo $evenement->getVille(); ?><br />
+                            Adresse :   <?php echo $evenement->getAdresse(); ?> - <?php echo $evenement->getCp(); ?> <?php echo $evenement->getVille(); ?><br />
                             Produits : Smartphones et Tablettes<br/>
                             Description : <?php echo $evenement->getDescription(); ?>
                         </div>
