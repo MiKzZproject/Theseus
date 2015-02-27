@@ -1,5 +1,5 @@
 <?php
-require('config/config.php');
+require('../config/config.php');
 $controlAdmin = new \control\ControlAdmin($bdd);
 
 if(isset($_POST['donnees']) && !$_POST['donnees'] == null){
@@ -9,9 +9,9 @@ if(isset($_POST['donnees']) && !$_POST['donnees'] == null){
     $controlAdmin->addAdmin($admin);
     ?>
     <p class="bg-success"><br>Admin ajouté avec succès.<br><br></p>
-    <?php
+<?php
 }else{
     ?>
     <p class="bg-danger"><br>Une erreur est survenue.<br><br></p>
-    <?php
+<?php
 }

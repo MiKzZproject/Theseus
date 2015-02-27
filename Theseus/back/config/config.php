@@ -5,7 +5,10 @@
  * Date: 18/07/14
  * Time: 14:10
  */
-require '../../vendor/autoload.php';
+
+define("PROJET", "C:\\wamp\\www\\Theseus\\");
+
+require PROJET.'vendor/autoload.php';
 try
 {
     $bdd = new PDO('mysql:host=localhost;dbname=theseus', 'root', '', array(

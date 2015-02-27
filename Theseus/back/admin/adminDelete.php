@@ -1,5 +1,5 @@
 <?php
-require('config/config.php');
+require('../config/config.php');
 $controlAdmin = new \control\ControlAdmin($bdd);
 
 if(isset($_POST['id']) && !$_POST['id'] == null){

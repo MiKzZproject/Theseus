@@ -5,9 +5,9 @@ function adminAdd(){
     admin.niveau = $('#adminAdd_niveau').val();
     admin.email = $('#adminAdd_email').val();
     var donnees = JSON.stringify(admin);
-    $('#adminResult').load('adminAdd.php', {donnees: donnees});
+    $('#adminResult').load('admin/adminAdd.php', {donnees: donnees});
 
 }
 function adminDelete(id){
-    $('#adminResult').load('adminDelete.php', {id: id});
+    $('#adminResult').load('admin/adminDelete.php', {id: id});
 }
