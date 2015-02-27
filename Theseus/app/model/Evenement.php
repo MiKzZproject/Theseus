@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Administrateur
- * Date: 30/01/2015
- * Time: 15:01
+ * User: User
+ * Date: 27/02/2015
+ * Time: 09:49
  */
 
 namespace model;
@@ -12,10 +12,15 @@ namespace model;
 class Evenement {
 
     private $id;
-    private $idAdresse;
     private $libelle;
-    private $dateHeure;
-    private $place;
+    private $description;
+    private $adresse;
+    private $cp;
+    private $ville;
+    private $dateDebut;
+    private $dateFin;
+    private $places;
+
 
     function __construct($array)
     {
@@ -25,7 +30,6 @@ class Evenement {
     public function hydrate(array $array){
         foreach ($array as $cle => $valeur) {
             $method = 'set' . ucfirst($cle);
-            var_dump($method);
             if (method_exists($this, $method)) {
 
                 $this->$method($valeur);
@@ -52,22 +56,6 @@ class Evenement {
     /**
      * @return mixed
      */
-    public function getIdAdresse()
-    {
-        return $this->idAdresse;
-    }
-
-    /**
-     * @param mixed $id_adresse
-     */
-    public function setIdAdresse($idAdresse)
-    {
-        $this->idAdresse = $idAdresse;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getLibelle()
     {
         return $this->libelle;
@@ -84,33 +72,115 @@ class Evenement {
     /**
      * @return mixed
      */
-    public function getDateHeure()
+    public function getDescription()
     {
-        return $this->dateHeure;
+        return $this->description;
     }
 
     /**
-     * @param mixed $date_heure
+     * @param mixed $description
      */
-    public function setDateHeure($dateHeure)
+    public function setDescription($description)
     {
-        $this->dateHeure = $dateHeure;
+        $this->description = $description;
     }
 
     /**
      * @return mixed
      */
-    public function getPlace()
+    public function getAdresse()
     {
-        return $this->place;
+        return $this->adresse;
     }
 
     /**
-     * @param mixed $place
+     * @param mixed $adresse
      */
-    public function setPlace($place)
+    public function setAdresse($adresse)
     {
-        $this->place = $place;
+        $this->adresse = $adresse;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * @param mixed $cp
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param mixed $ville
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * @param mixed $dateDebut
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    /**
+     * @param mixed $dateFin
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlaces()
+    {
+        return $this->places;
+    }
+
+    /**
+     * @param mixed $places
+     */
+    public function setPlaces($places)
+    {
+        $this->places = $places;
+    }
+
+
 
 }

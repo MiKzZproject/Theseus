@@ -9,8 +9,10 @@
 require '../../vendor/autoload.php';
 require_once "config/config.php";
 
-//include('dbconnect.php');
 
+$controlEvenement = new \control\ControlEvenement($bdd);
+
+$evenements = $controlEvenement->getEvenements();
 ?>
 
 <!doctype html>
@@ -77,44 +79,40 @@ require_once "config/config.php";
     <div id="events-content">
     <h1>Nos Events</h1>
         <?php
-        $req =$bdd->prepare ('SELECT *
-           FROM evenement');
 
-        $req->execute(array());
+        foreach ($evenements as $evenement){
 
-        $data = $req->setFetchMode(PDO::FETCH_OBJ);
-        while ($event = $req->fetch()) {
         ?>
         <div class="jumbotron">
-            <h3><?php echo $event->libelle; ?></h3>
-            <h5><?php echo $event->dateDebut; ?></h5>
+            <h3><?php echo $evenement->getLibelle(); ?></h3>
+            <h5><?php echo $evenement->getDateDebut(); ?></h5>
             <h5>Type de produits : </h5><img src="img/others/tablette.jpg"><img src="img/others/smartphone.jpg">
             <div class="alert alert-success" role="alert">
                 <a href="#" class="alert-link">Evènement OUVERT</a>
             </div>
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal<?php echo $event->id; ?>">
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal<?php echo $evenement->getId(); ?>">
                 En savoir +
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="myModal<?php echo $event->id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="myModal<?php echo $evenement->getId(); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel"><?php echo $event->libelle; ?> - <?php echo $event->dateDebut; ?></h4>
+                            <h4 class="modal-title" id="myModalLabel"><?php echo $evenement->getLibelle(); ?> - <?php echo $evenement->getDateDebut(); ?></h4>
                         </div>
                         <div class="modal-body">
                             <div id="miniature-salle">
-                                <img src="<?php echo $event->image; ?>"/>
+                                <img src="<?php echo $evenement->getImage(); ?>"/>
                             </div>
-                            Lieu : <?php echo $event->libelle; ?><br/>
-                            Date : <?php echo $event->dateDebut; ?> jusqu'à <?php echo $event->dateFin; ?><br />
-                            Adresse :   <?php echo $event->adresse; ?> - <?php echo $event->cp; ?><?php echo $event->ville; ?><br />
+                            Lieu : <?php echo $evenement->getLibelle(); ?><br/>
+                            Date : <?php echo $evenement->getDateDebut(); ?> - <?php echo $evenement->getDateFin(); ?><br />
+                            Adresse :   <?php echo $evenement->getAdresse(); ?> - <?php echo $evenement->getCp(); ?><?php echo $evenement->getVille(); ?><br />
                             Produits : Smartphones et Tablettes<br/>
-                            Description : <?php echo $event->description; ?>
+                            Description : <?php echo $evenement->getDescription(); ?>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
