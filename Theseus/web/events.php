@@ -72,11 +72,12 @@ require_once "config/config.php";
     </nav>
 </header>
 <section>
+    <div id="events-content">
     <h1>Nos Events</h1>
     <div class="jumbotron">
         <h3>Le Yoyo Palais de Tokyo</h3>
         <h5>Samedi 10 octobre 2015 - 19h30</h5>
-        <h5>Type de produits : Smartphones et Tablettes</h5>
+        <h5>Type de produits : Smartphones et Tablettes</h5><img src="img/others/tablette.jpg"><img src="img/others/smartphone.jpg">
         <div class="alert alert-success" role="alert">
             <a href="#" class="alert-link">Evènement OUVERT</a>
         </div>
@@ -116,7 +117,7 @@ require_once "config/config.php";
     <div class="jumbotron">
         <h3>Le Départ </h3>
         <h5>Samedi 24 octobre 2015 - 20h00</h5>
-        <h5>Type de produits : Photos et Vidéos</h5>
+        <h5>Type de produits : Photos et Vidéos</h5><img src="img/others/photo.jpg"><img src="img/others/video.jpg">
         <div class="alert alert-success" role="alert">
             <a href="#" class="alert-link">Evènement OUVERT</a>
         </div>
@@ -156,9 +157,9 @@ require_once "config/config.php";
     <div class="jumbotron">
         <h3>Pavillon Daunou</h3>
         <h5>Samedi 7 février 2015 - 19h00</h5>
-        <h5>Type de produits : Casques audios</h5>
+        <h5>Type de produits : Casques audios</h5><img src="img/others/casque.jpg">
         <div class="alert alert-danger" role="alert">
-            <a href="#" class="alert-link">Evènement FERME</a>
+            <a href="#" class="alert-link">Evènement Terminé</a>
         </div>
 
         <!-- Button trigger modal -->
@@ -191,6 +192,7 @@ require_once "config/config.php";
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 
