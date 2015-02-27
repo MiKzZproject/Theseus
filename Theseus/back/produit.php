@@ -18,7 +18,6 @@ $produits = $controlProduit->getProduits();
 </div>
 <table class="table table-striped">
         <tr>
-            <td>id</td>
             <td>libelle</td>
             <td>marque</td>
             <td>categoryId</td>
@@ -32,7 +31,6 @@ $produits = $controlProduit->getProduits();
         foreach($produits as $produit){
             ?>
             <tr>
-                <td><?php echo $produit->getId(); ?></td>
                 <td><?php echo $produit->getLibelle(); ?></td>
                 <td><?php echo $produit->getMarque(); ?></td>
                 <td><?php echo $produit->getCategoryId(); ?></td>

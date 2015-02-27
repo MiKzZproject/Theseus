@@ -38,6 +38,7 @@ class ControlProduit {
         $req->bindValue(':description',$produit->getId());
         $req->bindValue(':prix',$produit->getId());
         $req->bindValue(':stock',$produit->getId());
+        $req->execute();
     }
 
 

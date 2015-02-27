@@ -10,6 +10,13 @@ function deconnexion(){
 
 function gestionPage(page){
     $('#page').load(page+'.php');
+    gestionMenuClass();
+}
+function gestionMenuClass(){
+    var page = window.location.hash.substring(1);
+    $('.navbar-nav li').removeClass("active");
+    $('#menu_'+page).addClass("active");
+
 }
 
 $(document).ready(function() {

@@ -17,29 +17,31 @@ $evenements = $controlEvenement->getEvenements();
 </div>
 <table class="table table-striped">
         <tr>
-            <td>Id</td>
-            <td>Libelle</td>
-            <td>Description</td>
+            <td style="width:200px">Libelle</td>
+            <td>Image</td>
+            <td style="width:400px">Description</td>
             <td>Adresse</td>
             <td>Cp</td>
             <td>Ville</td>
             <td>DateDebut</td>
             <td>DateFin</td>
             <td>Places</td>
+            <td></td>
+            <td></td>
         </tr>
         <?php
         foreach($evenements as $evenement){
             ?>
             <tr>
-                <td><?php echo $evenement->getId(); ?></td>
                 <td><?php echo $evenement->getLibelle(); ?></td>
+                <td><img src="../web/<?php echo $evenement->getImage(); ?>" style="width:150px"></td>
                 <td><?php echo $evenement->getDescription(); ?></td>
                 <td><?php echo $evenement->getAdresse(); ?></td>
                 <td><?php echo $evenement->getCp(); ?></td>
                 <td><?php echo $evenement->getVille(); ?></td>
                 <td><?php echo $evenement->getDateDebut(); ?></td>
                 <td><?php echo $evenement->getDateFin(); ?></td>
-                <td><?php echo $evenement->getPlaces(); ?></td>
+                <td><?php echo $evenement->getPlace(); ?></td>
                 <td><span style="color:orange" class="glyphicon glyphicon-edit" aria-hidden="true"></span></td>
                 <td><span style="color:red" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
 

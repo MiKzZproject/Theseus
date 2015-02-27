@@ -41,11 +41,11 @@ if(isset($_SESSION['admin'])){
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active" class="navbar-brand"><a onclick="window.location.hash='#produit';gestionPage('produit');">Produits</a></li>
-                        <li><a onclick="window.location.hash='#categorie';gestionPage('categorie');">Catégories</a></li>
-                        <li><a onclick="window.location.hash='#reservation';gestionPage('reservation');">Réservations</a></li>
-                        <li><a onclick="window.location.hash='#evenement';gestionPage('evenement');">Evènements</a></li>
-                        <li><a onclick="window.location.hash='#admin';gestionPage('admin');">Admin</a></li>
+                        <li id="menu_produit"><a onclick="window.location.hash='#produit';gestionPage('produit');">Produits</a></li>
+                        <li id="menu_categorie"><a onclick="window.location.hash='#categorie';gestionPage('categorie');">Catégories</a></li>
+                        <li id="menu_inscription"><a onclick="window.location.hash='#inscription';gestionPage('inscription');">Inscription</a></li>
+                        <li id="menu_evenement"><a onclick="window.location.hash='#evenement';gestionPage('evenement');">Evènements</a></li>
+                        <li id="menu_admin"><a onclick="window.location.hash='#admin';gestionPage('admin');">Admin</a></li>
 
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -73,6 +73,8 @@ if(isset($_SESSION['admin'])){
 <?php
 }
 ?>
+<br><br>
+<br><br>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="js/script.js"></script>
