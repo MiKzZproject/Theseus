@@ -142,7 +142,7 @@ $evenements = $controlEvenement->getEvenements();
         <div>
             <a href="">Faq</a><br>
             <a href="">CGV</a><br>
-            <a href="">Contact</a>
+            <a href="mailto:admin@theseus.com">Contact</a>
         </div>
     </section>
 

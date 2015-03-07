@@ -81,11 +81,11 @@ require_once "config/config.php";
   <section id="news-demo">
     <article>
       <div class="text-content">
-        <h2>Image 1 du slider - Bugatti</h2>
-        <p>Description de l'image 1 du slider.</p>
+        <h2>Vente de produits audio</h2>
+        <p>Retrouvez notre sélection de produits audio lors de notre prochaine vente du <a href="events.php">7 novembre 2015 à l'Espace Monsieur Bleu</a></p>
         <a href="#" class="button-link read-more">read more</a>
       </div>
-      <div class="image-content"><img src="img/slider/slide1.jpg" alt="slide1"></div>
+      <div class="image-content"><img src="img/others/vente-son.jpg" alt="slide1"></div>
     </article>
     <article>
       <div class="text-content">
@@ -147,7 +147,7 @@ require_once "config/config.php";
         <div>
             <a href="">Faq</a><br>
             <a href="">CGV</a><br>
-                <a href="">Contact</a>
+            <a href="mailto:admin@theseus.com">Contact</a>
         </div>
     </section>
   </footer>
