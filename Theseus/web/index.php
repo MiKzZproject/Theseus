@@ -81,27 +81,27 @@ require_once "config/config.php";
   <section id="news-demo">
     <article>
       <div class="text-content">
-        <h2>Vente de produits audio</h2>
-        <p>Retrouvez notre sélection de produits audio lors de notre prochaine vente du <a href="events.php">7 novembre 2015 à l'Espace Monsieur Bleu</a></p>
-        <a href="#" class="button-link read-more">read more</a>
+        <h2>Vente exceptionnelle de produits AUDIO</h2>
+        <p>Retrouvez notre sélection de produits AUDIO lors de notre prochaine vente du <a href="events.php">7 novembre 2015 à l'Espace Monsieur Bleu</a></p>
+        <a href="#" class="button-link read-more">En savoir +</a>
       </div>
       <div class="image-content"><img src="img/others/vente-son.jpg" alt="slide1"></div>
     </article>
     <article>
       <div class="text-content">
-        <h2>Image 2 du slider - Paris</h2>
-        <p>Description de l'image 2 du slider.</p>
-        <a href="#" class="button-link read-more">read more</a>
+        <h2>LCD ? 4K ? Nous avons forcément le produit qu'il vous faut...</h2>
+        <p>Découvrez notre sélection de produits 4k cruve lors de notre prochaine vente du <a href="events.php">22 novembre 2015</a></p>
+        <a href="#" class="button-link read-more">En savoir +</a>
       </div>
-      <div class="image-content"><img src="img/slider/slide2.jpg" alt="slide2"></div>
+      <div class="image-content"><img src="img/slider/samsung-u2.jpg" alt="slide2"></div>
     </article>
     <article>
       <div class="text-content">
-        <h2>Image 3 du slider - Ciel/Nuage</h2>
-        <p>Description de l'image 3 du slider.</p>
-        <a href="#" class="button-link read-more">read more</a>
+        <h2>Vente privée dédiée aux derniers smartphones</h2>
+        <p>HTC ? Samsung ? Apple ? Nous avons toutes les marques de smartphones. Venez les découvrir !</p>
+        <a href="#" class="button-link read-more">En savoir +</a>
       </div>
-      <div class="image-content"><img src="img/slider/slide3.jpg" alt="slide3"></div>
+      <div class="image-content"><img src="img/slider/Comparatif-smartphone2.jpg" alt="slide3"></div>
     </article>
   </section>
   
@@ -109,21 +109,21 @@ require_once "config/config.php";
     <div class="grid">
       <figure class="effect-goliath">
         <h2>Produits phares</h2>
-        <img src="img/products/panasonic-lumix-fz1000.jpg" alt="paysage2"/>
+        <img src="img/products/panasonic-lumix-fz1000.jpg" alt="lumix"/>
         <figcaption>
           <p><a href="#">En savoir +</a></p>
         </figcaption>
       </figure>
       <figure class="effect-goliath">
         <h2>Events</h2>
-        <img src="img/products/lacieDD.jpg" alt="bulles"/>
+        <img src="img/products/lacieDD.jpg" alt="lacieDD"/>
         <figcaption>
           <p><a href="#">En savoir +</a></p>
         </figcaption>
       </figure>
       <figure class="effect-goliath">
         <h2>News et alertes</h2>
-        <img src="img/products/DDcorsair-voyager-air-2.jpg" alt="paysage"/>
+        <img src="img/others/abonnes-newsletter.jpg" alt="newsletter"/>
         <figcaption>
           <p><a href="#">En savoir +</a></p>
         </figcaption>
@@ -141,7 +141,7 @@ require_once "config/config.php";
         <a href="http://www.facebook.com/sharer.php?u=<url to share>&t=<title of content>">&nbsp;&nbsp;<img id="facebook" src="img/reseau/facebook.png"></a>
         <a href="http://www.facebook.com/sharer.php?u=<url to share>&t=<title of content>">&nbsp;&nbsp;<img id="twitter" src="img/reseau/twitter.png"></a>
     </section><!--
-    --><section id="footer_text">Copyright ©Theseus 2014 <br>Tous drois sont réservés</section><!--
+    --><section id="footer_text">Copyright ©Theseus 2015 <br>Tous drois sont réservés</section><!--
     --><section id="footer_terme">
         <h3>Termes et conditions : </h3>
         <div>

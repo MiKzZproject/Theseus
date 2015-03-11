@@ -21,6 +21,8 @@ class Evenement {
     private $dateFin;
     private $place;
     private $image;
+    private $miniature1;
+    private $miniature2;
 
 
     function __construct($array)
@@ -198,6 +200,36 @@ class Evenement {
         $this->image = $image;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getMiniature1()
+    {
+        return $this->miniature1;
+    }
 
+    /**
+     * @param mixed $miniature1
+     */
+    public function setMiniature1($miniature1)
+    {
+        $this->miniature1 = $miniature1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMiniature2()
+    {
+        return $this->miniature2;
+    }
+
+    /**
+     * @param mixed $miniature2
+     */
+    public function setMiniature2($miniature2)
+    {
+        $this->miniature2 = $miniature2;
+    }
 
 }

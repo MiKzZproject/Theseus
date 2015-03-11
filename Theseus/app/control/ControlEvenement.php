@@ -31,7 +31,7 @@ class ControlEvenement {
     }
 
     public function addEvenement($evenement){
-        $req = $this->bdd->prepare('INSERT INTO evenement (libelle,description,adresse,cp,ville,dateDebut,dateFin,place,image)
+        $req = $this->bdd->prepare('INSERT INTO evenement (libelle,description,adresse,cp,ville,dateDebut,dateFin,place,image,miniature1,miniature2)
                                     VALUES (:libelle,
                                             :description,
                                             :adresse,
@@ -40,7 +40,9 @@ class ControlEvenement {
                                             :dateDebut,
                                             :dateFin,
                                             :place,
-                                            :image)');
+                                            :image,
+                                            :miniature1,
+                                            :miniature2)');
         $req->bindValue(':libelle',$evenement->getLibelle());
         $req->bindValue(':description',$evenement->getDescription());
         $req->bindValue(':adresse',$evenement->getAdresse());
@@ -50,6 +52,8 @@ class ControlEvenement {
         $req->bindValue(':dateFin',$evenement->getDateFin());
         $req->bindValue(':place',$evenement->getPlace());
         $req->bindValue(':image',$evenement->getImage());
+        $req->bindValue(':miniature1',$evenement->getMiniature1());
+        $req->bindValue(':miniature2',$evenement->getMiniature2());
 
         $req->execute();
 
@@ -65,7 +69,9 @@ class ControlEvenement {
                                         dateDebut = :dateDebut,
                                         dateFin = :dateFin,
                                         place = :place,
-                                        image = :image
+                                        image = :image,
+                                        miniature1 = :miniature1,
+                                        miniature2 = :miniature2
                                     WHERE id = :id ');
         $req->bindValue(':id',$evenement->getId());
         $req->bindValue(':libelle',$evenement->getLibelle());
@@ -77,6 +83,8 @@ class ControlEvenement {
         $req->bindValue(':dateFin',$evenement->getDateFin());
         $req->bindValue(':place',$evenement->getPlace());
         $req->bindValue(':image',$evenement->getImage());
+        $req->bindValue(':miniature1',$evenement->getMiniature1());
+        $req->bindValue(':miniature2',$evenement->getMiniature2());
 
         $req->execute();
 

@@ -86,7 +86,7 @@ $evenements = $controlEvenement->getEvenements();
         <div class="jumbotron">
             <h3><?php echo $evenement->getLibelle(); ?></h3>
             <h5><?php echo $evenement->getDateDebut(); ?></h5>
-            <h5>Type de produits : </h5><img src="img/others/tablette.jpg"><img src="img/others/smartphone.jpg">
+            <h5>Type de produits : </h5><img src="<?php echo $evenement->getMiniature1(); ?>"><img src="<?php echo $evenement->getMiniature2(); ?>">
             <div class="alert alert-success" role="alert">
                 <a href="#" class="alert-link">Evènement OUVERT</a>
             </div>
@@ -136,11 +136,25 @@ $evenements = $controlEvenement->getEvenements();
         <a href="http://www.facebook.com/sharer.php?u=<url to share>&t=<title of content>">&nbsp;&nbsp;<img id="facebook" src="img/reseau/facebook.png"></a>
         <a href="http://www.facebook.com/sharer.php?u=<url to share>&t=<title of content>">&nbsp;&nbsp;<img id="twitter" src="img/reseau/twitter.png"></a>
     </section><!--
-      --><section id="footer_text">Copyright ©Theseus 2014 <br>Tous drois sont réservés</section><!--
+      --><section id="footer_text">Copyright ©Theseus 2015 <br>Tous drois sont réservés</section><!--
       --><section id="footer_terme">
         <h3>Termes et conditions : </h3>
         <div>
-            <a href="">Faq</a><br>
+            <a data-toggle="modal" data-target="#myModal">Faq</a><br>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+                                Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte.
+                                Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <a href="">CGV</a><br>
             <a href="mailto:admin@theseus.com">Contact</a>
         </div>
