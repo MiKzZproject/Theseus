@@ -86,7 +86,7 @@ $evenements = $controlEvenement->getEvenements();
         $endDate = date_create($evenement->getDateFin());
 
         ?>
-            
+
         <div class="jumbotron">
             <h3><?php echo $evenement->getLibelle(); ?></h3>
             <h5><?php echo date_format($startDate, "Y/m/d H:i"); ?></h5>

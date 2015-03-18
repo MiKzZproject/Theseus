@@ -21,7 +21,8 @@ class ControlEvenement {
 
     public function getEvenements(){
         $req = $this->bdd->prepare('SELECT *
-                                    FROM evenement');
+                                    FROM evenement
+                                    ORDER BY dateDebut ASC');
         $req->execute();
         while($result = $req->fetch()){
             $evenement = new Evenement($result);
