@@ -82,10 +82,14 @@ $evenements = $controlEvenement->getEvenements();
 
         foreach ($evenements as $evenement){
 
+        $startDate = date_create($evenement->getDateDebut());
+        $endDate = date_create($evenement->getDateFin());
+
         ?>
+            
         <div class="jumbotron">
             <h3><?php echo $evenement->getLibelle(); ?></h3>
-            <h5><?php echo $evenement->getDateDebut(); ?></h5>
+            <h5><?php echo date_format($startDate, "Y/m/d H:i"); ?></h5>
             <h5>Type de produits : </h5><img src="<?php echo $evenement->getMiniature1(); ?>"><img src="<?php echo $evenement->getMiniature2(); ?>">
             <div class="alert alert-success" role="alert">
                 <a href="#" class="alert-link">Evènement OUVERT</a>
@@ -102,14 +106,14 @@ $evenements = $controlEvenement->getEvenements();
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel"><?php echo $evenement->getLibelle(); ?> - <?php echo $evenement->getDateDebut(); ?></h4>
+                            <h4 class="modal-title" id="myModalLabel"><?php echo $evenement->getLibelle(); ?> - <?php echo date_format($startDate, "Y/m/d H:i"); ?></h4>
                         </div>
                         <div class="modal-body">
                             <div id="miniature-salle">
                                 <img src="<?php echo $evenement->getImage(); ?>"/>
                             </div>
                             Lieu : <?php echo $evenement->getLibelle(); ?><br/>
-                            Date : <?php echo $evenement->getDateDebut(); ?> - <?php echo $evenement->getDateFin(); ?><br />
+                            Date : <?php echo date_format($startDate, "Y/m/d H:i"); ?> - <?php echo date_format($endDate, "Y/m/d H:i"); ?><br />
                             Adresse :   <?php echo $evenement->getAdresse(); ?> - <?php echo $evenement->getCp(); ?> <?php echo $evenement->getVille(); ?><br />
                             Produits : Smartphones et Tablettes<br/>
                             Description : <?php echo $evenement->getDescription(); ?>
