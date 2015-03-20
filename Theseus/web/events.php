@@ -112,11 +112,11 @@ $evenements = $controlEvenement->getEvenements();
                             <div id="miniature-salle">
                                 <img src="<?php echo $evenement->getImage(); ?>"/>
                             </div>
-                            Lieu : <?php echo $evenement->getLibelle(); ?><br/>
-                            Date : <?php echo date_format($startDate, "Y/m/d H:i"); ?> - <?php echo date_format($endDate, "Y/m/d H:i"); ?><br />
-                            Adresse :   <?php echo $evenement->getAdresse(); ?> - <?php echo $evenement->getCp(); ?> <?php echo $evenement->getVille(); ?><br />
-                            Produits : <?php echo $evenement->getTheme(); ?><br/>
-                            Description : <?php echo $evenement->getDescription(); ?>
+                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Lieu : <?php echo $evenement->getLibelle(); ?><br/>
+                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Date : <?php echo date_format($startDate, "Y/m/d H:i"); ?> - <?php echo date_format($endDate, "Y/m/d H:i"); ?><br />
+                            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Adresse :   <?php echo $evenement->getAdresse(); ?> - <?php echo $evenement->getCp(); ?> <?php echo $evenement->getVille(); ?><br />
+                            <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Produits : <?php echo $evenement->getTheme(); ?><br/>
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Description : <?php echo $evenement->getDescription(); ?>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
