@@ -32,7 +32,7 @@ class ControlEvenement {
     }
 
     public function addEvenement($evenement){
-        $req = $this->bdd->prepare('INSERT INTO evenement (libelle,description,adresse,cp,ville,dateDebut,dateFin,place,image,miniature1,miniature2)
+        $req = $this->bdd->prepare('INSERT INTO evenement (libelle,description,adresse,cp,ville,dateDebut,dateFin,place,image,theme,miniature1,miniature2)
                                     VALUES (:libelle,
                                             :description,
                                             :adresse,
@@ -42,6 +42,7 @@ class ControlEvenement {
                                             :dateFin,
                                             :place,
                                             :image,
+                                            :theme,
                                             :miniature1,
                                             :miniature2)');
         $req->bindValue(':libelle',$evenement->getLibelle());
@@ -53,6 +54,7 @@ class ControlEvenement {
         $req->bindValue(':dateFin',$evenement->getDateFin());
         $req->bindValue(':place',$evenement->getPlace());
         $req->bindValue(':image',$evenement->getImage());
+        $req->bindValue(':image',$evenement->getTheme());
         $req->bindValue(':miniature1',$evenement->getMiniature1());
         $req->bindValue(':miniature2',$evenement->getMiniature2());
 
@@ -71,6 +73,7 @@ class ControlEvenement {
                                         dateFin = :dateFin,
                                         place = :place,
                                         image = :image,
+                                        theme = :theme,
                                         miniature1 = :miniature1,
                                         miniature2 = :miniature2
                                     WHERE id = :id ');
@@ -84,6 +87,7 @@ class ControlEvenement {
         $req->bindValue(':dateFin',$evenement->getDateFin());
         $req->bindValue(':place',$evenement->getPlace());
         $req->bindValue(':image',$evenement->getImage());
+        $req->bindValue(':image',$evenement->getTheme());
         $req->bindValue(':miniature1',$evenement->getMiniature1());
         $req->bindValue(':miniature2',$evenement->getMiniature2());
 

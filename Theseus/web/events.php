@@ -90,7 +90,7 @@ $evenements = $controlEvenement->getEvenements();
         <div class="jumbotron">
             <h3><?php echo $evenement->getLibelle(); ?></h3>
             <h5><?php echo date_format($startDate, "Y/m/d H:i"); ?></h5>
-            <h5>Type de produits : </h5><img src="<?php echo $evenement->getMiniature1(); ?>"><img src="<?php echo $evenement->getMiniature2(); ?>">
+            <h5>Thème de la vente : <?php echo $evenement->getTheme(); ?> </h5><img src="<?php echo $evenement->getMiniature1(); ?>"><img src="<?php echo $evenement->getMiniature2(); ?>">
             <div class="alert alert-success" role="alert">
                 <a href="#" class="alert-link">Evènement OUVERT</a>
             </div>
@@ -115,7 +115,7 @@ $evenements = $controlEvenement->getEvenements();
                             Lieu : <?php echo $evenement->getLibelle(); ?><br/>
                             Date : <?php echo date_format($startDate, "Y/m/d H:i"); ?> - <?php echo date_format($endDate, "Y/m/d H:i"); ?><br />
                             Adresse :   <?php echo $evenement->getAdresse(); ?> - <?php echo $evenement->getCp(); ?> <?php echo $evenement->getVille(); ?><br />
-                            Produits : Smartphones et Tablettes<br/>
+                            Produits : <?php echo $evenement->getTheme(); ?><br/>
                             Description : <?php echo $evenement->getDescription(); ?>
                         </div>
                         <div class="modal-footer">

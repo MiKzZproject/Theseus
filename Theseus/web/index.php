@@ -101,7 +101,7 @@ require_once "config/config.php";
         <p>HTC ? Samsung ? Apple ? Nous avons toutes les marques de smartphones. Venez les découvrir !</p>
         <a href="#" class="button-link read-more">En savoir +</a>
       </div>
-      <div class="image-content"><img src="img/slider/Comparatif-smartphone2.jpg" alt="slide3"></div>
+      <div class="image-content"><img src="img/slider/smartphones.jpg" alt="slide3"></div>
     </article>
   </section>
   
@@ -111,21 +111,21 @@ require_once "config/config.php";
         <h2>Produits phares</h2>
         <img src="img/products/panasonic-lumix-fz1000.jpg" alt="lumix"/>
         <figcaption>
-          <p><a href="#">En savoir +</a></p>
+          <p><a href="#">Sélection de nos meilleurs produits !</a></p>
         </figcaption>
       </figure>
       <figure class="effect-goliath">
         <h2>Events</h2>
-        <img src="img/products/lacieDD.jpg" alt="lacieDD"/>
+        <img src="img/others/ventes2.jpg" alt="lacieDD"/>
         <figcaption>
-          <p><a href="#">En savoir +</a></p>
+          <p><a href="events.php">Découvrez nos prochains évents !</a></p>
         </figcaption>
       </figure>
       <figure class="effect-goliath">
         <h2>News et alertes</h2>
-        <img src="img/others/abonnes-newsletter.jpg" alt="newsletter"/>
+        <img src="img/others/abonnes-newsletter2.jpg" alt="newsletter"/>
         <figcaption>
-          <p><a href="#">En savoir +</a></p>
+          <p><a href="#">S'inscrire</a></p>
         </figcaption>
       </figure>
     </div>

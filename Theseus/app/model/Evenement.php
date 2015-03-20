@@ -21,6 +21,7 @@ class Evenement {
     private $dateFin;
     private $place;
     private $image;
+    private $theme;
     private $miniature1;
     private $miniature2;
 
@@ -198,6 +199,22 @@ class Evenement {
     public function setImage($image)
     {
         $this->image = $image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
+     * @param mixed $theme
+     */
+    public function setTheme($theme)
+    {
+        $this->theme = $theme;
     }
 
     /**
