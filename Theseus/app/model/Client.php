@@ -1,19 +1,17 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Administrateur
- * Date: 30/01/2015
- * Time: 14:48
+ * User: Ruben
+ * Date: 21/03/2015
+ * Time: 11:11
  */
 
 namespace model;
 
 
-
 class Client {
 
     private $id;
-    private $idAdresse;
     private $nom;
     private $prenom;
     private $dateNaissance;
@@ -22,19 +20,70 @@ class Client {
     private $pwd;
     private $dateInscription;
     private $newsletters;
-    private $alert;
+    private $alerte;
 
-    public function __construct($array){
-        $this->hydrate($array);
+    /**
+     * @param mixed $dateInscription
+     */
+    public function setDateInscription($dateInscription)
+    {
+        $this->dateInscription = $dateInscription;
     }
 
-    public function hydrate(array $array){
-        foreach ($array as $cle => $valeur) {
-            $method = 'set' . ucfirst($cle);
-            if (method_exists($this, $method)) {
-                $this->$method($valeur);
-            }
-        }
+    /**
+     * @return mixed
+     */
+    public function getAlerte()
+    {
+        return $this->alerte;
+    }
+
+    /**
+     * @param mixed $alert
+     */
+    public function setAlerte($alerte)
+    {
+        $this->alerte = $alerte;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateInscription()
+    {
+        return $this->dateInscription;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateNaissance()
+    {
+        return $this->dateNaissance;
+    }
+
+    /**
+     * @param mixed $dateNaissance
+     */
+    public function setDateNaissance($dateNaissance)
+    {
+        $this->dateNaissance = $dateNaissance;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 
     /**
@@ -56,17 +105,17 @@ class Client {
     /**
      * @return mixed
      */
-    public function getIdAdresse()
+    public function getNewsletters()
     {
-        return $this->idAdresse;
+        return $this->newsletters;
     }
 
     /**
-     * @param mixed $idAdresse
+     * @param mixed $newsletters
      */
-    public function setIdAdresse($idAdresse)
+    public function setNewsletters($newsletters)
     {
-        $this->idAdresse = $idAdresse;
+        $this->newsletters = $newsletters;
     }
 
     /**
@@ -104,17 +153,17 @@ class Client {
     /**
      * @return mixed
      */
-    public function getDateNaissance()
+    public function getPwd()
     {
-        return $this->dateNaissance;
+        return $this->pwd;
     }
 
     /**
-     * @param mixed $dateNaissance
+     * @param mixed $pwd
      */
-    public function setDateNaissance($dateNaissance)
+    public function setPwd($pwd)
     {
-        $this->dateNaissance = $dateNaissance;
+        $this->pwd = $pwd;
     }
 
     /**
@@ -133,88 +182,16 @@ class Client {
         $this->tel = $tel;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
+    public function __construct($array){
+        $this->hydrate($array);
     }
 
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
+    public function hydrate(array $array){
+        foreach ($array as $cle => $valeur) {
+            $method = 'set' . ucfirst($cle);
+            if (method_exists($this, $method)) {
+                $this->$method($valeur);
+            }
+        }
     }
-
-    /**
-     * @return mixed
-     */
-    public function getPwd()
-    {
-        return $this->pwd;
-    }
-
-    /**
-     * @param mixed $pwd
-     */
-    public function setPwd($pwd)
-    {
-        $this->pwd = $pwd;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDateInscription()
-    {
-        return $this->dateInscription;
-    }
-
-    /**
-     * @param mixed $dateInscription
-     */
-    public function setDateInscription($dateInscription)
-    {
-        $this->dateInscription = $dateInscription;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNewsletters()
-    {
-        return $this->newsletters;
-    }
-
-    /**
-     * @param mixed $newsletters
-     */
-    public function setNewsletters($newsletters)
-    {
-        $this->newsletters = $newsletters;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAlert()
-    {
-        return $this->alert;
-    }
-
-    /**
-     * @param mixed $alert
-     */
-    public function setAlert($alert)
-    {
-        $this->alert = $alert;
-    }
-
-
-
-
-
-}
+} 
