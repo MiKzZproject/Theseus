@@ -55,7 +55,8 @@
       <div class="collapse navbar-collapse" id="menu-collapse">
         <ul class="nav navbar-nav">
           <li class="active"><a href="index.php">Home</a></li>
-          <li><a href="#">Nos Produits</a></li>
+          <li><a href="products.php">Les Produits phares</a></li>
+          <li><a href="products.php">Nos Produits</a></li>
           <li><a href="events.php">Nos Events</a></li>
           <li><a href="#">Mon Compte</a></li>
         </ul>

@@ -231,6 +231,12 @@ figure.effect-goliath:hover ~ h3{
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
 }
+@media (min-width: 768px) {
+    .navbar-right {
+        float: right!important;
+        margin-right: 0px;
+    }
+}
 @media (max-width: 767px) {
   .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
     color: #ffffff;
@@ -288,4 +294,52 @@ figure.effect-goliath:hover ~ h3{
 .jumbotron img{
     height: 80px;
     width: 110px;
+}
+
+#tableproduct{
+    width: 100%;
+}
+
+#tableproduct th{
+    text-align: center;
+}
+
+#tableproduct article{
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    border: 1px solid #337ab7;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#tableproduct article > img{
+    font-size: 12px;
+}
+
+#tableproduct article > p{
+    font-size: 12px;
+}
+
+#tableproduct article > h5{
+    text-align: left;
+    margin-left: 15px;
+}
+
+#productinfos h2{
+    color: #f00;
+    font-family: fantasy;
+}
+
+#productinfos .btn-success {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+    margin-top: 7px;
+}
+#productinfos {
+    width: 100%;
+}
+#product-content {
+    margin: 10px 10px 10px 10px;
 }
