@@ -6,9 +6,6 @@
  * Time: 10:28
  */
 
-require '../../vendor/autoload.php';
-require_once "config/config.php";
-
 include 'template/header.php';
 ?>
   <section id="news-demo">

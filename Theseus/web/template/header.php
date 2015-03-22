@@ -5,6 +5,9 @@
  * Date: 21/03/2015
  * Time: 13:05
  */
+require '../../vendor/autoload.php';
+require_once "config/config.php";
+
 ?>
 <!doctype html>
 <html lang="fr">
