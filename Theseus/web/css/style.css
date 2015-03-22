@@ -303,6 +303,7 @@ figure.effect-goliath:hover ~ h3{
 #tableproduct th{
     text-align: center;
     width: 30%;
+
 }
 
 #tableproduct article{
@@ -312,6 +313,7 @@ figure.effect-goliath:hover ~ h3{
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    min-height: 400px;
 }
 
 #tableproduct article > img{
