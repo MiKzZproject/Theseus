@@ -27,12 +27,14 @@ $produits = $controlProduits->getProduits();
 
                <th>
                    <article>
-                       <img src="<?php echo $produit->getImage() ?>"/>
-                       <h3> <?php echo $produit->getLibelle() ?></h3>
-                       <h5> Description :</h5>
-                       <p>
-                           <?php echo $produit->getDescription() ?>
-                       </p>
+                       <a href="#">
+                           <img src="<?php echo $produit->getImage() ?>"/>
+                           <h3> <?php echo $produit->getLibelle() ?></h3>
+                       </a>
+                           <h5> Description :</h5>
+                       <a href="#">
+                           <?php echo substr($produit->getDescription(),0,200)."..." ?>
+                       </a>
                        <table
                            id="productinfos">
                            <tr>

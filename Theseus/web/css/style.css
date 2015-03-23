@@ -313,21 +313,27 @@ figure.effect-goliath:hover ~ h3{
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    min-height: 400px;
+    min-height: 420px;
+    height:100%;
 }
 
-#tableproduct article > img{
+#tableproduct article > a {
+    height:50%;
+}
+
+#tableproduct article > a > img{
     font-size: 12px;
     width: 30%;
 }
 
-#tableproduct article > p{
+#tableproduct article > a > p{
     font-size: 12px;
 }
 
 #tableproduct article > h5{
     text-align: left;
     margin-left: 15px;
+    color: #337ab7;
 }
 
 #productinfos h2{
