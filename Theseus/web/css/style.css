@@ -313,7 +313,7 @@ figure.effect-goliath:hover ~ h3{
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    min-height: 420px;
+    min-height: 450px;
     height:100%;
 }
 
@@ -323,7 +323,8 @@ figure.effect-goliath:hover ~ h3{
 
 #tableproduct article > a > img{
     font-size: 12px;
-    width: 30%;
+    width: 40%;
+    max-height:  240px;
 }
 
 #tableproduct article > a > p{
