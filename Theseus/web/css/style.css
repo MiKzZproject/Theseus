@@ -354,3 +354,8 @@ figure.effect-goliath:hover ~ h3{
 #product-content {
     margin: 10px 10px 10px 10px;
 }
+
+#productfilter {
+    float: right;
+    margin-right: 20px;
+}

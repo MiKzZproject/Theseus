@@ -1,31 +1,37 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrateur
- * Date: 18/07/14
- * Time: 10:28
- */
 
-include 'template/header.php';
+require '../../../../vendor/autoload.php';
+require '../../config/config.php';
+
 
 $controlProduits = new \control\ControlProduit($bdd);
-$produits = $controlProduits->getProduits();
+$produits = $controlProduits->getProduitsByCategorie($_POST['categorie']);
 
 $controlCategorie = new \control\ControlCategorie($bdd);
 $categories = $controlCategorie->getCategories();
 ?>
-<section id="product-content">
-    <div class="form-group" id="productfilter">
-        <select id="selectcatprod" class="form-control">
-            <option class='selectcat' value="all" selected>Toutes les catégories</option>
-            <?php
-            foreach ($categories as $categorie ) {
-                echo "<option class='selectcat' value='".$categorie->getId()."'>".$categorie->getNom() ."</option>";
+<div class="form-group" id="productfilter">
+    <select id="selectcatprod" class="form-control">
+        <option class='selectcat' value="all">Toutes les catégories</option>
+        <?php
+        foreach ($categories as $categorie ) {
+            $selected = "";
+            if($categorie->getId() == $_POST['categorie']) {
+                $selected = "selected";
             }
-            ?>
-        </select>
-    </div>
-    <h1>Nos Produits</h1>
+            echo "<option class='selectcat' value='".$categorie->getId()."'".$selected.">".$categorie->getNom() ."</option>";
+        }
+        ?>
+    </select>
+</div>
+<h1>Nos Produits</h1>
+<?php
+if(empty($produits)) {
+    ?>
+
+<?php
+} else {
+    ?>
     <table
         id="tableproduct">
         <tr>
@@ -66,6 +72,7 @@ $categories = $controlCategorie->getCategories();
             <?php } ?>
         </tr>
     </table>
-</section>
-
-include 'template/footer.php';
+<?php
+}
+?>
+<script src="js/script.js"></script>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 22 Mars 2015 à 23:42
+-- Généré le :  Dim 26 Avril 2015 à 23:50
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -96,6 +96,21 @@ CREATE TABLE IF NOT EXISTS `categorie_produit` (
   PRIMARY KEY (`idCategorie`,`idProduit`),
   KEY `idProduit` (`idProduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `categorie_produit`
+--
+
+INSERT INTO `categorie_produit` (`idCategorie`, `idProduit`) VALUES
+(2, 1),
+(2, 2),
+(2, 3),
+(2, 4),
+(1, 5),
+(5, 6),
+(6, 7),
+(6, 8),
+(1, 9);
 
 -- --------------------------------------------------------
 
@@ -230,30 +245,28 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `libelle` varchar(255) DEFAULT NULL,
   `marque` varchar(255) DEFAULT NULL,
-  `idCategorie` int(11) unsigned DEFAULT NULL,
   `modele` varchar(255) DEFAULT NULL,
   `description` text,
   `prix` decimal(6,2) NOT NULL,
   `stock` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idCategorie` (`idCategorie`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `produit`
 --
 
-INSERT INTO `produit` (`id`, `libelle`, `marque`, `idCategorie`, `modele`, `description`, `prix`, `stock`, `image`) VALUES
-(1, 'Iphone 6', 'Apple', 2, 'Iphone 6 32 Go', 'Ecran 4.7'''' Retina HD - Résolution : 1334x750 - 6.9mm - Puce A8 avec coprocesseur de mouvement M8 - Architecture 64 bits - iOS 8 et iCloud - 4G LTE, Wi-Fi - Appareil photo iSight 8 mégapixels avec Focus Pixels, flash True Tone - Enregistrement vidéo HD 1080p à 60 i/s et ralenti à 240 i/s - Caméra FaceTime HD - Capteur d’identité par empreinte digitale Touch ID\r\n', '650.00', 142, 'img/products/iphone6plus.jpg'),
-(2, 'Galaxy S5 ', 'Samsung', 2, 'Galaxy S5 64go', 'Ecran capacitif 5.1'''' Super AMOLED Full HD - Processeur Quad Core 2.5 GHz -Batterie Li-ion 2800 mAh - Mémoire : 16Go - Stockage : 64 Go - Réseau : Wifi/USB 3.0/Bluetooth 4.0/4G - Android KitKat 4.4.2 - Certifié IP67 - Appareil photo : 16MP - Vidéo : Ultra HD - 2160p', '350.00', 22, 'img/products/samsungs5.jpg'),
-(3, 'Iphone 6 plus', 'Apple', 2, 'Iphone 6 plus 32 go', 'Ecran 5.5'''' Retina HD - Résolution : 1920x1080 - 7.1mm - Puce A8 avec coprocesseur de mouvement M8 - Architecture 64 bits - iOS 8 et iCloud - 4G LTE, Wi-Fi - Appareil photo iSight 8 mégapixels avec Focus Pixels, flash True Tone et stabilisation optique de l’image - Enregistrement vidéo HD 1080p à 60 i/s et ralenti à 240 i/s - Caméra FaceTime HD - Capteur d’identité par empreinte digitale Touch ID', '800.00', 100, 'img/products/iphone6plus.jpg'),
-(4, 'Iphone 5', 'Apple', 2, 'Iphone 5 64go', 'Apple Iphone 5 64GO Noir - Iphone - Débloque tout opérateurs - Fourni dans la boite avec tous les accessoires - Système d''exploitation (OS) iOSEcran 4'''' RetinaMémoire intern…Voir la présentation', '300.00', 100, 'img/products/iphone5.jpg'),
-(5, 'Samsung UE55HU8500 TV', 'Samsung', 1, 'UE55HU8500 TV 140CM', 'SAMSUNG UE55HU8500 TV ECRAN LCD 55 " (140 CM) 1080 PIXELS TUNER TNT - SAMSUNG UE55HU8500 TV ECRAN LCD 55 " (140 CM) 1080 PIXELS TUNER TNT', '2500.00', 15, 'img/products/samsumg-4k-curved.jpg'),
-(6, 'Surface Pro 2', 'Microsoft', 5, 'Surface Pro 2 128go', 'Surface Pro 2 128GB Windows 8.1 Pro Intel Core i5 1600 MHz Nombre de coeurs	2 Taille de la mémoire vive	8192 MB Taille du disque dur	128 GB Taille de l''écran	10.', '800.00', 50, 'img/products/microsoft-surface-pro-2.jpg'),
-(7, 'Apple watch', 'Apple', 6, 'Apple watch', 'C’est l’usage que l’on va faire d’un objet qui devrait déterminer le choix des matériaux dont il sera composé. L’Apple Watch a été conçue pour vous suivre dans toutes vos activités quotidiennes, de votre jogging matinal à vos virées nocturnes. C’est pourquoi nous avons choisi l’acier inoxydable 316L, un alliage raffiné et remarquablement résistant à la corrosion. Nous l’avons ensuite forgé à froid pour le rendre jusqu’à 80 % plus dur. Nous avons également réduit les impuretés pour obtenir un effet miroir. Et l’application d’une couche supplémentaire de carbone diamantin (DLC) donne à l’acier inoxydable cette teinte noir sidéral si caractéristique.', '500.00', 100, 'img/products/apple-watch.jpg'),
-(8, 'Galaxy Gear Fit Noir', 'Samsung', 6, 'Galaxy Gear Fit Noir', 'Processeur : 168Mhz - Ecran 1.84'''' capacitif Super AMOLED Incurvé - Résolution : 128x432 - Batterie : Li-ion 210 mAh - Interface : Gear Fit Manager - Connectivité : Bluetooth 4.0/USB - Messagerie/Appels/E-mails - Applications Health - Poids : 127g - Couleur : noir - Bracelets interchangeables', '80.00', 62, 'img/products/montre-samsung.jpg'),
-(9, 'Sony KD-65S9000B', 'Sony', 1, 'KD-65S9000B 65 pouce (165cm)', 'KKD-65S9000B est un écran tv de 165cm reposant sur une dalle ultra hd 4k (3840 x 2160 pixels) à rétroéclairage led edge local dimming', '1500.00', 14, 'img/products/sony-kd-65s9000b.jpg');
+INSERT INTO `produit` (`id`, `libelle`, `marque`, `modele`, `description`, `prix`, `stock`, `image`) VALUES
+(1, 'Iphone 6', 'Apple', 'Iphone 6 32 Go', 'Ecran 4.7'''' Retina HD - Résolution : 1334x750 - 6.9mm - Puce A8 avec coprocesseur de mouvement M8 - Architecture 64 bits - iOS 8 et iCloud - 4G LTE, Wi-Fi - Appareil photo iSight 8 mégapixels avec Focus Pixels, flash True Tone - Enregistrement vidéo HD 1080p à 60 i/s et ralenti à 240 i/s - Caméra FaceTime HD - Capteur d’identité par empreinte digitale Touch ID\r\n', '650.00', 142, 'img/products/iphone6.jpg'),
+(2, 'Galaxy S5 ', 'Samsung', 'Galaxy S5 64go', 'Ecran capacitif 5.1'''' Super AMOLED Full HD - Processeur Quad Core 2.5 GHz -Batterie Li-ion 2800 mAh - Mémoire : 16Go - Stockage : 64 Go - Réseau : Wifi/USB 3.0/Bluetooth 4.0/4G - Android KitKat 4.4.2 - Certifié IP67 - Appareil photo : 16MP - Vidéo : Ultra HD - 2160p', '350.00', 22, 'img/products/samsungs5.jpg'),
+(3, 'Iphone 6 plus', 'Apple', 'Iphone 6 plus 32 go', 'Ecran 5.5'''' Retina HD - Résolution : 1920x1080 - 7.1mm - Puce A8 avec coprocesseur de mouvement M8 - Architecture 64 bits - iOS 8 et iCloud - 4G LTE, Wi-Fi - Appareil photo iSight 8 mégapixels avec Focus Pixels, flash True Tone et stabilisation optique de l’image - Enregistrement vidéo HD 1080p à 60 i/s et ralenti à 240 i/s - Caméra FaceTime HD - Capteur d’identité par empreinte digitale Touch ID', '800.00', 100, 'img/products/iphone6plus.jpg'),
+(4, 'Iphone 5', 'Apple', 'Iphone 5 64go', 'Apple Iphone 5 64GO Noir - Iphone - Débloque tout opérateurs - Fourni dans la boite avec tous les accessoires - Système d''exploitation (OS) iOSEcran 4'''' RetinaMémoire intern…Voir la présentation', '300.00', 100, 'img/products/iphone5.jpg'),
+(5, 'Samsung UE55HU8500 TV', 'Samsung', 'UE55HU8500 TV 140CM', 'Ecran de 138 cm (55") - 100% UHD/4K\nRétro-éclairage LED Edge incurvé, UHD Micro-Dimming Ultimate\nTechnologie 100Hz (CMR 1200Hz), Smart TV, Quad Core+\nQuad Screen,Technologie 3D Active (2 paires de lunettes fournies)', '2500.00', 15, 'img/products/samsumg-4k-curved.jpg'),
+(6, 'Surface Pro 2', 'Microsoft', 'Surface Pro 2 128go', 'Surface Pro 2 128GB Windows 8.1 Pro Intel Core i5 1600 MHz Nombre de coeurs	2 Taille de la mémoire vive	8192 MB Taille du disque dur	128 GB Taille de l''écran	10.', '800.00', 50, 'img/products/microsoft-surface-pro-2.jpg'),
+(7, 'Apple watch', 'Apple', 'Apple watch', 'C’est l’usage que l’on va faire d’un objet qui devrait déterminer le choix des matériaux dont il sera composé. L’Apple Watch a été conçue pour vous suivre dans toutes vos activités quotidiennes, de votre jogging matinal à vos virées nocturnes. C’est pourquoi nous avons choisi l’acier inoxydable 316L, un alliage raffiné et remarquablement résistant à la corrosion. Nous l’avons ensuite forgé à froid pour le rendre jusqu’à 80 % plus dur. Nous avons également réduit les impuretés pour obtenir un effet miroir. Et l’application d’une couche supplémentaire de carbone diamantin (DLC) donne à l’acier inoxydable cette teinte noir sidéral si caractéristique.', '500.00', 100, 'img/products/apple-watch.jpg'),
+(8, 'Galaxy Gear Fit Noir', 'Samsung', 'Galaxy Gear Fit Noir', 'Processeur : 168Mhz - Ecran 1.84'''' capacitif Super AMOLED Incurvé - Résolution : 128x432 - Batterie : Li-ion 210 mAh - Interface : Gear Fit Manager - Connectivité : Bluetooth 4.0/USB - Messagerie/Appels/E-mails - Applications Health - Poids : 127g - Couleur : noir - Bracelets interchangeables', '80.00', 62, 'img/products/montre-samsung.jpg'),
+(9, 'Sony KD-65S9000B', 'Sony', 'KD-65S9000B 65 pouce (165cm)', 'KKD-65S9000B est un écran tv de 165cm reposant sur une dalle ultra hd 4k (3840 x 2160 pixels) à rétroéclairage led edge local dimming', '1500.00', 14, 'img/products/sony-kd-65s9000b.jpg');
 
 --
 -- Contraintes pour les tables exportées
@@ -293,12 +306,6 @@ ALTER TABLE `evenement_client`
 ALTER TABLE `evenement_produit`
   ADD CONSTRAINT `evenement_produit_ibfk_1` FOREIGN KEY (`idEvenement`) REFERENCES `evenement` (`id`),
   ADD CONSTRAINT `evenement_produit_ibfk_2` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`id`);
-
---
--- Contraintes pour la table `produit`
---
-ALTER TABLE `produit`
-  ADD CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -30,10 +30,9 @@ class ControlProduit {
     }
 
     public function addProduit($produit){
-        $req = $this->bdd->prepare('INSERT INTO produit values (null,:libelle,:marque,:idCategorie,:modele,:description,:prix,:stock,:image)');
+        $req = $this->bdd->prepare('INSERT INTO produit values (null,:libelle,:marque,:modele,:description,:prix,:stock,:image)');
         $req->bindValue(':libelle',$produit->getLibelle());
         $req->bindValue(':marque',$produit->getMarque());
-        $req->bindValue(':idCategorie',$produit->getIdCategorie());
         $req->bindValue(':modele',$produit->getModele());
         $req->bindValue(':description',$produit->getDescription());
         $req->bindValue(':prix',$produit->getPrix());
@@ -43,14 +42,13 @@ class ControlProduit {
     }
 
     public function updateProduit($produit){
-        $req = $this->bdd->prepare('UPDATE produit SET  libelle = :libelle,marque=:marque, idCategorie=:idCategorie, modele=:modele,
+        $req = $this->bdd->prepare('UPDATE produit SET  libelle = :libelle,marque=:marque, modele=:modele,
                                                         description=:description, prix=:prix, stock=:stock, image=:image
                                                         WHERE id=:id');
         $req->bindValue(':id',$produit->getId());
         $req->bindValue(':libelle',$produit->getLibelle());
         $req->bindValue(':marque',$produit->getMarque());
         $req->bindValue(':modele',$produit->getModele());
-        $req->bindValue(':idCategorie',$produit->getIdCategorie());
         $req->bindValue(':description',$produit->getDescription());
         $req->bindValue(':prix',$produit->getPrix());
         $req->bindValue(':stock',$produit->getStock());
@@ -64,4 +62,18 @@ class ControlProduit {
         return $req->execute();
     }
 
+    public function getProduitsByCategorie($categorie){
+        $produits = [];
+        if(is_numeric($categorie)) {
+            $req = $this->bdd->prepare("SELECT * FROM categorie_produit C, produit P where C.idProduit = P.id and C.idCategorie = $categorie");
+            $req->execute();
+            while ($result = $req->fetch()) {
+                $produit = new Produit($result);
+                $produits[] = $produit;
+            }
+            return $produits ? $produits : false;
+        } else {
+            return $this->getProduits();
+        }
+    }
 }

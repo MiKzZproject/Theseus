@@ -15,7 +15,6 @@ class Produit
     private $id;
     private $libelle;
     private $marque;
-    private $idCategorie;
     private $modele;
     private $description;
     private $prix;
@@ -83,22 +82,6 @@ class Produit
     public function setMarque($marque)
     {
         $this->marque = $marque;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdCategorie()
-    {
-        return $this->idCategorie;
-    }
-
-    /**
-     * @param mixed $idCategorie
-     */
-    public function setIdCategorie($idCategorie)
-    {
-        $this->idCategorie = $idCategorie;
     }
 
     /**
