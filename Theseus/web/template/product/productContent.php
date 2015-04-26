@@ -28,7 +28,7 @@ $categories = $controlCategorie->getCategories();
 <?php
 if(empty($produits)) {
     ?>
-
+    <div class="alert alert-info" role="alert"><p>Aucun produits ne correspond à votre recherche</p></div>
 <?php
 } else {
     ?>

@@ -67,5 +67,5 @@ $categories = $controlCategorie->getCategories();
         </tr>
     </table>
 </section>
-
+<?php
 include 'template/footer.php';
