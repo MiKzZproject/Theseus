@@ -52,16 +52,15 @@ require_once "config/config.php";
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-         <a class="navbar-brand" href="index.php">Home</a>
       </div>
 
       <div class="collapse navbar-collapse" id="menu-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.php">Home</a></li>
-          <li><a href="products.php">Les Produits phares</a></li>
-          <li><a href="products.php">Nos Produits</a></li>
-          <li><a href="events.php">Nos Events</a></li>
-          <li><a href="#">Mon Compte</a></li>
+          <li id="menuHome" ><a href="index.php">Home</a></li>
+          <li id="menuProductPhare" ><a href="products.php">Les Produits phares</a></li>
+          <li id="menuProduct" ><a href="products.php">Nos Produits</a></li>
+          <li id="menuEvent" ><a href="events.php">Nos Events</a></li>
+          <li id="menuAccount" ><a href="#">Mon Compte</a></li>
         </ul>
         <form class="navbar-form navbar-right" role="search">
           <div class="input-group">

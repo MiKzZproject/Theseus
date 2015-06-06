@@ -147,6 +147,10 @@ footer h3{
 figure.effect-goliath:hover ~ h3{
     border-top:5px solid #028ec9;
 }
+
+#events-content > div > div.alert.alert-success {
+    margin: 10px;
+}
 /** fin event ***/
 
 
@@ -156,8 +160,10 @@ figure.effect-goliath:hover ~ h3{
   background-color: #00aeff;
   border-color: #00aeff;
   padding-right: 10px;
+    margin: 0px;
 }
 .navbar-custom .navbar-brand {
+  padding: 0px;
   color: #ffffff;
   background-color: #0097de;
 }

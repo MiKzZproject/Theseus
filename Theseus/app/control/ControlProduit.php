@@ -76,4 +76,21 @@ class ControlProduit {
             return $this->getProduits();
         }
     }
+
+    public function getProduitsByCategorieCount($categorie){
+        if(is_numeric($categorie)) {
+            $req = $this->bdd->prepare("SELECT count(*) as count FROM categorie_produit C, produit P where C.idProduit = P.id and C.idCategorie = $categorie");
+            $req->execute();
+            $result = $req->fetch();
+            return $result['count'];
+        }
+        return false;
+    }
+
+    public function getProduitsCount(){
+        $req = $this->bdd->prepare("SELECT count(*) as count FROM produit ");
+        $req->execute();
+        $result = $req->fetch();
+        return $result['count'];
+    }
 }
