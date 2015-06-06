@@ -36,13 +36,13 @@ require_once "config/config.php";
             </div>
 
         </fieldset>
-        <fieldset>
-            <legend>Panier</legend>
-            <div>
-                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><br>
-                <p>2 Articles</p>
-            </div>
-        </fieldset>
+<!--        <fieldset>-->
+<!--            <legend>Panier</legend>-->
+<!--            <div>-->
+<!--                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><br>-->
+<!--                <p>2 Articles</p>-->
+<!--            </div>-->
+<!--        </fieldset>-->
     </section>
     <nav class="navbar navbar-custom navbar-static-top" role="navigation">
       <div class="navbar-header">
