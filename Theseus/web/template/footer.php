@@ -7,7 +7,7 @@
  */
 ?>
 
-
+</section>
 <footer>
     <section id="footer_reseau">
         <h3>Nous suivre : </h3><br>

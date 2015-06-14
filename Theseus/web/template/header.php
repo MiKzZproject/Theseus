@@ -52,6 +52,7 @@ require_once "config/config.php";
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <a class="navbar-title" href="#"></a>
       </div>
 
       <div class="collapse navbar-collapse" id="menu-collapse">
@@ -75,3 +76,4 @@ require_once "config/config.php";
       </div>
     </nav>
   </header>
+  <section id="wrapper">

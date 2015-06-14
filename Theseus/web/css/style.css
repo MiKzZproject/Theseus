@@ -3,6 +3,7 @@ body {
     padding: 0;
     font-family: Calibri;
 }
+
 header {
     height: 100%;
     background-color: white;
@@ -13,23 +14,53 @@ header {
     padding-left: 20px;
 }
 
+@media (max-width: 550px) {
+    #header_slogan{
+        visibility: hidden;
+        width: 0px;
+        height: 0px;
+    }
+    #header_block{
+        text-align:right;
+        width:55%;
+    }
+    header #logo{
+        margin:10px;
+        width:35%;
+    }
+}
+
+@media (min-width: 550px) {
+    #header_slogan{
+        text-align:center;
+        width:35%;
+    }
+    #header_block{
+        text-align:right;
+        width:25%;
+    }
+    #header_block p {
+        line-height: 0.8;
+    }
+    header #logo{
+        margin:10px;
+        width:35%;
+    }
+}
+
 /* style DU HEADER */
+
 header section{
     display:inline-block;
     vertical-align: middle;
-    width:30%;
-}
-header #logo{
-    padding:10px;
 }
 
+
 header #logo img{
-    width: 220px;
+    min-width: 220px;
+    max-width: 220px;
 }
-#header_block{
-    width:38%;
-    text-align:right;
-}
+
 
 fieldset div{
     display: inline-block;
@@ -162,10 +193,35 @@ figure.effect-goliath:hover ~ h3{
   padding-right: 10px;
     margin: 0px;
 }
-.navbar-custom .navbar-brand {
-  padding: 0px;
-  color: #ffffff;
-  background-color: #0097de;
+
+@media (max-width: 768px) {
+    .navbar-custom .navbar-brand {
+        visibility: hidden;
+        width: 0px;
+        height: 0px;
+        position: absolute;
+    }
+
+    .navbar-title {
+        float: left;
+        height: 50px;
+        padding: 15px 15px;
+        font-size: 23px;
+        line-height: 20px;
+        color: #ffffff;
+    }
+}
+@media (min-width: 768px) {
+    .navbar-custom .navbar-brand {
+        padding: 0px;
+        color: #ffffff;
+        background-color: #0097de;
+    }
+    .navbar-title {
+        visibility: hidden;
+        position: absolute;
+        width: 0px;
+    }
 }
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus {
@@ -271,7 +327,6 @@ figure.effect-goliath:hover ~ h3{
 .navbar-custom .navbar-link:hover {
   color: #ffffff;
 }
-
 /** fin navbar **/
 
 
@@ -303,44 +358,82 @@ figure.effect-goliath:hover ~ h3{
 }
 
 #tableproduct{
+    text-align: center;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 #tableproduct th{
     text-align: center;
-    width: 30%;
-
 }
 
-#tableproduct article{
-    margin: 5px 5px 5px 5px;
-    padding: 5px 5px 5px 5px;
-    border: 1px solid #337ab7;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    min-height: 450px;
-    height:100%;
+@media (max-width: 700px) {
+    #tableproduct article{
+        width: 95%;
+        display: inline-block;
+        margin: 5px 5px 5px 5px;
+        padding: 5px 5px 5px 5px;
+        border: 1px solid #337ab7;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        min-height: 350px;
+        vertical-align: top;
+        height:100%;
+    }
 }
 
-#tableproduct article > a {
+@media (min-width: 700px) and (max-width: 1024px) {
+    #tableproduct article{
+        width: 45%;
+        display: inline-block;
+        margin: 5px 5px 5px 5px;
+        padding: 5px 5px 5px 5px;
+        border: 1px solid #337ab7;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        min-height: 400px;
+        vertical-align: top;
+        height:100%;
+    }
+}
+
+@media (min-width: 1024px)  {
+    #tableproduct article{
+        width: 32%;
+        display: inline-block;
+        margin: 5px 5px 5px 5px;
+        padding: 5px 5px 5px 5px;
+        border: 1px solid #337ab7;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        min-height: 430px;
+        vertical-align: top;
+        height:100%;
+    }
+}
+
+#tableproduct article > div > a {
     height:50%;
 }
 
-#tableproduct article > a > img{
+#tableproduct article > div > a > img{
     font-size: 12px;
     width: 40%;
     max-height:  240px;
 }
 
-#tableproduct article > a > p{
+#tableproduct article > div > a > p{
     font-size: 12px;
 }
 
-#tableproduct article > h5{
+#tableproduct article > div > h5{
     text-align: left;
     margin-left: 15px;
     color: #337ab7;
+    font-weight: bold;
 }
 
 #productinfos h2{
