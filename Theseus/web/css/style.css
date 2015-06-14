@@ -22,11 +22,14 @@ header {
     }
     #header_block{
         text-align:right;
-        width:55%;
+        width:40%;
     }
     header #logo{
         margin:10px;
-        width:35%;
+        width:50%;
+    }
+    #header_block p {
+        line-height: 0.8;
     }
 }
 
