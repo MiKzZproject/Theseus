@@ -500,3 +500,11 @@ figure.effect-goliath:hover ~ h3{
     float: right;
     margin-right: 20px;
 }
+
+.jumbotron.outdated .alert{
+    background-color:red;
+}
+
+.jumbotron.outdated .alert a{
+    color:white;
+}

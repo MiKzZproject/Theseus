@@ -10,6 +10,7 @@ include 'template/header.php';
 
 $controlEvenement = new \control\ControlEvenement($bdd);
 $evenements = $controlEvenement->getEvenements();
+
 ?>
 
 <section>
@@ -19,23 +20,42 @@ $evenements = $controlEvenement->getEvenements();
 
         foreach ($evenements as $evenement){
 
-        $startDate = date_create($evenement->getDateDebut());
-        $endDate = date_create($evenement->getDateFin());
+            $startDate = date_create($evenement->getDateDebut());
+            $startDate = $startDate->format("Y/m/d H:i");
+
+            $endDate = date_create($evenement->getDateFin());
+            $endDate = $endDate->format("Y/m/d H:i");
+
+            $currentDate = new dateTime("now");
+            $currentDate = $currentDate->format("Y/m/d H:i");
+
+            if($endDate < $currentDate){
+                $state = "outdated";
+                $txt = "Evènement FERME";
+            }else{
+                $state = "";
+                $txt = "Evènement OUVERT";
+            }
+
 
         ?>
 
-        <div class="jumbotron">
+        <div class="jumbotron <?php echo $state; ?>">
             <h3><?php echo $evenement->getLibelle(); ?></h3>
-            <h5><?php echo date_format($startDate, "Y/m/d H:i"); ?></h5>
+            <h5><?php echo $startDate; ?></h5>
             <h5>Thème de la vente : <?php echo $evenement->getTheme(); ?> </h5><img src="<?php echo $evenement->getMiniature1(); ?>"><img src="<?php echo $evenement->getMiniature2(); ?>">
             <div class="alert alert-success" role="alert">
-                <a href="#" class="alert-link">Evènement OUVERT</a>
+                <a href="#" class="alert-link"><?php echo $txt; ?></a>
             </div>
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal<?php echo $evenement->getId(); ?>">
-                En savoir +
-            </button>
+
+            <?php if($state != "outdated"){ ?>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal<?php echo $evenement->getId(); ?>">
+                    En savoir +
+                </button>
+            <?php }; ?>
+
 
             <!-- Modal -->
             <div class="modal fade" id="myModal<?php echo $evenement->getId(); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -50,7 +70,7 @@ $evenements = $controlEvenement->getEvenements();
                                 <img src="<?php echo $evenement->getImage(); ?>"/>
                             </div>
                             <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Lieu : <?php echo $evenement->getLibelle(); ?><br/>
-                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Date : <?php echo date_format($startDate, "Y/m/d H:i"); ?> - <?php echo date_format($endDate, "Y/m/d H:i"); ?><br />
+                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Date : <?php echo $startDate; ?> - <?php echo $endDate; ?><br />
                             <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Adresse :   <?php echo $evenement->getAdresse(); ?> - <?php echo $evenement->getCp(); ?> <?php echo $evenement->getVille(); ?><br />
                             <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Produits : <?php echo $evenement->getTheme(); ?><br/>
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Description : <?php echo $evenement->getDescription(); ?>
