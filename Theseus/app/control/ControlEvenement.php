@@ -24,6 +24,7 @@ class ControlEvenement {
                                     FROM evenement
                                     ORDER BY dateDebut ASC');
         $req->execute();
+
         while($result = $req->fetch()){
             $evenement = new Evenement($result);
             $evenements[] = $evenement;
@@ -32,8 +33,9 @@ class ControlEvenement {
     }
 
     public function addEvenement($evenement){
-        $req = $this->bdd->prepare('INSERT INTO evenement (libelle,description,adresse,cp,ville,dateDebut,dateFin,place,image,theme,miniature1,miniature2)
+        $req = $this->bdd->prepare('INSERT INTO evenement (libelle,lieu,description,adresse,cp,ville,dateDebut,dateFin,place,image,theme,miniature1)
                                     VALUES (:libelle,
+                                            :lieu,
                                             :description,
                                             :adresse,
                                             :cp,
@@ -43,9 +45,9 @@ class ControlEvenement {
                                             :place,
                                             :image,
                                             :theme,
-                                            :miniature1,
-                                            :miniature2)');
+                                            :miniature1');
         $req->bindValue(':libelle',$evenement->getLibelle());
+        $req->bindValue(':lieu',$evenement->getLieu());
         $req->bindValue(':description',$evenement->getDescription());
         $req->bindValue(':adresse',$evenement->getAdresse());
         $req->bindValue(':cp',$evenement->getCp());
@@ -56,7 +58,6 @@ class ControlEvenement {
         $req->bindValue(':image',$evenement->getImage());
         $req->bindValue(':image',$evenement->getTheme());
         $req->bindValue(':miniature1',$evenement->getMiniature1());
-        $req->bindValue(':miniature2',$evenement->getMiniature2());
 
         $req->execute();
 
@@ -65,6 +66,7 @@ class ControlEvenement {
     public function updateEvenement($evenement){
         $req = $this->bdd->prepare('UPDATE evenement
                                     SET libelle = :libelle,
+                                        lieu = :lieu,
                                         description = :description,
                                         adresse = :adresse,
                                         cp = :cp,
@@ -74,11 +76,11 @@ class ControlEvenement {
                                         place = :place,
                                         image = :image,
                                         theme = :theme,
-                                        miniature1 = :miniature1,
-                                        miniature2 = :miniature2
+                                        miniature1 = :miniature1
                                     WHERE id = :id ');
         $req->bindValue(':id',$evenement->getId());
         $req->bindValue(':libelle',$evenement->getLibelle());
+        $req->bindValue(':lieu',$evenement->getLieu());
         $req->bindValue(':description',$evenement->getDescription());
         $req->bindValue(':adresse',$evenement->getAdresse());
         $req->bindValue(':cp',$evenement->getCp());
@@ -89,7 +91,6 @@ class ControlEvenement {
         $req->bindValue(':image',$evenement->getImage());
         $req->bindValue(':image',$evenement->getTheme());
         $req->bindValue(':miniature1',$evenement->getMiniature1());
-        $req->bindValue(':miniature2',$evenement->getMiniature2());
 
         $req->execute();
 

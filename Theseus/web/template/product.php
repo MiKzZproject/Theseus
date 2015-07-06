@@ -33,10 +33,10 @@
                 <div id="miniature-salle">
                     <img src="<?php echo $produit->getImage() ?>"/>
                 </div>
-                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Prix : <?php echo $produit->getPrix() ?> €<br/>
-                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Marque : <?php echo $produit->getMarque() ?> €<br/>
-                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Modele : <?php echo $produit->getModele() ?> €<br/>
-                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Description : <?php echo $produit->getDescription() ?> €<br/>
+                <span class="glyphicon glyphicon-euro" aria-hidden="true"></span> Prix : <?php echo $produit->getPrix() ?> €<br/>
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Marque : <?php echo $produit->getMarque() ?> <br/>
+                <span class="glyphicon glyphicon-random" aria-hidden="true"></span> Modele : <?php echo $produit->getModele() ?> <br/>
+                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Description : <?php echo $produit->getDescription() ?> <br/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>

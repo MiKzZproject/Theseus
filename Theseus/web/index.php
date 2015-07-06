@@ -13,7 +13,7 @@ include 'template/header.php';
       <div class="text-content">
         <h2>Vente exceptionnelle de produits AUDIO</h2>
         <p>Retrouvez notre sélection de produits AUDIO lors de notre prochaine vente du <a href="events.php">7 novembre 2015 à l'Espace Monsieur Bleu</a></p>
-        <a href="#" class="button-link read-more">En savoir +</a>
+        <a href="events.php" class="button-link read-more">En savoir +</a>
       </div>
       <div class="image-content"><img src="img/others/vente-son.jpg" alt="slide1"></div>
     </article>
@@ -21,7 +21,7 @@ include 'template/header.php';
       <div class="text-content">
         <h2>LCD ? 4K ? Nous avons forcément le produit qu'il vous faut...</h2>
         <p>Découvrez notre sélection de produits 4k cruve lors de notre prochaine vente du <a href="events.php">22 novembre 2015</a></p>
-        <a href="#" class="button-link read-more">En savoir +</a>
+        <a href="events.php" class="button-link read-more">En savoir +</a>
       </div>
       <div class="image-content"><img src="img/slider/samsung-u2.jpg" alt="slide2"></div>
     </article>
@@ -29,7 +29,7 @@ include 'template/header.php';
       <div class="text-content">
         <h2>Vente privée dédiée aux derniers smartphones</h2>
         <p>HTC ? Samsung ? Apple ? Nous avons toutes les marques de smartphones. Venez les découvrir !</p>
-        <a href="#" class="button-link read-more">En savoir +</a>
+        <a href="events.php" class="button-link read-more">En savoir +</a>
       </div>
       <div class="image-content"><img src="img/slider/smartphones.jpg" alt="slide3"></div>
     </article>
@@ -41,7 +41,7 @@ include 'template/header.php';
         <h2>Produits phares</h2>
         <img src="img/products/panasonic-lumix-fz1000.jpg" alt="lumix"/>
         <figcaption>
-          <p><a href="#">Sélection de nos meilleurs produits !</a></p>
+          <p><a href="products.php">Sélection de nos meilleurs produits !</a></p>
         </figcaption>
       </figure>
       <figure class="effect-goliath">

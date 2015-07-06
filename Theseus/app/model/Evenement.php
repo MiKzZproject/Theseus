@@ -13,6 +13,7 @@ class Evenement {
 
     private $id;
     private $libelle;
+    private $lieu;
     private $description;
     private $adresse;
     private $cp;
@@ -23,7 +24,6 @@ class Evenement {
     private $image;
     private $theme;
     private $miniature1;
-    private $miniature2;
 
 
     function __construct($array)
@@ -47,6 +47,22 @@ class Evenement {
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
+
+    /**
+     * @param mixed $lieu
+     */
+    public function setLieu($lieu)
+    {
+        $this->lieu = $lieu;
     }
 
     /**
@@ -233,20 +249,5 @@ class Evenement {
         $this->miniature1 = $miniature1;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getMiniature2()
-    {
-        return $this->miniature2;
-    }
-
-    /**
-     * @param mixed $miniature2
-     */
-    public function setMiniature2($miniature2)
-    {
-        $this->miniature2 = $miniature2;
-    }
 
 }
