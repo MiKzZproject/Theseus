@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.1.1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost:3306
--- Généré le :  Lun 06 Juillet 2015 à 12:32
--- Version du serveur :  5.5.42
--- Version de PHP :  5.6.7
+-- Client :  127.0.0.1
+-- Généré le :  Lun 17 Août 2015 à 15:59
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,13 +26,14 @@ SET time_zone = "+00:00";
 -- Structure de la table `admin`
 --
 
-CREATE TABLE `admin` (
-  `id` int(11) unsigned NOT NULL,
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `login` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `niveau` int(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `niveau` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `admin`
@@ -47,13 +48,15 @@ INSERT INTO `admin` (`id`, `login`, `pass`, `email`, `niveau`) VALUES
 -- Structure de la table `adresse`
 --
 
-CREATE TABLE `adresse` (
-  `id` int(11) unsigned NOT NULL,
+CREATE TABLE IF NOT EXISTS `adresse` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `adresse` varchar(255) NOT NULL,
   `ville` varchar(255) NOT NULL,
   `cp` int(5) NOT NULL,
-  `idClient` int(11) unsigned NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `idClient` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idClient` (`idClient`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -61,12 +64,13 @@ CREATE TABLE `adresse` (
 -- Structure de la table `categorie`
 --
 
-CREATE TABLE `categorie` (
-  `id` int(11) unsigned NOT NULL,
+CREATE TABLE IF NOT EXISTS `categorie` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  `image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Contenu de la table `categorie`
@@ -92,9 +96,11 @@ INSERT INTO `categorie` (`id`, `nom`, `description`, `image`) VALUES
 -- Structure de la table `categorie_produit`
 --
 
-CREATE TABLE `categorie_produit` (
+CREATE TABLE IF NOT EXISTS `categorie_produit` (
   `idCategorie` int(11) unsigned NOT NULL,
-  `idProduit` int(11) unsigned NOT NULL
+  `idProduit` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`idCategorie`,`idProduit`),
+  KEY `idProduit` (`idProduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -144,8 +150,8 @@ INSERT INTO `categorie_produit` (`idCategorie`, `idProduit`) VALUES
 -- Structure de la table `client`
 --
 
-CREATE TABLE `client` (
-  `id` int(11) unsigned NOT NULL,
+CREATE TABLE IF NOT EXISTS `client` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) DEFAULT NULL,
   `prenom` varchar(255) DEFAULT NULL,
   `dateNaissance` date DEFAULT NULL,
@@ -154,8 +160,9 @@ CREATE TABLE `client` (
   `pwd` varchar(255) NOT NULL,
   `dateInscription` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `newsletters` tinyint(1) DEFAULT NULL,
-  `alerte` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `alerte` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `client`
@@ -170,11 +177,12 @@ INSERT INTO `client` (`id`, `nom`, `prenom`, `dateNaissance`, `tel`, `email`, `p
 -- Structure de la table `commande`
 --
 
-CREATE TABLE `commande` (
-  `id` int(11) unsigned NOT NULL,
+CREATE TABLE IF NOT EXISTS `commande` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `dateCommande` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `livrer` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `livrer` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -182,11 +190,14 @@ CREATE TABLE `commande` (
 -- Structure de la table `commande_produit`
 --
 
-CREATE TABLE `commande_produit` (
+CREATE TABLE IF NOT EXISTS `commande_produit` (
   `idCommande` int(11) unsigned NOT NULL,
   `idClient` int(11) unsigned NOT NULL,
   `idProduit` int(11) unsigned NOT NULL,
-  `quantite` int(11) NOT NULL
+  `quantite` int(11) NOT NULL,
+  PRIMARY KEY (`idCommande`,`idClient`,`idProduit`),
+  KEY `idClient` (`idClient`),
+  KEY `idProduit` (`idProduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -195,8 +206,8 @@ CREATE TABLE `commande_produit` (
 -- Structure de la table `evenement`
 --
 
-CREATE TABLE `evenement` (
-  `id` int(11) unsigned NOT NULL,
+CREATE TABLE IF NOT EXISTS `evenement` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `libelle` varchar(255) DEFAULT NULL,
   `lieu` varchar(256) NOT NULL,
   `description` text,
@@ -208,8 +219,9 @@ CREATE TABLE `evenement` (
   `place` int(11) DEFAULT NULL,
   `image` varchar(255) NOT NULL,
   `theme` varchar(256) NOT NULL,
-  `miniature1` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+  `miniature1` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
 -- Contenu de la table `evenement`
@@ -234,10 +246,12 @@ INSERT INTO `evenement` (`id`, `libelle`, `lieu`, `description`, `adresse`, `cp`
 -- Structure de la table `evenement_client`
 --
 
-CREATE TABLE `evenement_client` (
+CREATE TABLE IF NOT EXISTS `evenement_client` (
   `idEvenement` int(11) unsigned NOT NULL,
   `idClient` int(11) unsigned NOT NULL,
-  `participer` tinyint(1) DEFAULT NULL
+  `participer` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`idEvenement`,`idClient`),
+  KEY `idClient` (`idClient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -246,11 +260,34 @@ CREATE TABLE `evenement_client` (
 -- Structure de la table `evenement_produit`
 --
 
-CREATE TABLE `evenement_produit` (
+CREATE TABLE IF NOT EXISTS `evenement_produit` (
   `idEvenement` int(11) unsigned NOT NULL,
   `idProduit` int(11) unsigned NOT NULL,
-  `stock` int(11) NOT NULL
+  `stock` int(11) NOT NULL,
+  PRIMARY KEY (`idEvenement`,`idProduit`),
+  KEY `idProduit` (`idProduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `newsletter`
+--
+
+CREATE TABLE IF NOT EXISTS `newsletter` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `mail` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `mail` (`mail`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Contenu de la table `newsletter`
+--
+
+INSERT INTO `newsletter` (`id`, `mail`) VALUES
+(1, 'blabla@gmail.com'),
+(7, 'hdkfhlkjhklg@gmail');
 
 -- --------------------------------------------------------
 
@@ -258,16 +295,17 @@ CREATE TABLE `evenement_produit` (
 -- Structure de la table `produit`
 --
 
-CREATE TABLE `produit` (
-  `id` int(11) unsigned NOT NULL,
+CREATE TABLE IF NOT EXISTS `produit` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `libelle` varchar(255) DEFAULT NULL,
   `marque` varchar(255) DEFAULT NULL,
   `modele` varchar(255) DEFAULT NULL,
   `description` text,
   `prix` decimal(6,2) NOT NULL,
   `stock` int(11) NOT NULL,
-  `image` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+  `image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
 -- Contenu de la table `produit`
@@ -310,121 +348,6 @@ INSERT INTO `produit` (`id`, `libelle`, `marque`, `modele`, `description`, `prix
 (34, 'Drone 3DR Solo ', '3DR\r\n\r\n', 'Solo', '- Type: Drone volant\r\n- Modèle: 3DR Solo\r\n- Alimentation: Autonome (batterie)\r\n- Wi-Fi: Oui\r\n- Caméra: Conçu pour une utilisation avec Go Pro HERO3, 3+ et 4\r\n- Portée: 1000 m\r\n- Autonomie: 25 min\r\n- Hauteur de vol maxi: 125 m\r\n- Dimensions l x h x p 23 x 18.8 x 33 cm\r\n- Poids net: 1,52 kg ', '1280.00', 110, 'img/products/3dr-solo.jpg'),
 (35, 'WD MyPasseport', 'Western Digital ', 'MyPasseport 1TO', '- Description du produit: Western Digital - My Passport Essential\r\n- Type de produit: Disque dur externe\r\n- Capacité: 1 To\r\n- Système d''exploitation: Windows 2000/XP/Vista, Mac OS\r\n- Connectivité: USB 2.0\r\n- Facteur de forme: 2,5 pouces\r\n- Vitesse de transfert bus série: 480 Mb/s (Maxi)\r\n- Dimensions: 126.15 mm x 79.5 mm x 15 mm\r\n- Poids: 0.18 Kg\r\n- Garantie du fabricant: 3 ans\r\n- Couleur: Noir\r\n\r\n', '55.00', 320, 'img/products/WD-mypasseport.jpg');
 
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `adresse`
---
-ALTER TABLE `adresse`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idClient` (`idClient`);
-
---
--- Index pour la table `categorie`
---
-ALTER TABLE `categorie`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `categorie_produit`
---
-ALTER TABLE `categorie_produit`
-  ADD PRIMARY KEY (`idCategorie`,`idProduit`),
-  ADD KEY `idProduit` (`idProduit`);
-
---
--- Index pour la table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `commande`
---
-ALTER TABLE `commande`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `commande_produit`
---
-ALTER TABLE `commande_produit`
-  ADD PRIMARY KEY (`idCommande`,`idClient`,`idProduit`),
-  ADD KEY `idClient` (`idClient`),
-  ADD KEY `idProduit` (`idProduit`);
-
---
--- Index pour la table `evenement`
---
-ALTER TABLE `evenement`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `evenement_client`
---
-ALTER TABLE `evenement_client`
-  ADD PRIMARY KEY (`idEvenement`,`idClient`),
-  ADD KEY `idClient` (`idClient`);
-
---
--- Index pour la table `evenement_produit`
---
-ALTER TABLE `evenement_produit`
-  ADD PRIMARY KEY (`idEvenement`,`idProduit`),
-  ADD KEY `idProduit` (`idProduit`);
-
---
--- Index pour la table `produit`
---
-ALTER TABLE `produit`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `adresse`
---
-ALTER TABLE `adresse`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `categorie`
---
-ALTER TABLE `categorie`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT pour la table `client`
---
-ALTER TABLE `client`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT pour la table `commande`
---
-ALTER TABLE `commande`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `evenement`
---
-ALTER TABLE `evenement`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
---
--- AUTO_INCREMENT pour la table `produit`
---
-ALTER TABLE `produit`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
 --
 -- Contraintes pour les tables exportées
 --

@@ -616,3 +616,19 @@ figure.effect-goliath:hover ~ h3{
 .bloc-event:hover button{
     opacity: 0.8;
 }
+
+.floatR {
+    float: right;
+}
+
+.floatL {
+    float: left;
+}
+/*
+.newsletter .btn-primary {
+    float: right;
+}
+
+.newsletter .btn-default {
+    float: left;
+}*/

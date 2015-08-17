@@ -51,7 +51,7 @@ include 'template/header.php';
           <p><a href="events.php">Découvrez nos prochains évents !</a></p>
         </figcaption>
       </figure>
-      <figure class="effect-goliath" data-toggle="modal" data-target=".bs-example-modal-sm">
+      <figure class="effect-goliath" data-toggle="modal" data-target=".newsletter">
         <h2>News et alertes</h2>
         <img src="img/others/abonnes-newsletter2.jpg" alt="newsletter"/>
         <figcaption>
@@ -59,19 +59,22 @@ include 'template/header.php';
         </figcaption>
       </figure>
       <!-- Modal -->
-      <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-sm">
+      <div class="modal fade newsletter" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              <h4 class="modal-title" id="myModalLabel">Inscription newsletter Theseus</h4>
             </div>
             <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <form method="post" action="InscriptionNewsletter.php">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Saisir votre adresse mail</label>
+                  <input type="email" class="form-control" name="mail" id="exampleInputEmail1" placeholder="Email">
+                </div>
+                <button type="button" class="btn btn-default " data-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary ">S'inscrire</button>
+              </form>
             </div>
           </div>
         </div>
