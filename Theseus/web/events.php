@@ -22,7 +22,6 @@ $evenements = $controlEvenement->getEvenements();
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
         foreach ($evenements as $evenement){
-
             $startDate = date_create($evenement->getDateDebut());
             $startDate = $startDate->getTimestamp();
             $endDate = date_create($evenement->getDateFin());

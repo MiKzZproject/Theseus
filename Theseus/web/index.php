@@ -51,13 +51,31 @@ include 'template/header.php';
           <p><a href="events.php">Découvrez nos prochains évents !</a></p>
         </figcaption>
       </figure>
-      <figure class="effect-goliath">
+      <figure class="effect-goliath" data-toggle="modal" data-target=".bs-example-modal-sm">
         <h2>News et alertes</h2>
         <img src="img/others/abonnes-newsletter2.jpg" alt="newsletter"/>
         <figcaption>
           <p><a href="#">S'inscrire</a></p>
         </figcaption>
       </figure>
+      <!-- Modal -->
+      <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
