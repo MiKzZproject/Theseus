@@ -8,12 +8,12 @@
 
 include 'template/header.php';
 
-$controlProduits = new \control\ControlProduit($bdd);
-$produits = $controlProduits->getProduits();
-$produitsCount = $controlProduits->getProduitsCount();
+$factoryProduits = new factory\FactoryProduit($bdd);
+$produits = $factoryProduits->getProduits();
+$produitsCount = $factoryProduits->getProduitsCount();
 
-$controlCategorie = new \control\ControlCategorie($bdd);
-$categories = $controlCategorie->getCategories();
+$factoryCategorie = new factory\FactoryCategorie($bdd);
+$categories = $factoryCategorie->getCategories();
 ?>
 <section id="product-content">
     <div class="form-group" id="productfilter">

@@ -16,15 +16,15 @@ if(!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
 require '../../vendor/autoload.php';
 require_once "config/config.php";
 
-$controlNewsletter = new \control\ControlNewsletter($bdd);
-$newsletters = $controlNewsletter->getNewsletters();
+$factoryNewsletter = new factory\FactoryNewsletter($bdd);
+$newsletters = $factoryNewsletter->getNewsletters();
 
 
 $newsletter = new \model\Newsletter(array(
     "mail" => $_POST['mail']
 ));
 
-$result = ($controlNewsletter->addNewsletter($newsletter));
+$result = ($factoryNewsletter->addNewsletter($newsletter));
 if($result) {
     $response = json_encode(['type' => 'ok','response' => 'new']);
 } else {

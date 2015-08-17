@@ -6,11 +6,11 @@
  * Time: 14:37
  */
 
-namespace control;
+namespace factory;
 
 use model\Admin;
 
-class ControlAdmin {
+class FactoryAdmin {
 
     private $db;
 

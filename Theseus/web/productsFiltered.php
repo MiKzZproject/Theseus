@@ -3,12 +3,12 @@
 require '../../vendor/autoload.php';
 require 'config/config.php';
 
-$controlProduits = new \control\ControlProduit($bdd);
-$produits = $controlProduits->getProduitsByCategorie($_POST['categorie']);
-$produitsCount = $controlProduits->getProduitsByCategorieCount($_POST['categorie']);
+$factoryProduits = new factory\FactoryProduit($bdd);
+$produits = $factoryProduits->getProduitsByCategorie($_POST['categorie']);
+$produitsCount = $factoryProduits->getProduitsByCategorieCount($_POST['categorie']);
 
-$controlCategorie = new \control\ControlCategorie($bdd);
-$categories = $controlCategorie->getCategories();
+$factoryCategorie = new factory\FactoryCategorie($bdd);
+$categories = $factoryCategorie->getCategories();
 ?>
 <div class="form-group" id="productfilter">
     <select id="selectcatprod" class="form-control">

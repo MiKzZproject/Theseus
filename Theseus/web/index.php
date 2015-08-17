@@ -79,8 +79,8 @@ include 'template/header.php';
                   <label for="mailNewsletter">Saisir votre adresse mail</label>
                   <input type="email" class="form-control" name="mail" id="mailNewsletter" placeholder="Email">
                 </div>
-                <button type="button" class="btn btn-default floatR" data-dismiss="modal">Annuler</button>
-                <button type="submit" class="btn btn-primary floatL">S'inscrire</button>
+                <button type="button" class="btn btn-default floatL" data-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary floatR">S'inscrire</button>
               </form>
             </div>
           </div>

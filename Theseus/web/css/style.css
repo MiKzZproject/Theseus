@@ -56,6 +56,9 @@ header {
 }
 
 /* style DU HEADER */
+#header_slogan a {
+    text-decoration: none;
+}
 
 header section{
     display:inline-block;

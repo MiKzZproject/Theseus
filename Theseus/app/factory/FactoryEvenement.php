@@ -6,12 +6,12 @@
  * Time: 09:45
  */
 
-namespace control;
+namespace factory;
 
 
 use model\Evenement;
 
-class ControlEvenement {
+class FactoryEvenement {
     private $bdd;
 
     public function __construct($bdd)

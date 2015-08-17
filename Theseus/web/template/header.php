@@ -13,19 +13,25 @@ require_once "config/config.php";
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-
   <title>Theseus</title>
-  <link rel="stylesheet" href="css/slippry.css">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/slippry.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/style2.css">
 </head>
 
 <body>
   <header>
-    <section id="logo"><img src="img/logo.png"></section>
+    <section id="logo">
+      <a href="index.php">
+        <img src="img/logo.png">
+      </a>
+    </section>
     <section id="header_slogan">
+      <a href="index.php">
         <h1>THESEUS</h1>
         <h2>Le meilleur du High-Tech</h2>
+      </a>
     </section>
     <section id="header_block">
         <fieldset>
