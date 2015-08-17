@@ -18,25 +18,28 @@ $evenements = $controlEvenement->getEvenements();
     <h1>Nos Events</h1>
         <?php
 
+        date_default_timezone_set('Europe/Paris');
+        setlocale(LC_TIME, 'fr_FR.utf8','fra');
+
         foreach ($evenements as $evenement){
 
             $startDate = date_create($evenement->getDateDebut());
-            $startDate = $startDate->format("D d M Y - H:i");  //"Y/m/D H:i"
-
+            $startDate = $startDate->getTimestamp();
             $endDate = date_create($evenement->getDateFin());
-            $endDate = $endDate->format("Y/m/d H:i");
-
+            $endDate = $endDate->getTimestamp();
             $currentDate = new dateTime("now");
-            $currentDate = $currentDate->format("Y/m/d H:i");
-
+            $currentDate = $currentDate->getTimestamp();
             if($endDate < $currentDate){
                 $state = "outdated";
             }else{
                 $state = "";
             }
 
+            $startDate = utf8_encode(strftime("%A %d %B - %H:%M", $startDate));
+            $endDate = utf8_encode(strftime("%A %d %B - %H:%M", $endDate));
+            $currentDate = utf8_encode(strftime("%A %d %B - %H:%M", $currentDate));
 
-        ?>
+            ?>
 
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
             <a href="" class="bloc-event <?php echo $state; ?>" data-toggle="modal" data-target="#myModal<?php echo $evenement->getId(); ?>">
@@ -61,7 +64,7 @@ $evenements = $controlEvenement->getEvenements();
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel"><?php echo $evenement->getLibelle(); ?> - <?php echo date_format($startDate, "Y/m/d H:i"); ?></h4>
+                            <h4 class="modal-title" id="myModalLabel"><?php echo $evenement->getLibelle(); ?> - <?php echo $startDate; ?></h4>
                         </div>
                         <div class="modal-body">
                             <div id="miniature-salle">
