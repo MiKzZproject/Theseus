@@ -21,12 +21,33 @@ function searchCategorie(data) {
         url: "productsFiltered.php",
         data: {categorie : data}
     })
-    .done(function( content ) {
-            $('#product-content').html(content);
+    .done(function successFilter( content ) {
+        $('#product-content').html(content);
     });
 }
 
-$("#selectcatprod").change(function () {
+$(".newsletter .btn-primary").click(function newsletterInscription() {
+    $.ajax({
+        method: "POST",
+        url: "inscriptionNewsletter.php",
+        data: {mail : $('#mailNewsletter').val()}
+    })
+    .done(function successNewsletter(data) {
+        if(data.response === "new") {
+            $('#newsletterSuccess').show();
+        } else {
+            $('#newsletterInfo').show();
+        }
+        $('#newsletterError').hide();
+        $('#newsletterForm').hide();
+    })
+    .fail(function errorNewsletter() {
+        $('#newsletterError').show();
+    });
+    return false;
+});
+
+$("#selectcatprod").change(function filterCategorie() {
     searchCategorie($( "#selectcatprod option:selected").val())
 });
 

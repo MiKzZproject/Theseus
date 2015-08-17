@@ -66,14 +66,21 @@ include 'template/header.php';
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">Inscription newsletter Theseus</h4>
             </div>
-            <div class="modal-body">
-              <form method="post" action="InscriptionNewsletter.php">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Saisir votre adresse mail</label>
-                  <input type="email" class="form-control" name="mail" id="exampleInputEmail1" placeholder="Email">
+            <div class="modal-body" >
+              <div id="newsletterError" class="alert alert-danger hideBlock" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Erreur:</span>
+                Veuillez saisir une adresse email valide
+              </div>
+              <div id="newsletterInfo" class="alert alert-info hideBlock" role="alert">Vous êtes déjà inscrit à la newsletter</div>
+              <div id="newsletterSuccess" class="alert alert-success hideBlock" role="alert">Vous êtes inscrit à la newsletter</div>
+              <form method="post" id="newsletterForm">
+                <div class="form-group" >
+                  <label for="mailNewsletter">Saisir votre adresse mail</label>
+                  <input type="email" class="form-control" name="mail" id="mailNewsletter" placeholder="Email">
                 </div>
-                <button type="button" class="btn btn-default " data-dismiss="modal">Annuler</button>
-                <button type="submit" class="btn btn-primary ">S'inscrire</button>
+                <button type="button" class="btn btn-default floatR" data-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary floatL">S'inscrire</button>
               </form>
             </div>
           </div>

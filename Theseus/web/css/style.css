@@ -624,11 +624,12 @@ figure.effect-goliath:hover ~ h3{
 .floatL {
     float: left;
 }
-/*
-.newsletter .btn-primary {
-    float: right;
+
+.hideBlock {
+    display: none;
 }
 
-.newsletter .btn-default {
-    float: left;
-}*/
+.newsletter .modal-body {
+    padding-bottom: 50px;
+}
+
