@@ -74,7 +74,7 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset ($_POST['tel']) && 
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="alerte"> Etre averti de nos derniers évènements
+                                <input type="checkbox" name="alerte"> Recevoir des notifications par mail
                             </label>
                         </div>
                         <button type="submit" class="btn btn-default">S'enregistrer</button>
