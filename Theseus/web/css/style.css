@@ -65,6 +65,15 @@ header {
     min-width: 120px;
 }
 
+#header_block a{
+    color: rgb(18, 68, 111);
+    text-decoration: none;
+}
+
+#dropConnexion{
+    z-index: 10000;
+}
+
 header section{
     display:inline-block;
     vertical-align: middle;
@@ -641,3 +650,6 @@ figure.effect-goliath:hover ~ h3{
     padding-bottom: 50px;
 }
 
+#dropConnexion .dropdown-menu {
+    float:left  ;
+}

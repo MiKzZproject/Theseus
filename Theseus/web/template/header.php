@@ -34,20 +34,54 @@ require_once "config/config.php";
       </a>
     </section>
     <section id="header_block">
-        <fieldset>
-            <div>
-                <span class="glyphicon glyphicon-user" aria-hidden="true"></span><br><br>
-                <p>Me connecter</p>
+      <div class="navbar-collapse collapse">
+        <div class="navbar-right">
+          <fieldset>
+            <div class="btn-group" id="dropdownMenu">
+            <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" >
+              <span class="glyphicon glyphicon-user" aria-haspopup="true" aria-expanded="false"></span><br><br>
+              <p>Me connecter</p>
+            </a>
+            <div id="dropConnexion" class="dropdown-menu">
+              <div class="col-sm-12">
+                <div class="col-sm-12">
+                  Login
+                </div>
+                <div class="col-sm-12">
+                  <input type="text" placeholder="Email" onclick="return false;" class="form-control input-sm" id="inputError" />
+                </div>
+                <br/>
+                <div class="col-sm-12">
+                  <input type="password" placeholder="Password" class="form-control input-sm" name="password" id="Password1" />
+                </div>
+                <div class="col-sm-12">
+                  <button type="submit" class="btn btn-success btn-sm">Sign in</button>
+                </div>
+              </div>
             </div>
-
+          </div>
         </fieldset>
-<!--        <fieldset>-->
-<!--            <legend>Panier</legend>-->
-<!--            <div>-->
-<!--                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><br>-->
-<!--                <p>2 Articles</p>-->
+      </div>
+    </div>
+
+<!--      <fieldset>-->
+<!--        <div id="dropdownMenu" class="dropdown">-->
+<!--          <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" >-->
+<!--            <span class="glyphicon glyphicon-user" aria-haspopup="true" aria-expanded="false"></span><br><br>-->
+<!--            <p>Me connecter</p>-->
+<!--          </a>-->
+<!--          <div id="dropConnexion" class="dropdown-menu pull-left" aria-labelledby="dLabel">-->
+<!--            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>-->
+<!--            <div class="dropdown-menu" style="padding:17px;">-->
+<!--              <form class="form" id="formLogin">-->
+<!--                <input name="username" id="username" type="text" placeholder="Username">-->
+<!--                <input name="password" id="password" type="password" placeholder="Password"><br>-->
+<!--                <button type="button" id="btnLogin" class="btn">Login</button>-->
+<!--              </form>-->
 <!--            </div>-->
-<!--        </fieldset>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </fieldset>-->
     </section>
     <nav class="navbar navbar-custom navbar-static-top" role="navigation">
       <div class="navbar-header">
@@ -63,7 +97,7 @@ require_once "config/config.php";
       <div class="collapse navbar-collapse" id="menu-collapse">
         <ul class="nav navbar-nav">
           <li id="menuHome" ><a href="index.php">Home</a></li>
-          <li id="menuProductPhare" ><a href="products.php">Les Produits phares</a></li>
+          <li id="menuProductPhare" ><a href="featuredProducts.php">Les Produits phares</a></li>
           <li id="menuProduct" ><a href="products.php">Nos Produits</a></li>
           <li id="menuEvent" ><a href="events.php">Nos Events</a></li>
           <li id="menuAccount" ><a href="#">Mon Compte</a></li>
