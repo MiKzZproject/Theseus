@@ -9,3 +9,5 @@
 $dns = 'mysql:host=localhost;dbname=Theseus;charset=utf8';
 $utilisateur = 'root';
 $motDePasse = '';
+
+

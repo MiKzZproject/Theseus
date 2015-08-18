@@ -17,9 +17,6 @@ require '../../vendor/autoload.php';
 require_once "config/config.php";
 
 $factoryNewsletter = new factory\FactoryNewsletter($bdd);
-$newsletters = $factoryNewsletter->getNewsletters();
-
-
 $newsletter = new \model\Newsletter(array(
     "mail" => $_POST['mail']
 ));
