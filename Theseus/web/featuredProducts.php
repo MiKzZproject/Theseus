@@ -48,7 +48,7 @@ $produitsCount = $factoryProduits->getProduitsCount();
                         </div>
                     </article>
                     <!-- Modal -->
-                    <div class="modal fade" id="modalProduit<?php echo $produit->getId(); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade modal-product" id="modalProduit<?php echo $produit->getId(); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -59,10 +59,12 @@ $produitsCount = $factoryProduits->getProduitsCount();
                                     <div id="miniature-salle">
                                         <img src="<?php echo $produit->getImage() ?>"/>
                                     </div>
+                                    <p>
                                     <span class="glyphicon glyphicon-euro" aria-hidden="true"></span> Prix : <?php echo $produit->getPrix() ?> €<br/>
                                     <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Marque : <?php echo $produit->getMarque() ?> <br/>
                                     <span class="glyphicon glyphicon-random" aria-hidden="true"></span> Modele : <?php echo $produit->getModele() ?> <br/>
                                     <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Description : <?php echo $produit->getDescription() ?> <br/>
+                                    </p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>

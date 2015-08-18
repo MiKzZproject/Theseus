@@ -641,3 +641,12 @@ figure.effect-goliath:hover ~ h3{
     padding-bottom: 50px;
 }
 
+.modal-product p{
+    text-align: left;
+    font-size: 14px;
+    padding: 20px 20px;
+}
+
+.modal-product p span{
+    padding-bottom: 10px;
+}
