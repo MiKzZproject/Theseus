@@ -57,6 +57,8 @@ require_once "config/config.php";
                 <div class="col-sm-12">
                   <button type="submit" class="btn btn-success btn-sm">Sign in</button>
                 </div>
+
+                <a href="register.php">Inscription</a>
               </div>
             </div>
           </div>
