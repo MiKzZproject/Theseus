@@ -93,4 +93,14 @@ class FactoryProduit {
         $result = $req->fetch();
         return $result['count'];
     }
+
+    public function getFeaturedProducts(){
+        $req = $this->bdd->prepare("SELECT * FROM produit ORDER BY RAND() LIMIT 9");
+        $req->execute();
+        while($result = $req->fetch()){
+            $produit = new Produit($result);
+            $produits[] = $produit;
+        }
+        return $produits;
+    }
 }
