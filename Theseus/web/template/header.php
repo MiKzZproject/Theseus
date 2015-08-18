@@ -35,10 +35,9 @@ require_once "config/config.php";
     </section>
     <section id="header_block">
         <fieldset>
-            <legend>Connexion</legend>
             <div>
-                <span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>
-                <p>Espace Client</p>
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span><br><br>
+                <p>Me connecter</p>
             </div>
 
         </fieldset>
