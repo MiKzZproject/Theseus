@@ -1,14 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 18/08/2015
- * Time: 11:33
- */
 
-include('template/header.php');
+header('Content-Type: application/json; charset=UTF-8');
+$error = false;
+if (!isset($_POST['nom'])){
+    $error = ['nom' => true];
+} if (!isset($_POST['prenom'])) {
+    $error[] = ['nom' => true];
+} if (!isset ($_POST['tel'])) {
+    $error[] = ['nom' => true];
+} if (!isset($_POST['pwd']) && !isset($_POST['pwd2'])) {
+    $error[] = ['pwd' => true];
+} elseif ($_POST['pwd'] != $_POST['pwd2']) {
+    $error[] = ['pwd2' => true];
+} if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    $error[] = ['email' => true];
+}
 
-if (isset($_POST['nom']) && isset($_POST['prenom']) && isset ($_POST['tel']) && isset($_POST['pwd']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+if (!$error) {
+    require '../../vendor/autoload.php';
+    require_once "config/config.php";
+
     $newsletter = false;
     $alerte = false;
     if(isset($_POST['newsletter'])){
@@ -29,63 +40,14 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset ($_POST['tel']) && 
     ));
 
     $factoryClient = new factory\FactoryClient($bdd);
-    $user = $factoryClient->addClient($client);
+    $result = ($factoryClient->addClient($client));
+
+    $response = json_encode(['type' => 'ok']);
+    echo $response;
+} else {
+    header('HTTP/1.1 400 Bad Request');
+    $error [] = array('type' => 'error');
+    echo json_encode($error);
 }
-
+return false;
 ?>
-    <!-- Page Content -->
-    <div id="content">
-        <div class="container">
-            <!-- Selection 3 blocks -->
-            <div class="col-lg-12">
-                <h2 class="header-title green nohover">Formulaire d'Inscription Theseus</h2>
-            </div>
-            <div class="row timer center">
-                <div class="col-md-12 col-sm-6">
-                    <form action="register.php" method="post">
-                        <div class="form-group">
-                            <label for="nom">Nom</label>
-                            <input type="text" name="nom" class="form-control" placeholder="Nom">
-                        </div>
-                        <div class="form-group">
-                            <label for="prenom">Prénom</label>
-                            <input type="text" name="prenom" class="form-control" placeholder="Prénom">
-                        </div>
-                        <div class="form-group">
-                            <label for="dateNaissance">Date de naissance</label>
-                            <input type="date" name="dateNaissance" class="form-control" placeholder="1989-05-27">
-                        </div>
-                        <div class="form-group">
-                            <label for="tel">Téléphone</label>
-                            <input type="tel" name="tel" class="form-control" placeholder="0654789872">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Adresse Mail</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <label for="pwd">Mot de Passe</label>
-                            <input type="password" name="pwd" class="form-control" id="pwd" placeholder="Mot de Passe">
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="newsletter"> Recevoir nos Newsletter
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="alerte"> Recevoir des notifications par mail
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-success">S'enregistrer</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<br/>
-<br/>
-<?php
-include('template/footer.php');
-

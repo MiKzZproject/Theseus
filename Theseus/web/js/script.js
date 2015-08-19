@@ -58,6 +58,30 @@
         return false;
     });
 
+    $("#formRegister").click(function registerClient() {
+        console.log("test");
+        console.log($("#formRegister input"));
+        return false;
+        //$.ajax({
+        //    method: "POST",
+        //    url: "register.php",
+        //    data: {mail : $('#mailNewsletter').val()}
+        //})
+        //    .done(function successNewsletter(data) {
+        //        if(data.response === "new") {
+        //            $('#newsletterSuccess').show();
+        //        } else {
+        //            $('#newsletterInfo').show();
+        //        }
+        //        $('#newsletterError').hide();
+        //        $('#newsletterForm').hide();
+        //    })
+        //    .fail(function errorNewsletter() {
+        //        $('#newsletterError').show();
+        //    });
+        return false;
+    });
+
     $("#selectcatprod").change(function filterCategorie() {
         searchCategorie($( "#selectcatprod option:selected").val())
     });

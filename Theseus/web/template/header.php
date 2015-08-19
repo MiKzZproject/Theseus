@@ -56,9 +56,10 @@ require_once "config/config.php";
                 </div>
                 <div class="col-sm-12">
                   <button type="submit" class="btn btn-success btn-sm">Me connecter</button><br><br>
-                  <a class="inscriptionLink" href="register.php">Cr&eacute;er mon compte ?</a><br><br>
-                  <a class="forgotPasswordLink" href="register.php">Mot de passe oubli&eacute; ?</a>
+                  <a class="inscriptionLink" href="registerForm.php">Cr&eacute;er mon compte ?</a><br><br>
+                  <a class="forgotPasswordLink" href="#">Mot de passe oubli&eacute; ?</a>
                 </div>
+
               </div>
             </div>
           </div>

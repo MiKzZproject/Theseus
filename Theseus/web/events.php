@@ -54,7 +54,7 @@ $evenements = $factoryEvenement->getEvenements();
                     </p>
                     <?php if($state == "outdated"){ ?>
                         <div class="event-done">évènement<br/> terminé</div>
-                    <?php }else{ ?>
+                     <?php }else{ ?>
                         <button><i class="icon glyphicon glyphicon-eye-open"></i> En savoir<br/> plus</button>
                     <?php }; ?>
                 </div>
