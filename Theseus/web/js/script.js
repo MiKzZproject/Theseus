@@ -28,7 +28,7 @@
         $(".navbar-title").append("Mon compte");
     }
 
-    $("#dropdownMenu").on('click', function dropdownHeader(e) {
+    $(document).on('click', function dropdownHeader(e) {
         e.stopPropagation();
         $(this).find('[data-toggle=dropdown]').dropdown('toggle');
     });
@@ -58,27 +58,63 @@
         return false;
     });
 
-    $("#formRegister").click(function registerClient() {
-        console.log("test");
-        console.log($("#formRegister input"));
-        return false;
-        //$.ajax({
-        //    method: "POST",
-        //    url: "register.php",
-        //    data: {mail : $('#mailNewsletter').val()}
-        //})
-        //    .done(function successNewsletter(data) {
-        //        if(data.response === "new") {
-        //            $('#newsletterSuccess').show();
-        //        } else {
-        //            $('#newsletterInfo').show();
-        //        }
-        //        $('#newsletterError').hide();
-        //        $('#newsletterForm').hide();
-        //    })
-        //    .fail(function errorNewsletter() {
-        //        $('#newsletterError').show();
-        //    });
+    $(".registerForm .btn-success").click(function registerClient(e) {
+
+        var form = ($("#formRegister")).serialize();
+        console.log(form);
+        $.ajax({
+            method: "POST",
+            url: "register.php",
+            data: form
+        })
+        .done(function successNewsletter() {
+            $('#registerErrorNom').hide();
+            $('#registerErrorPrenom').hide();
+            $('#registerErrorTel').hide();
+            $('#registerErrorPwd').hide();
+            $('#registerErrorPwd2').hide();
+            $('#registerErrorEmail').hide();
+            $('#registerErrorDate').hide();
+            $('#registerSuccess').show();
+            $("#formRegister")[0].reset();
+        })
+        .fail(function errorNewsletter(data) {
+            if (data.responseJSON['nom']) {
+                $('#registerErrorNom').show();
+            } else {
+                $('#registerErrorNom').hide();
+            }
+            if (data.responseJSON['prenom']) {
+                $('#registerErrorPrenom').show();
+            } else {
+                $('#registerErrorPrenom').hide();
+            }
+            if (data.responseJSON['tel']) {
+                $('#registerErrorTel').show();
+            } else {
+                $('#registerErrorTel').hide();
+            }
+            if (data.responseJSON['pwd']) {
+                $('#registerErrorPwd').show();
+            } else {
+                $('#registerErrorPwd').hide();
+            }
+            if (data.responseJSON['pwd2']) {
+                $('#registerErrorPwd2').show();
+            } else {
+                $('#registerErrorPwd2').hide();
+            }
+            if (data.responseJSON['email']) {
+                $('#registerErrorEmail').show();
+            } else {
+                $('#registerErrorEmail').hide();
+            }
+            if (data.responseJSON['date']) {
+                $('#registerErrorDate').show();
+            } else {
+                $('#registerErrorDate').hide();
+            }
+        });
         return false;
     });
 
