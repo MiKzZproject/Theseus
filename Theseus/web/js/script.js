@@ -30,7 +30,7 @@
 
     $(document).on('click', function dropdownHeader(e) {
         e.stopPropagation();
-        $(this).find('[data-toggle=dropdown]').dropdown('toggle');
+        $('#dropConnexion').find('[data-toggle=dropdown]').dropdown('toggle');
     });
 
     $('.dropdown-menu').click(function (event) {

@@ -55,7 +55,7 @@ require_once "config/config.php";
                   <input type="password" placeholder="Password" class="form-control input-sm" name="password" id="Password1" />
                 </div>
                 <div class="col-sm-12">
-                  <button type="submit" class="btn btn-success btn-sm">Me connecter</button><br><br>
+                  <button type="submit" class="btn btn-success btn-sm">Me connecter</button></br></br>
                   <a class="inscriptionLink" href="registerForm.php">Cr&eacute;er mon compte ?</a><br><br>
                   <a class="forgotPasswordLink" href="#">Mot de passe oubli&eacute; ?</a>
                 </div>

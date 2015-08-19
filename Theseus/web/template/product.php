@@ -1,7 +1,4 @@
-<!doctype html>
-<head>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+
 
 <article id="product<?php echo $produit->getId() ?>" <?php if($produitsCount < 2) { echo "style='width: 48%'"; }?>>
     <div class="contentproduct" >
