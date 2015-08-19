@@ -10,6 +10,7 @@ namespace factory;
 
 
 use model\Evenement;
+use model\Produit;
 
 class FactoryEvenement {
     private $bdd;
@@ -104,5 +105,24 @@ class FactoryEvenement {
 
         $req->execute();
 
+    }
+
+    public function getProduitsByEvent($idEvent){
+        $req = $this->bdd->prepare("SELECT *
+                                    FROM evenement_produit EP, produit P
+                                    WHERE P.id = EP.idProduit
+                                    AND EP.idEvenement = :idEvent
+                                    ORDER BY RAND() LIMIT 2");
+        $req->bindValue(':idEvent',$idEvent);
+        $req->execute();
+        $produits = array();
+        while($result = $req->fetch()){
+            $produit = new Produit(array(
+                "libelle" => $result['libelle'],
+                "miniature" => $result['miniature']
+            ));
+            $produits[] = $produit;
+        }
+        return $produits;
     }
 }

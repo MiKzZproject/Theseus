@@ -20,6 +20,7 @@ class Produit
     private $prix;
     private $stock;
     private $image;
+    private $miniature;
 
     function __construct($array)
     {
@@ -50,6 +51,22 @@ class Produit
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMiniature()
+    {
+        return $this->miniature;
+    }
+
+    /**
+     * @param mixed $miniature
+     */
+    public function setMiniature($miniature)
+    {
+        $this->miniature = $miniature;
     }
 
     /**

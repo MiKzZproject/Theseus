@@ -30,7 +30,7 @@ class FactoryProduit {
     }
 
     public function addProduit($produit){
-        $req = $this->bdd->prepare('INSERT INTO produit values (null,:libelle,:marque,:modele,:description,:prix,:stock,:image)');
+        $req = $this->bdd->prepare('INSERT INTO produit values (null,:libelle,:marque,:modele,:description,:prix,:stock,:image, :miniature)');
         $req->bindValue(':libelle',$produit->getLibelle());
         $req->bindValue(':marque',$produit->getMarque());
         $req->bindValue(':modele',$produit->getModele());
@@ -38,12 +38,13 @@ class FactoryProduit {
         $req->bindValue(':prix',$produit->getPrix());
         $req->bindValue(':stock',$produit->getStock());
         $req->bindValue(':image',$produit->getImage());
+        $req->bindValue(':miniature',$produit->getMiniature());
         return $req->execute();
     }
 
     public function updateProduit($produit){
         $req = $this->bdd->prepare('UPDATE produit SET  libelle = :libelle,marque=:marque, modele=:modele,
-                                                        description=:description, prix=:prix, stock=:stock, image=:image
+                                                        description=:description, prix=:prix, stock=:stock, image=:image, miniature=:miniature
                                                         WHERE id=:id');
         $req->bindValue(':id',$produit->getId());
         $req->bindValue(':libelle',$produit->getLibelle());
@@ -53,6 +54,7 @@ class FactoryProduit {
         $req->bindValue(':prix',$produit->getPrix());
         $req->bindValue(':stock',$produit->getStock());
         $req->bindValue(':image',$produit->getImage());
+        $req->bindValue(':miniature',$produit->getMiniature());
         return $req->execute();
     }
 

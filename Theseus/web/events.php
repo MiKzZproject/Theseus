@@ -22,6 +22,9 @@ $evenements = $factoryEvenement->getEvenements();
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
         foreach ($evenements as $evenement){
+            $eventProducts = $factoryEvenement->getProduitsByEvent($evenement->getId());
+
+
             $startDate = date_create($evenement->getDateDebut());
             $startDate = $startDate->getTimestamp();
             $endDate = date_create($evenement->getDateFin());
@@ -76,6 +79,11 @@ $evenements = $factoryEvenement->getEvenements();
                                 <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> Produits : <?php echo $evenement->getTheme(); ?><br/>
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Description : <?php echo $evenement->getDescription(); ?>
                             </p>
+                            <?php
+                                foreach ($eventProducts as $produit) {  ?>
+                                    <img src="<?php echo $produit->getMiniature(); ?>"/>
+                                <?php    }
+                            ?>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
