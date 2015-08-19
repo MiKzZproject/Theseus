@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Calibri;
-    min-width: 400px;
+    min-width: 420px;
 }
 
 header {
@@ -72,6 +72,7 @@ header {
 
 #dropConnexion{
     z-index: 10000;
+    width: 200px;
 }
 
 header section{
@@ -95,10 +96,10 @@ fieldset div{
     padding: 15px;
     line-height:9px;
 }
-fieldset div:hover{
-   background-color: #30bbf2;
-    color:white;
-    cursor:pointer;
+
+fieldset .btn-group.open .dropdown-toggle {
+     -webkit-box-shadow: none;
+     box-shadow: none;
 }
 
 fieldset div p {
@@ -663,4 +664,23 @@ figure.effect-goliath:hover ~ h3{
 
 .modal-product p span{
     padding-bottom: 10px;
+}
+
+.inscriptionLink {
+    font-size: initial;
+}
+
+#dropConnexion {
+    right: 0;
+    left: auto;
+}
+
+#header_block fieldset {
+    margin: 0px;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
 }

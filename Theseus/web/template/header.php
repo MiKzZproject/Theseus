@@ -34,7 +34,7 @@ require_once "config/config.php";
       </a>
     </section>
     <section id="header_block">
-      <div class="navbar-collapse collapse">
+      <div class="navbar-collapse">
         <div class="navbar-right">
           <fieldset>
             <div class="btn-group" id="dropdownMenu">
@@ -55,35 +55,15 @@ require_once "config/config.php";
                   <input type="password" placeholder="Password" class="form-control input-sm" name="password" id="Password1" />
                 </div>
                 <div class="col-sm-12">
-                  <button type="submit" class="btn btn-success btn-sm">Sign in</button>
+                  <button type="submit" class="btn btn-success btn-sm">Me connecter</button><br><br>
+                  <a class="inscriptionLink" href="register.php">Cr&eacute;er mon compte ?</a>
                 </div>
-
-                <a href="register.php">Inscription</a>
               </div>
             </div>
           </div>
         </fieldset>
       </div>
     </div>
-
-<!--      <fieldset>-->
-<!--        <div id="dropdownMenu" class="dropdown">-->
-<!--          <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" >-->
-<!--            <span class="glyphicon glyphicon-user" aria-haspopup="true" aria-expanded="false"></span><br><br>-->
-<!--            <p>Me connecter</p>-->
-<!--          </a>-->
-<!--          <div id="dropConnexion" class="dropdown-menu pull-left" aria-labelledby="dLabel">-->
-<!--            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>-->
-<!--            <div class="dropdown-menu" style="padding:17px;">-->
-<!--              <form class="form" id="formLogin">-->
-<!--                <input name="username" id="username" type="text" placeholder="Username">-->
-<!--                <input name="password" id="password" type="password" placeholder="Password"><br>-->
-<!--                <button type="button" id="btnLogin" class="btn">Login</button>-->
-<!--              </form>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </fieldset>-->
     </section>
     <nav class="navbar navbar-custom navbar-static-top" role="navigation">
       <div class="navbar-header">

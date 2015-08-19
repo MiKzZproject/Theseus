@@ -33,6 +33,10 @@
         $(this).find('[data-toggle=dropdown]').dropdown('toggle');
     });
 
+    $('.dropdown-menu').click(function (event) {
+        event.stopPropagation();
+    });
+
     $(".newsletter .btn-primary").click(function newsletterInscription() {
         $.ajax({
             method: "POST",
