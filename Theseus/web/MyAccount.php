@@ -14,15 +14,15 @@ include('template/header.php');
 
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#commandes" aria-controls="commandes" role="tab" data-toggle="tab"><i class="icon-shopping-cart"></i> Mes Commandes</a></li>
-            <li role="presentation"><a href="#informations" aria-controls="informations" role="tab" data-toggle="tab"><i class="icon-user"></i> Mes Informations</a></li>
-            <li role="presentation"><a href="#invitations" aria-controls="invitations" role="tab" data-toggle="tab"><i class="icon-gift"></i> Mes Invitations</a></li>
-            <li role="presentation"><a href="#alertes" aria-controls="alertes" role="tab" data-toggle="tab"><i class="icon-bell"></i> Mes alertes</a></li>
-            <li role="presentation"><a href="#modifPassword" aria-controls="modifPassword" role="tab" data-toggle="tab"><i class="icon-pencil"></i> Modification mot de passe</a></li>
+            <li role="presentation" class="active"><a href="#commandes" aria-controls="commandes" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart"></span> Mes Commandes</a></li>
+            <li role="presentation"><a href="#informations" aria-controls="informations" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-user"></span> Mes Informations</a></li>
+            <li role="presentation"><a href="#invitations" aria-controls="invitations" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-envelope"></span> Mes Invitations</a></li>
+            <li role="presentation"><a href="#alertes" aria-controls="alertes" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-bell"></span> Mes alertes</a></li>
+            <li role="presentation"><a href="#modifPassword" aria-controls="modifPassword" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Modification mot de passe</a></li>
         </ul>
 
         <!-- Tabs -->
-        <div class="tab-content">.
+        <div class="tab-content">
             <br />
             <div role="tabpanel" class="tab-pane active" id="commandes">
                 <table class="table">

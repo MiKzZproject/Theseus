@@ -84,7 +84,7 @@ require_once "config/config.php";
           <li id="menuProductPhare" ><a href="featuredProducts.php">Les Produits phares</a></li>
           <li id="menuProduct" ><a href="products.php">Nos Produits</a></li>
           <li id="menuEvent" ><a href="events.php">Nos Events</a></li>
-          <li id="menuAccount" ><a href="#">Mon Compte</a></li>
+          <li id="menuAccount" ><a href="myaccount.php">Mon Compte</a></li>
         </ul>
         <form class="navbar-form navbar-right" role="search">
           <div class="input-group">
