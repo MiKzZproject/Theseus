@@ -74,7 +74,7 @@ require '../../vendor/autoload.php';
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-title" href="#"></a>
+        <a style="text-decoration: none;" class="navbar-title" href="#"></a>
       </div>
 
       <div class="collapse navbar-collapse" id="menu-collapse">

@@ -2,6 +2,7 @@
 
 <article id="product<?php echo $produit->getId() ?>" <?php if($produitsCount < 2) { echo "style='width: 48%'"; }?>>
     <div class="contentproduct" >
+        <div class="infoProduct">
         <a href="#" data-toggle="modal" data-target="#modalProduit<?php echo $produit->getId() ?>" >
             <img src="<?php echo $produit->getImage() ?>"/>
             <h3> <?php echo $produit->getLibelle() ?></h3>
@@ -10,6 +11,9 @@
         <a href="#" data-toggle="modal" data-target="#modalProduit<?php echo $produit->getId() ?>">
             <?php echo substr($produit->getDescription(),0,200)."..." ?>
         </a>
+        </div>
+    </div>
+    <div>
         <table
             id="productinfos">
             <tr>

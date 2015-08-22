@@ -2,32 +2,25 @@
 
     "use strict";
 
-    function searchCategorie(data) {
-        $.ajax({
-            method: "POST",
-            url: "productsFiltered.php",
-            data: {categorie : data}
-        })
-            .done(function successFilter( content ) {
-                $('#product-content').html(content);
-            });
-    }
+    var page = window.location.pathname.substring(21);
 
-    if(location.pathname === '/index.php' || location.pathname === '/') {
+    if(page === 'index.php' || page === '') {
         $("#menuHome").addClass("navbar-brand");
         $(".navbar-title").append("Home");
-    } else if (location.pathname === '/events.php') {
+    } else if (page === 'events.php') {
         $("#menuEvent").addClass("navbar-brand");
         $(".navbar-title").append("Les Évènements");
-    } else if (location.pathname === '/products.php') {
+    } else if (page === 'products.php') {
         $("#menuProduct").addClass("navbar-brand");
         $(".navbar-title").append("Les Produits");
-    } else if (location.pathname === '/productsPhares.php') {
+    } else if (page === 'featuredProducts.php') {
         $("#menuProductPhare").addClass("navbar-brand");
         $(".navbar-title").append("Les produits phares");
-    } else if (location.pathname === '/account.php') {
+    } else if (page === 'myaccount.php') {
         $("#menuAccount").addClass("navbar-brand");
         $(".navbar-title").append("Mon compte");
+    } else if (page === 'registerForm.php') {
+        $(".navbar-title").append("Inscription");
     }
 
     $(document).on('click', function dropdownHeader(e) {
@@ -118,6 +111,17 @@
         });
         return false;
     });
+
+    function searchCategorie(data) {
+        $.ajax({
+            method: "POST",
+            url: "productsFiltered.php",
+            data: {categorie : data}
+        })
+            .done(function successFilter( content ) {
+                $('#product-content').html(content);
+            });
+    }
 
     $("#selectcatprod").change(function filterCategorie() {
         searchCategorie($( "#selectcatprod option:selected").val());

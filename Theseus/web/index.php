@@ -38,25 +38,31 @@ include 'template/header.php';
   <section id="event">
     <div class="grid">
       <figure class="effect-goliath">
+        <a href="featuredProducts.php">
         <h2>Produits phares</h2>
-        <img src="img/products/panasonic-lumix-fz1000.jpg" alt="lumix"/>
+        <img src="img/products/panasonic-lumix-fz10002.jpg" alt="lumix"/>
         <figcaption>
-          <p><a href="products.php">Sélection de nos meilleurs produits !</a></p>
+          <p><a href="featuredProducts.php">Sélection de nos meilleurs produits !</a></p>
         </figcaption>
+        </a>
       </figure>
       <figure class="effect-goliath">
+        <a href="events.php">
         <h2>Events</h2>
         <img src="img/others/ventes2.jpg" alt="lacieDD"/>
         <figcaption>
           <p><a href="events.php">Découvrez nos prochains évents !</a></p>
         </figcaption>
+        </a>
       </figure>
       <figure class="effect-goliath" data-toggle="modal" data-target=".newsletter">
+        <a href="#">
         <h2>News et alertes</h2>
-        <img src="img/others/abonnes-newsletter2.jpg" alt="newsletter"/>
+        <img src="img/others/abonnes-newsletter.jpg" alt="newsletter"/>
         <figcaption>
           <p><a href="#">S'inscrire</a></p>
         </figcaption>
+          </a>
       </figure>
       <!-- Modal -->
       <div class="modal fade newsletter" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
