@@ -42,8 +42,9 @@ if (!$errors) {
         "alerte" => $alerte
     ));
 
-    $factoryClient = new control\FactoryClient($bdd);
-    $result = ($factoryClient->addClient($client));
+    $db = \config\Db::getInstance();
+    $controlClient = new control\ControlClient($db);
+    $result = ($controlClient->addClient($client));
 
     $response = json_encode(['type' => 'ok']);
     echo $response;

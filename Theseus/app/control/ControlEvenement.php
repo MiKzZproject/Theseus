@@ -9,19 +9,22 @@
 namespace control;
 
 
+use config\Db;
 use model\Evenement;
 use model\Produit;
 
 class ControlEvenement {
-    private $bdd;
 
-    public function __construct($bdd)
+    private $db;
+
+    public function __construct(Db $db)
     {
-        $this->bdd = $bdd;
+        if (!$db) throw new InvalidArgumentException("First argument is expected to be a valid PDO instance, NULL given");
+        $this->db = $db->getPDOInstance();
     }
 
     public function getEvenements(){
-        $req = $this->bdd->prepare('SELECT *
+        $req = $this->db->prepare('SELECT *
                                     FROM evenement
                                     ORDER BY dateDebut ASC');
         $req->execute();
@@ -34,7 +37,7 @@ class ControlEvenement {
     }
 
     public function addEvenement($evenement){
-        $req = $this->bdd->prepare('INSERT INTO evenement (libelle,lieu,description,adresse,cp,ville,dateDebut,dateFin,place,image,theme,miniature1)
+        $req = $this->db->prepare('INSERT INTO evenement (libelle,lieu,description,adresse,cp,ville,dateDebut,dateFin,place,image,theme,miniature1)
                                     VALUES (:libelle,
                                             :lieu,
                                             :description,
@@ -65,7 +68,7 @@ class ControlEvenement {
     }
 
     public function updateEvenement($evenement){
-        $req = $this->bdd->prepare('UPDATE evenement
+        $req = $this->db->prepare('UPDATE evenement
                                     SET libelle = :libelle,
                                         lieu = :lieu,
                                         description = :description,
@@ -98,7 +101,7 @@ class ControlEvenement {
     }
 
     public function deleteEvenement($id){
-        $req = $this->bdd->prepare('DELETE
+        $req = $this->db->prepare('DELETE
                                     FROM evenement
                                     WHERE id = :id ');
         $req->bindValue(':id',$id->getId());
@@ -108,7 +111,7 @@ class ControlEvenement {
     }
 
     public function getProduitsByEvent($idEvent){
-        $req = $this->bdd->prepare("SELECT *
+        $req = $this->db->prepare("SELECT *
                                     FROM evenement_produit EP, produit P
                                     WHERE P.id = EP.idProduit
                                     AND EP.idEvenement = :idEvent

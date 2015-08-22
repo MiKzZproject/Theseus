@@ -7,13 +7,13 @@
  */
 
 include 'template/header.php';
+$db = \config\Db::getInstance();
+$controlProduits = new control\ControlProduit($db);
+$produits = $controlProduits->getProduits();
+$produitsCount = $controlProduits->getProduitsCount();
 
-$factoryProduits = new control\FactoryProduit($bdd);
-$produits = $factoryProduits->getProduits();
-$produitsCount = $factoryProduits->getProduitsCount();
-
-$factoryCategorie = new control\FactoryCategorie($bdd);
-$categories = $factoryCategorie->getCategories();
+$controlCategories = new control\ControlCategorie($db);
+$categories = $controlCategories->getCategories();
 ?>
 <section id="product-content">
     <div class="form-group" id="productfilter">

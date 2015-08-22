@@ -9,18 +9,21 @@
 namespace control;
 
 
+use config\Db;
 use model\Client;
 
 class ControlClient {
-    private $bdd;
 
-    public function __construct($bdd)
+    private $db;
+
+    public function __construct(Db $db)
     {
-        $this->bdd = $bdd;
+        if (!$db) throw new InvalidArgumentException("First argument is expected to be a valid PDO instance, NULL given");
+        $this->db = $db->getPDOInstance();
     }
 
     public function getClients(){
-        $req = $this->bdd->prepare('SELECT * FROM client');
+        $req = $this->db->prepare('SELECT * FROM client');
         $req->execute();
         while($result = $req->fetch()){
             $client = new client($result);
@@ -30,7 +33,7 @@ class ControlClient {
     }
 
     public function addClient(Client $client){
-        $req = $this->bdd->prepare('INSERT INTO client values (null,:nom,:prenom,:dateNaissance,:tel,:email,:pwd, CURRENT_TIMESTAMP ,:newsletters,:alerte)');
+        $req = $this->db->prepare('INSERT INTO client values (null,:nom,:prenom,:dateNaissance,:tel,:email,:pwd, CURRENT_TIMESTAMP ,:newsletters,:alerte)');
         $req->bindValue(':nom',$client->getNom());
         $req->bindValue(':prenom',$client->getPrenom());
         $req->bindValue(':dateNaissance',$client->getDateNaissance());
@@ -43,7 +46,7 @@ class ControlClient {
     }
 
     public function updateClient(Client $client){
-        $req = $this->bdd->prepare('UPDATE client SET  nom = :nom,
+        $req = $this->db->prepare('UPDATE client SET  nom = :nom,
                                                         prenom=:prenom,
                                                         dateNaissance=:dateNaissance,
                                                         tel=:tel,
@@ -65,7 +68,7 @@ class ControlClient {
     }
 
     public function deleteClient($id){
-        $req = $this->bdd->prepare('DELETE FROM client WHERE id=:id');
+        $req = $this->db->prepare('DELETE FROM client WHERE id=:id');
         $req->bindValue(':id', $id);
         return $req->execute();
     }

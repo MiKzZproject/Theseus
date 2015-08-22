@@ -6,7 +6,6 @@
  * Time: 13:05
  */
 require '../../vendor/autoload.php';
-require_once "config/config.php";
 
 ?>
 <!doctype html>

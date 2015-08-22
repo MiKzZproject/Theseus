@@ -8,8 +8,9 @@
 
 include 'template/header.php';
 
-$factoryEvenement = new control\FactoryEvenement($bdd);
-$evenements = $factoryEvenement->getEvenements();
+$db = \config\Db::getInstance();
+$controlEvenement = new control\ControlEvenement($db);
+$evenements = $controlEvenement->getEvenements();
 
 ?>
 
@@ -22,9 +23,8 @@ $evenements = $factoryEvenement->getEvenements();
         setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
         foreach ($evenements as $evenement){
-            $eventProducts = $factoryEvenement->getProduitsByEvent($evenement->getId());
 
-
+            $eventProducts = $controlEvenement->getProduitsByEvent($evenement->getId());
             $startDate = date_create($evenement->getDateDebut());
             $startDate = $startDate->getTimestamp();
             $endDate = date_create($evenement->getDateFin());

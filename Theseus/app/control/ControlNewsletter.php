@@ -8,20 +8,21 @@
 
 namespace control;
 
+use config\Db;
 use model\Newsletter;
 
 class ControlNewsletter {
 
+    private $db;
 
-    private $bdd;
-
-    public function __construct($bdd)
+    public function __construct(Db $db)
     {
-        $this->bdd = $bdd;
+        if (!$db) throw new InvalidArgumentException("First argument is expected to be a valid PDO instance, NULL given");
+        $this->db = $db->getPDOInstance();
     }
 
     public function getNewsletters(){
-        $req = $this->bdd->prepare('SELECT *
+        $req = $this->db->prepare('SELECT *
                                     FROM newsletter');
         $req->execute();
 
@@ -33,14 +34,14 @@ class ControlNewsletter {
     }
 
     public function addNewsletter($newsletter){
-        $req = $this->bdd->prepare('INSERT INTO newsletter (mail)
+        $req = $this->db->prepare('INSERT INTO newsletter (mail)
                                     VALUES (:mail)');
         $req->bindValue(':mail',$newsletter->getMail());
         return $req->execute();
     }
 
     public function updateNewsletter($newsletter){
-        $req = $this->bdd->prepare('UPDATE newsletter
+        $req = $this->db->prepare('UPDATE newsletter
                                     SET mail = :mail
                                     WHERE id = :id ');
 
@@ -51,7 +52,7 @@ class ControlNewsletter {
     }
 
     public function deleteNewsletter($id){
-        $req = $this->bdd->prepare('DELETE
+        $req = $this->db->prepare('DELETE
                                     FROM newsletter
                                     WHERE id = :id ');
 

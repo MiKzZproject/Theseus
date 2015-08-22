@@ -8,15 +8,17 @@
 
 namespace control;
 
+use config\Db;
 use model\Admin;
 
 class ControlAdmin {
 
     private $db;
 
-    public function __construct($db)
+    public function __construct(Db $db)
     {
-        $this->db = $db;
+        if (!$db) throw new InvalidArgumentException("First argument is expected to be a valid PDO instance, NULL given");
+        $this->db = $db->getPDOInstance();
     }
 
     public function connection($array){

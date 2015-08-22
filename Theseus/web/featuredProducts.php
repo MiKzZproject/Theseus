@@ -8,9 +8,10 @@
 
 include 'template/header.php';
 
-$factoryProduits = new control\FactoryProduit($bdd);
-$produits = $factoryProduits->getFeaturedProducts();
-$produitsCount = $factoryProduits->getProduitsCount();
+$db = \config\Db::getInstance();
+$controlProduits = new control\ControlProduit($db);
+$produits = $controlProduits->getFeaturedProducts();
+$produitsCount = $controlProduits->getProduitsCount();
 
 ?>
     <section id="product-content">

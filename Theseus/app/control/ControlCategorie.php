@@ -8,19 +8,21 @@
 
 namespace control;
 
+use config\Db;
 use model\Categorie;
 
 class ControlCategorie {
 
-    private $bdd;
+    private $db;
 
-    public function __construct($bdd)
+    public function __construct(Db $db)
     {
-        $this->bdd = $bdd;
+        if (!$db) throw new InvalidArgumentException("First argument is expected to be a valid PDO instance, NULL given");
+        $this->db = $db->getPDOInstance();
     }
 
     public function getCategories(){
-        $req = $this->bdd->prepare('SELECT * FROM categorie');
+        $req = $this->db->prepare('SELECT * FROM categorie');
         $req->execute();
         while($result = $req->fetch()){
             $categorie = new Categorie($result);
@@ -30,7 +32,7 @@ class ControlCategorie {
     }
 
     public function getCategorie($id){
-        $req = $this->bdd->prepare('SELECT * FROM categorie WHERE id = :id');
+        $req = $this->db->prepare('SELECT * FROM categorie WHERE id = :id');
         $req->bindValue(':id',$id);
         $req->execute();
         if($result = $req->fetch()){
@@ -40,7 +42,7 @@ class ControlCategorie {
     }
 
     public function addCategorie($categorie){
-        $req = $this->bdd->prepare('INSERT INTO categorie values (null, :nom,:image)');
+        $req = $this->db->prepare('INSERT INTO categorie values (null, :nom,:image)');
         $req->bindValue(':nom',$categorie->getNom());
         $req->bindValue(':nom',$categorie->getDescription());
         $req->bindValue(':image',$categorie->getImage());
@@ -48,7 +50,7 @@ class ControlCategorie {
     }
 
     public function updateCategorie($categorie) {
-        $req = $this->bdd->prepare('UPDATE categorie SET nom = :nom, image=:image WHERE id=:id');
+        $req = $this->db->prepare('UPDATE categorie SET nom = :nom, image=:image WHERE id=:id');
         $req->bindValue(':id',$categorie->getId());
         $req->bindValue(':nom',$categorie->getNom());
         $req->bindValue(':image',$categorie->getImage());
@@ -56,7 +58,7 @@ class ControlCategorie {
     }
 
     public function deleteCategorie($id) {
-        $req = $this->bdd->prepare('DELETE FROM categorie WHERE id=:id');
+        $req = $this->db->prepare('DELETE FROM categorie WHERE id=:id');
         $req->bindValue(':id',$id);
         return $req->execute();
     }
