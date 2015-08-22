@@ -8,7 +8,7 @@
 
 include 'template/header.php';
 
-$factoryEvenement = new factory\FactoryEvenement($bdd);
+$factoryEvenement = new control\FactoryEvenement($bdd);
 $evenements = $factoryEvenement->getEvenements();
 
 ?>

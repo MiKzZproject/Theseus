@@ -42,7 +42,7 @@ if (!$errors) {
         "alerte" => $alerte
     ));
 
-    $factoryClient = new factory\FactoryClient($bdd);
+    $factoryClient = new control\FactoryClient($bdd);
     $result = ($factoryClient->addClient($client));
 
     $response = json_encode(['type' => 'ok']);

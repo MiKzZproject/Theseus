@@ -6,12 +6,12 @@
  * Time: 16:43
  */
 
-namespace factory;
+namespace control;
 
 
 use model\Produit;
 
-class FactoryProduit {
+class ControlProduit {
     private $bdd;
 
     public function __construct($bdd)

@@ -8,7 +8,7 @@
 
 include 'template/header.php';
 
-$factoryProduits = new factory\FactoryProduit($bdd);
+$factoryProduits = new control\FactoryProduit($bdd);
 $produits = $factoryProduits->getFeaturedProducts();
 $produitsCount = $factoryProduits->getProduitsCount();
 

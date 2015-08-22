@@ -6,11 +6,11 @@
  * Time: 12:52
  */
 
-namespace factory;
+namespace control;
 
 use model\Newsletter;
 
-class FactoryNewsletter {
+class ControlNewsletter {
 
 
     private $bdd;

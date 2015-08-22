@@ -3,11 +3,11 @@
 require '../../vendor/autoload.php';
 require 'config/config.php';
 
-$factoryProduits = new factory\FactoryProduit($bdd);
+$factoryProduits = new control\FactoryProduit($bdd);
 $produits = $factoryProduits->getProduitsByCategorie($_POST['categorie']);
 $produitsCount = $factoryProduits->getProduitsByCategorieCount($_POST['categorie']);
 
-$factoryCategorie = new factory\FactoryCategorie($bdd);
+$factoryCategorie = new control\FactoryCategorie($bdd);
 $categories = $factoryCategorie->getCategories();
 ?>
 <div class="form-group" id="productfilter">

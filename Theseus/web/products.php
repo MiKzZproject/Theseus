@@ -8,11 +8,11 @@
 
 include 'template/header.php';
 
-$factoryProduits = new factory\FactoryProduit($bdd);
+$factoryProduits = new control\FactoryProduit($bdd);
 $produits = $factoryProduits->getProduits();
 $produitsCount = $factoryProduits->getProduitsCount();
 
-$factoryCategorie = new factory\FactoryCategorie($bdd);
+$factoryCategorie = new control\FactoryCategorie($bdd);
 $categories = $factoryCategorie->getCategories();
 ?>
 <section id="product-content">

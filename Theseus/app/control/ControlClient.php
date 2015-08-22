@@ -6,12 +6,12 @@
  * Time: 16:43
  */
 
-namespace factory;
+namespace control;
 
 
 use model\Client;
 
-class FactoryClient {
+class ControlClient {
     private $bdd;
 
     public function __construct($bdd)

@@ -16,7 +16,7 @@ if(!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
 require '../../vendor/autoload.php';
 require_once "config/config.php";
 
-$factoryNewsletter = new factory\FactoryNewsletter($bdd);
+$factoryNewsletter = new control\FactoryNewsletter($bdd);
 $newsletter = new \model\Newsletter(array(
     "mail" => $_POST['mail']
 ));

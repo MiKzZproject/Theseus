@@ -6,11 +6,11 @@
  * Time: 14:37
  */
 
-namespace factory;
+namespace control;
 
 use model\Categorie;
 
-class FactoryCategorie {
+class ControlCategorie {
 
     private $bdd;
 
