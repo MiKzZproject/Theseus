@@ -4,11 +4,17 @@ require '../../vendor/autoload.php';
 
 $db = \config\Db::getInstance();
 $controlProduits = new control\ControlProduit($db);
-$produits = $controlProduits->getProduitsByCategorie($_POST['categorie']);
-$produitsCount = $controlProduits->getProduitsByCategorieCount($_POST['categorie']);
+
+$perPage = 9;
+$page = isset($_GET['pf']) ? $_GET['pf'] : 1;
+
+$produits = $controlProduits->getProduitsByCategorie($_POST['categorie'], $perPage, $page-1);
+$produitsCount = $controlProduits->getProduitsCount($_POST['categorie']);
+$nbPage = ceil($produitsCount/$perPage);
 
 $controlCategorie = new control\ControlCategorie($db);
 $categories = $controlCategorie->getCategories();
+
 ?>
 <div class="form-group" id="productfilter">
     <select id="selectcatprod" class="form-control">
@@ -32,6 +38,17 @@ $categories = $controlCategorie->getCategories();
         <?php foreach ($produits as $produit) {
             include 'template/product.php';
         } ?>
+    </div>
+    <div class="paginationProduct">
+<!--        affichage pagination-->
+        <nav>
+            <ul class="pager">
+                <li class="previous"><a href="productsFiltered.php?pf=<?php echo $page-1 ?>">Previous</a></li>
+                <li><a href="#"><?php echo $page ?></a></li>
+                <li class="next"><a href="productsFiltered.php?pf=<?php echo $page+1 ?>">Next</a></li>
+            </ul>
+        </nav>
+<!--        // fin pagination-->
     </div>
 <?php } ?>
 <script src="js/script.js"></script>

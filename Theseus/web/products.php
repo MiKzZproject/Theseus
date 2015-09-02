@@ -11,16 +11,17 @@ $db = \config\Db::getInstance();
 $controlProduits = new control\ControlProduit($db);
 
 // pagination
-$Page = isset($_GET['p']) ? $_GET['p'] : 1;
-$PerPage = 9;
+$page = isset($_GET['p']) ? $_GET['p'] : 1;
+$perPage = 9;
 
-$produits = $controlProduits->getProduitsPagination($Page-1, $PerPage);
+$produits = $controlProduits->getProduitsPagination($page-1, $perPage);
 $produitsCount = $controlProduits->getProduitsCount();
-$nbPage = ceil($produitsCount/$PerPage);
+$nbPage = ceil($produitsCount/$perPage);
 //
 
 $controlCategories = new control\ControlCategorie($db);
 $categories = $controlCategories->getCategories();
+
 ?>
 <section id="product-content">
     <div class="form-group" id="productfilter">
@@ -35,23 +36,6 @@ $categories = $controlCategories->getCategories();
     </div>
 <h1>Nos Produits</h1>
 
-<div class="paginationProduct">
-    <?php
-    //affichage pagination
-
-    for($i=1; $i<=$nbPage; $i++)
-    {
-        if($i==$Page){
-            echo " $i / ";
-        } else {
-            echo " <a href='products.php?p=$i'>$i</a> /";
-        }
-    }
-
-    // fin pagination
-    ?>
-</div>
-
 <?php
 if(empty($produits)) {
     ?>
@@ -61,24 +45,21 @@ if(empty($produits)) {
         <?php foreach ($produits as $produit) {
             include 'template/product.php';
        } ?>
+        <div class="paginationProduct">
+            <div class="paginationProduct">
+                <!--        affichage pagination-->
+                <nav>
+                    <ul class="pager">
+                        <li class="previous"><a href="products.php?p=<?php echo $page-1 ?>">Previous</a></li>
+                        <li><a href="#"><?php echo $page ?></a></li>
+                        <li class="next"><a href="products.php?p=<?php echo $page+1 ?>">Next</a></li>
+                    </ul>
+                </nav>
+                <!--        // fin pagination-->
+            </div>
+        </div>
     </div>
 <?php } ?>
 </section>
-<div class="paginationProduct">
-    <?php
-    //affichage pagination
-
-    for($i=1; $i<=$nbPage; $i++)
-        {
-            if($i==$Page){
-                echo " $i / ";
-            } else {
-                echo " <a href='products.php?p=$i'>$i</a> /";
-            }
-        }
-
-    // fin pagination
-?>
-</div>
 <?php
 include 'template/footer.php';

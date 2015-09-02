@@ -67,10 +67,11 @@ class ControlProduit {
         return $req->execute();
     }
 
-    public function getProduitsByCategorie($categorie){
+    public function getProduitsByCategorie($categorie,$limit = 0, $page = 1 ){
         $produits = [];
         if(is_numeric($categorie)) {
-            $req = $this->db->prepare("SELECT * FROM categorie_produit C, produit P where C.idProduit = P.id and C.idCategorie = $categorie");
+            $sql = "SELECT * FROM categorie_produit C, produit P where C.idProduit = P.id and C.idCategorie = $categorie LIMIT ".($page * $limit).",".$limit;
+            $req = $this->db->prepare($sql);
             $req->execute();
             while ($result = $req->fetch()) {
                 $produit = new Produit($result);
@@ -78,22 +79,17 @@ class ControlProduit {
             }
             return $produits ? $produits : false;
         } else {
-            return $this->getProduits();
+            return $this->getProduitsPagination(1, 9);
         }
     }
 
-    public function getProduitsByCategorieCount($categorie){
+    public function getProduitsCount($categorie = null){
         if(is_numeric($categorie)) {
-            $req = $this->db->prepare("SELECT count(*) as count FROM categorie_produit C, produit P where C.idProduit = P.id and C.idCategorie = $categorie");
-            $req->execute();
-            $result = $req->fetch();
-            return $result['count'];
+            $sql = "SELECT count(*) as count FROM  produit P, categorie_produit C where C.idProduit = P.id and C.idCategorie = $categorie";
+        } else {
+            $sql = "SELECT count(*) as count FROM produit ";
         }
-        return false;
-    }
-
-    public function getProduitsCount(){
-        $req = $this->db->prepare("SELECT count(*) as count FROM produit ");
+        $req = $this->db->prepare($sql);
         $req->execute();
         $result = $req->fetch();
         return $result['count'];
@@ -116,6 +112,6 @@ class ControlProduit {
             $produit = new Produit($result);
             $produits[] = $produit;
         }
-        return $produits;
+        return !empty($produits) ? $produits : false;
     }
 }
