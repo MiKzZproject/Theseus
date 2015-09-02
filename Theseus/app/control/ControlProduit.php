@@ -108,14 +108,4 @@ class ControlProduit {
         }
         return $produits;
     }
-
-    public function getProduitsPagination($Page, $nbProduits = 9){
-        $req = $this->db->prepare('SELECT * FROM produit LIMIT '.($Page * $nbProduits).','.$nbProduits);
-        $req->execute();
-        while($result = $req->fetch()){
-            $produit = new Produit($result);
-            $produits[] = $produit;
-        }
-        return $produits;
-    }
 }

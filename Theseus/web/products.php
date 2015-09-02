@@ -9,17 +9,8 @@
 include 'template/header.php';
 $db = \config\Db::getInstance();
 $controlProduits = new control\ControlProduit($db);
-
-// pagination
-$Page = $_GET['p'];
-if (empty($Page))
-    $Page = 1;
-$PerPage = 9;
-
-$produits = $controlProduits->getProduitsPagination($Page-1, $PerPage);
+$produits = $controlProduits->getProduits();
 $produitsCount = $controlProduits->getProduitsCount();
-$nbPage = ceil($produitsCount/$PerPage);
-//
 
 $controlCategories = new control\ControlCategorie($db);
 $categories = $controlCategories->getCategories();
@@ -36,24 +27,6 @@ $categories = $controlCategories->getCategories();
         </select>
     </div>
 <h1>Nos Produits</h1>
-
-<div class="paginationProduct">
-    <?php
-    //affichage pagination
-
-    for($i=1; $i<=$nbPage; $i++)
-    {
-        if($i==$Page){
-            echo " $i / ";
-        } else {
-            echo " <a href='products.php?p=$i'>$i</a> /";
-        }
-    }
-
-    // fin pagination
-    ?>
-</div>
-
 <?php
 if(empty($produits)) {
     ?>
@@ -66,21 +39,5 @@ if(empty($produits)) {
     </div>
 <?php } ?>
 </section>
-<div class="paginationProduct">
-    <?php
-    //affichage pagination
-
-    for($i=1; $i<=$nbPage; $i++)
-        {
-            if($i==$Page){
-                echo " $i / ";
-            } else {
-                echo " <a href='products.php?p=$i'>$i</a> /";
-            }
-        }
-
-    // fin pagination
-?>
-</div>
 <?php
 include 'template/footer.php';
