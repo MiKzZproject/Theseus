@@ -11,9 +11,7 @@ $db = \config\Db::getInstance();
 $controlProduits = new control\ControlProduit($db);
 
 // pagination
-$Page = isset($_GET['p']) ? $_GET['p'] : "";
-if (empty($Page))
-    $Page = 1;
+$Page = isset($_GET['p']) ? $_GET['p'] : 1;
 $PerPage = 9;
 
 $produits = $controlProduits->getProduitsPagination($Page-1, $PerPage);
