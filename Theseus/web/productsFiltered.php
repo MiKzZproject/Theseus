@@ -1,7 +1,6 @@
 <?php
 
 require '../../vendor/autoload.php';
-require 'config/config.php';
 
 $db = \config\Db::getInstance();
 $controlProduits = new control\ControlProduit($db);
