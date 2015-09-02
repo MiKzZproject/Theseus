@@ -10,6 +10,7 @@ include 'template/header.php';
 $db = \config\Db::getInstance();
 $controlProduits = new control\ControlProduit($db);
 
+
 // pagination
 $page = isset($_GET['p']) ? $_GET['p'] : 1;
 $perPage = 9;
@@ -50,9 +51,9 @@ if(empty($produits)) {
                 <!--        affichage pagination-->
                 <nav>
                     <ul class="pager">
-                        <li class="previous"><a href="products.php?p=<?php echo $page-1 ?>">Previous</a></li>
-                        <li><a href="#"><?php echo $page ?></a></li>
-                        <li class="next"><a href="products.php?p=<?php echo $page+1 ?>">Next</a></li>
+                        <li class="previous <?php if($page == 1)  echo "disabled"; ?>"><a href="<?php if($page == 1) { echo "#"; } else { echo "products.php?p=".($page-1); } ?>">Previous</a></li>
+                        <li class="active"><a><?php echo $page ?></a></li>
+                        <li class="next <?php if($page == $nbPage) echo "disabled"; ?>"><a href="<?php if($page == $nbPage) { echo "#"; } else { echo "products.php?p=".($page+1); } ?>">Next</a></li>
                     </ul>
                 </nav>
                 <!--        // fin pagination-->
