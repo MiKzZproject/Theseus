@@ -19,6 +19,7 @@ include('template/header.php');
             <li role="presentation"><a href="#invitations" aria-controls="invitations" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-envelope"></span> Mes Invitations</a></li>
             <li role="presentation"><a href="#alertes" aria-controls="alertes" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-bell"></span> Mes alertes</a></li>
             <li role="presentation"><a href="#modifPassword" aria-controls="modifPassword" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Modification mot de passe</a></li>
+            <li role="presentation"><a href="#abo" aria-controls="abo" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> abonnement</a></li>
         </ul>
 
         <!-- Tabs -->
@@ -123,6 +124,14 @@ include('template/header.php');
                             <button type="submit" class="btn">Enregistrer modifications</button>
                         </div>
                     </div>
+                </form>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="abo">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="WQH6PRWJHK35J">
+                    <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
                 </form>
             </div>
         </div>
