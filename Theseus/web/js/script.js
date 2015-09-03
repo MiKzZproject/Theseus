@@ -6,21 +6,21 @@
 
     if(page === 'index.php' || page === '') {
         $("#menuHome").addClass("navbar-brand");
-        $(".navbar-title").append("Home");
+        $(".navbar-title").text("Home");
     } else if (page === 'events.php') {
         $("#menuEvent").addClass("navbar-brand");
-        $(".navbar-title").append("Les Évènements");
+        $(".navbar-title").text("Les Évènements");
     } else if (page === 'products.php') {
         $("#menuProduct").addClass("navbar-brand");
-        $(".navbar-title").append("Les Produits");
+        $(".navbar-title").text("Les Produits");
     } else if (page === 'featuredProducts.php') {
         $("#menuProductPhare").addClass("navbar-brand");
-        $(".navbar-title").append("Les produits phares");
+        $(".navbar-title").text("Les produits phares");
     } else if (page === 'myaccount.php') {
         $("#menuAccount").addClass("navbar-brand");
-        $(".navbar-title").append("Mon compte");
+        $(".navbar-title").text("Mon compte");
     } else if (page === 'registerForm.php') {
-        $(".navbar-title").append("Inscription");
+        $(".navbar-title").text("Inscription");
     }
 
     $(document).on('click', function dropdownHeader(e) {
@@ -112,11 +112,27 @@
         return false;
     });
 
-    function searchCategorie(data) {
+    function pagination(page) {
+        var cat = $( "#selectcatprod option:selected").val();
+        var nbPage = $( "#currentPage").attr("data-nbpage");
+
         $.ajax({
             method: "POST",
             url: "productsFiltered.php",
-            data: {categorie : data}
+            data: {categorie : cat, page : page, nbPage : nbPage}
+        })
+        .done(function successFilter( content ) {
+            $('#product-content').html(content);
+        });
+    }
+
+
+    function searchCategorie() {
+        var cat = $( "#selectcatprod option:selected").val();
+        $.ajax({
+            method: "POST",
+            url: "productsFiltered.php",
+            data: {categorie : cat, page : 1}
         })
             .done(function successFilter( content ) {
                 $('#product-content').html(content);
@@ -124,8 +140,28 @@
     }
 
     $("#selectcatprod").change(function filterCategorie() {
-        searchCategorie($( "#selectcatprod option:selected").val());
+        searchCategorie();
     });
 
+    $(".previous").click(function registerClient() {
+        var page = $( "#currentPage").attr("data-page");
+        if(page === "1") {
+            return false;
+        } else {
+            pagination(--page);
+            return false;
+        }
+    });
+
+    $(".next").click(function registerClient() {
+        var page = $( "#currentPage").attr("data-page");
+        var nbPage = $( "#currentPage").attr("data-nbpage");
+        if (page === nbPage) {
+            return false;
+        } else {
+            pagination(++page);
+            return false;
+        }
+    });
 })();
 

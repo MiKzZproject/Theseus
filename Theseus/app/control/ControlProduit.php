@@ -79,7 +79,7 @@ class ControlProduit {
             }
             return $produits ? $produits : false;
         } else {
-            return $this->getProduitsPagination(1, 9);
+            return $this->getProduitsPagination($page, $limit);
         }
     }
 

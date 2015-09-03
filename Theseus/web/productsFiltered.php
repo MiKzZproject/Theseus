@@ -5,11 +5,12 @@ require '../../vendor/autoload.php';
 $db = \config\Db::getInstance();
 $controlProduits = new control\ControlProduit($db);
 
-$perPage = 9;
-$page = isset($_GET['pf']) ? $_GET['pf'] : 1;
+$perPage = \config\Theseus::NBPERPAGEPRODUCT;
+$page = isset($_POST['page']) ? $_POST['page'] : 1;
+$cat = isset($_POST['categorie']) ? $_POST['categorie'] : 'all';
 
-$produits = $controlProduits->getProduitsByCategorie($_POST['categorie'], $perPage, $page-1);
-$produitsCount = $controlProduits->getProduitsCount($_POST['categorie']);
+$produits = $controlProduits->getProduitsByCategorie($cat, $perPage, $page-1);
+$produitsCount = $controlProduits->getProduitsCount($cat);
 $nbPage = ceil($produitsCount/$perPage);
 
 $controlCategorie = new control\ControlCategorie($db);
@@ -22,7 +23,7 @@ $categories = $controlCategorie->getCategories();
         <?php
         foreach ($categories as $categorie ) {
             $selected = "";
-            if($categorie->getId() == $_POST['categorie']) {
+            if($categorie->getId() == $cat) {
                 $selected = "selected";
             }
             echo "<option class='selectcat' value='".$categorie->getId()."'".$selected.">".$categorie->getNom() ."</option>";
@@ -42,10 +43,10 @@ $categories = $controlCategorie->getCategories();
     <div class="paginationProduct">
 <!--        affichage pagination-->
         <nav>
-            <ul class="pager">
-                <li class="previous <?php if($page == 1) echo "disabled"; ?>"><a <?php if($page != 1) { echo "href=productsFiltered.php?pf=".($page-1); } ?> >Previous</a></li>
-                <li class="active"><a><?php echo $page ?></a></li>
-                <li class="next <?php if($page == $nbPage) echo "disabled"; ?>"><a <?php if($page != $nbPage) { echo "href=productsFiltered.php?pf=".($page+1); } ?> >Next</a></li>
+            <ul class="pager" id="pagination">
+                <li data-page="prev" class="previous <?php if($page == 1) echo "disabled"; ?>"><a href>Previous</a></li>
+                <li id="currentPage" class="active" data-nbpage="<?php echo $nbPage ?>" data-page="<?php echo $page ?>"><a><?php echo $page ?></a></li>
+                <li data-page="next "class="next <?php if($page == $nbPage) echo "disabled"; ?>"><a href>Next</a></li>
             </ul>
         </nav>
 <!--        // fin pagination-->

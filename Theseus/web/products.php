@@ -10,12 +10,10 @@ include 'template/header.php';
 $db = \config\Db::getInstance();
 $controlProduits = new control\ControlProduit($db);
 
-
 // pagination
-$page = isset($_GET['p']) ? $_GET['p'] : 1;
-$perPage = 9;
+$perPage = \config\Theseus::NBPERPAGEPRODUCT;
 
-$produits = $controlProduits->getProduitsPagination($page-1, $perPage);
+$produits = $controlProduits->getProduitsPagination(1, $perPage);
 $produitsCount = $controlProduits->getProduitsCount();
 $nbPage = ceil($produitsCount/$perPage);
 //
@@ -51,9 +49,9 @@ if(empty($produits)) {
                 <!--        affichage pagination-->
                 <nav>
                     <ul class="pager">
-                        <li class="previous <?php if($page == 1)  echo "disabled"; ?>"><a <?php if($page != 1) { echo "href=.products.php?p=".($page-1); } ?> >Previous</a></li>
-                        <li class="active"><a><?php echo $page ?></a></li>
-                        <li class="next <?php if($page == $nbPage) echo "disabled"; ?>"><a <?php if($page != $nbPage) { echo "href=products.php?p=".($page+1); } ?> >Next</a></li>
+                        <li class="previous disabled"><a href>Previous</a></li>
+                        <li id="currentPage" data-nbpage="<?php echo $nbPage; ?>" data-page="1" class="active"><a>1</a></li>
+                        <li class="next "><a href>Next</a></li>
                     </ul>
                 </nav>
                 <!--        // fin pagination-->
