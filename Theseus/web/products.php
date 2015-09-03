@@ -51,9 +51,9 @@ if(empty($produits)) {
                 <!--        affichage pagination-->
                 <nav>
                     <ul class="pager">
-                        <li class="previous <?php if($page == 1)  echo "disabled"; ?>"><a href="<?php if($page == 1) { echo "#"; } else { echo "products.php?p=".($page-1); } ?>">Previous</a></li>
+                        <li class="previous <?php if($page == 1)  echo "disabled"; ?>"><a <?php if($page != 1) { echo "href=.products.php?p=".($page-1); } ?> >Previous</a></li>
                         <li class="active"><a><?php echo $page ?></a></li>
-                        <li class="next <?php if($page == $nbPage) echo "disabled"; ?>"><a href="<?php if($page == $nbPage) { echo "#"; } else { echo "products.php?p=".($page+1); } ?>">Next</a></li>
+                        <li class="next <?php if($page == $nbPage) echo "disabled"; ?>"><a <?php if($page != $nbPage) { echo "href=products.php?p=".($page+1); } ?> >Next</a></li>
                     </ul>
                 </nav>
                 <!--        // fin pagination-->
