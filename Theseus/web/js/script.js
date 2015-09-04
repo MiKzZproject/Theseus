@@ -19,6 +19,8 @@
     } else if (page === 'myaccount.php') {
         $("#menuAccount").addClass("navbar-brand");
         $(".navbar-title").text("Mon compte");
+        $("#footer").css("position", "absolute");
+        $("#footer").css("bottom", 0);
     } else if (page === 'registerForm.php') {
         $(".navbar-title").text("Inscription");
     }

@@ -656,6 +656,16 @@ figure.effect-goliath:hover ~ h3{
     display: none;
 }
 
+.ML5  { margin-left: 5px;  }
+.ML10 { margin-left: 10px; }
+.ML15 { margin-left: 15px; }
+
+.MR5  { margin-right: 5px;  }
+.MR10 { margin-right: 10px; }
+.MR15 { margin-right: 15px; }
+
+.spacer10 { height: 10px;}
+
 .newsletter .modal-body {
     padding-bottom: 50px;
 }
@@ -700,4 +710,8 @@ figure.effect-goliath:hover ~ h3{
 
 .paginationProduct{
     text-align: center;
+}
+
+#dropConnexion > div > div:nth-child(5) > span {
+    display: block;
 }

@@ -8,7 +8,7 @@
 ?>
 
 </section>
-<footer>
+<footer id="footer">
     <section id="footer_reseau">
         <h3>Nous suivre : </h3><br>
         <a href="//plus.google.com/u/0/104188505974959376188?prsrc=3"

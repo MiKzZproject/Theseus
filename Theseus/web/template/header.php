@@ -52,11 +52,11 @@ require '../../vendor/autoload.php';
                 <br/>
                 <div class="col-sm-12">
                   <input type="password" placeholder="Password" class="form-control input-sm" name="password" id="Password1" />
-                </div>
-                <div class="col-sm-12">
-                  <button type="submit" class="btn btn-success btn-sm">Me connecter</button></br></br>
-                  <a class="inscriptionLink" href="registerForm.php">Cr&eacute;er mon compte ?</a><br><br>
                   <a class="forgotPasswordLink" href="#">Mot de passe oubli&eacute; ?</a>
+                </div>
+                <div class="col-sm-12" style="padding-top: 0px;">
+                  <span type="submit" class="btn btn-success btn-sm">Me connecter</span><br><br>
+                   <a class="inscriptionLink" href="registerForm.php">Cr&eacute;er mon compte ?</a>
                 </div>
 
               </div>

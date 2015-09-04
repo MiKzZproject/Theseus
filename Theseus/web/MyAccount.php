@@ -8,7 +8,7 @@
 
 include('template/header.php');
 ?>
-<h2 class="header-title green nohover">Espace Mon Compte</h2>
+<h1 class="ML10">Espace Mon Compte</h1>
 
     <div>
 
@@ -19,7 +19,7 @@ include('template/header.php');
             <li role="presentation"><a href="#invitations" aria-controls="invitations" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-envelope"></span> Mes Invitations</a></li>
             <li role="presentation"><a href="#alertes" aria-controls="alertes" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-bell"></span> Mes alertes</a></li>
             <li role="presentation"><a href="#modifPassword" aria-controls="modifPassword" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Modification mot de passe</a></li>
-            <li role="presentation"><a href="#abo" aria-controls="abo" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> abonnement</a></li>
+            <li role="presentation"><a href="#abo" aria-controls="abo" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-credit-card"></span> abonnement</a></li>
         </ul>
 
         <!-- Tabs -->
@@ -75,64 +75,117 @@ include('template/header.php');
             </div>
 
             <div role="tabpanel" class="tab-pane" id="informations">
-                <div class="control-group warning">
-                    <span class="badge badge-info">Nom</span>
-                    <input type="text" id="inputWarning" placeholder="nom">
-                    <br />
-                    <span class="badge badge-info">Prénom</span>
-                    <input type="text" id="inputError" placeholder="prénom">
-                    <br />
-                    <span class="badge badge-info">Date de naissance</span>
-                    <input type="text" id="inputInfo" placeholder="date naissance">
-                    <br />
-                    <span class="badge badge-info">Téléphone</span>
-                    <input type="text" id="inputSuccess" placeholder="numéro téléphone">
-                    <br />
-                    <span class="badge badge-info">Adresse Mail</span>
-                    <input type="text" id="inputSuccess" placeholder="adresse mail">
-                    <br />
-                    <span class="badge badge-info">Date d'inscription</span>
-                    <input type="text" id="inputSuccess" placeholder="date inscription">
-
+                <div class="container">
+                    <form method="post" id="myInfos">
+                        <div id="registerErrorNom" class="alert alert-danger hideBlock" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            Veuillez saisir un nom valide
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" name="nom" class="form-control" placeholder="Nom">
+                        </div>
+                        <div id="registerErrorPrenom" class="alert alert-danger hideBlock" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            Veuillez saisir un prénom valide
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" name="prenom" class="form-control" placeholder="Prénom">
+                        </div>
+                        <div id="registerErrorDate" class="alert alert-danger hideBlock" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            Veuillez saisir une date de naissance valide
+                        </div>
+                        <div class="form-group">
+                            <label for="dateNaissance">Date de naissance</label>
+                            <input type="date" name="date" class="form-control" placeholder="1989-05-27">
+                        </div>
+                        <div id="registerErrorTel" class="alert alert-danger hideBlock" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            Veuillez saisir un numéro de téléphone valide
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">Téléphone</label>
+                            <input type="tel" name="tel" class="form-control" placeholder="0654789872">
+                        </div>
+                        <div id="registerErrorEmail" class="alert alert-danger hideBlock" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            Veuillez saisir une adresse email valide
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse mail</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                        <button type="submit" class="btn btn-success">Modifier</button>
+                    </form>
                 </div>
             </div>
 
             <div role="tabpanel" class="tab-pane" id="invitations">
-                invitations
+                <div class="container">
+                    invitations
+                </div>
             </div>
 
             <div role="tabpanel" class="tab-pane" id="alertes">
-                alertes
+                <div class="container">
+                    <form method="post" id="myAlerts">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="newsletter"> Recevoir nos newsletters
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="alerte"> Recevoir des notifications par mail
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success">Modifier</button>
+                    </form>
+                </div>
             </div>
 
             <div role="tabpanel" class="tab-pane" id="modifPassword">
-                <form class="form-horizontal">
-                    <div class="control-group">
-                        <label class="control-label" for="currentPassword">Mot de Passe actuel : </label>
-                        <div class="controls">
-                            <input type="text" id="currentPassword" placeholder="Password actuel">
+                <div class="container">
+                    <form method="post" id="updatePassword">
+                        <div id="registerErrorPwd" class="alert alert-danger hideBlock" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            Veuillez saisir votre mot de passe actuel
                         </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="NewPassword">Nouveau mot de passe : </label>
-                        <div class="controls">
-                            <input type="text" id="NewPassword" placeholder="Nouveau Password">
+                        <div class="form-group">
+                            <label for="pwd">Mot de passe actuel</label>
+                            <input type="password" name="pwd" class="form-control" id="pwd" placeholder="Mot de Passe actuel">
                         </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="controls">
-                            <button type="submit" class="btn">Enregistrer modifications</button>
+                        <div id="registerErrorPwd" class="alert alert-danger hideBlock" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            Veuillez saisir un mot de passe valide
                         </div>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <label for="pwd">Mot de passe</label>
+                            <input type="password" name="pwd" class="form-control" id="pwd" placeholder="Mot de Passe">
+                        </div>
+                        <div id="registerErrorPwd2" class="alert alert-danger hideBlock" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            Les 2 mots de passe sont différent
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Confirmation du mot de passe</label>
+                            <input type="password" name="pwd2" class="form-control" id="pwd2" placeholder="Mot de Passe">
+                        </div>
+                        <button type="submit" class="btn btn-success">Modifier</button>
+                    </form>
+                </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="abo">
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                    <input type="hidden" name="cmd" value="_s-xclick">
-                    <input type="hidden" name="hosted_button_id" value="WQH6PRWJHK35J">
-                    <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
-                    <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
-                </form>
+                <div class="container">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="WQH6PRWJHK35J">
+                        <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </div>
             </div>
         </div>
 
