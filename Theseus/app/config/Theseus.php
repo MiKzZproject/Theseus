@@ -7,5 +7,6 @@ class Theseus {
     const DBUSER = 'root';
     const DBMDP = '';
     const NBPERPAGEPRODUCT = 9;
+    const NBPERPAGEEVENT = 12;
 }
 

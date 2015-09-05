@@ -105,8 +105,15 @@ class ControlProduit {
         return $produits;
     }
 
-    public function getProduitsPagination($Page, $nbProduits = 9){
-        $req = $this->db->prepare('SELECT * FROM produit LIMIT '.($Page * $nbProduits).','.$nbProduits);
+    public function getProduitsPagination($page, $nbProduits = 9){
+        //var_dump($page);
+        if($page == 1) {
+            $page = 0;
+        } else {
+            $page = $page * $nbProduits;
+        }
+        $sql = 'SELECT * FROM produit LIMIT '.$page.','.$nbProduits;
+        $req = $this->db->prepare($sql);
         $req->execute();
         while($result = $req->fetch()){
             $produit = new Produit($result);

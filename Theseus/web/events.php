@@ -10,8 +10,19 @@ include 'template/header.php';
 
 $db = \config\Db::getInstance();
 $controlEvenement = new control\ControlEvenement($db);
-$evenements = $controlEvenement->getEvenements();
 
+// pagination
+$perPage = \config\Theseus::NBPERPAGEEVENT;
+
+$evenements = $controlEvenement->getEventsPagination(1, $perPage);
+$eventsCount = $controlEvenement->getEventsCount();
+$nbPage = ceil($eventsCount/$perPage);
+//
+
+// test
+$test = new control\ControlEvenement($db);
+$toto = $test->getEventsCount();
+//
 ?>
 
 <section>
@@ -96,6 +107,19 @@ $evenements = $controlEvenement->getEvenements();
 
         <?php } ?>
         <div class="clear"></div>
+        <div class="paginationEvent">
+            <div class="paginationEvent">
+                <!--        affichage pagination-->
+                <nav>
+                    <ul class="pager">
+                        <li class="previous disabled"><a href>Précédente</a></li>
+                        <li id="currentPage" data-nbpage="<?php echo $nbPage; ?>" data-page="1" class="active"><a>1</a></li>
+                        <li class="next "><a href>Suivante</a></li>
+                    </ul>
+                </nav>
+                <!--        // fin pagination-->
+            </div>
+        </div>
     </div>
 </section>
 

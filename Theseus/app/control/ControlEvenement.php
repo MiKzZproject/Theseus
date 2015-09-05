@@ -128,4 +128,28 @@ class ControlEvenement {
         }
         return $produits;
     }
+
+    public function getEventsCount(){
+        $sql = "SELECT count(*) as count FROM evenement ";
+        $req = $this->db->prepare($sql);
+        $req->execute();
+        $result = $req->fetch();
+        return $result['count'];
+    }
+
+    public function getEventsPagination($page, $nbEvents = 12){
+        if($page == 1) {
+            $page = 0;
+        } else {
+            $page = $page * $nbEvents;
+        }
+        $sql = 'SELECT * FROM evenement ORDER BY dateDebut ASC LIMIT '.$page.','.$nbEvents;
+        $req = $this->db->prepare($sql);
+        $req->execute();
+        while($result = $req->fetch()){
+            $evenement = new Evenement($result);
+            $evenements[] = $evenement;
+        }
+        return !empty($evenements) ? $evenements : false;
+    }
 }

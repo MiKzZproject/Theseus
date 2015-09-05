@@ -9,7 +9,7 @@ $perPage = \config\Theseus::NBPERPAGEPRODUCT;
 $page = isset($_POST['page']) ? $_POST['page'] : 1;
 $cat = isset($_POST['categorie']) ? $_POST['categorie'] : 'all';
 
-$produits = $controlProduits->getProduitsByCategorie($cat, $perPage, $page-1);
+$produits = $controlProduits->getProduitsByCategorie($cat, $perPage, $page);
 $produitsCount = $controlProduits->getProduitsCount($cat);
 $nbPage = ceil($produitsCount/$perPage);
 
