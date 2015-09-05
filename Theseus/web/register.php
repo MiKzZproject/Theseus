@@ -20,7 +20,6 @@ if (empty($_POST['nom']) ){
 
 if (!$errors) {
     require '../../vendor/autoload.php';
-    require_once "config/config.php";
 
     $newsletter = false;
     $alerte = false;
