@@ -135,9 +135,11 @@
             url: "productsFiltered.php",
             data: {categorie : cat, page : 1}
         })
-            .done(function successFilter( content ) {
-                $('#product-content').html(content);
-            });
+        .done(function successFilter( content ) {
+            $('#product-content').html(content);
+        });
+
+        return false;
     };
 
     $("#selectcatprod").change(function filterCategorie() {
@@ -169,14 +171,32 @@
         var form = ($("#connexion")).serialize();
         $.ajax({
             method: "POST",
-            url: "register.php",
+            url: "login.php",
             data: form
         })
+        .done(function successLogin() {
+            $('#loginErrorEmail').hide();
+            $('#loginErrorPwd').hide();
+            $("#formLogin")[0].reset();
+        })
+        .fail(function errorLogin(data) {
+            if (data.responseJSON.email) {
+                $('#loginErrorEmail').show();
+            } else {
+                $('#loginErrorEmail').hide();
+            }
+            if (data.responseJSON.pwd) {
+                $('#loginErrorPwd').show();
+            } else {
+                $('#loginErrorPwd').hide();
+            }
+        });
+        return false;
     }
 
     $("#login").click(function onlogin() {
         console.log("test");
-        login()
+        login();
     });
 })();
 

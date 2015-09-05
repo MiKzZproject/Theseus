@@ -48,10 +48,18 @@ session_start();
                     Login
                   </div>
                   <div class="col-sm-12">
+                    <div id="loginErrorEmail" class="alert alert-danger hideBlock" role="alert">
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                      Veuillez saisir une adresse email valide
+                    </div>
                     <input type="text" placeholder="Email" onclick="return false;" class="form-control input-sm" name="login" id="inputError" />
                   </div>
                   <br/>
                   <div class="col-sm-12">
+                    <div id="loginErrorPwd" class="alert alert-danger hideBlock" role="alert">
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                      Veuillez saisir votre mot de passe actuel
+                    </div>
                     <input type="password" placeholder="Password" class="form-control input-sm" name="password" id="Password1" />
                     <a class="forgotPasswordLink" href="#">Mot de passe oubli&eacute; ?</a>
                   </div>
