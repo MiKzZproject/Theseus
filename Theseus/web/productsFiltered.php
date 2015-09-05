@@ -9,7 +9,7 @@ $perPage = \config\Theseus::NBPERPAGEPRODUCT;
 $page = isset($_POST['page']) ? $_POST['page'] : 1;
 $cat = isset($_POST['categorie']) ? $_POST['categorie'] : 'all';
 
-$produits = $controlProduits->getProduitsByCategorie($cat, $perPage, $page);
+$produits = $controlProduits->getProduitsByCategorie($cat, $page);
 $produitsCount = $controlProduits->getProduitsCount($cat);
 $nbPage = ceil($produitsCount/$perPage);
 
@@ -44,9 +44,9 @@ $categories = $controlCategorie->getCategories();
 <!--        affichage pagination-->
         <nav>
             <ul class="pager" id="pagination">
-                <li data-page="prev" class="previous <?php if($page == 1) echo "disabled"; ?>"><a href>Previous</a></li>
+                <li data-page="prev" class="previous previousProduct <?php if($page == 1) echo "disabled"; ?>"><a href>Précédente</a></li>
                 <li id="currentPage" class="active" data-nbpage="<?php echo $nbPage ?>" data-page="<?php echo $page ?>"><a><?php echo $page ?></a></li>
-                <li data-page="next "class="next <?php if($page == $nbPage) echo "disabled"; ?>"><a href>Next</a></li>
+                <li data-page="next "class="next nextProduct <?php if($page == $nbPage) echo "disabled"; ?>"><a href>Suivante</a></li>
             </ul>
         </nav>
 <!--        // fin pagination-->

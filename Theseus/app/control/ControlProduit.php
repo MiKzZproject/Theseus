@@ -67,10 +67,12 @@ class ControlProduit {
         return $req->execute();
     }
 
-    public function getProduitsByCategorie($categorie,$limit = 0, $page = 1 ){
+    public function getProduitsByCategorie($categorie, $page = 1 ){
+        $limit = \config\Theseus::NBPERPAGEPRODUCT;
+        $pageNb = ($page-1) * $limit;
         $produits = [];
         if(is_numeric($categorie)) {
-            $sql = "SELECT * FROM categorie_produit C, produit P where C.idProduit = P.id and C.idCategorie = $categorie LIMIT ".($page * $limit).",".$limit;
+            $sql = "SELECT * FROM categorie_produit C, produit P where C.idProduit = P.id and C.idCategorie = $categorie LIMIT ".$pageNb.",".$limit;
             $req = $this->db->prepare($sql);
             $req->execute();
             while ($result = $req->fetch()) {
@@ -96,7 +98,8 @@ class ControlProduit {
     }
 
     public function getFeaturedProducts(){
-        $req = $this->db->prepare("SELECT * FROM produit ORDER BY RAND() LIMIT 9");
+        $nbProduits = \config\Theseus::NBPERPAGEFEATURED;
+        $req = $this->db->prepare("SELECT * FROM produit ORDER BY RAND() LIMIT ".$nbProduits);
         $req->execute();
         while($result = $req->fetch()){
             $produit = new Produit($result);
@@ -105,13 +108,9 @@ class ControlProduit {
         return $produits;
     }
 
-    public function getProduitsPagination($page, $nbProduits = 9){
-        //var_dump($page);
-        if($page == 1) {
-            $page = 0;
-        } else {
-            $page = $page * $nbProduits;
-        }
+    public function getProduitsPagination($page){
+        $nbProduits = \config\Theseus::NBPERPAGEPRODUCT;
+        $page = ($page-1) * $nbProduits;
         $sql = 'SELECT * FROM produit LIMIT '.$page.','.$nbProduits;
         $req = $this->db->prepare($sql);
         $req->execute();

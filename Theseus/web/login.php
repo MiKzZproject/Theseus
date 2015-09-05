@@ -2,7 +2,7 @@
 
 header('Content-Type: application/json; charset=UTF-8');
 $errors = false;
-} if (empty($_POST['pwd'])) {
+if (empty($_POST['pwd'])) {
     $errors['pass'] = true;
 } if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $errors['login'] = true;

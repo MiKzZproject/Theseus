@@ -1,7 +1,7 @@
 (function() {
 
     "use strict";
-
+    console.log("test");
     var page = window.location.pathname.substring(21);
 
     if(page === 'index.php' || page === '') {
@@ -19,8 +19,6 @@
     } else if (page === 'myaccount.php') {
         $("#menuAccount").addClass("navbar-brand");
         $(".navbar-title").text("Mon compte");
-        //$("#footer").css("position", "absolute");
-        //$("#footer").css("bottom", 0);
     } else if (page === 'registerForm.php') {
         $(".navbar-title").text("Inscription");
     }
@@ -126,7 +124,7 @@
         .done(function successFilter( content ) {
             $('#product-content').html(content);
         });
-    }
+    };
 
     function searchCategorie() {
         var cat = $( "#selectcatprod option:selected").val();
@@ -146,7 +144,7 @@
         searchCategorie();
     });
 
-    $(".previous").click(function productPrev() {
+    $(".previousProduct").click(function productPrev() {
         var page = $( "#currentPage").attr("data-page");
         if(page === "1") {
             return false;
@@ -156,16 +154,62 @@
         }
     });
 
-    $(".next").click(function productNext() {
+    $(".nextProduct").click(function productNext() {
         var page = $( "#currentPage").attr("data-page");
         var nbPage = $( "#currentPage").attr("data-nbpage");
-        if (page === nbPage) {
+        if (page == nbPage) {
             return false;
         } else {
             pagination(++page);
             return false;
         }
     });
+
+    $(".previousEvent").click(function eventPrev() {
+        var page = $( "#currentPage").attr("data-page");
+        var nbPage = $( "#currentPage").attr("data-nbpage");
+        if(page === "1") {
+            return false;
+        } else {
+            $("#currentPage").attr("data-page",--page);
+            $(".next.nextEvent").removeClass("disabled");
+            if(page === "1") {
+                $(".previous.previousEvent").addClass("disabled");
+            }
+            $("#currentPage").find( "a" ).html(page);
+            paginationEvent(page,nbPage);
+            return false;
+        }
+    });
+
+    $(".nextEvent").click(function eventNext() {
+        var page = $("#currentPage").attr("data-page");
+        var nbPage = $("#currentPage").attr("data-nbpage");
+        if (page == nbPage) {
+            return false;
+        } else {
+            $("#currentPage").attr("data-page",++page);
+            $(".previous.previousEvent").removeClass("disabled");
+            if (page == nbPage) {
+                $(".next.nextEvent").addClass("disabled");
+            }
+            $("#currentPage").find( "a" ).html(page);
+            paginationEvent(page,nbPage);
+            return false;
+        }
+    });
+
+    function paginationEvent(page,nbPage) {
+        $.ajax({
+            method: "POST",
+            url: "eventsContent.php",
+            data: {page : page, nbPage : nbPage}
+        })
+        .done(function successFilter( content ) {
+            $('#events-content').html(content);
+
+        });
+    };
 
     function login() {
         var form = ($("#connexion")).serialize();
@@ -192,10 +236,9 @@
             }
         });
         return false;
-    }
+    };
 
     $("#login").click(function onlogin() {
-        console.log("test");
         login();
     });
 })();

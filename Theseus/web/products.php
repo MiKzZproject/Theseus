@@ -49,9 +49,9 @@ if(empty($produits)) {
                 <!--        affichage pagination-->
                 <nav>
                     <ul class="pager">
-                        <li class="previous disabled"><a href>Précédente</a></li>
+                        <li class="previous previousProduct disabled"><a href>Précédente</a></li>
                         <li id="currentPage" data-nbpage="<?php echo $nbPage; ?>" data-page="1" class="active"><a>1</a></li>
-                        <li class="next "><a href>Suivante</a></li>
+                        <li class="next nextProduct <?php if($nbPage === 1) echo "disabled"; ?>"><a href>Suivante</a></li>
                     </ul>
                 </nav>
                 <!--        // fin pagination-->

@@ -137,12 +137,9 @@ class ControlEvenement {
         return $result['count'];
     }
 
-    public function getEventsPagination($page, $nbEvents = 12){
-        if($page == 1) {
-            $page = 0;
-        } else {
-            $page = $page * $nbEvents;
-        }
+    public function getEventsPagination($page){
+        $nbEvents = \config\Theseus::NBPERPAGEEVENT;
+        $page = ($page-1) * $nbEvents;
         $sql = 'SELECT * FROM evenement ORDER BY dateDebut ASC LIMIT '.$page.','.$nbEvents;
         $req = $this->db->prepare($sql);
         $req->execute();

@@ -8,5 +8,6 @@ class Theseus {
     const DBMDP = '';
     const NBPERPAGEPRODUCT = 9;
     const NBPERPAGEEVENT = 12;
+    const NBPERPAGEFEATURED = 9;
 }
 
