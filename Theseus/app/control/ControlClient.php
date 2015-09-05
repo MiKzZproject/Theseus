@@ -22,6 +22,43 @@ class ControlClient {
         $this->db = $db->getPDOInstance();
     }
 
+    public function connection($array)
+    {
+        $req = $this->db->prepare('SELECT count(*) FROM client WHERE login = :login AND pass = :pass');
+        $req->bindValue(':login', $array['login']);
+        $req->bindValue(':pass', $array['pass']);
+        $req->execute();
+
+        if ($req->fetchColumn()) {
+            $client = $this->getClient($array);
+            $_SESSION['login'] = password_hash($array['login'].time().$client->getId(), PASSWORD_BCRYPT);
+            $req = $this->db->prepare('INSERT INTO logged values (null,:idClient,:session)');
+            $req->bindValue(':idClient',$client->getId());
+            $req->bindValue(':session', $_SESSION['login']);
+            $req->execute();
+            return $client;
+        } else {
+            return false;
+        }
+    }
+
+    public function isLogged($id) {
+        $req = $this->db->prepare('SELECT * FROM logged WHERE idClient = :id');
+        $req->bindValue(':id', $id);
+        $req->execute();
+
+        if($result = $req->fetch()){
+            return $result;
+        }
+        return false;
+    }
+
+    public function deconnection($id){
+        $req = $this->db->prepare('DELETE FROM logged WHERE id=:id');
+        $req->bindValue(':id', $id);
+        return $req->execute();
+    }
+
     public function getClients(){
         $req = $this->db->prepare('SELECT * FROM client');
         $req->execute();
@@ -30,6 +67,18 @@ class ControlClient {
             $clients[] = $client;
         }
         return $clients;
+    }
+
+    public function getClient($array){
+        $req = $this->db->prepare('SELECT * FROM client WHERE login = :login AND pass = :pass');
+        $req->bindValue(':login', $array['login']);
+        $req->bindValue(':pass', $array['pass']);
+        $req->execute();
+
+        if($result = $req->fetch()){
+            $client = new Client($result);
+        }
+        return $client;
     }
 
     public function addClient(Client $client){

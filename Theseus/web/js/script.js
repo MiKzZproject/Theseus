@@ -128,7 +128,6 @@
         });
     }
 
-
     function searchCategorie() {
         var cat = $( "#selectcatprod option:selected").val();
         $.ajax({
@@ -139,13 +138,13 @@
             .done(function successFilter( content ) {
                 $('#product-content').html(content);
             });
-    }
+    };
 
     $("#selectcatprod").change(function filterCategorie() {
         searchCategorie();
     });
 
-    $(".previous").click(function registerClient() {
+    $(".previous").click(function productPrev() {
         var page = $( "#currentPage").attr("data-page");
         if(page === "1") {
             return false;
@@ -155,7 +154,7 @@
         }
     });
 
-    $(".next").click(function registerClient() {
+    $(".next").click(function productNext() {
         var page = $( "#currentPage").attr("data-page");
         var nbPage = $( "#currentPage").attr("data-nbpage");
         if (page === nbPage) {
@@ -164,6 +163,20 @@
             pagination(++page);
             return false;
         }
+    });
+
+    function login() {
+        var form = ($("#connexion")).serialize();
+        $.ajax({
+            method: "POST",
+            url: "register.php",
+            data: form
+        })
+    }
+
+    $("#login").click(function onlogin() {
+        console.log("test");
+        login()
     });
 })();
 

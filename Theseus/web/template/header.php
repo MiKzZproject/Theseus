@@ -6,7 +6,7 @@
  * Time: 13:05
  */
 require '../../vendor/autoload.php';
-
+session_start();
 ?>
 <!doctype html>
 <html lang="fr">
@@ -42,24 +42,25 @@ require '../../vendor/autoload.php';
               <p>Me connecter</p>
             </a>
             <div id="dropConnexion" class="dropdown-menu">
-              <div class="col-sm-12">
+              <form method="post" id="connexion">
                 <div class="col-sm-12">
-                  Login
+                  <div class="col-sm-12">
+                    Login
+                  </div>
+                  <div class="col-sm-12">
+                    <input type="text" placeholder="Email" onclick="return false;" class="form-control input-sm" name="login" id="inputError" />
+                  </div>
+                  <br/>
+                  <div class="col-sm-12">
+                    <input type="password" placeholder="Password" class="form-control input-sm" name="password" id="Password1" />
+                    <a class="forgotPasswordLink" href="#">Mot de passe oubli&eacute; ?</a>
+                  </div>
+                  <div class="col-sm-12" style="padding-top: 0px;">
+                    <span id="login" type="submit" class="btn btn-success btn-sm">Me connecter</span><br><br>
+                     <a class="inscriptionLink" href="registerForm.php">Cr&eacute;er mon compte ?</a>
+                  </div>
                 </div>
-                <div class="col-sm-12">
-                  <input type="text" placeholder="Email" onclick="return false;" class="form-control input-sm" id="inputError" />
-                </div>
-                <br/>
-                <div class="col-sm-12">
-                  <input type="password" placeholder="Password" class="form-control input-sm" name="password" id="Password1" />
-                  <a class="forgotPasswordLink" href="#">Mot de passe oubli&eacute; ?</a>
-                </div>
-                <div class="col-sm-12" style="padding-top: 0px;">
-                  <span type="submit" class="btn btn-success btn-sm">Me connecter</span><br><br>
-                   <a class="inscriptionLink" href="registerForm.php">Cr&eacute;er mon compte ?</a>
-                </div>
-
-              </div>
+              </form>
             </div>
           </div>
         </fieldset>
