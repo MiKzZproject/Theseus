@@ -24,17 +24,17 @@ class ControlClient {
 
     public function connection($array)
     {
-        $req = $this->db->prepare('SELECT count(*) FROM client WHERE login = :login AND pass = :pass');
+        $req = $this->db->prepare('SELECT count(*) FROM client WHERE email = :login AND pwd = :pass');
         $req->bindValue(':login', $array['login']);
         $req->bindValue(':pass', $array['pass']);
         $req->execute();
 
         if ($req->fetchColumn()) {
             $client = $this->getClient($array);
-            $_SESSION['login'] = password_hash($array['login'].time().$client->getId(), PASSWORD_BCRYPT);
-            $req = $this->db->prepare('INSERT INTO logged values (null,:idClient,:session)');
+            $session = password_hash($array['login'].time().$client->getId(), PASSWORD_BCRYPT);
+            $req = $this->db->prepare('INSERT INTO logged values (null,:idClient,:sessionId ,CURRENT_TIMESTAMP)');
             $req->bindValue(':idClient',$client->getId());
-            $req->bindValue(':session', $_SESSION['login']);
+            $req->bindValue(':sessionId', $session);
             $req->execute();
             return $client;
         } else {
@@ -42,21 +42,32 @@ class ControlClient {
         }
     }
 
-    public function isLogged($id) {
-        $req = $this->db->prepare('SELECT * FROM logged WHERE idClient = :id');
-        $req->bindValue(':id', $id);
-        $req->execute();
+    public function isLogged() {
+        if(isset($_SESSION['login'])) {
+            $client = $_SESSION['login'];
+            $req = $this->db->prepare('SELECT * FROM logged WHERE idClient = :id');
+            $req->bindValue(':id', $client->getId());
+            $req->execute();
 
-        if($result = $req->fetch()){
-            return $result;
+            if ($result = $req->fetch()) {
+                return true;
+            }
         }
+        session_unset();
+        session_destroy();
         return false;
     }
 
-    public function deconnection($id){
-        $req = $this->db->prepare('DELETE FROM logged WHERE id=:id');
-        $req->bindValue(':id', $id);
-        return $req->execute();
+    public function deconnection(){
+        if(isset($_SESSION['login'])) {
+            $client = $_SESSION['login'];
+            $req = $this->db->prepare('DELETE FROM logged WHERE id=:id');
+            $req->bindValue(':id', $client->getId());
+            $req->execute();
+        }
+        session_unset();
+        session_destroy();
+        return true;
     }
 
     public function getClients(){
@@ -70,7 +81,7 @@ class ControlClient {
     }
 
     public function getClient($array){
-        $req = $this->db->prepare('SELECT * FROM client WHERE login = :login AND pass = :pass');
+        $req = $this->db->prepare('SELECT * FROM client WHERE email = :login AND pwd = :pass');
         $req->bindValue(':login', $array['login']);
         $req->bindValue(':pass', $array['pass']);
         $req->execute();

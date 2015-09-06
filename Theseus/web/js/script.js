@@ -1,7 +1,6 @@
 (function() {
 
     "use strict";
-    console.log("test");
     var page = window.location.pathname.substring(21);
 
     if(page === 'index.php' || page === '') {
@@ -25,7 +24,7 @@
 
     $(document).on('click', function dropdownHeader(e) {
         e.stopPropagation();
-        $('#dropConnexion').find('[data-toggle=dropdown]').dropdown('toggle');
+        $('.dropConnexion').find('[data-toggle=dropdown]').dropdown('toggle');
     });
 
     $('.dropdown-menu').click(function (event) {
@@ -218,28 +217,63 @@
             url: "login.php",
             data: form
         })
-        .done(function successLogin() {
+        .done(function successLogin(data) {
             $('#loginErrorEmail').hide();
             $('#loginErrorPwd').hide();
-            $("#formLogin")[0].reset();
+            $('#loginErrorWrong').hide();
+            $("#connexion")[0].reset();
+            $('#notLogged').hide();
+            $('#logged').show();
+            $('#nameLogin').html(data.login);
+            $('#welcomeLogged').html("Bienvenue "+data.login);
+            $('#dropdownMenu').trigger( "click" );
         })
         .fail(function errorLogin(data) {
-            if (data.responseJSON.email) {
-                $('#loginErrorEmail').show();
-            } else {
-                $('#loginErrorEmail').hide();
-            }
-            if (data.responseJSON.pwd) {
-                $('#loginErrorPwd').show();
-            } else {
-                $('#loginErrorPwd').hide();
+            if (data.responseJSON) {
+                if (data.responseJSON.wrong) {
+                    $('#loginErrorWrong').show();
+                } else {
+                    $('#loginErrorWrong').hide();
+                }
+                if (data.responseJSON.login) {
+                    $('#loginErrorEmail').show();
+                } else {
+                    $('#loginErrorEmail').hide();
+                }
+                if (data.responseJSON.pass) {
+                    $('#loginErrorPwd').show();
+                } else {
+                    $('#loginErrorPwd').hide();
+                }
             }
         });
         return false;
     };
 
-    $("#login").click(function onlogin() {
+    function logout() {
+        $.ajax({
+            method: "POST",
+            url: "logout.php",
+        })
+        .done(function successLogin() {
+            $('#notLogged').show();
+            $('#logged').hide();
+            $('#nameLogin').html("Me connecter");
+            $('#dropdownMenu').trigger( "click" );
+            window.location.href = 'index.php'
+        })
+        return false;
+    };
+
+    $("#login").click(function onLogin() {
         login();
+        return false;
+    });
+
+    $("#logout").click(function onLogout() {
+        logout();
+
+        return false;
     });
 })();
 

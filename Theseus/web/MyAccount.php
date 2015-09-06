@@ -8,8 +8,9 @@
 
 include('template/header.php');
 ?>
+<section id="myAccount-content" class="container">
 <h1 class="ML10">Espace Mon Compte</h1>
-
+<?php if ($logged) { ?>
     <div>
 
         <!-- Nav tabs -->
@@ -228,5 +229,11 @@ include('template/header.php');
     <br />
     <br />
 
+<?php } else { ?>
+    <div id="accountNotLogged">
+        <span  class="alert alert-danger">Vous devez être connecté pour accéder a votre compte!</span><br><br>
+    </div>
+<?php } ?>
+</section>
 <?php
 include('template/footer.php');

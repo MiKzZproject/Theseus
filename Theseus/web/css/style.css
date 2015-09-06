@@ -75,9 +75,9 @@ header {
     text-decoration: none;
 }
 
-#dropConnexion{
+.dropConnexion{
     z-index: 10000;
-    width: 200px;
+    width: 260px;
 }
 
 header section{
@@ -671,7 +671,7 @@ figure.effect-goliath:hover ~ h3{
 }
 
 
-#dropConnexion .dropdown-menu {
+.dropConnexion.dropdown-menu {
     float: left;
 }
 
@@ -689,7 +689,7 @@ figure.effect-goliath:hover ~ h3{
     font-size: initial;
 }
 
-#dropConnexion {
+.dropConnexion {
     right: 0;
     left: auto;
 }
@@ -705,14 +705,15 @@ figure.effect-goliath:hover ~ h3{
 }
 
 .forgotPasswordLink {
-    font-size: x-small;
+    margin-bottom: 10px;
+    font-size: small;
 }
 
 .paginationProduct{
     text-align: center;
 }
 
-#dropConnexion > div > div:nth-child(5) > span {
+.dropConnexion > div > div:nth-child(5) > span {
     display: block;
 }
 
@@ -735,4 +736,59 @@ figure.effect-goliath:hover ~ h3{
 }
 #subscribe {
     background-color: #f5dc04;
+}
+#loginErrorEmail, #loginErrorPwd, #loginErrorWrong {
+     font-size: 12px;
+    line-height: 15px;
+    padding: 5px;
+    width: 95%;
+    margin-bottom: 10px;
+}
+
+#connexion input{
+    margin-bottom: 10px;
+    width: 95%;
+}
+
+#connexion > div .col-sm-12 {
+    font-size: 15px;
+    width: 95%;
+    margin-left: 12px;
+    padding: 5px;
+}
+
+#connexion > div .col-sm-12.password{
+    font-size: 15px;
+    width: 95%;
+    margin-left: 12px;
+    padding: 5px 5px 15px 5px;
+}
+
+#connexion h2 {
+    margin-top: 0px;
+}
+
+#logged .glyphicon {
+    font-size: 20px;
+    position: relative;
+    bottom: 3px;
+    color: rgb(18, 68, 111);
+}
+
+#logged a{
+    position: relative;
+    bottom: 4px;
+    margin-left: 10px;
+    float: none;
+    padding: 0px;
+}
+
+#myAccount-content {
+    display: inline-block;
+}
+
+#accountNotLogged {
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 35px;
 }

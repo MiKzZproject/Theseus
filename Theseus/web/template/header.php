@@ -7,7 +7,16 @@
  */
 require '../../vendor/autoload.php';
 session_start();
+$controlClient = new \control\ControlClient(\config\Db::getInstance());
+$logged = false;
+if($controlClient->isLogged()) {
+  $client = $_SESSION['login'];
+  $logged = true;
+}
+
 ?>
+
+<?php if($logged) { ?> <?php } else { ?>  <?php } ?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -39,36 +48,23 @@ session_start();
             <div class="btn-group" id="dropdownMenu">
             <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" >
               <span class="glyphicon glyphicon-user" aria-haspopup="true" aria-expanded="false"></span><br><br>
-              <p>Me connecter</p>
+              <p id="nameLogin"><?php if($logged) { echo $client->getNom(); } else { ?> Me connecter <?php } ?></p>
             </a>
-            <div id="dropConnexion" class="dropdown-menu">
-              <form method="post" id="connexion">
+            <div id="logged" class="dropdown-menu dropConnexion" <?php if(!$logged) { ?>style="display: none;" <?php } ?>>
                 <div class="col-sm-12">
+                  <h2 id="welcomeLogged"> Bienvenue <?php if($logged) { echo $client->getNom(); } ?> </h2>
                   <div class="col-sm-12">
-                    Login
+                    <span class="glyphicon glyphicon-user" aria-haspopup="true" aria-expanded="false"></span>
+                    <a id="menuAccount" class="inscriptionLink" href="myaccount.php">Mon Compte</a><br><br>
                   </div>
-                  <div class="col-sm-12">
-                    <div id="loginErrorEmail" class="alert alert-danger hideBlock" role="alert">
-                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                      Veuillez saisir une adresse email valide
-                    </div>
-                    <input type="text" placeholder="Email" onclick="return false;" class="form-control input-sm" name="login" id="inputError" />
-                  </div>
-                  <br/>
-                  <div class="col-sm-12">
-                    <div id="loginErrorPwd" class="alert alert-danger hideBlock" role="alert">
-                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                      Veuillez saisir votre mot de passe actuel
-                    </div>
-                    <input type="password" placeholder="Password" class="form-control input-sm" name="password" id="Password1" />
-                    <a class="forgotPasswordLink" href="#">Mot de passe oubli&eacute; ?</a>
-                  </div>
-                  <div class="col-sm-12" style="padding-top: 0px;">
-                    <span id="login" type="submit" class="btn btn-success btn-sm">Me connecter</span><br><br>
-                     <a class="inscriptionLink" href="registerForm.php">Cr&eacute;er mon compte ?</a>
+                  <div class="col-sm-12" style="padding-top: 0px; left: 8px;">
+                    <span class="glyphicon glyphicon-remove-sign" aria-haspopup="true" aria-expanded="false"></span>
+                    <a id="logout" class="inscriptionLink" href>Se déconnecter</a>
                   </div>
                 </div>
-              </form>
+            </div>
+            <div id="notLogged" class="dropdown-menu dropConnexion" <?php if($logged) { ?>style="display: none;" <?php } ?> >
+              <?php include 'loginForm.php'; ?>
             </div>
           </div>
         </fieldset>
@@ -92,7 +88,6 @@ session_start();
           <li id="menuProductPhare" ><a href="featuredProducts.php">Les Produits phares</a></li>
           <li id="menuProduct" ><a href="products.php">Nos Produits</a></li>
           <li id="menuEvent" ><a href="events.php">Nos Events</a></li>
-          <li id="menuAccount" ><a href="myaccount.php">Mon Compte</a></li>
         </ul>
         <form class="navbar-form navbar-right" role="search">
           <div class="input-group">

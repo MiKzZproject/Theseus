@@ -7,6 +7,7 @@
  */
 
 include 'template/header.php';
+
 ?>
   <section id="news-demo">
     <article>
