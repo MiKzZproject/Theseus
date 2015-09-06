@@ -187,11 +187,11 @@ include('template/header.php');
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-4 cardAbo">
                                             <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                            <h4>Accès VIP = pas d'accès lors des évènements</h4>
+                                            <h4>Accès VIP = pas d'attente lors des évènements</h4>
                                     </div>
                                     <div class="col-xs-6 col-sm-4 cardAbo">
                                             <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                                            <h4>Des exclusivités sur des produits</h4>
+                                            <h4>Des exclusivités sur les produits</h4>
                                     </div>
                                     <div class="col-xs-6 col-sm-4 cardAbo">
                                             <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
