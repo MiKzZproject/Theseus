@@ -11,6 +11,7 @@ namespace control;
 
 use config\Db;
 use model\Client;
+use model\Commande;
 
 class ControlClient {
 
@@ -133,13 +134,19 @@ class ControlClient {
         return $req->execute();
     }
 
-    public function getProductClient(){
-        $sql = $this->db->prepare('SELECT *
-                                   FROM produit P, commande_produit C, client CL
-                                   WHERE P.id = C.idProduit
-                                   AND C.idClient = CL.idClient');
-        $req = $this->db->prepare($sql);
+    public function getCommandes($id){
+        $req = $this->db->prepare('SELECT idCommande as id, P.libelle as libelleProduit, E.libelle as libelleEvent, quantite, prix, datecommande, livrer, quantite*prix as total
+                                   FROM produit P, commande_produit C, evenement E
+                                   WHERE E.id = C.idEvent
+                                   AND P.id = C.idProduit
+                                   AND C.idClient = :id');
+        $req->bindValue(':id',$id);
         $req->execute();
-
+        $commandes = false;
+        while($result = $req->fetch()){
+            $commande = new Commande($result);
+            $commandes[] = $commande;
+        }
+        return $commandes;
     }
 }

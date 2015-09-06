@@ -10,8 +10,10 @@ include('template/header.php');
 ?>
 <section id="myAccount-content" class="container">
 <h1 class="ML10">Espace Mon Compte</h1>
-<?php if ($logged) {
 
+<?php if ($logged) {
+    $controlClient = new \control\ControlClient(\config\Db::getInstance());
+    $commandes = $controlClient->getCommandes($client->getId());
 ?>
 
     <div>
@@ -36,9 +38,10 @@ include('template/header.php');
                             <th>Num.</th>
                             <th>Date</th>
                             <th>Evènement</th>
-                            <th>Lieu</th>
+                            <th>Quantité</th>
                             <th>Produit</th>
                             <th>Total €</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,33 +49,37 @@ include('template/header.php');
                             <td>1</td>
                             <td>10 octobre 2015</td>
                             <td>Smatphones et Tablettes</td>
-                            <td>Le Yoyo Palais de Tokyo</td>
+                            <td>1</td>
                             <td>Iphone 6 plus</td>
                             <td>800</td>
+                            <td>En cours de livraison</td>
                         </tr>
                         <tr class="info">
                             <td>2</td>
                             <td>10 octobre 2015</td>
                             <td>Smatphones et Tablettes</td>
-                            <td>Le Yoyo Palais de Tokyo</td>
+                            <td>2</td>
                             <td>Iphone 5</td>
                             <td>300</td>
+                            <td>En cours de livraison</td>
                         </tr>
                         <tr class="warning">
                             <td>3</td>
                             <td>10 octobre 2015</td>
                             <td>Smatphones et Tablettes</td>
-                            <td>Le Yoyo Palais de Tokyo</td>
+                            <td>2</td>
                             <td>Samsung Galaxy Tab 4</td>
-                            <td>215</td>
+                            <td>255</td>
+                            <td>livrer</td>
                         </tr>
                         <tr class="info">
                             <td>4</td>
                             <td>10 octobre 2015</td>
                             <td>Smatphones et Tablettes</td>
-                            <td>Le Yoyo Palais de Tokyo</td>
+                            <td>1</td>
                             <td>BlackBerry Q10</td>
                             <td>600</td>
+                            <td>livrer</td>
                         </tr>
                     </tbody>
                 </table>

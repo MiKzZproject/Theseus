@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 06 Septembre 2015 à 15:46
+-- Généré le :  Lun 07 Septembre 2015 à 00:29
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -215,21 +215,23 @@ CREATE TABLE IF NOT EXISTS `commande_produit` (
   `idCommande` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `idClient` int(11) unsigned NOT NULL,
   `idProduit` int(11) unsigned NOT NULL,
+  `idEvent` int(11) unsigned NOT NULL,
   `datecommande` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `livrer` tinyint(4) DEFAULT NULL,
   `quantite` int(11) NOT NULL,
-  PRIMARY KEY (`idCommande`,`idClient`,`idProduit`),
+  PRIMARY KEY (`idCommande`,`idClient`,`idProduit`,`idEvent`),
   KEY `idClient` (`idClient`),
-  KEY `idProduit` (`idProduit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  KEY `idProduit` (`idProduit`),
+  KEY `idEvent` (`idEvent`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `commande_produit`
 --
 
-INSERT INTO `commande_produit` (`idCommande`, `idClient`, `idProduit`, `datecommande`, `livrer`, `quantite`) VALUES
-(1, 8, 3, '2015-09-05 15:56:27', NULL, 1),
-(2, 8, 15, '2015-09-05 15:57:23', NULL, 2);
+INSERT INTO `commande_produit` (`idCommande`, `idClient`, `idProduit`, `idEvent`, `datecommande`, `livrer`, `quantite`) VALUES
+(3, 8, 3, 3, '2015-09-06 22:16:27', 1, 1),
+(4, 8, 12, 10, '2015-09-06 22:16:55', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -352,14 +354,15 @@ CREATE TABLE IF NOT EXISTS `logged` (
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idClient` (`idClient`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
 
 --
 -- Contenu de la table `logged`
 --
 
 INSERT INTO `logged` (`id`, `idClient`, `session`, `datetime`) VALUES
-(41, 12, '$2y$10$YdWam7LH.HvSVC9hMjiEAe7scBb0riDQkfsDPE9/qfq5QUcbnwNjG', '2015-09-06 13:43:59');
+(41, 12, '$2y$10$YdWam7LH.HvSVC9hMjiEAe7scBb0riDQkfsDPE9/qfq5QUcbnwNjG', '2015-09-06 13:43:59'),
+(42, 8, '$2y$10$D4p7.VMl8rdt1d41poeziuI1qBcAEKmBtMdsXN83iG0/YRTSXxO62', '2015-09-06 21:19:47');
 
 -- --------------------------------------------------------
 
@@ -485,7 +488,8 @@ ALTER TABLE `categorie_produit`
 --
 ALTER TABLE `commande_produit`
   ADD CONSTRAINT `commande_produit_ibfk_2` FOREIGN KEY (`idClient`) REFERENCES `client` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `commande_produit_ibfk_3` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `commande_produit_ibfk_3` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `commande_produit_ibfk_4` FOREIGN KEY (`idEvent`) REFERENCES `evenement` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `evenement_client`

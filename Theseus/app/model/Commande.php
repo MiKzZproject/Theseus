@@ -9,8 +9,11 @@ namespace model;
 
 class Commande {
     private $id;
-    private $idClient;
     private $dateCommande;
+    private $libelleEvent;
+    private $libelleProduit;
+    private $quantite;
+    private $total;
     private $livrer;
 
     function __construct($array)
@@ -91,6 +94,99 @@ class Commande {
         $this->livrer = $livrer;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIdEvent()
+    {
+        return $this->idEvent;
+    }
 
+    /**
+     * @param mixed $idEvent
+     */
+    public function setIdEvent($idEvent)
+    {
+        $this->idEvent = $idEvent;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getIdProduit()
+    {
+        return $this->idProduit;
+    }
+
+    /**
+     * @param mixed $idProduit
+     */
+    public function setIdProduit($idProduit)
+    {
+        $this->idProduit = $idProduit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * @param mixed $quantite
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    /**
+     * @param mixed $total
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLibelleEvent()
+    {
+        return $this->libelleEvent;
+    }
+
+    /**
+     * @param mixed $libelleEvent
+     */
+    public function setLibelleEvent($libelleEvent)
+    {
+        $this->libelleEvent = $libelleEvent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLibelleProduit()
+    {
+        return $this->libelleProduit;
+    }
+
+    /**
+     * @param mixed $libelleProduit
+     */
+    public function setLibelleProduit($libelleProduit)
+    {
+        $this->libelleProduit = $libelleProduit;
+    }
 }
