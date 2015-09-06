@@ -133,4 +133,13 @@ class ControlClient {
         return $req->execute();
     }
 
+    public function getProductClient(){
+        $sql = $this->db->prepare('SELECT *
+                                   FROM produit P, commande_produit C, client CL
+                                   WHERE P.id = C.idProduit
+                                   AND C.idClient = CL.idClient');
+        $req = $this->db->prepare($sql);
+        $req->execute();
+
+    }
 }

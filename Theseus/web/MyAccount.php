@@ -10,7 +10,10 @@ include('template/header.php');
 ?>
 <section id="myAccount-content" class="container">
 <h1 class="ML10">Espace Mon Compte</h1>
-<?php if ($logged) { ?>
+<?php if ($logged) {
+
+?>
+
     <div>
 
         <!-- Nav tabs -->
@@ -84,7 +87,7 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="nom">Nom</label>
-                            <input type="text" name="nom" class="form-control" placeholder="Nom">
+                            <input type="text" name="nom" class="form-control" placeholder="<?php echo $client->getNom(); ?>">
                         </div>
                         <div id="registerErrorPrenom" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -92,7 +95,7 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="prenom">Prénom</label>
-                            <input type="text" name="prenom" class="form-control" placeholder="Prénom">
+                            <input type="text" name="prenom" class="form-control" placeholder="<?php echo $client->getPrenom(); ?>">
                         </div>
                         <div id="registerErrorDate" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -100,7 +103,7 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="dateNaissance">Date de naissance</label>
-                            <input type="date" name="date" class="form-control" placeholder="1989-05-27">
+                            <input type="date" name="date" class="form-control" placeholder="<?php echo $client->getDateNaissance(); ?>">
                         </div>
                         <div id="registerErrorTel" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -108,7 +111,7 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="tel">Téléphone</label>
-                            <input type="tel" name="tel" class="form-control" placeholder="0654789872">
+                            <input type="tel" name="tel" class="form-control" placeholder="<?php echo $client->getTel(); ?>">
                         </div>
                         <div id="registerErrorEmail" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -116,7 +119,7 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="email">Adresse mail</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                            <input type="email" name="email" class="form-control" id="email" placeholder="<?php echo $client->getEmail(); ?>">
                         </div>
                         <button type="submit" class="btn btn-success">Modifier</button>
                     </form>

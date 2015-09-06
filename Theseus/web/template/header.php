@@ -48,11 +48,11 @@ if($controlClient->isLogged()) {
             <div class="btn-group" id="dropdownMenu">
             <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" >
               <span class="glyphicon glyphicon-user" aria-haspopup="true" aria-expanded="false"></span><br><br>
-              <p id="nameLogin"><?php if($logged) { echo $client->getNom(); } else { ?> Me connecter <?php } ?></p>
+              <p id="nameLogin"><?php if($logged) { echo $client->getPrenom(); } else { ?> Me connecter <?php } ?></p>
             </a>
             <div id="logged" class="dropdown-menu dropConnexion" <?php if(!$logged) { ?>style="display: none;" <?php } ?>>
                 <div class="col-sm-12">
-                  <h2 id="welcomeLogged"> Bienvenue <?php if($logged) { echo $client->getNom(); } ?> </h2>
+                  <h2 id="welcomeLogged"> Bienvenue <?php if($logged) { echo $client->getPrenom(); } ?> </h2>
                   <div class="col-sm-12">
                     <span class="glyphicon glyphicon-user" aria-haspopup="true" aria-expanded="false"></span>
                     <a id="menuAccount" class="inscriptionLink" href="myaccount.php">Mon Compte</a><br><br>
