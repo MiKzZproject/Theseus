@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 05 Septembre 2015 à 17:59
+-- Généré le :  Dim 06 Septembre 2015 à 15:46
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -181,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   `newsletters` tinyint(1) DEFAULT NULL,
   `alerte` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Contenu de la table `client`
@@ -189,7 +189,8 @@ CREATE TABLE IF NOT EXISTS `client` (
 
 INSERT INTO `client` (`id`, `nom`, `prenom`, `dateNaissance`, `tel`, `email`, `pwd`, `dateInscription`, `newsletters`, `alerte`) VALUES
 (7, 'popo', 'papa', '1985-03-21', '51594', 'a@erehotm.com', 'teerest', '2015-03-21 11:54:08', 1, 1),
-(8, 'Aymard', 'Florent', '1989-05-15', '0164055032', 'f.aymard@gmail.com', 'flo77', '2015-09-05 15:50:34', 1, 1);
+(8, 'Aymard', 'Florent', '1989-05-15', '0164055032', 'f.aymard@gmail.com', 'flo77', '2015-09-05 15:50:34', 1, 1),
+(12, 'ruben', 'ruben', '2014-07-17', NULL, 'ruben@theseus.com', 'theseus', '2015-09-05 21:42:04', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -337,6 +338,28 @@ INSERT INTO `evenement_produit` (`idEvenement`, `idProduit`, `stock`) VALUES
 (21, 16, 170),
 (21, 21, 500),
 (21, 36, 470);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `logged`
+--
+
+CREATE TABLE IF NOT EXISTS `logged` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `idClient` int(11) unsigned NOT NULL,
+  `session` varchar(255) NOT NULL,
+  `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idClient` (`idClient`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
+
+--
+-- Contenu de la table `logged`
+--
+
+INSERT INTO `logged` (`id`, `idClient`, `session`, `datetime`) VALUES
+(41, 12, '$2y$10$YdWam7LH.HvSVC9hMjiEAe7scBb0riDQkfsDPE9/qfq5QUcbnwNjG', '2015-09-06 13:43:59');
 
 -- --------------------------------------------------------
 
