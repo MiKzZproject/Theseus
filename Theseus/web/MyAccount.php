@@ -110,7 +110,7 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="dateNaissance">Date de naissance</label>
-                            <input type="date" name="date" class="form-control" placeholder="<?php echo $client->getDateNaissance(); ?>">
+                            <input type="date" name="date" class="form-control" placeholder="<?php echo date('d-m-Y',strtotime($client->getDateNaissance())); ?>">
                         </div>
                         <div id="registerErrorTel" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -139,17 +139,30 @@ include('template/header.php');
                 </div>
             </div>
 
+            <?php
+                $checkedAlerte = $checkedNewsletters = '';
+
+                if($client->getAlerte()){
+                    $checkedAlerte = 'checked';
+                }
+
+                if($client->getNewsletters()){
+                    $checkedNewsletters = 'checked';
+                }
+            ?>
+
+
             <div role="tabpanel" class="tab-pane" id="alertes">
                 <div class="container">
                     <form method="post" id="myAlerts">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="newsletter"> Recevoir nos newsletters
+                                <input type="checkbox" name="newsletter" <?php echo $checkedNewsletters; ?>> Recevoir nos newsletters
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="alerte"> Recevoir des notifications par mail
+                                <input type="checkbox" name="alerte" <?php echo $checkedAlerte; ?>> Recevoir des notifications par mail
                             </label>
                         </div>
                         <button type="submit" class="btn btn-success">Modifier</button>
