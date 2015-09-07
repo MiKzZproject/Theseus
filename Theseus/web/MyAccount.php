@@ -139,6 +139,7 @@ include('template/header.php');
                 </div>
             </div>
 
+            <!-- récupération satut checked newsletters et alerte-->
             <?php
                 $checkedAlerte = $checkedNewsletters = '';
 
@@ -150,7 +151,7 @@ include('template/header.php');
                     $checkedNewsletters = 'checked';
                 }
             ?>
-
+            <!-- -->
 
             <div role="tabpanel" class="tab-pane" id="alertes">
                 <div class="container">
