@@ -49,22 +49,6 @@ class Commande {
     /**
      * @return mixed
      */
-    public function getIdClient()
-    {
-        return $this->idClient;
-    }
-
-    /**
-     * @param mixed $idClient
-     */
-    public function setIdClient($idClient)
-    {
-        $this->idClient = $idClient;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getDateCommande()
     {
         return $this->dateCommande;
@@ -92,38 +76,6 @@ class Commande {
     public function setLivrer($livrer)
     {
         $this->livrer = $livrer;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdEvent()
-    {
-        return $this->idEvent;
-    }
-
-    /**
-     * @param mixed $idEvent
-     */
-    public function setIdEvent($idEvent)
-    {
-        $this->idEvent = $idEvent;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdProduit()
-    {
-        return $this->idProduit;
-    }
-
-    /**
-     * @param mixed $idProduit
-     */
-    public function setIdProduit($idProduit)
-    {
-        $this->idProduit = $idProduit;
     }
 
     /**

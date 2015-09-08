@@ -45,42 +45,33 @@ include('template/header.php');
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="warning">
-                            <td>1</td>
-                            <td>10 octobre 2015</td>
-                            <td>Smatphones et Tablettes</td>
-                            <td>1</td>
-                            <td>Iphone 6 plus</td>
-                            <td>800</td>
-                            <td>En cours de livraison</td>
+                        <?php
+                            foreach($commandes as $key => $commande) {
+                                $class = "info";
+                                $status = "En cours de livraison";
+                                if($key%2 == 0) {
+                                    $class = "warning";
+                                }
+                                if($commande->getLivrer()) {
+                                    $status = "Livrer";
+                                }
+                        ?>
+                        <tr class="<?php echo $class; ?>">
+                            <td><?php echo $commande->getId(); ?></td>
+                            <td><?php echo $commande->getDateCommande(); ?></td>
+                            <td><?php echo $commande->getLibelleEvent(); ?></td>
+                            <td><?php echo $commande->getQuantite(); ?></td>
+                            <td><?php echo $commande->getLibelleProduit(); ?></td>
+                            <td><?php echo $commande->getTotal(); ?></td>
+                            <td><?php echo $status ?></td>
                         </tr>
+                        <?php }
+                            if(empty($commandes)) {
+                         ?>
                         <tr class="info">
-                            <td>2</td>
-                            <td>10 octobre 2015</td>
-                            <td>Smatphones et Tablettes</td>
-                            <td>2</td>
-                            <td>Iphone 5</td>
-                            <td>300</td>
-                            <td>En cours de livraison</td>
+                            <td colspan=7 style="text-align: center">Vous n'avez encore acheter aucun produit chez nous</td>
                         </tr>
-                        <tr class="warning">
-                            <td>3</td>
-                            <td>10 octobre 2015</td>
-                            <td>Smatphones et Tablettes</td>
-                            <td>2</td>
-                            <td>Samsung Galaxy Tab 4</td>
-                            <td>255</td>
-                            <td>livrer</td>
-                        </tr>
-                        <tr class="info">
-                            <td>4</td>
-                            <td>10 octobre 2015</td>
-                            <td>Smatphones et Tablettes</td>
-                            <td>1</td>
-                            <td>BlackBerry Q10</td>
-                            <td>600</td>
-                            <td>livrer</td>
-                        </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -110,7 +101,8 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="dateNaissance">Date de naissance</label>
-                            <input type="date" name="date" class="form-control" placeholder="<?php echo date('d-m-Y',strtotime($client->getDateNaissance())); ?>">
+                            <input type="date" name="date" class="form-control" value="<?php echo(date('Y-m-d',strtotime($client->getDateNaissance()))); ?>">
+
                         </div>
                         <div id="registerErrorTel" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -211,39 +203,39 @@ include('template/header.php');
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-4 cardAbo">
-                                            <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                            <h4>Accès VIP = pas d'attente lors des évènements</h4>
+                                        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                        <h4>Accès VIP = pas d'attente lors des évènements</h4>
                                     </div>
                                     <div class="col-xs-6 col-sm-4 cardAbo">
-                                            <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                                            <h4>Des exclusivités sur les produits</h4>
+                                        <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                                        <h4>Des exclusivités sur les produits</h4>
                                     </div>
                                     <div class="col-xs-6 col-sm-4 cardAbo">
-                                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                                            <h4>Accès aux évènements de votre choix = pas de tirage au sort</h4>
+                                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                        <h4>Accès aux évènements de votre choix = pas de tirage au sort</h4>
                                     </div>
                                     <div class="col-xs-6 col-sm-4 cardAbo">
-                                            <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
-                                            <h4>Livraison gratuite à domicile des produits achetés (sous 24h)</h4>
+                                        <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
+                                        <h4>Livraison gratuite à domicile des produits achetés (sous 24h)</h4>
                                     </div>
                                     <div class="col-xs-6 col-sm-4 cardAbo">
-                                            <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
-                                            <h4>Des bons de réduction exclusifs à valoir sur nos prochaines ventes</h4>
+                                        <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+                                        <h4>Des bons de réduction exclusifs à valoir sur nos prochaines ventes</h4>
                                     </div>
-                                    <div class="col-xs-6 col-sm-4 cardAbo" id="subscribe">
-                                            <span class=" glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
-                                            <h4>Inscription pour seulement 30€ !</h4>
+                                    <div class="col-xs-6 col-sm-4 cardAbo" id="subscribe" onclick="document.getElementById('subcribePaypal').submit();">
+                                        <span class=" glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
+                                        <h4>Inscription pour seulement 30€ par ans!</h4>
+                                        <form id='subcribePaypal' action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                            <input type="hidden" name="cmd" value="_s-xclick">
+                                            <input type="hidden" name="hosted_button_id" value="WQH6PRWJHK35J">
+                                            <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+                                        </form>
                                     </div>
                                 </div>
                             </div>
 
                     </div>
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                        <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="hosted_button_id" value="WQH6PRWJHK35J">
-                        <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
-                        <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
-                    </form>
+
                 </div>
             </div>
         </div>

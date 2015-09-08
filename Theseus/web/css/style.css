@@ -736,6 +736,10 @@ figure.effect-goliath:hover ~ h3{
 }
 #subscribe {
     background-color: #f5dc04;
+    margin-bottom: 20px;
+}
+#subscribe input{
+    margin-bottom: 20px;
 }
 #loginErrorEmail, #loginErrorPwd, #loginErrorWrong {
      font-size: 12px;
