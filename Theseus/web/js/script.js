@@ -372,6 +372,7 @@
     });
 
     $("#formInfos").click(function updateInfos() {
+        $('#accountSuccessInfos').hide();
         updateMyInfos();
         return false;
     });
@@ -383,6 +384,7 @@
     });
 
     $("#formPwd").click(function updatePwd() {
+        $('#accountSuccessPwd').hide();
         updateMyPwd();
         return false;
     });
