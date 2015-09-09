@@ -78,8 +78,9 @@ include('template/header.php');
 
             <div role="tabpanel" class="tab-pane" id="informations">
                 <div class="container">
+                    <div id="accountSuccessInfos" class="alert alert-success hideBlock" role="alert">Vos modifications ont bien été prise en compte. </div>
                     <form method="post" id="myInfos">
-                        <div id="registerErrorNom" class="alert alert-danger hideBlock" role="alert">
+                        <div id="accountErrorNom" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             Veuillez saisir un nom valide
                         </div>
@@ -87,7 +88,7 @@ include('template/header.php');
                             <label for="nom">Nom</label>
                             <input type="text" name="nom" class="form-control" placeholder="<?php echo $client->getNom(); ?>">
                         </div>
-                        <div id="registerErrorPrenom" class="alert alert-danger hideBlock" role="alert">
+                        <div id="accountErrorPrenom" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             Veuillez saisir un prénom valide
                         </div>
@@ -95,7 +96,7 @@ include('template/header.php');
                             <label for="prenom">Prénom</label>
                             <input type="text" name="prenom" class="form-control" placeholder="<?php echo $client->getPrenom(); ?>">
                         </div>
-                        <div id="registerErrorDate" class="alert alert-danger hideBlock" role="alert">
+                        <div id="accountErrorDate" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             Veuillez saisir une date de naissance valide
                         </div>
@@ -104,7 +105,7 @@ include('template/header.php');
                             <input type="date" name="date" class="form-control" value="<?php echo(date('Y-m-d',strtotime($client->getDateNaissance()))); ?>">
 
                         </div>
-                        <div id="registerErrorTel" class="alert alert-danger hideBlock" role="alert">
+                        <div id="accountErrorTel" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             Veuillez saisir un numéro de téléphone valide
                         </div>
@@ -112,7 +113,7 @@ include('template/header.php');
                             <label for="tel">Téléphone</label>
                             <input type="tel" name="tel" class="form-control" placeholder="<?php echo $client->getTel(); ?>">
                         </div>
-                        <div id="registerErrorEmail" class="alert alert-danger hideBlock" role="alert">
+                        <div id="accountErrorEmail" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             Veuillez saisir une adresse email valide
                         </div>
@@ -120,7 +121,7 @@ include('template/header.php');
                             <label for="email">Adresse mail</label>
                             <input type="email" name="email" class="form-control" id="email" placeholder="<?php echo $client->getEmail(); ?>">
                         </div>
-                        <button type="submit" class="btn btn-success">Modifier</button>
+                        <button id="formInfos" type="submit" class="btn btn-success">Modifier</button>
                     </form>
                 </div>
             </div>
@@ -147,6 +148,7 @@ include('template/header.php');
 
             <div role="tabpanel" class="tab-pane" id="alertes">
                 <div class="container">
+                    <div id="accountSuccessAlerts" class="alert alert-success hideBlock" role="alert">Vos modifications ont bien été prise en compte. </div>
                     <form method="post" id="myAlerts">
                         <div class="checkbox">
                             <label>
@@ -158,23 +160,24 @@ include('template/header.php');
                                 <input type="checkbox" name="alerte" <?php echo $checkedAlerte; ?>> Recevoir des notifications par mail
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-success">Modifier</button>
+                        <button id="formAlerts" type="submit" class="btn btn-success">Modifier</button>
                     </form>
                 </div>
             </div>
 
             <div role="tabpanel" class="tab-pane" id="modifPassword">
                 <div class="container">
+                    <div id="accountSuccessPwd" class="alert alert-success hideBlock" role="alert">Votre mot de passe a été modifié. </div>
                     <form method="post" id="updatePassword">
-                        <div id="registerErrorPwd" class="alert alert-danger hideBlock" role="alert">
+                        <div id="accountErrorPwdActuel" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             Veuillez saisir votre mot de passe actuel
                         </div>
                         <div class="form-group">
-                            <label for="pwd">Mot de passe actuel</label>
-                            <input type="password" name="pwd" class="form-control" id="pwd" placeholder="Mot de Passe actuel">
+                            <label for="pwdAcutel">Mot de passe actuel</label>
+                            <input type="password" name="pwdAcutel" class="form-control" id="pwdActuel" placeholder="Mot de Passe actuel">
                         </div>
-                        <div id="registerErrorPwd" class="alert alert-danger hideBlock" role="alert">
+                        <div id="accountErrorPwd" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             Veuillez saisir un mot de passe valide
                         </div>
@@ -182,7 +185,7 @@ include('template/header.php');
                             <label for="pwd">Mot de passe</label>
                             <input type="password" name="pwd" class="form-control" id="pwd" placeholder="Mot de Passe">
                         </div>
-                        <div id="registerErrorPwd2" class="alert alert-danger hideBlock" role="alert">
+                        <div id="accountErrorPwd2" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             Les 2 mots de passe sont différent
                         </div>
@@ -190,7 +193,7 @@ include('template/header.php');
                             <label for="pwd">Confirmation du mot de passe</label>
                             <input type="password" name="pwd2" class="form-control" id="pwd2" placeholder="Mot de Passe">
                         </div>
-                        <button type="submit" class="btn btn-success">Modifier</button>
+                        <button id="formPwd" type="submit" class="btn btn-success">Modifier</button>
                     </form>
                 </div>
             </div>
@@ -200,46 +203,43 @@ include('template/header.php');
                         <div class="panel-heading">
                             <h3 class="panel-title">Avantages compte PRENIUM</h3>
                         </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-4 cardAbo">
-                                        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                        <h4>Accès VIP = pas d'attente lors des évènements</h4>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-4 cardAbo">
-                                        <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
-                                        <h4>Des exclusivités sur les produits</h4>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-4 cardAbo">
-                                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                                        <h4>Accès aux évènements de votre choix = pas de tirage au sort</h4>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-4 cardAbo">
-                                        <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
-                                        <h4>Livraison gratuite à domicile des produits achetés (sous 24h)</h4>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-4 cardAbo">
-                                        <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
-                                        <h4>Des bons de réduction exclusifs à valoir sur nos prochaines ventes</h4>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-4 cardAbo" id="subscribe" onclick="document.getElementById('subcribePaypal').submit();">
-                                        <span class=" glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
-                                        <h4>Inscription pour seulement 30€ par ans!</h4>
-                                        <form id='subcribePaypal' action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                            <input type="hidden" name="cmd" value="_s-xclick">
-                                            <input type="hidden" name="hosted_button_id" value="WQH6PRWJHK35J">
-                                            <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
-                                        </form>
-                                    </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-4 cardAbo">
+                                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                    <h4>Accès VIP = pas d'attente lors des évènements</h4>
+                                </div>
+                                <div class="col-xs-6 col-sm-4 cardAbo">
+                                    <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                                    <h4>Des exclusivités sur les produits</h4>
+                                </div>
+                                <div class="col-xs-6 col-sm-4 cardAbo">
+                                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                    <h4>Accès aux évènements de votre choix = pas de tirage au sort</h4>
+                                </div>
+                                <div class="col-xs-6 col-sm-4 cardAbo">
+                                    <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
+                                    <h4>Livraison gratuite à domicile des produits achetés (sous 24h)</h4>
+                                </div>
+                                <div class="col-xs-6 col-sm-4 cardAbo">
+                                    <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+                                    <h4>Des bons de réduction exclusifs à valoir sur nos prochaines ventes</h4>
+                                </div>
+                                <div class="col-xs-6 col-sm-4 cardAbo" id="subscribe" onclick="document.getElementById('subcribePaypal').submit();">
+                                    <span class=" glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
+                                    <h4>Inscription pour seulement 30€ par ans!</h4>
+                                    <form id='subcribePaypal' action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="WQH6PRWJHK35J">
+                                        <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+                                    </form>
                                 </div>
                             </div>
-
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
 
     <br />
