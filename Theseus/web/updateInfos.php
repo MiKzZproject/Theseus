@@ -16,7 +16,7 @@ if (empty($_POST['nom']) ){
 
 if (!$errors) {
     require '../../vendor/autoload.php';
-
+    session_start();
     $client = $_SESSION['login'];
     $client->setNom($_POST['nom']);
     $client->setPrenom($_POST['prenom']);

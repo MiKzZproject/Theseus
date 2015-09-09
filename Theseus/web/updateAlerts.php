@@ -3,6 +3,7 @@
 header('Content-Type: application/json; charset=UTF-8');
 
 require '../../vendor/autoload.php';
+session_start();
 
 $newsletter = false;
 $alerte = false;

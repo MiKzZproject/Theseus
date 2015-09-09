@@ -136,7 +136,6 @@
             $('#accountErrorEmail').hide();
             $('#accountErrorDate').hide();
             $('#accountSuccessInfos').show();
-            $("#formRegister")[0].reset();
         })
         .fail(function errorUpdateMyInfos(data) {
             if (data.responseJSON.nom) {
@@ -170,13 +169,14 @@
 
     function updateMyAlerts() {
         var form = ($("#myAlerts")).serialize();
+        console.log(form);
         $.ajax({
             method: "POST",
             url: "updateAlerts.php",
             data: form
         })
         .done(function successUpdateMyAlerts() {
-            $('#accountSuccessPwd').show();
+            $('#accountSuccessAlerts').show();
         });
         return false;
     };
@@ -196,7 +196,7 @@
             $("#updatePassword")[0].reset();
         })
         .fail(function errorUpdateMyPwd(data) {
-            if (data.responseJSON.pwdActuel) {
+            if (data.responseJSON.pwdAcutel) {
                 $('#accountErrorPwdActuel').show();
             } else {
                 $('#accountErrorPwdActuel').hide();
@@ -377,6 +377,7 @@
     });
 
     $("#formAlerts").click(function updateAlerts() {
+        $('#accountSuccessAlerts').hide();
         updateMyAlerts();
         return false;
     });

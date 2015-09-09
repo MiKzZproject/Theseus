@@ -86,7 +86,7 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="nom">Nom</label>
-                            <input type="text" name="nom" class="form-control" placeholder="<?php echo $client->getNom(); ?>">
+                            <input type="text" name="nom" class="form-control" placeholder="Nom" value="<?php echo $client->getNom(); ?>">
                         </div>
                         <div id="accountErrorPrenom" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -94,7 +94,7 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="prenom">Prénom</label>
-                            <input type="text" name="prenom" class="form-control" placeholder="<?php echo $client->getPrenom(); ?>">
+                            <input type="text" name="prenom" class="form-control" placeholder="Prénom" value="<?php echo $client->getPrenom(); ?>">
                         </div>
                         <div id="accountErrorDate" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -102,7 +102,7 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="dateNaissance">Date de naissance</label>
-                            <input type="date" name="date" class="form-control" value="<?php echo(date('Y-m-d',strtotime($client->getDateNaissance()))); ?>">
+                            <input type="date" name="date" class="form-control" placeholder="1989-05-27" value="<?php echo(date('Y-m-d',strtotime($client->getDateNaissance()))); ?>">
 
                         </div>
                         <div id="accountErrorTel" class="alert alert-danger hideBlock" role="alert">
@@ -111,7 +111,7 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="tel">Téléphone</label>
-                            <input type="tel" name="tel" class="form-control" placeholder="<?php echo $client->getTel(); ?>">
+                            <input type="tel" name="tel" class="form-control" placeholder="0654789872" value="<?php echo $client->getTel(); ?>">
                         </div>
                         <div id="accountErrorEmail" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -119,7 +119,7 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="email">Adresse mail</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="<?php echo $client->getEmail(); ?>">
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Adresse email" value="<?php echo $client->getEmail(); ?>">
                         </div>
                         <button id="formInfos" type="submit" class="btn btn-success">Modifier</button>
                     </form>
@@ -171,7 +171,7 @@ include('template/header.php');
                     <form method="post" id="updatePassword">
                         <div id="accountErrorPwdActuel" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                            Veuillez saisir votre mot de passe actuel
+                            Mot de passe incorrect.
                         </div>
                         <div class="form-group">
                             <label for="pwdAcutel">Mot de passe actuel</label>

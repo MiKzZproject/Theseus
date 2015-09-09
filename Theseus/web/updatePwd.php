@@ -1,5 +1,4 @@
 <?php
-
 header('Content-Type: application/json; charset=UTF-8');
 $errors = false;
 if (empty($_POST['pwdAcutel']) ){
@@ -12,6 +11,7 @@ if (empty($_POST['pwdAcutel']) ){
 
 if (!$errors) {
     require '../../vendor/autoload.php';
+    session_start();
     $client = $_SESSION['login'];
 
     if($_POST['pwdAcutel'] == $client->getPwd()) {
