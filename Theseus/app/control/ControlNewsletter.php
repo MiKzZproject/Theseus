@@ -33,6 +33,19 @@ class ControlNewsletter {
         return $newsletters;
     }
 
+    public function getNewslettersByEmail($email){
+        $req = $this->db->prepare('SELECT *
+                                    FROM newsletter
+                                    WHERE mail = :mail ');
+
+        $req->bindValue(':mail',$email);
+        $req->execute();
+        $response = $req->fetch();
+
+        return $response ? true : false;
+        return false;
+    }
+
     public function addNewsletter($newsletter){
         $req = $this->db->prepare('INSERT INTO newsletter (mail)
                                     VALUES (:mail)');
@@ -51,12 +64,24 @@ class ControlNewsletter {
 
     }
 
-    public function deleteNewsletter($id){
+
+    public function deleteNewsletterById($id){
         $req = $this->db->prepare('DELETE
                                     FROM newsletter
                                     WHERE id = :id ');
 
-        $req->bindValue(':id',$id->getId());
+        $req->bindValue(':id',$id);
+
+        $req->execute();
+
+    }
+
+    public function deleteNewsletterByEmail($email){
+        $req = $this->db->prepare('DELETE
+                                    FROM newsletter
+                                    WHERE mail = :mail ');
+
+        $req->bindValue(':mail',$email);
 
         $req->execute();
 

@@ -800,3 +800,22 @@ figure.effect-goliath:hover ~ h3{
 #myAccount-content {
     width: 100%;
 }
+
+.forgotPWD {
+    font-size: 27px;
+    margin-top: 5px;
+}
+
+#forgotPassword > div {
+    margin-left: 3px;
+}
+.backToLogin {
+    margin-bottom: 10px;
+    font-size: small;
+}
+
+#forgotPwdError, #forgotPwdSuccess {
+    font-size: 15px;
+    margin-left: 3px;
+    line-height: 15px;
+}

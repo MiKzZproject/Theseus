@@ -124,6 +124,7 @@
 
     function updateMyInfos() {
         var form = ($("#myInfos")).serialize();
+        $('#accountSuccessInfos').hide();
         $.ajax({
             method: "POST",
             url: "updateInfos.php",
@@ -134,6 +135,7 @@
             $('#accountErrorPrenom').hide();
             $('#accountErrorTel').hide();
             $('#accountErrorEmail').hide();
+            $('#accountErrorEmail2').hide();
             $('#accountErrorDate').hide();
             $('#accountSuccessInfos').show();
         })
@@ -163,13 +165,17 @@
             } else {
                 $('#accountErrorDate').hide();
             }
+            if (data.responseJSON.loginTaken) {
+                $('#accountErrorEmail2').show();
+            } else {
+                $('#accountErrorEmail2').hide();
+            }
         });
         return false;
     };
 
     function updateMyAlerts() {
         var form = ($("#myAlerts")).serialize();
-        console.log(form);
         $.ajax({
             method: "POST",
             url: "updateAlerts.php",
@@ -214,6 +220,28 @@
         });
         return false;
     };
+
+    $("#forgot").click(function forgotPassword() {
+        var form = ($("#forgotPassword")).serialize();
+        $.ajax({
+            method: "POST",
+            url: "forgotPassword.php",
+            data: form
+        })
+            .done(function successUpdateMyPwd() {
+                $('#forgotPwdError').hide();
+                $('#forgotPwdSuccess').show();
+                $("#forgotPassword")[0].reset();
+            })
+            .fail(function errorUpdateMyPwd(data) {
+                if (data.responseJSON.login) {
+                    $('#forgotPwdError').show();
+                } else {
+                    $('#forgotPwdError').hide();
+                }
+            });
+        return false;
+    });
 
     $("#selectcatprod").change(function filterCategorie() {
         searchCategorie();
@@ -293,10 +321,11 @@
                 } else {
                     $('#newsletterInfo').show();
                 }
+                $('#closeButton').show();
                 $('#newsletterError').hide();
                 $('#newsletterForm').hide();
             })
-            .fail(function errorNewsletter() {
+            .fail(function errorNewsletter(data) {
                 $('#newsletterError').show();
             });
         return false;
@@ -317,6 +346,7 @@
             $('#registerErrorPwd').hide();
             $('#registerErrorPwd2').hide();
             $('#registerErrorEmail').hide();
+            $('#registerErrorEmail2').hide();
             $('#registerErrorDate').hide();
             $('#registerSuccess').show();
             $("#formRegister")[0].reset();
@@ -357,6 +387,11 @@
             } else {
                 $('#registerErrorDate').hide();
             }
+            if (data.responseJSON.loginTaken) {
+                $('#registerErrorEmail2').show();
+            } else {
+                $('#registerErrorEmail2').hide();
+            }
         });
         return false;
     });
@@ -389,5 +424,16 @@
         return false;
     });
 
+    $(".forgotPasswordLink").click(function onForgotPwd() {
+        $('#connexion').hide();
+        $('#forgotPassword').show();
+        return false;
+    });
+
+    $(".backToLogin").click(function onBackToLogin() {
+        $('#connexion').show();
+        $('#forgotPassword').hide();
+        return false;
+    });
 })();
 

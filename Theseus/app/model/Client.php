@@ -21,6 +21,18 @@ class Client {
     private $dateInscription;
     private $newsletters;
     private $alerte;
+    private $dateDebutAbo;
+    private $dateFinAbo;
+    private $renew;
+
+    public function hydrate(array $array){
+        foreach ($array as $cle => $valeur) {
+            $method = 'set' . ucfirst($cle);
+            if (method_exists($this, $method)) {
+                $this->$method($valeur);
+            }
+        }
+    }
 
     /**
      * @param mixed $dateInscription
@@ -186,12 +198,63 @@ class Client {
         $this->hydrate($array);
     }
 
-    public function hydrate(array $array){
-        foreach ($array as $cle => $valeur) {
-            $method = 'set' . ucfirst($cle);
-            if (method_exists($this, $method)) {
-                $this->$method($valeur);
-            }
+    /**
+     * @return mixed
+     */
+    public function getDateDebutAbo()
+    {
+        return $this->dateDebutAbo;
+    }
+
+    /**
+     * @param mixed $dateDebutAbo
+     */
+    public function setDateDebutAbo($dateDebutAbo)
+    {
+        $this->dateDebutAbo = $dateDebutAbo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateFinAbo()
+    {
+        return $this->dateFinAbo;
+    }
+
+    /**
+     * @param mixed $dateFinAbo
+     */
+    public function setDateFinAbo($dateFinAbo)
+    {
+        $this->dateFinAbo = $dateFinAbo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRenew()
+    {
+        return $this->renew;
+    }
+
+    /**
+     * @param mixed $renew
+     */
+    public function setRenew($renew)
+    {
+        $this->renew = $renew;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getIsPrenium()
+    {
+        if($this->dateFinAbo > time()) {
+            return true;
         }
+        return false;
     }
 } 

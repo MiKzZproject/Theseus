@@ -1,5 +1,9 @@
 <?php
 
+require '../../vendor/autoload.php';
+$db = \config\Db::getInstance();
+$controlClient = new control\ControlClient($db);
+
 header('Content-Type: application/json; charset=UTF-8');
 $errors = false;
 if (empty($_POST['nom']) ){
@@ -16,16 +20,27 @@ if (empty($_POST['nom']) ){
     $errors['pwd2'] = true;
 } if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $errors['email'] = true;
+} else if ($controlClient->getClientByMail($_POST['email'])) {
+    $errors['loginTaken'] = true;
 }
 
 if (!$errors) {
-    require '../../vendor/autoload.php';
-
+    $controlNewsletter = new control\ControlNewsletter($db);
+    $hasSubscribeNewsletter = $controlNewsletter->getNewslettersByEmail($_POST['email']);
     $newsletter = false;
     $alerte = false;
-    if(isset($_POST['newsletter'])){
+    if(isset($_POST['newsletter']) && $hasSubscribeNewsletter == false){
+        $newsletter = new \model\Newsletter(array(
+            "mail" => $_POST['email']
+        ));
+        $controlNewsletter->addNewsletter($newsletter);
         $newsletter = true;
+    } if(isset($_POST['newsletter']) && $hasSubscribeNewsletter == true){
+        $newsletter = true;
+    } if(!isset($_POST['newsletter']) && $hasSubscribeNewsletter == true) {
+        $controlNewsletter->deleteNewsletterByEmail($_POST['email']);
     }
+
     if(isset($_POST['alerte'])){
         $alerte = true;
     }
@@ -41,11 +56,11 @@ if (!$errors) {
         "alerte" => $alerte
     ));
 
-    $db = \config\Db::getInstance();
-    $controlClient = new control\ControlClient($db);
-    $result = ($controlClient->addClient($client));
 
-    $response = json_encode(['type' => 'ok']);
+    $controlClient = new control\ControlClient($db);
+    $result = $controlClient->addClient($client);
+
+    $response = json_encode(['type' => $result]);
     echo $response;
 } else {
     header('HTTP/1.1 400 Bad Request');

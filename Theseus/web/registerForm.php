@@ -15,7 +15,7 @@ include('template/header.php');
             <div class="col-lg-12">
                 <h2 class="header-title green nohover">Formulaire d'Inscription</h2>
             </div>
-            <div id="registerSuccess" class="alert alert-success hideBlock" role="alert">Vous pouvez à present inscrit vous pouvez vous conneceter </div>
+            <div id="registerSuccess" class="alert alert-success hideBlock" role="alert">Vous pouvez à present inscrit vous pouvez vous connecter </div>
                 <form method="post" id="formRegister">
                     <div id="registerErrorNom" class="alert alert-danger hideBlock" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -52,6 +52,10 @@ include('template/header.php');
                     <div id="registerErrorEmail" class="alert alert-danger hideBlock" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         Veuillez saisir une adresse email valide
+                    </div>
+                    <div id="registerErrorEmail2" class="alert alert-danger hideBlock" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        L'adresse email que vous avez saisie est déjà prise.
                     </div>
                     <div class="form-group">
                         <label for="email">Adresse mail</label>

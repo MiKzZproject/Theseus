@@ -14,7 +14,6 @@ if(!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
 }
 
 require '../../vendor/autoload.php';
-require_once "config/config.php";
 
 $db = \config\Db::getInstance();
 $controlNewsletter = new control\ControlNewsletter($db);

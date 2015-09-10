@@ -45,7 +45,12 @@ include('template/header.php');
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
+                        <?php if(empty($commandes)) {
+                            ?>
+                            <tr class="info">
+                                <td colspan=7 style="text-align: center">Vous n'avez encore acheter aucun produit chez nous</td>
+                            </tr>
+                        <?php } else {
                             foreach($commandes as $key => $commande) {
                                 $class = "info";
                                 $status = "En cours de livraison";
@@ -65,13 +70,7 @@ include('template/header.php');
                             <td><?php echo $commande->getTotal(); ?></td>
                             <td><?php echo $status ?></td>
                         </tr>
-                        <?php }
-                            if(empty($commandes)) {
-                         ?>
-                        <tr class="info">
-                            <td colspan=7 style="text-align: center">Vous n'avez encore acheter aucun produit chez nous</td>
-                        </tr>
-                        <?php } ?>
+                        <?php } }?>
                     </tbody>
                 </table>
             </div>
@@ -112,6 +111,10 @@ include('template/header.php');
                         <div class="form-group">
                             <label for="tel">Téléphone</label>
                             <input type="tel" name="tel" class="form-control" placeholder="0654789872" value="<?php echo $client->getTel(); ?>">
+                        </div>
+                        <div id="accountErrorEmail2" class="alert alert-danger hideBlock" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            L'adresse email que vous avez saisie est déjà prise.
                         </div>
                         <div id="accountErrorEmail" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

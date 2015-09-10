@@ -89,6 +89,7 @@ include 'template/header.php';
                 <button type="button" class="btn btn-default floatL" data-dismiss="modal">Annuler</button>
                 <button type="submit" class="btn btn-primary floatR">S'inscrire</button>
               </form>
+              <button id="closeButton" type="button" class="btn btn-default floatR hideBlock" data-dismiss="modal">Fermer</button>
             </div>
           </div>
         </div>

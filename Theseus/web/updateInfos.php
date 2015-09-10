@@ -1,6 +1,11 @@
 <?php
 
 header('Content-Type: application/json; charset=UTF-8');
+require '../../vendor/autoload.php';
+$db = \config\Db::getInstance();
+$controlClient = new control\ControlClient($db);
+session_start();
+$client = $_SESSION['login'];
 $errors = false;
 if (empty($_POST['nom']) ){
     $errors['nom'] = true;
@@ -12,20 +17,23 @@ if (empty($_POST['nom']) ){
     $errors['date'] = true;
 } if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $errors['email'] = true;
+} else if ($client->getEmail() != $_POST['email'] && $controlClient->getClientByMail($_POST['email'])) {
+    $errors['loginTaken'] = true;
 }
 
 if (!$errors) {
-    require '../../vendor/autoload.php';
-    session_start();
-    $client = $_SESSION['login'];
     $client->setNom($_POST['nom']);
     $client->setPrenom($_POST['prenom']);
     $client->setTel($_POST['tel']);
     $client->setDateNaissance($_POST['date']);
+    if ($client->getEmail() != $_POST['email'] && $client->getNewsletters() == true) {
+        $controlNewsletter = new control\ControlNewsletter($db);
+        $newsletter = $controlNewsletter->getNewslettersByEmail($client->getEmail());
+        $newsletter->setMail($_POST['email']);
+        $controlNewsletter->updateNewsletter($newsletter);
+    }
     $client->setEmail($_POST['email']);
 
-    $db = \config\Db::getInstance();
-    $controlClient = new control\ControlClient($db);
     $controlClient->updateClient($client);
 
     $response = json_encode(['type' => 'ok']);

@@ -86,15 +86,25 @@ class ControlClient {
         $req->bindValue(':login', $array['login']);
         $req->bindValue(':pass', $array['pass']);
         $req->execute();
+        $result = $req->fetch();
 
-        if($result = $req->fetch()){
+        if($result){
             $client = new Client($result);
         }
         return $client;
     }
 
+    public function getClientByMail($email){
+        $req = $this->db->prepare('SELECT id FROM client WHERE email = :login');
+        $req->bindValue(':login', $email);
+        $req->execute();
+        $response = $req->fetch();
+
+        return $response ? true : false;
+    }
+
     public function addClient(Client $client){
-        $req = $this->db->prepare('INSERT INTO client values (null,:nom,:prenom,:dateNaissance,:tel,:email,:pwd, CURRENT_TIMESTAMP ,:newsletters,:alerte)');
+        $req = $this->db->prepare('INSERT INTO client values (null,:nom,:prenom,:dateNaissance,:tel,:email,:pwd, CURRENT_TIMESTAMP ,:newsletters,:alerte,null,null,null)');
         $req->bindValue(':nom',$client->getNom());
         $req->bindValue(':prenom',$client->getPrenom());
         $req->bindValue(':dateNaissance',$client->getDateNaissance());
