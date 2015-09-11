@@ -77,16 +77,17 @@ include('template/header.php');
                         <label for="pwd">Confirmation du mot de passe</label>
                         <input type="password" name="pwd2" class="form-control" id="pwd2" placeholder="Mot de Passe">
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="newsletter"> Recevoir nos newsletters
-                        </label>
+                    <p>Recevoir nos newsletters : </p>
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="newsletter" class="onoffswitch-checkbox" id="switchNewsletter">
+                        <label class="onoffswitch-label" for="switchNewsletter"></label>
+                    </div> <br>
+                    <p>Recevoir des notifications par mail :</p>
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="alerte" class="onoffswitch-checkbox" id="switchAlerte">
+                        <label class="onoffswitch-label" for="switchAlerte"></label>
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="alerte"> Recevoir des notifications par mail
-                        </label>
-                    </div>
+                    <br>
                     <button type="submit" class="btn btn-success">S'enregistrer</button>
                 </form>
         </div>

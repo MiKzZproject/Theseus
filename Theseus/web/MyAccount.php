@@ -152,16 +152,18 @@ include('template/header.php');
                 <div class="container">
                     <div id="accountSuccessAlerts" class="alert alert-success hideBlock" role="alert">Vos modifications ont bien été prise en compte. </div>
                     <form method="post" id="myAlerts">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="newsletter" <?php echo $checkedNewsletters; ?>> Recevoir nos newsletters
-                            </label>
+                        <p>Recevoir nos newsletters : </p>
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="newsletter" class="onoffswitch-checkbox" id="switchNewsletter" <?php echo $checkedNewsletters; ?>>
+                            <label class="onoffswitch-label" for="switchNewsletter"></label>
+                        </div> <br>
+                        <p>Recevoir des notifications par mail :</p>
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="alerte" class="onoffswitch-checkbox" id="switchAlerte" <?php echo $checkedAlerte; ?>>
+                            <label class="onoffswitch-label" for="switchAlerte"></label>
                         </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="alerte" <?php echo $checkedAlerte; ?>> Recevoir des notifications par mail
-                            </label>
-                        </div>
+                        <br>
+                        <br>
                         <button id="formAlerts" type="submit" class="btn btn-success">Modifier</button>
                     </form>
                 </div>
