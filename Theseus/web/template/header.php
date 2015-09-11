@@ -9,6 +9,7 @@ require '../../vendor/autoload.php';
 session_start();
 $controlClient = new \control\ControlClient(\config\Db::getInstance());
 $logged = false;
+
 if($controlClient->isLogged()) {
   $client = $_SESSION['login'];
   $logged = true;

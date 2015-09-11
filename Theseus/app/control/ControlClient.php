@@ -98,9 +98,12 @@ class ControlClient {
         $req = $this->db->prepare('SELECT id FROM client WHERE email = :login');
         $req->bindValue(':login', $email);
         $req->execute();
-        $response = $req->fetch();
-
-        return $response ? true : false;
+        $result = $req->fetch();
+        $client = false;
+        if($result){
+            $client = new Client($result);
+        }
+        return $client;
     }
 
     public function addClient(Client $client){

@@ -44,7 +44,7 @@
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     Veuillez saisir une adresse email valide
                 </div>
-                <input type="text" placeholder="Email" onclick="return false;" class="form-control input-sm" name="login"
+                <input type="text" placeholder="Email" onclick="return false;" class="form-control input-sm" name="mail"
                        id="inputError"/>
             </section>
         </div>

@@ -240,7 +240,7 @@
                 $("#forgotPassword")[0].reset();
             })
             .fail(function errorUpdateMyPwd(data) {
-                if (data.responseJSON.login) {
+                if (data.responseJSON.mail) {
                     $('#forgotPwdError').show();
                 } else {
                     $('#forgotPwdError').hide();
