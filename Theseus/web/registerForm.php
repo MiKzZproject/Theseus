@@ -39,7 +39,7 @@ include('template/header.php');
                     </div>
                     <div class="form-group">
                         <label for="dateNaissance">Date de naissance</label>
-                        <input type="date" name="date" class="form-control" placeholder="1989-05-27">
+                        <input type="" data-uk-datepicker="{format:'DD-MM-YYYY'}" name="date" class="form-control" placeholder="27-05-1989">
                     </div>
                     <div id="registerErrorTel" class="alert alert-danger hideBlock" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

@@ -37,8 +37,11 @@
             </div>
             <div class="modal-body">
                 <div id="miniature-salle">
-                    <img src="<?php echo $produit->getImage() ?>"/>
+                    <a href="#my-id<?php echo $produit->getId(); ?>" data-uk-modal>
+                        <img src="<?php echo $produit->getImage(); ?>"/>
+                    </a>
                 </div>
+
                 <p>
                 <span class="glyphicon glyphicon-euro" aria-hidden="true"></span> Prix : <?php echo $produit->getPrix() ?> €<br/>
                 <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Marque : <?php echo $produit->getMarque() ?> <br/>
@@ -50,6 +53,13 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                 <button type="button" class="btn btn-primary">Voir les évènements</button>
             </div>
+        </div>
+    </div>
+
+    <div id="my-id<?php echo $produit->getId(); ?>" class="uk-modal">
+        <div class="uk-modal-dialog uk-modal-dialog-lightbox">
+            <a href="<?php echo $produit->getImage(); ?>" class="uk-modal-close uk-close uk-close-alt"></a>
+            <img src="<?php echo $produit->getImage(); ?>" alt="<?php echo $produit->getLibelle(); ?>">
         </div>
     </div>
 </div>

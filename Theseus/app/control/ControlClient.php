@@ -87,7 +87,7 @@ class ControlClient {
         $req->bindValue(':pass', $array['pass']);
         $req->execute();
         $result = $req->fetch();
-
+        $client = false;
         if($result){
             $client = new Client($result);
         }

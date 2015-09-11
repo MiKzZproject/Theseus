@@ -29,12 +29,16 @@
     </section>
 
 </footer>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.22.0/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.22.0/js/components/notify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.22.0/js/components/datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.22.0/js/components/form-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.22.0/js/components/lightbox.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="js/slippry.js"></script>
 <script src="js/scriptSlider.js"></script>
+<script src="js/script.js"></script>
 
 <!-- modal FAQ -->
 <div class="modal fade" id="myModalFAQ" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

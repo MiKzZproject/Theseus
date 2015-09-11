@@ -175,7 +175,7 @@ figure.effect-goliath:hover figcaption {
 	background-color: rgba(255, 255, 255, 0.9);
 	padding: 1em;
 	width: 30%;
-	height: 100%;
+	height: 101%;
 }
 .news-slider .text-content h2 {
 	margin: 0;
@@ -194,17 +194,6 @@ figure.effect-goliath:hover figcaption {
 }
 .news-slider .image-content img {
 	max-width: 100%;
-}
-.news-slider .news-pager {
-	position: absolute;
-	bottom: 10px;
-	right: 10px;
-	z-index: 35;
-	text-align: right;
-	display: block;
-	margin: 0.2em 0 0;
-	padding: 0;
-	list-style: none;
 }
 .news-slider .news-pager li {
 	display: inline-block;
@@ -237,5 +226,33 @@ figure.effect-goliath:hover figcaption {
 @media (max-width: 960px) and (min-width: 610px) {
 	#event figcaption {
 		display: none;
+	}
+}
+
+@media (min-width: 550px) {
+	.news-slider .news-pager {
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		z-index: 35;
+		text-align: right;
+		display: block;
+		margin: 0.2em 0 0;
+		padding: 0;
+		list-style: none;
+	}
+}
+
+@media (max-width: 550px) {
+	.news-slider .news-pager {
+		position: absolute;
+		bottom: 0px;
+		right: 10px;
+		z-index: 35;
+		text-align: right;
+		display: block;
+		margin: 0.2em 0 0;
+		padding: 0;
+		list-style: none;
 	}
 }

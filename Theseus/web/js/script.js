@@ -75,6 +75,12 @@
             data: form
         })
         .done(function successLogin(data) {
+            UIkit.notify({
+                message : 'Bienvenue '+data.login+' !',
+                status  : 'success',
+                timeout :  5000,
+                pos     : 'top-center'
+            });
             $('#loginErrorEmail').hide();
             $('#loginErrorPwd').hide();
             $('#loginErrorWrong').hide();
@@ -112,7 +118,7 @@
             method: "POST",
             url: "logout.php",
         })
-        .done(function successLogin() {
+        .done(function successLogout() {
             $('#notLogged').show();
             $('#logged').hide();
             $('#nameLogin').html("Me connecter");
@@ -435,5 +441,52 @@
         $('#forgotPassword').hide();
         return false;
     });
+
+    $(".subscribeEvent").click(function onSubscribeEvent(e) {
+        var id = e.target.getAttribute("data-id");
+        $.ajax({
+            method: "POST",
+            url: "inscriptionEvent.php",
+            data: {idEvent : id}
+        })
+        .done(function successSubscribeEvent(data) {
+            $('#myModal'+id).modal('hide');
+            if(data.prenium) {
+                UIkit.notify({
+                    message: "Vous êtes inscrit pour cet évènement, vous recevrez votre invitation 48 heures avant le debut de l'évènement !",
+                    status: 'success',
+                    timeout: 5000,
+                    pos: 'top-center'
+                });
+            }else {
+                UIkit.notify({
+                    message: "Vous venez de vous inscrire pour cet évènement, si vous êtes tirer au sort vous recevrez une invitation 48 heures avant le debut de l'évènement !",
+                    status: 'success',
+                    timeout: 5000,
+                    pos: 'top-center'
+                });
+            }
+        })
+        .fail(function errorSubscribeEvent(data) {
+            if (data.responseJSON.late) {
+                UIkit.notify({
+                    message: "Désolé mais il est trop tard pour s'inscrire a cet évènement !",
+                    status: 'danger',
+                    timeout: 5000,
+                    pos: 'top-center'
+                });
+            }
+            if (data.responseJSON.notLogged) {
+                UIkit.notify({
+                    message: "Vous devez être connecté pour vous inscrire a un évènement !",
+                    status: 'danger',
+                    timeout: 5000,
+                    pos: 'top-center'
+                });
+            }
+        });
+        return false;
+    });
+
 })();
 

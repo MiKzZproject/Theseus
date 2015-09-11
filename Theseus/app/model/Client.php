@@ -250,9 +250,11 @@ class Client {
     /**
      * @return mixed
      */
-    public function getIsPrenium()
+    public function isPrenium()
     {
-        if($this->dateFinAbo > time()) {
+        $datefin = date_create($this->dateFinAbo);
+        $datefin = $datefin->getTimestamp();
+        if($datefin > time()) {
             return true;
         }
         return false;

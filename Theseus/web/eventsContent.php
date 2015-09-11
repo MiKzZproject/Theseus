@@ -63,9 +63,13 @@ $nbPage = ceil($eventsCount/$perPage);
                             <h4 class="modal-title" id="myModalLabel"><?php echo $evenement->getLibelle(); ?> - <?php echo $startDate; ?></h4>
                         </div>
                         <div class="modal-body">
+
                             <div id="miniature-salle">
-                                <img src="<?php echo $evenement->getImage(); ?>"/>
+                                <a href="#my-id<?php echo $evenement->getId(); ?>" data-uk-modal>
+                                    <img src="<?php echo $evenement->getImage(); ?>"/>
+                                </a>
                             </div>
+
                             <p>
                                 <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Lieu : <?php echo $evenement->getLieu(); ?><br/>
                                 <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Date : <?php echo $startDate; ?> - <?php echo $endDate; ?><br />
@@ -81,12 +85,18 @@ $nbPage = ceil($eventsCount/$perPage);
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                            <button type="button" class="btn btn-primary">S'inscrire à l'évènement</button>
+                            <button type="button" data-id="<?php echo $evenement->getId(); ?>" class="btn btn-primary subscribeEvent">S'inscrire à l'évènement</button>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <div id="my-id<?php echo $evenement->getId(); ?>" class="uk-modal">
+                    <div class="uk-modal-dialog uk-modal-dialog-lightbox">
+                        <a href="<?php echo $evenement->getImage(); ?>" class="uk-modal-close uk-close uk-close-alt"></a>
+                        <img src="<?php echo $evenement->getImage(); ?>" alt="<?php echo $evenement->getLieu(); ?>">
+                    </div>
+                </div>
+            </div>
 
         <?php } ?>
     <div class="clear"></div>

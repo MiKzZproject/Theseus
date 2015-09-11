@@ -36,6 +36,18 @@ class ControlEvenement {
         return $evenements;
     }
 
+    public function getEvenement($id){
+        $req = $this->db->prepare('SELECT * FROM evenement WHERE id = :id');
+        $req->bindValue(':id', $id);
+        $req->execute();
+        $result = $req->fetch();
+        $event = false;
+        if($result){
+            $event = new Evenement($result);
+        }
+        return $event;
+    }
+
     public function addEvenement($evenement){
         $req = $this->db->prepare('INSERT INTO evenement (libelle,lieu,description,adresse,cp,ville,dateDebut,dateFin,place,image,theme,miniature1)
                                     VALUES (:libelle,
@@ -65,6 +77,17 @@ class ControlEvenement {
 
         $req->execute();
 
+    }
+
+    public function inscriptionEvenement($idEvent,$client){
+        $req = $this->db->prepare('INSERT INTO evenement_client (idClient,idEvenement,participer)
+                                    VALUES (:idClient,
+                                            :idEvent,
+                                            :participer)');
+        $req->bindValue(':idClient',$client->getId());
+        $req->bindValue(':idEvent',$idEvent);
+        $req->bindValue(':participer',$client->isPrenium());
+        return $req->execute();
     }
 
     public function updateEvenement($evenement){

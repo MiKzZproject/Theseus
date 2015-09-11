@@ -9,6 +9,7 @@ class Theseus {
     const NBPERPAGEPRODUCT = 9;
     const NBPERPAGEEVENT = 12;
     const NBPERPAGEFEATURED = 9;
+    const CLOSEINSCRIPTION = 172800;
     const KEYHASH = "fg,dhfjkgsd456ùm(*^(;";
 
     Public function encryptionPWD($pwd) {

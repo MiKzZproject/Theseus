@@ -22,9 +22,9 @@ include('template/header.php');
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#commandes" aria-controls="commandes" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart"></span> Mes Commandes</a></li>
             <li role="presentation"><a href="#informations" aria-controls="informations" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-user"></span> Mes Informations</a></li>
-            <li role="presentation"><a href="#invitations" aria-controls="invitations" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-envelope"></span> Mes Invitations</a></li>
+            <li role="presentation"><a href="#modifPassword" aria-controls="modifPassword" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Changer de mot de passe</a></li>
             <li role="presentation"><a href="#alertes" aria-controls="alertes" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-bell"></span> Mes alertes</a></li>
-            <li role="presentation"><a href="#modifPassword" aria-controls="modifPassword" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Modification mot de passe</a></li>
+            <li role="presentation"><a href="#invitations" aria-controls="invitations" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-envelope"></span> Mes Invitations</a></li>
             <li role="presentation"><a href="#abo" aria-controls="abo" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-credit-card"></span> Abonnement Prenium</a></li>
         </ul>
 
@@ -101,8 +101,7 @@ include('template/header.php');
                         </div>
                         <div class="form-group">
                             <label for="dateNaissance">Date de naissance</label>
-                            <input type="date" name="date" class="form-control" placeholder="1989-05-27" value="<?php echo(date('Y-m-d',strtotime($client->getDateNaissance()))); ?>">
-
+                            <input type="" data-uk-datepicker="{format:'DD-MM-YYYY'}" name="date" class="form-control" placeholder="27-05-1989" value="<?php echo(date('d-m-Y',strtotime($client->getDateNaissance()))); ?>">
                         </div>
                         <div id="accountErrorTel" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -206,29 +205,29 @@ include('template/header.php');
                         <div class="panel-heading">
                             <h3 class="panel-title">Avantages compte PRENIUM</h3>
                         </div>
-                        <div class="panel-body">
+                        <div id="aboPrenium" class="panel-body">
                             <div class="row">
-                                <div class="col-xs-6 col-sm-4 cardAbo">
+                                <div class="col-xs-12 col-sm-6 col-md-4 cardAbo">
                                     <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
                                     <h4>Accès VIP = pas d'attente lors des évènements</h4>
                                 </div>
-                                <div class="col-xs-6 col-sm-4 cardAbo">
+                                <div class="col-xs-12 col-sm-6 col-md-4 cardAbo">
                                     <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
                                     <h4>Des exclusivités sur les produits</h4>
                                 </div>
-                                <div class="col-xs-6 col-sm-4 cardAbo">
+                                <div class="col-xs-12 col-sm-6 col-md-4 cardAbo">
                                     <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                                     <h4>Accès aux évènements de votre choix = pas de tirage au sort</h4>
                                 </div>
-                                <div class="col-xs-6 col-sm-4 cardAbo">
+                                <div class="col-xs-12 col-sm-6 col-md-4 cardAbo">
                                     <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
                                     <h4>Livraison gratuite à domicile des produits achetés (sous 24h)</h4>
                                 </div>
-                                <div class="col-xs-6 col-sm-4 cardAbo">
+                                <div class="col-xs-12 col-sm-6 col-md-4 cardAbo">
                                     <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
                                     <h4>Des bons de réduction exclusifs à valoir sur nos prochaines ventes</h4>
                                 </div>
-                                <div class="col-xs-6 col-sm-4 cardAbo" id="subscribe" onclick="document.getElementById('subcribePaypal').submit();">
+                                <div class="col-xs-12 col-sm-6 col-md-4 cardAbo" id="subscribe" onclick="document.getElementById('subcribePaypal').submit();">
                                     <span class=" glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
                                     <h4>Inscription pour seulement 30€ par ans!</h4>
                                     <form id='subcribePaypal' action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
