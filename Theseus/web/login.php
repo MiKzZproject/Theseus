@@ -22,7 +22,7 @@ if(!$errors){
     if($client){
         $_SESSION['login'] = $client;
         $session = $controlLogin->isLogged($client->getId());
-        $response = json_encode(['type' => 'ok', 'login' => $client->getNom()]);
+        $response = json_encode(['type' => 'ok', 'login' => ucfirst($client->getNom())]);
         echo $response;
     } else{
         header('HTTP/1.1 400 Bad Request');
