@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 07 Septembre 2015 à 00:29
+-- Généré le :  Ven 11 Septembre 2015 à 16:01
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -180,17 +180,24 @@ CREATE TABLE IF NOT EXISTS `client` (
   `dateInscription` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `newsletters` tinyint(1) DEFAULT NULL,
   `alerte` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+  `dateDebutAbo` timestamp NULL DEFAULT NULL,
+  `dateFinAbo` timestamp NULL DEFAULT NULL,
+  `renew` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
 -- Contenu de la table `client`
 --
 
-INSERT INTO `client` (`id`, `nom`, `prenom`, `dateNaissance`, `tel`, `email`, `pwd`, `dateInscription`, `newsletters`, `alerte`) VALUES
-(7, 'popo', 'papa', '1985-03-21', '51594', 'a@erehotm.com', 'teerest', '2015-03-21 11:54:08', 1, 1),
-(8, 'Aymard', 'Florent', '1989-05-15', '0164055032', 'f.aymard@gmail.com', 'flo77', '2015-09-05 15:50:34', 1, 1),
-(12, 'ruben', 'ruben', '2014-07-17', NULL, 'ruben@theseus.com', 'theseus', '2015-09-05 21:42:04', NULL, NULL);
+INSERT INTO `client` (`id`, `nom`, `prenom`, `dateNaissance`, `tel`, `email`, `pwd`, `dateInscription`, `newsletters`, `alerte`, `dateDebutAbo`, `dateFinAbo`, `renew`) VALUES
+(7, 'popo', 'papa', '1985-03-21', '51594', 'a@erehotm.com', 'teerest', '2015-03-21 11:54:08', 1, 1, NULL, NULL, NULL),
+(8, 'Aymard', 'Florent', '1989-05-15', '0164055032', 'f.aymard@gmail.com', 'flo77', '2015-09-05 15:50:34', 1, 1, '2015-01-05 18:44:21', '2016-01-05 18:44:21', 1),
+(12, 'ruben', 'ricardo', '2014-07-17', '0605060403', 'ruben@theseus.com', 'theseus', '2015-09-05 21:42:04', 1, 0, '2015-05-12 22:00:00', '2016-05-12 22:00:00', 0),
+(14, 'test', 'test', '1991-12-25', '0130303030', 'ruben2@theseus.com', 'test', '2015-09-10 22:03:20', NULL, 0, NULL, NULL, NULL),
+(21, 'test', 'test', '2002-09-25', '0130303030', 'hdkfhlkjhklg@gmail.com', 'test', '2015-09-10 22:12:00', NULL, 0, NULL, NULL, NULL),
+(22, 'test', 'test', '2002-09-25', '0130303030', 'ruben@gmail.com', 'test', '2015-09-10 22:13:48', NULL, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -290,6 +297,14 @@ CREATE TABLE IF NOT EXISTS `evenement_client` (
   KEY `idClient` (`idClient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Contenu de la table `evenement_client`
+--
+
+INSERT INTO `evenement_client` (`idEvenement`, `idClient`, `participer`) VALUES
+(1, 12, 0),
+(4, 12, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -352,9 +367,9 @@ CREATE TABLE IF NOT EXISTS `logged` (
   `idClient` int(11) unsigned NOT NULL,
   `session` varchar(255) NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`,`idClient`),
   UNIQUE KEY `idClient` (`idClient`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=72 ;
 
 --
 -- Contenu de la table `logged`
@@ -375,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `newsletter` (
   `mail` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mail` (`mail`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
 -- Contenu de la table `newsletter`
@@ -385,7 +400,7 @@ INSERT INTO `newsletter` (`id`, `mail`) VALUES
 (1, 'blabla@gmail.com'),
 (10, 'dertas@gmail.com'),
 (8, 'ffff77@gmail.com'),
-(7, 'hdkfhlkjhklg@gmail');
+(29, 'ruben@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -504,6 +519,12 @@ ALTER TABLE `evenement_client`
 ALTER TABLE `evenement_produit`
   ADD CONSTRAINT `evenement_produit_ibfk_1` FOREIGN KEY (`idEvenement`) REFERENCES `evenement` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `evenement_produit_ibfk_2` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `logged`
+--
+ALTER TABLE `logged`
+  ADD CONSTRAINT `logged_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `client` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
