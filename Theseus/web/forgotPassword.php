@@ -31,4 +31,3 @@ if(!$errors){
     echo json_encode($errors);
 }
 return false;
-?>

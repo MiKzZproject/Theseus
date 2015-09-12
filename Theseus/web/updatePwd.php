@@ -12,6 +12,7 @@ if (empty($_POST['pwdAcutel']) ){
 if (!$errors) {
     require '../../vendor/autoload.php';
     session_start();
+    /** @var $client \model\Client */
     $client = $_SESSION['login'];
 
     if($_POST['pwdAcutel'] == $client->getPwd()) {
@@ -33,4 +34,3 @@ if ($errors) {
     echo json_encode($errors);
 }
 return false;
-?>

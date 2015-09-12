@@ -13,7 +13,7 @@ $controlProduits = new control\ControlProduit($db);
 // pagination
 $perPage = \config\Theseus::NBPERPAGEPRODUCT;
 
-$produits = $controlProduits->getProduitsPagination(1, $perPage);
+$produits = $controlProduits->getProduitsPagination(1);
 $produitsCount = $controlProduits->getProduitsCount();
 $nbPage = ceil($produitsCount/$perPage);
 //
@@ -27,6 +27,7 @@ $categories = $controlCategories->getCategories();
         <select id="selectcatprod" class="form-control">
             <option class='selectcat' value="all" selected>Toutes les catégories</option>
             <?php
+            /** @var $categorie \model\Categorie */
             foreach ($categories as $categorie ) {
                 echo "<option class='selectcat' value='".$categorie->getId()."'>".$categorie->getNom() ."</option>";
             }
@@ -41,7 +42,9 @@ if(empty($produits)) {
     <div class="alert alert-info" role="alert"><p>Aucun produits ne correspond à votre recherche</p></div>
 <?php } else { ?>
     <div id="tableproduct" >
+
         <?php foreach ($produits as $produit) {
+            /** @var $produit \model\Produit */
             include 'template/product.php';
        } ?>
         <div class="paginationProduct">

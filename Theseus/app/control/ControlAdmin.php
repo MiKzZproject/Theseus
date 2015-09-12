@@ -13,11 +13,12 @@ use model\Admin;
 
 class ControlAdmin {
 
+
     private $db;
 
     public function __construct(Db $db)
     {
-        if (!$db) throw new InvalidArgumentException("First argument is expected to be a valid PDO instance, NULL given");
+        if (!$db) throw new \InvalidArgumentException("First argument is expected to be a valid PDO instance, NULL given");
         $this->db = $db->getPDOInstance();
     }
 

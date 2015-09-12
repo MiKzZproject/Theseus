@@ -10,25 +10,37 @@ namespace control;
 
 
 use config\Db;
+use model\Client;
 use model\Evenement;
 use model\Produit;
 
+/**
+ * Class ControlEvenement
+ * @package control
+ */
 class ControlEvenement {
 
+    /** @var \PDO */
     private $db;
 
+    /**
+     * @param Db $db
+     */
     public function __construct(Db $db)
     {
-        if (!$db) throw new InvalidArgumentException("First argument is expected to be a valid PDO instance, NULL given");
+        if (!$db) throw new \InvalidArgumentException("First argument is expected to be a valid PDO instance, NULL given");
         $this->db = $db->getPDOInstance();
     }
 
+    /**
+     * @return array|bool
+     */
     public function getEvenements(){
         $req = $this->db->prepare('SELECT *
                                     FROM evenement
                                     ORDER BY dateDebut ASC');
         $req->execute();
-
+        $evenements = false;
         while($result = $req->fetch()){
             $evenement = new Evenement($result);
             $evenements[] = $evenement;
@@ -36,6 +48,10 @@ class ControlEvenement {
         return $evenements;
     }
 
+    /**
+     * @param $id
+     * @return bool|Evenement
+     */
     public function getEvenement($id){
         $req = $this->db->prepare('SELECT * FROM evenement WHERE id = :id');
         $req->bindValue(':id', $id);
@@ -48,6 +64,9 @@ class ControlEvenement {
         return $event;
     }
 
+    /**
+     * @param Evenement $evenement
+     */
     public function addEvenement($evenement){
         $req = $this->db->prepare('INSERT INTO evenement (libelle,lieu,description,adresse,cp,ville,dateDebut,dateFin,place,image,theme,miniature1)
                                     VALUES (:libelle,
@@ -79,6 +98,11 @@ class ControlEvenement {
 
     }
 
+    /**
+     * @param $idEvent
+     * @param Client $client
+     * @return bool
+     */
     public function inscriptionEvenement($idEvent,$client){
         $req = $this->db->prepare('INSERT INTO evenement_client (idClient,idEvenement,participer)
                                     VALUES (:idClient,
@@ -90,6 +114,9 @@ class ControlEvenement {
         return $req->execute();
     }
 
+    /**
+     * @param Evenement $evenement
+     */
     public function updateEvenement($evenement){
         $req = $this->db->prepare('UPDATE evenement
                                     SET libelle = :libelle,
@@ -123,6 +150,9 @@ class ControlEvenement {
 
     }
 
+    /**
+     * @param $id
+     */
     public function deleteEvenement($id){
         $req = $this->db->prepare('DELETE
                                     FROM evenement
@@ -133,6 +163,10 @@ class ControlEvenement {
 
     }
 
+    /**
+     * @param $idEvent
+     * @return array
+     */
     public function getProduitsByEvent($idEvent){
         $req = $this->db->prepare("SELECT *
                                     FROM evenement_produit EP, produit P
@@ -152,6 +186,9 @@ class ControlEvenement {
         return $produits;
     }
 
+    /**
+     * @return mixed
+     */
     public function getEventsCount(){
         $sql = "SELECT count(*) as count FROM evenement ";
         $req = $this->db->prepare($sql);
@@ -160,7 +197,12 @@ class ControlEvenement {
         return $result['count'];
     }
 
+    /**
+     * @param $page
+     * @return array|bool
+     */
     public function getEventsPagination($page){
+        /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
         $nbEvents = \config\Theseus::NBPERPAGEEVENT;
         $page = ($page-1) * $nbEvents;
         $sql = 'SELECT * FROM evenement ORDER BY dateDebut ASC LIMIT '.$page.','.$nbEvents;

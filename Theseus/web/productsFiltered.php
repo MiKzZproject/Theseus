@@ -21,6 +21,7 @@ $categories = $controlCategorie->getCategories();
     <select id="selectcatprod" class="form-control">
         <option class='selectcat' value="all">Toutes les catégories</option>
         <?php
+        /** @var $categorie \model\Categorie */
         foreach ($categories as $categorie ) {
             $selected = "";
             if($categorie->getId() == $cat) {

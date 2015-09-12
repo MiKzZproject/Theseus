@@ -24,6 +24,7 @@ if(!$controlClient->isLogged()) {
 }
 
 if( !$errors['notLogged'] && !empty($eventId) && !$errors['late']) {
+    /** @var $client \model\Client */
     $client = $_SESSION['login'];
     $eventId = $_POST['idEvent'];
 
@@ -35,4 +36,3 @@ if( !$errors['notLogged'] && !empty($eventId) && !$errors['late']) {
     echo json_encode($errors);
 }
 return false;
-?>

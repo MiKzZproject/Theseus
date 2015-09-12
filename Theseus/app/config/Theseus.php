@@ -13,7 +13,7 @@ class Theseus {
     const KEYHASH = "fg,dhfjkgsd456ùm(*^(;";
 
     Public function encryptionPWD($pwd) {
-        return hash('sha512',$pwd.KEYHASH);
+        return hash('sha512',$pwd.Theseus::KEYHASH);
     }
 }
 

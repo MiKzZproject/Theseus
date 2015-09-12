@@ -10,13 +10,15 @@ $controlEvenement = new control\ControlEvenement($db);
 // pagination
 $perPage = \config\Theseus::NBPERPAGEEVENT;
 $page = isset($_POST['page']) ? $_POST['page'] : 1;
-$evenements = $controlEvenement->getEventsPagination($page, $perPage);
+$evenements = $controlEvenement->getEventsPagination($page);
 $eventsCount = $controlEvenement->getEventsCount();
 $nbPage = ceil($eventsCount/$perPage);
 ?>
 <div id="events-content">
     <h1>Nos Events</h1>
         <?php
+
+        /** @var $evenement \model\Evenement */
         foreach ($evenements as $evenement){
             $eventProducts = $controlEvenement->getProduitsByEvent($evenement->getId());
             $startDate = date_create($evenement->getDateDebut());
@@ -78,6 +80,7 @@ $nbPage = ceil($eventsCount/$perPage);
                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Description : <?php echo $evenement->getDescription(); ?>
                             </p>
                             <?php
+                            /** @var $produit \model\Produit */
                             foreach ($eventProducts as $produit) {  ?>
                                 <img src="<?php echo $produit->getMiniature(); ?>"/>
                             <?php    }

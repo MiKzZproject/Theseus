@@ -1,3 +1,5 @@
+/Theseus/.idea
+/vendor
 .idea/workspace.xml
 .idea/scopes/scope_settings.xml
 .idea/.name
@@ -15,6 +17,7 @@ Theseus/.idea/modules.xml
 Theseus/.idea/Theseus.iml
 Theseus/.idea/vcs.xml
 Theseus/.idea/workspace.xml
+/composer.phar
 Theseus/.idea/encodings.xml
 Theseus/.idea/workspace.xml
 Theseus/.idea/Theseus.iml

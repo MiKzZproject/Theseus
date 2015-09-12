@@ -8,14 +8,13 @@
 
 namespace config;
 
-
 /**
  * Class Db
  * @package config
  */
 class Db
 {
-    /** @var PDO */
+    /** @var \PDO */
     private $PDOInstance = null;
 
     /** @var Db */
@@ -32,7 +31,7 @@ class Db
                 \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
             return $this->PDOInstance;
         }
-        catch (Exception $e)
+        catch (\Exception $e)
         {
             die('Erreur : ' . $e->getMessage());
         }
@@ -73,7 +72,7 @@ class Db
     }
 
     /**
-     * @return PDO
+     * @return \PDO
      */
     public function getPDOInstance()
     {
@@ -81,7 +80,7 @@ class Db
     }
 
     /**
-     * @param PDO $PDOInstance
+     * @param \PDO $PDOInstance
      */
     public function setPDOInstance($PDOInstance)
     {

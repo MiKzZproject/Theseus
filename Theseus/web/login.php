@@ -21,7 +21,7 @@ if(!$errors){
     $client = $controlLogin->connection($array);
     if($client){
         $_SESSION['login'] = $client;
-        $session = $controlLogin->isLogged($client->getId());
+        $session = $controlLogin->isLogged();
         $response = json_encode(['type' => 'ok', 'login' => ucfirst($client->getNom())]);
         echo $response;
     } else{
@@ -33,4 +33,3 @@ if(!$errors){
     echo json_encode($errors);
 }
 return false;
-?>

@@ -11,21 +11,31 @@ namespace control;
 use config\Db;
 use model\Newsletter;
 
+/**
+ * Class ControlNewsletter
+ * @package control
+ */
 class ControlNewsletter {
-
+    /** @var \PDO */
     private $db;
 
+    /**
+     * @param Db $db
+     */
     public function __construct(Db $db)
     {
-        if (!$db) throw new InvalidArgumentException("First argument is expected to be a valid PDO instance, NULL given");
+        if (!$db) throw new \InvalidArgumentException("First argument is expected to be a valid PDO instance, NULL given");
         $this->db = $db->getPDOInstance();
     }
 
+    /**
+     * @return array|bool
+     */
     public function getNewsletters(){
         $req = $this->db->prepare('SELECT *
                                     FROM newsletter');
         $req->execute();
-
+        $newsletters = false;
         while($result = $req->fetch()){
             $newsletter = new Newsletter($result);
             $newsletters[] = $newsletter;
@@ -33,6 +43,10 @@ class ControlNewsletter {
         return $newsletters;
     }
 
+    /**
+     * @param $email
+     * @return bool|Newsletter
+     */
     public function getNewslettersByEmail($email){
         $req = $this->db->prepare('SELECT *
                                     FROM newsletter
@@ -40,12 +54,17 @@ class ControlNewsletter {
 
         $req->bindValue(':mail',$email);
         $req->execute();
-        $response = $req->fetch();
-
-        return $response ? true : false;
-        return false;
+        $newsletter = false;
+        while($result = $req->fetch()){
+            $newsletter = new client($result);
+        }
+        return $newsletter;
     }
 
+    /**
+     * @param Newsletter $newsletter
+     * @return bool
+     */
     public function addNewsletter($newsletter){
         $req = $this->db->prepare('INSERT INTO newsletter (mail)
                                     VALUES (:mail)');
@@ -53,7 +72,10 @@ class ControlNewsletter {
         return $req->execute();
     }
 
-    public function updateNewsletter($newsletter){
+    /**
+     * @param Newsletter $newsletter
+     */
+    public function updateNewsletter(Newsletter $newsletter){
         $req = $this->db->prepare('UPDATE newsletter
                                     SET mail = :mail
                                     WHERE id = :id ');
@@ -65,6 +87,9 @@ class ControlNewsletter {
     }
 
 
+    /**
+     * @param $id
+     */
     public function deleteNewsletterById($id){
         $req = $this->db->prepare('DELETE
                                     FROM newsletter
@@ -76,6 +101,9 @@ class ControlNewsletter {
 
     }
 
+    /**
+     * @param $email
+     */
     public function deleteNewsletterByEmail($email){
         $req = $this->db->prepare('DELETE
                                     FROM newsletter

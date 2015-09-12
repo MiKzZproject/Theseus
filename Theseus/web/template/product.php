@@ -1,6 +1,6 @@
 
 
-<article id="product<?php echo $produit->getId() ?>" <?php if($produitsCount < 2) { echo "style='width: 48%'"; }?>>
+<article id="product<?php /** @var $produit \model\Produit */ echo $produit->getId() ?>" <?php if($produitsCount < 2) { echo "style='width: 48%'"; }?>>
     <div class="contentproduct" >
         <div class="infoProduct">
         <a href="#" data-toggle="modal" data-target="#modalProduit<?php echo $produit->getId() ?>" >

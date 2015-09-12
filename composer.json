@@ -11,5 +11,8 @@
     ],
     "autoload": {
         "psr-0":{"" : "Theseus/app/"}
+    },
+    "require-dev": {
+        "phpmd/phpmd" : "@stable"
     }
 }

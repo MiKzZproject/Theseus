@@ -5,6 +5,7 @@ require '../../vendor/autoload.php';
 $db = \config\Db::getInstance();
 $controlClient = new control\ControlClient($db);
 session_start();
+/** @var $client \model\Client */
 $client = $_SESSION['login'];
 $errors = false;
 if (empty($_POST['nom']) ){
@@ -43,4 +44,3 @@ if (!$errors) {
     echo json_encode($errors);
 }
 return false;
-?>

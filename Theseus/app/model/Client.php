@@ -51,7 +51,7 @@ class Client {
     }
 
     /**
-     * @param mixed $alert
+     * @param mixed $alerte
      */
     public function setAlerte($alerte)
     {

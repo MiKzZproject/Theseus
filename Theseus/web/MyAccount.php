@@ -51,6 +51,7 @@ include('template/header.php');
                                 <td colspan=7 style="text-align: center">Vous n'avez encore acheter aucun produit chez nous</td>
                             </tr>
                         <?php } else {
+                            /** @var $commande \model\Commande */
                             foreach($commandes as $key => $commande) {
                                 $class = "info";
                                 $status = "En cours de livraison";

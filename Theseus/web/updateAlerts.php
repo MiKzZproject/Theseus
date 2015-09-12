@@ -6,6 +6,7 @@ require '../../vendor/autoload.php';
 session_start();
 
 $db = \config\Db::getInstance();
+/** @var $client \model\Client */
 $client = $_SESSION['login'];
 $controlNewsletter = new control\ControlNewsletter($db);
 $newsletter = false;
@@ -34,4 +35,3 @@ $response = json_encode(['type' => 'ok']);
 echo $response;
 
 return false;
-?>

@@ -116,7 +116,7 @@
     function logout() {
         $.ajax({
             method: "POST",
-            url: "logout.php",
+            url: "logout.php"
         })
         .done(function successLogout() {
             $('#notLogged').show();
@@ -331,14 +331,13 @@
                 $('#newsletterError').hide();
                 $('#newsletterForm').hide();
             })
-            .fail(function errorNewsletter(data) {
+            .fail(function errorNewsletter() {
                 $('#newsletterError').show();
             });
         return false;
     });
 
-    $(".registerForm .btn-success").click(function registerClient(e) {
-
+    $(".registerForm .btn-success").click(function registerClient() {
         var form = ($("#formRegister")).serialize();
         $.ajax({
             method: "POST",
