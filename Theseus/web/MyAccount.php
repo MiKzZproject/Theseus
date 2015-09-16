@@ -130,9 +130,48 @@ include('template/header.php');
             </div>
 
             <div role="tabpanel" class="tab-pane" id="invitations">
-                <div class="container">
-                    invitations
-                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Evènement</th>
+                        <th>Date de début</th>
+                        <th>Date de fin</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $invitations = $controlClient->getInvitations($client->getId());
+                    if(empty($invitations)) {
+                        ?>
+                        <tr class="info">
+                            <td colspan=7 style="text-align: center">Vous n'avez encore aucune invitation</td>
+                        </tr>
+                    <?php } else {
+                        /** @var $invitation \model\Invitation */
+                        foreach($invitations as $key => $invitation) {
+                            $status = "prochainement";
+                            $debDate = date_create($invitation->getDateDebut())->getTimestamp();
+                            $endDate = date_create($invitation->getDateFin())->getTimestamp();
+                            if (time() > $debDate && time() > $endDate) {
+                                $status = "ouvert";
+                            } elseif ( time() > $endDate) {
+                                $status = "fermer";
+                            }
+                            $class = "info";
+                            if($key%2 == 0) {
+                                $class = "warning";
+                            }
+                            ?>
+                            <tr class="<?php echo $class; ?>">
+                                <td><?php echo $invitation->getLibelleEvent(); ?></td>
+                                <td><?php echo $invitation->getDateDebut(); ?></td>
+                                <td><?php echo $invitation->getDateFin(); ?></td>
+                                <td><?php echo $status; ?></td>
+                            </tr>
+                        <?php } }?>
+                    </tbody>
+                </table>
             </div>
 
             <!-- récupération satut checked newsletters et alerte-->
@@ -151,7 +190,7 @@ include('template/header.php');
 
             <div role="tabpanel" class="tab-pane" id="alertes">
                 <div class="container">
-                    <div id="accountSuccessAlerts" class="alert alert-success hideBlock" role="alert">Vos modifications ont bien été prise en compte. </div>
+                    <div id="accountSuccessAlerts" class="alert alert-success hideBlock" role="alert">Vos modifications ont bien été prises en compte. </div>
                     <form method="post" id="myAlerts">
                         <p>Recevoir nos newsletters : </p>
                         <div class="onoffswitch">

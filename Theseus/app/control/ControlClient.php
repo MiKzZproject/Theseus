@@ -12,6 +12,7 @@ namespace control;
 use config\Db;
 use model\Client;
 use model\Commande;
+use model\Invitation;
 
 /**
  * Class ControlClient
@@ -208,5 +209,26 @@ class ControlClient {
             $commandes[] = $commande;
         }
         return $commandes;
+    }
+
+    /**
+     * @param $id
+     * @return array|bool
+     */
+    public function getInvitations($id){
+        $req = $this->db->prepare('SELECT E.libelle as libelleEvent, dateDebut, dateFin
+                                   FROM evenement E, evenement_client EC
+                                   WHERE E.id = EC.idEvenement
+                                   AND EC.participer = 1
+                                   AND EC.idClient = :id
+                                   ORDER BY E.dateDebut');
+        $req->bindValue(':id',$id);
+        $req->execute();
+        $invitations = false;
+        while($result = $req->fetch()){
+            $invitation = new Invitation($result);
+            $invitations[] = $invitation;
+        }
+        return $invitations;
     }
 }
