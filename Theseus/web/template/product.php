@@ -9,7 +9,7 @@
         </a>
         <h5> Description :</h5>
         <a href="#" data-toggle="modal" data-target="#modalProduit<?php echo $produit->getId() ?>">
-            <?php echo substr($produit->getDescription(),0,200)."..." ?>
+            <?php echo substr($produit->getDescription(),0,180)."..." ?>
         </a>
         </div>
     </div>

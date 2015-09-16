@@ -79,7 +79,9 @@ class Client {
      */
     public function setDateNaissance($dateNaissance)
     {
-        $this->dateNaissance = $dateNaissance;
+        $date = preg_split ("/-/",$dateNaissance);
+        $date = $date[2]."-".$date[1]."-".$date[0];
+        $this->dateNaissance = $date;
     }
 
     /**
