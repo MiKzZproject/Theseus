@@ -459,7 +459,7 @@
                 });
             }else {
                 UIkit.notify({
-                    message: "Vous venez de vous inscrire pour cet évènement, si vous êtes tirer au sort vous recevrez une invitation 48 heures avant le debut de l'évènement !",
+                    message: "Vous venez de vous inscrire pour cet évènement, si vous êtes tiré au sort vous recevrez une invitation 48 heures avant le debut de l'évènement !",
                     status: 'success',
                     timeout: 5000,
                     pos: 'top-center'

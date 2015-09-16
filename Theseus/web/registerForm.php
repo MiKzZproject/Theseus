@@ -15,7 +15,7 @@ include('template/header.php');
             <div class="col-lg-12">
                 <h2 class="header-title green nohover">Formulaire d'Inscription</h2>
             </div>
-            <div id="registerSuccess" class="alert alert-success hideBlock" role="alert">Vous pouvez à present inscrit vous pouvez vous connecter </div>
+            <div id="registerSuccess" class="alert alert-success hideBlock" role="alert">Vous êtes dès à present inscrit. Vous pouvez vous connecter.</div>
                 <form method="post" id="formRegister">
                     <div id="registerErrorNom" class="alert alert-danger hideBlock" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
