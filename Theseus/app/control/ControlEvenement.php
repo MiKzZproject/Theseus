@@ -214,4 +214,43 @@ class ControlEvenement {
         }
         return !empty($evenements) ? $evenements : false;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEventsByProductCount($idProduit){
+        $sql = "SELECT count(*) as count
+                FROM evenement_produit
+                WHERE idProduit = :id";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':id',$idProduit);
+        $req->execute();
+        $result = $req->fetch();
+        return $result['count'];
+    }
+
+    /**
+     * @param $page
+     * @return array|bool
+     */
+    public function getEventsByProductPagination($page, $idProduit){
+        /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+        $nbEvents = \config\Theseus::NBPERPAGEEVENT;
+        $page = ($page-1) * $nbEvents;
+        $sql = 'SELECT *
+                FROM evenement E, evenement_produit EP
+                WHERE EP.idEvenement = E.id
+                AND idProduit = :id
+                ORDER BY dateDebut ASC
+                LIMIT '.$page.','.$nbEvents;
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':id',$idProduit);
+        $req->execute();
+        $evenements = false;
+        while($result = $req->fetch()){
+            $evenement = new Evenement($result);
+            $evenements[] = $evenement;
+        }
+        return $evenements;
+    }
 }

@@ -3,13 +3,13 @@
 <article id="product<?php /** @var $produit \model\Produit */ echo $produit->getId() ?>" <?php if($produitsCount < 2) { echo "style='width: 48%'"; }?>>
     <div class="contentproduct" >
         <div class="infoProduct">
-        <a href="#" data-toggle="modal" data-target="#modalProduit<?php echo $produit->getId() ?>" >
-            <img src="<?php echo $produit->getImage() ?>"/>
-            <h3> <?php echo $produit->getLibelle() ?></h3>
+        <a href="#" data-toggle="modal" data-target="#modalProduit<?php echo $produit->getId(); ?>" >
+            <img src="<?php echo $produit->getImage(); ?>"/>
+            <h3> <?php echo $produit->getLibelle(); ?></h3>
         </a>
         <h5> Description :</h5>
-        <a href="#" data-toggle="modal" data-target="#modalProduit<?php echo $produit->getId() ?>">
-            <?php echo substr($produit->getDescription(),0,180)."..." ?>
+        <a href="#" data-toggle="modal" data-target="#modalProduit<?php echo $produit->getId(); ?>">
+            <?php echo substr($produit->getDescription(),0,180)."..."; ?>
         </a>
         </div>
     </div>
@@ -18,10 +18,10 @@
             id="productinfos">
             <tr>
                 <th>
-                    <h2> <?php echo $produit->getPrix() ?> €</h2>
+                    <h2> <?php echo $produit->getPrix(); ?> €</h2>
                 </th>
                 <th>
-                    <button type="button" class="btn btn-success">Voir les events</button>
+                    <a href="events.php?idproduit=<?php echo $produit->getId(); ?>"><button type="button" class="btn btn-success">Voir les events</button></a>
                 </th>
             </tr>
         </table>
@@ -33,7 +33,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel"><?php echo $produit->getLibelle() ?></h4>
+                <h4 class="modal-title" id="myModalLabel"><?php echo $produit->getLibelle(); ?></h4>
             </div>
             <div class="modal-body">
                 <div id="miniature-salle">

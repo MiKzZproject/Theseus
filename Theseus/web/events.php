@@ -1,7 +1,16 @@
 <?php include 'template/header.php'; ?>
 
 <section>
-<?php include 'eventsContent.php'; ?>
+<?php
+
+if(isset($_GET['idproduit'])) {
+    $idProduit = $_GET['idproduit'];
+    include 'eventsByProduct.php';
+} else {
+    include 'eventsContent.php';
+}
+
+?>
     <div class="paginationEvent">
         <div class="paginationEvent">
             <!--        affichage pagination-->
