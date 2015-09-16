@@ -16,7 +16,7 @@ include 'template/header.php';
         <p>Retrouvez notre sélection de produits AUDIO lors de notre prochaine vente du <a href="events.php">7 novembre 2015 à l'Espace Monsieur Bleu</a></p>
         <a href="events.php" class="button-link read-more">En savoir +</a>
       </div>
-      <div class="image-content"><img src="img/others/vente-son.jpg" alt="slide1"></div>
+      <div class="image-content"><img src="img/slider/slide-valbuena2.jpg" alt="slide1"></div>
     </article>
     <article>
       <div class="text-content">
