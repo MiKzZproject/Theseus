@@ -9,8 +9,8 @@ if($_SESSION['admin']->getNiveau() == 3 || $_SESSION['admin']->getNiveau() == 1)
     <button class="btn btn-success" data-toggle="modal" data-target="#addProduitModal">Ajouter une catégorie</button><br><br>
     <table class="table table-striped">
         <tr>
-            <td>nom</td>
-            <td>descrption</td>
+            <td>Nom</td>
+            <td>description</td>
             <td>image</td>
             <td></td>
             <td></td>
@@ -21,7 +21,13 @@ if($_SESSION['admin']->getNiveau() == 3 || $_SESSION['admin']->getNiveau() == 1)
             <tr>
                 <td><?php echo $categorie->getNom(); ?></td>
                 <td><?php echo $categorie->getDescription(); ?></td>
-                <td><img src="../web/<?php echo $categorie->getImage(); ?>"></td>
+                <td>
+                    <?php if(!is_null($categorie->getImage())){
+                                ?><img src="../web/<?php echo $categorie->getImage(); ?>" style="width:10%"></td>
+                        <?php
+                            }else{
+                                echo "Pas d'images disponible";
+                            } ?>
                 <td></td>
                 <td></td>
             </tr>

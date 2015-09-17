@@ -49,7 +49,7 @@ class ControlCategorie {
      */
     public function getCategorie($id){
         $req = $this->db->prepare('SELECT * FROM categorie WHERE id = :id');
-        $req->bindValue(':id',$id);
+        $req->bindValue(':id', $id, FILTER_SANITIZE_NUMBER_INT);
         $req->execute();
         $categorie = false;
         if($result = $req->fetch()){
@@ -90,5 +90,16 @@ class ControlCategorie {
         $req = $this->db->prepare('DELETE FROM categorie WHERE id=:id');
         $req->bindValue(':id',$id);
         return $req->execute();
+    }
+
+    public function getCatProduit($idProduit){
+            $req = $this->db->prepare('select idCategorie FROM categorie_produit WHERE idProduit=:id');
+            $req->bindValue(':id',$idProduit);
+            $req->execute();
+            if($result = $req->fetch()){
+                return $result['idCategorie'];
+            }
+            return false;
+
     }
 }

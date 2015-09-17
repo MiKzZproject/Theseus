@@ -43,6 +43,38 @@ class ControlProduit {
         }
         return $produits;
     }
+    public function getProduitId($id){
+        $req = $this->db->prepare('SELECT * FROM produit where id = :id');
+        $req->bindValue(':id', $id);
+        $req->execute();
+        $produits = false;
+        if($result = $req->fetch()){
+            $produit = new Produit($result);
+            $produits = $produit;
+        }
+        return $produits;
+    }
+
+    public function getProduitsOpt($value,$type){
+        if(empty($value)){
+            $req = $this->db->prepare('SELECT * FROM produit');
+        }else{
+            if(!$type){
+                $req = $this->db->prepare('SELECT * FROM produit where libelle like :libelle');
+                $req->bindValue(':libelle', '%'.$value.'%');
+            }else{
+                $req = $this->db->prepare('SELECT * FROM produit where marque like :marque');
+                $req->bindValue(':marque', '%'.$value.'%');
+            }
+        }
+        $req->execute();
+        $produits = false;
+        while($result = $req->fetch()){
+            $produit = new Produit($result);
+            $produits[] = $produit;
+        }
+        return $produits;
+    }
 
     /**
      * @param Produit $produit
@@ -58,6 +90,15 @@ class ControlProduit {
         $req->bindValue(':stock',$produit->getStock());
         $req->bindValue(':image',$produit->getImage());
         $req->bindValue(':miniature',$produit->getMiniature());
+        $req->execute();
+        return $this->db->lastInsertId();
+
+    }
+
+    public function addLiaison($idCat,$idProduit){
+        $req = $this->db->prepare('INSERT INTO categorie_produit (idCategorie, idProduit) values (:idCat,:idProduit)');
+        $req->bindValue(':idCat',$idCat);
+        $req->bindValue(':idProduit',$idProduit);
         return $req->execute();
     }
 

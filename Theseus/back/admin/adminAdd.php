@@ -4,7 +4,6 @@ $controlAdmin = new \control\ControlAdmin($bdd);
 
 if(isset($_POST['donnees']) && !$_POST['donnees'] == null){
     $array = json_decode($_POST['donnees'], true);
-    var_dump($array);
     $admin = new \model\Admin($array);
     $controlAdmin->addAdmin($admin);
     ?>

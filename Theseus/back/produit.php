@@ -1,7 +1,9 @@
 <?php
     require('config/config.php');
 $controlProduit = new \control\ControlProduit($bdd);
+$controlCat = new \control\ControlCategorie($bdd);
 $produits = $controlProduit->getProduits();
+$cats = $controlCat->getCategories();
 ?>
 <h3>Gestion des produits</h3><br><br>
 
@@ -10,41 +12,13 @@ $produits = $controlProduit->getProduits();
 <div class="block_recherche">
     <input id="produit_recherche" class="form-control" type="text" placeholder="Recherche">&nbsp;<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
     <select id="produit_recherche_type" class="form-control">
-        <option value="libelle">Libelle</option>
-        <option value="marque">Marque</option>
-        <option value="marque">Category</option>
+        <option value="0">Libelle</option>
+        <option value="1">Marque</option>
     </select>
     <br><br>
 </div>
-<table class="table table-striped">
-        <tr>
-            <td>libelle</td>
-            <td>marque</td>
-            <td>categoryId</td>
-            <td>description</td>
-            <td>prix</td>
-            <td>stock</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <?php
-        foreach($produits as $produit){
-            ?>
-            <tr>
-                <td><?php echo $produit->getLibelle(); ?></td>
-                <td><?php echo $produit->getMarque(); ?></td>
-                <td><?php echo $produit->getCategoryId(); ?></td>
-                <td><?php echo $produit->getDescription(); ?></td>
-                <td><?php echo $produit->getPrix(); ?></td>
-                <td><?php echo $produit->getStock(); ?></td>
-                <td><span style="color:orange" class="glyphicon glyphicon-edit" aria-hidden="true"></span></td>
-                <td><span style="color:red" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
-
-            </tr>
-            <?php
-        }
-        ?>
-</table>
+    <span id="produitResult"></span>
+    <span id="produitListe"></span>
 
 <!-- Modal ADD PRODUIT -->
 <div class="modal fade" id="addProduitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -56,23 +30,59 @@ $produits = $controlProduit->getProduits();
             </div>
             <div class="modal-body">
                 Libelle : <br>
-                <input class="form-control" type="text"><br><br>
+                <input id="libelle" class="form-control" type="text"><br><br>
                 Marque : <br>
-                <input class="form-control" type="text"><br><br>
-                Id de la catégorie : <br>
-                <input class="form-control" type="text"><br><br>
+                <input id="marque" class="form-control" type="text"><br><br>
+                Modele : <br>
+                <input id="modele" class="form-control" type="text"><br><br>
+                Catégorie : <br>
+                <select class="form-control" id="categorie">
+                    <?php
+                    foreach($cats as $cat){
+                        ?>
+                        <option value="<?php echo $cat->getId(); ?>"><?php echo $cat->getNom(); ?></option>
+                    <?php
+                    }
+                    ?>
+                </select><br><br>
                 Description : <br>
-                <input class="form-control" type="text"><br><br>
+                <input id="desc" class="form-control" type="text"><br><br>
                 Prix : <br>
-                <input class="form-control" type="text"><br><br>
+                <input id="prix" class="form-control" type="text"><br><br>
                 Stock : <br>
-                <input class="form-control" type="text"><br><br>
+                <input id="stock" class="form-control" type="text"><br><br>
+                image : <br>
+                <input id="image" class="form-control" type="text"><br><br>
+                miniature : <br>
+                <input id="miniature" class="form-control" type="text"><br><br>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" onclick="addProduit" class="btn btn-primary">Ajouter le produit</button>
+                <button type="button" onclick="produitAdd()" class="btn btn-primary" data-dismiss="modal">Ajouter le produit</button>
             </div>
         </div>
     </div>
 </div>
+<!-- Modal ADD PRODUIT -->
+<div class="modal fade" id="updateProduitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modification du Produit</h4>
+            </div>
+            <div class="modal-body">
+                <span id="produitUpdate"></span>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+$('#produit_recherche,#produit_recherche_type').bind("change paste keyup", function() {
+    produitListe();
+});
+
+produitListe()
+</script>
