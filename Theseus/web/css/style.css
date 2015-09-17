@@ -655,6 +655,10 @@ figure.effect-goliath:hover ~ h3{
     display: none;
 }
 
+.MT5  { margin-top: 5px;  }
+.MT10 { margin-top: 10px; }
+.MT15 { margin-top: 15px; }
+
 .ML5  { margin-left: 5px;  }
 .ML10 { margin-left: 10px; }
 .ML15 { margin-left: 15px; }

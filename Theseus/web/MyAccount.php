@@ -243,10 +243,20 @@ include('template/header.php');
             </div>
             <div role="tabpanel" class="tab-pane" id="abo">
                 <div class="container">
-                    <div class="panel panel-info">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Avantages compte PRENIUM</h3>
                         </div>
+
+                        <?php
+                            $finAbo = date_create($client->getDateFinAbo());
+                            if( time() < $finAbo->getTimestamp()) {
+                            ?>
+                            <ul class="list-group MT15 ML10 MR10">
+                                <li class="list-group-item list-group-item-info">Date de fin d'abonnement : <?php echo $client->getDateFinAbo(); ?> </li>
+                            </ul>
+                        <?php } ?>
+
                         <div id="aboPrenium" class="panel-body">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-4 cardAbo">
