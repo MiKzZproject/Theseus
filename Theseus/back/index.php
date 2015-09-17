@@ -83,6 +83,7 @@ if(isset($_SESSION['admin'])){
 <script src="js/produit.js"></script>
 <script src="js/categorie.js"></script>
 <script src="js/client.js"></script>
+<script src="js/admin.js"></script>
 
 </body>
 </html>

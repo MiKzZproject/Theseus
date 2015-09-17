@@ -47,6 +47,16 @@ class ControlAdmin {
         }
         return $admin;
     }
+    public function getAdminId($id){
+        $req = $this->db->prepare('SELECT * FROM admin WHERE id=:id');
+        $req->bindValue(':id', $id);
+        $req->execute();
+
+        if($result = $req->fetch()){
+            $admin = new Admin($result);
+        }
+        return $admin;
+    }
     public function getAdmins(){
         $req = $this->db->prepare('SELECT * FROM admin');
         $req->execute();
@@ -73,5 +83,18 @@ class ControlAdmin {
         $req->execute();
     }
 
+    public function updateAdmin($admin){
+        $req = $this->db->prepare('UPDATE admin SET  login = :login,
+                                                        pass=:pass,
+                                                        email=:email,
+                                                        niveau=:niveau
+                                                        WHERE id=:id');
+        $req->bindValue(':login',$admin->getLogin());
+        $req->bindValue(':pass',$admin->getPass());
+        $req->bindValue(':email',$admin->getEmail());
+        $req->bindValue(':niveau',$admin->getNiveau());
+        $req->bindValue(':id',$admin->getId());
+        return $req->execute();
+    }
 
 }
