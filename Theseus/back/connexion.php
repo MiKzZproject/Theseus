@@ -1,6 +1,6 @@
 <?php
 require('config/config.php');
-$controlAdmin = new \control\ControlAdmin($bdd);
+$controlAdmin = new \control\ControlAdmin($db);
 
 if(isset($_POST['login']) && isset($_POST['pass'])){
     $array = array(

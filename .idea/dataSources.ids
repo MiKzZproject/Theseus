@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - Theseus@localhost" uuid="316541fa-952f-4226-89fb-9b38b1257515">
+    <database-info product="MySQL" version="5.6.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="theseus"/>
+    <table name="admin" schema="" catalog="theseus" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="login" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="pass" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="niveau" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="adresse" schema="" catalog="theseus" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="adresse" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ville" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="cp" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idClient" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="adresse_ibfk_1" columns="idClient" ref-table="client" ref-schema="" ref-catalog="theseus" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="categorie" schema="" catalog="theseus" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="image" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="categorie_produit_ibfk_1" table="categorie_produit" schema="" catalog="theseus" columns="idCategorie"/>
+    </table>
+    <table name="categorie_produit" schema="" catalog="theseus" type="TABLE">
+      <column name="idCategorie" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idProduit" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idCategorie,idProduit"/>
+      <foreign-key name="categorie_produit_ibfk_1" columns="idCategorie" ref-table="categorie" ref-schema="" ref-catalog="theseus" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="categorie_produit_ibfk_2" columns="idProduit" ref-table="produit" ref-schema="" ref-catalog="theseus" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="client" schema="" catalog="theseus" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nom" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="prenom" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="dateNaissance" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="tel" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="pwd" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="dateInscription" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="newsletters" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="alerte" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="dateDebutAbo" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="dateFinAbo" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="renew" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="adresse_ibfk_1" table="adresse" schema="" catalog="theseus" columns="idClient"/>
+      <exported-key name="commande_produit_ibfk_2" table="commande_produit" schema="" catalog="theseus" columns="idClient"/>
+      <exported-key name="evenement_client_ibfk_2" table="evenement_client" schema="" catalog="theseus" columns="idClient"/>
+      <exported-key name="logged_ibfk_1" table="logged" schema="" catalog="theseus" columns="idClient"/>
+      <index name="email" unique="true" columns="email"/>
+    </table>
+    <table name="commande" schema="" catalog="theseus" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="dateCommande" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="livrer" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="commande_produit" schema="" catalog="theseus" type="TABLE">
+      <column name="idCommande" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idClient" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idProduit" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idEvent" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="datecommande" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="livrer" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="quantite" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idCommande,idClient,idProduit,idEvent"/>
+      <foreign-key name="commande_produit_ibfk_2" columns="idClient" ref-table="client" ref-schema="" ref-catalog="theseus" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="commande_produit_ibfk_3" columns="idProduit" ref-table="produit" ref-schema="" ref-catalog="theseus" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="commande_produit_ibfk_4" columns="idEvent" ref-table="evenement" ref-schema="" ref-catalog="theseus" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="evenement" schema="" catalog="theseus" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="libelle" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lieu" sqlType="VARCHAR" precision="256" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="adresse" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cp" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ville" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="dateDebut" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="dateFin" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="place" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="image" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="theme" sqlType="VARCHAR" precision="256" scale="0" nullable="false" jdbcType="12"/>
+      <column name="miniature1" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="commande_produit_ibfk_4" table="commande_produit" schema="" catalog="theseus" columns="idEvent"/>
+      <exported-key name="evenement_client_ibfk_1" table="evenement_client" schema="" catalog="theseus" columns="idEvenement"/>
+      <exported-key name="evenement_produit_ibfk_1" table="evenement_produit" schema="" catalog="theseus" columns="idEvenement"/>
+    </table>
+    <table name="evenement_client" schema="" catalog="theseus" type="TABLE">
+      <column name="idEvenement" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idClient" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="participer" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="idEvenement,idClient"/>
+      <foreign-key name="evenement_client_ibfk_1" columns="idEvenement" ref-table="evenement" ref-schema="" ref-catalog="theseus" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="evenement_client_ibfk_2" columns="idClient" ref-table="client" ref-schema="" ref-catalog="theseus" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="evenement_produit" schema="" catalog="theseus" type="TABLE">
+      <column name="idEvenement" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idProduit" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="stock" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idEvenement,idProduit"/>
+      <foreign-key name="evenement_produit_ibfk_1" columns="idEvenement" ref-table="evenement" ref-schema="" ref-catalog="theseus" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="evenement_produit_ibfk_2" columns="idProduit" ref-table="produit" ref-schema="" ref-catalog="theseus" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="logged" schema="" catalog="theseus" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idClient" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="session" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="datetime" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="id,idClient"/>
+      <foreign-key name="logged_ibfk_1" columns="idClient" ref-table="client" ref-schema="" ref-catalog="theseus" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="newsletter" schema="" catalog="theseus" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="mail" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="mail" unique="true" columns="mail"/>
+    </table>
+    <table name="produit" schema="" catalog="theseus" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="libelle" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="marque" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="modele" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="prix" sqlType="DECIMAL" precision="6" scale="2" nullable="false" jdbcType="3"/>
+      <column name="stock" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="image" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="miniature" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nbventes" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="categorie_produit_ibfk_2" table="categorie_produit" schema="" catalog="theseus" columns="idProduit"/>
+      <exported-key name="commande_produit_ibfk_3" table="commande_produit" schema="" catalog="theseus" columns="idProduit"/>
+      <exported-key name="evenement_produit_ibfk_2" table="evenement_produit" schema="" catalog="theseus" columns="idProduit"/>
+    </table>
+  </data-source>
+</component>

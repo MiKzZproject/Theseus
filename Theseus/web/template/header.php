@@ -95,9 +95,9 @@ if($controlClient->isLogged()) {
           <li id="menuProduct" ><a href="products.php">Nos Produits</a></li>
           <li id="menuEvent" ><a href="events.php">Nos Events</a></li>
         </ul>
-        <form class="navbar-form navbar-right" role="search">
+        <form class="navbar-form navbar-right" method="post" role="search" action="searchProduct.php">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" name="search" class="form-control" placeholder="Recherche" value="<?php if(isset($_POST['search'])) echo $_POST['search']; ?>">
             <span class="input-group-btn">
               <button type="submit" class="btn btn-default">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>

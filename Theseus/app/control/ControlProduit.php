@@ -81,7 +81,7 @@ class ControlProduit {
      * @return bool
      */
     public function addProduit($produit){
-        $req = $this->db->prepare('INSERT INTO produit values (null,:libelle,:marque,:modele,:description,:prix,:stock,:image, :miniature)');
+        $req = $this->db->prepare('INSERT INTO produit values (null,:libelle,:marque,:modele,:description,:prix,:stock,:image, :miniature, :nbVentes)');
         $req->bindValue(':libelle',$produit->getLibelle());
         $req->bindValue(':marque',$produit->getMarque());
         $req->bindValue(':modele',$produit->getModele());
@@ -90,6 +90,7 @@ class ControlProduit {
         $req->bindValue(':stock',$produit->getStock());
         $req->bindValue(':image',$produit->getImage());
         $req->bindValue(':miniature',$produit->getMiniature());
+        $req->bindValue(':nbVentes',$produit->getNbVentes());
         $req->execute();
         return $this->db->lastInsertId();
 
@@ -108,8 +109,9 @@ class ControlProduit {
      */
     public function updateProduit($produit){
         $req = $this->db->prepare('UPDATE produit SET  libelle = :libelle,marque=:marque, modele=:modele,
-                                                        description=:description, prix=:prix, stock=:stock, image=:image, miniature=:miniature
-                                                        WHERE id=:id');
+                                                       description=:description, prix=:prix, stock=:stock,
+                                                       image=:image, miniature=:miniature , nbVentes=:nbVentes
+                                                       WHERE id=:id');
         $req->bindValue(':id',$produit->getId());
         $req->bindValue(':libelle',$produit->getLibelle());
         $req->bindValue(':marque',$produit->getMarque());
@@ -119,6 +121,7 @@ class ControlProduit {
         $req->bindValue(':stock',$produit->getStock());
         $req->bindValue(':image',$produit->getImage());
         $req->bindValue(':miniature',$produit->getMiniature());
+        $req->bindValue(':nbVentes',$produit->getNbVentes());
         return $req->execute();
     }
 
@@ -157,6 +160,22 @@ class ControlProduit {
     }
 
     /**
+     * @return array|bool
+     */
+    public function getFeaturedProducts(){
+        /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+        $nbProduits = \config\Theseus::NBPERPAGEFEATURED;
+        $req = $this->db->prepare("SELECT * FROM produit ORDER BY nbVentes DESC LIMIT ".$nbProduits);
+        $req->execute();
+        $produits = false;
+        while($result = $req->fetch()){
+            $produit = new Produit($result);
+            $produits[] = $produit;
+        }
+        return $produits;
+    }
+
+    /**
      * @param null $categorie
      * @return mixed
      */
@@ -170,22 +189,6 @@ class ControlProduit {
         $req->execute();
         $result = $req->fetch();
         return $result['count'];
-    }
-
-    /**
-     * @return array|bool
-     */
-    public function getFeaturedProducts(){
-        /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
-        $nbProduits = \config\Theseus::NBPERPAGEFEATURED;
-        $req = $this->db->prepare("SELECT * FROM produit ORDER BY RAND() LIMIT ".$nbProduits);
-        $req->execute();
-        $produits = false;
-        while($result = $req->fetch()){
-            $produit = new Produit($result);
-            $produits[] = $produit;
-        }
-        return $produits;
     }
 
     /**
@@ -205,5 +208,84 @@ class ControlProduit {
             $produits[] = $produit;
         }
         return $produits;
+    }
+
+    /**
+     * @param string $search
+     * @param null $categorie
+     * @return mixed
+     */
+    public function getSearchProduitsCount($search, $categorie = null){
+        if(is_numeric($categorie)) {
+            $sql = "SELECT count(*) as count
+                    FROM  produit P, categorie_produit C
+                    where C.idProduit = P.id
+                    and C.idCategorie = $categorie
+                    and P.libelle like '%$search%'
+                    or marque like '%$search%'";
+        } else {
+            $sql = "SELECT count(*) as count
+                    FROM produit
+                    where libelle like '%$search%'
+                    or marque like '%$search%'";
+        }
+        $req = $this->db->prepare($sql);
+        $req->execute();
+        $result = $req->fetch();
+        return $result['count'];
+    }
+
+    /**
+     * @param string $search
+     * @param $page
+     * @return array|bool
+     */
+    public function getSearchProduitsPagination($search, $page){
+        /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+        $nbProduits = \config\Theseus::NBPERPAGEPRODUCT;
+        $page = ($page-1) * $nbProduits;
+        $sql = "SELECT * FROM produit
+                where libelle like '%$search%'
+                or marque like '%$search%'
+                LIMIT ".$page.','.$nbProduits;
+
+        $req = $this->db->prepare($sql);
+        $req->execute();
+        $produits = false;
+        while($result = $req->fetch()){
+            $produit = new Produit($result);
+            $produits[] = $produit;
+        }
+        return $produits;
+    }
+
+    /**
+     * @param string $search
+     * @param int $categorie
+     * @param int $page
+     * @return array|bool
+     */
+    public function getSearchProduitsByCategorie($search, $categorie, $page = 1 ){
+        /** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+        $limit = \config\Theseus::NBPERPAGEPRODUCT;
+        $pageNb = ($page-1) * $limit;
+        if(is_numeric($categorie)) {
+            $sql = "SELECT * FROM categorie_produit C, produit P
+                    where C.idProduit = P.id
+                    and C.idCategorie = $categorie
+                    and P.libelle like '%$search%'
+                    or marque like '%$search%'
+                    LIMIT ".$pageNb.",".$limit;
+            $req = $this->db->prepare($sql);
+            $req->execute();
+            $produits = false;
+            while ($result = $req->fetch()) {
+                $produit = new Produit($result);
+                $produits[] = $produit;
+            }
+            return $produits;
+        } else {
+            return $this->getSearchProduitsPagination($search,$page);
+        }
     }
 }

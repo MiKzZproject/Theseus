@@ -41,6 +41,36 @@
         });
     };
 
+    function paginationSearch(page) {
+        var cat = $( "#selectcatprod option:selected").val();
+        var nbPage = $( "#currentPage").attr("data-nbpage");
+        var recherche = $( "#searchTxt").val();
+
+        $.ajax({
+            method: "POST",
+            url: "searchProductContent.php",
+            data: {search : recherche, categorie : cat, page : page, nbPage : nbPage}
+        })
+        .done(function successFilter( content ) {
+            $('#product-content').html(content);
+        });
+    };
+
+    function searchCategorieProduit() {
+        var cat = $( "#selectcatprodsearch option:selected").val();
+        var recherche = $( "#searchTxt").val();
+        $.ajax({
+            method: "POST",
+            url: "searchProductContent.php",
+            data: {search : recherche, categorie : cat, page : 1}
+        })
+            .done(function successFilter( content ) {
+                $('#product-content').html(content);
+            });
+
+        return false;
+    };
+
     function searchCategorie() {
         var cat = $( "#selectcatprod option:selected").val();
         $.ajax({
@@ -251,6 +281,32 @@
 
     $("#selectcatprod").change(function filterCategorie() {
         searchCategorie();
+    });
+
+    $("#selectcatprodsearch").change(function filterCategorie() {
+        searchCategorieProduit();
+    });
+
+    $(".previousSearchProduct").click(function productPrev() {
+        var page = $( "#currentPage").attr("data-page");
+        if(page === "1") {
+            return false;
+        } else {
+            paginationSearch(--page);
+            return false;
+        }
+    });
+
+    $(".nextSearchProduct").click(function productNext() {
+        var currPage = $("#currentPage");
+        var page = currPage.attr("data-page");
+        var nbPage = currPage.attr("data-nbpage");
+        if (page == nbPage) {
+            return false;
+        } else {
+            paginationSearch(++page);
+            return false;
+        }
     });
 
     $(".previousProduct").click(function productPrev() {

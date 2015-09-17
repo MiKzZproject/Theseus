@@ -21,6 +21,7 @@ class Produit
     private $stock;
     private $image;
     private $miniature;
+    private $nbVentes;
 
     function __construct($array)
     {
@@ -99,6 +100,22 @@ class Produit
     public function setMarque($marque)
     {
         $this->marque = $marque;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNbVentes()
+    {
+        return $this->nbVentes;
+    }
+
+    /**
+     * @param mixed $nbVentes
+     */
+    public function setNbVentes($nbVentes)
+    {
+        $this->nbVentes = $nbVentes;
     }
 
     /**

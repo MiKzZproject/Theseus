@@ -1,5 +1,6 @@
 <?php
     use model\Admin;
+    require_once 'config/config.php';
 ?>
 <!doctype html>
 <html lang="fr">
@@ -16,7 +17,8 @@
 <h1>Administration Theseus</h1><br><br>
 
 <?php
-session_start();
+
+var_dump($_SESSION);
 if(isset($_SESSION['admin'])){
     ?>
     <button class="btn btn-warning" onclick="deconnexion()">Deconnection</button>
