@@ -231,7 +231,7 @@ include('template/header.php');
                         </div>
                         <div id="accountErrorPwd2" class="alert alert-danger hideBlock" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                            Les 2 mots de passe sont différent
+                            Les 2 mots de passe sont différents
                         </div>
                         <div class="form-group">
                             <label for="pwd">Confirmation du mot de passe</label>
@@ -271,7 +271,7 @@ include('template/header.php');
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-4 cardAbo" id="subscribe" onclick="document.getElementById('subcribePaypal').submit();">
                                     <span class=" glyphicon glyphicon-piggy-bank" aria-hidden="true"></span>
-                                    <h4>Inscription pour seulement 30€ par ans!</h4>
+                                    <h4>Inscription pour seulement 30€ par an !</h4>
                                     <form id='subcribePaypal' action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                                         <input type="hidden" name="cmd" value="_s-xclick">
                                         <input type="hidden" name="hosted_button_id" value="WQH6PRWJHK35J">
