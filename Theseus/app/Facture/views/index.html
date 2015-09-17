@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="fr">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style type="text/css" media="all">
+    {% block style %}
+        input {width: 150px;}
+    {% endblock %}
+</style>
+<body>
+<form action="index.php" method="post">
+    <fieldset>
+        Societe:<br>
+        <input type="text" name="societe" placeholder="">
+        <br>
+        Nom:<br>
+        <input type="text" name="nom" placeholder="">
+        <br>
+        Prénom:<br>
+        <input type="text" name="prenom" placeholder="">
+        <br>
+        Date:<br>
+        <input type="date" name="date" placeholder="DD-MM-YYY">
+        <br>
+        Montant:<br>
+        <input type="number" step="any" name="amount" placeholder="" required>
+        <br>
+        Référence transaction:<br>
+        <input type="text" name="refTransaction" placeholder="">
+        <br>
+        <br><br>
+        <input type="submit" value="Submit"></fieldset>
+</form>
+</body>
+</html>

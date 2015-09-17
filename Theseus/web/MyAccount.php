@@ -35,13 +35,13 @@ include('template/header.php');
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Num.</th>
                             <th>Date</th>
                             <th>Evènement</th>
                             <th>Quantité</th>
                             <th>Produit</th>
                             <th>Total €</th>
                             <th>Status</th>
+                            <th>Facture</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,13 +63,13 @@ include('template/header.php');
                                 }
                         ?>
                         <tr class="<?php echo $class; ?>">
-                            <td><?php echo $commande->getId(); ?></td>
                             <td><?php echo $commande->getDateCommande(); ?></td>
                             <td><?php echo $commande->getLibelleEvent(); ?></td>
                             <td><?php echo $commande->getQuantite(); ?></td>
                             <td><?php echo $commande->getLibelleProduit(); ?></td>
                             <td><?php echo $commande->getTotal(); ?></td>
                             <td><?php echo $status ?></td>
+                            <td><a href="generatePDF.php?idCommande=<?php echo $commande->getId(); ?>">Voir facture</a></td>
                         </tr>
                         <?php } }?>
                     </tbody>

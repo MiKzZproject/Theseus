@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div id="seller">
+    {%- if invoice.seller.logo is not empty %}
+        <img src="{{ invoice.seller.logo }}" alt="">
+    {%- endif %}
+    </div>
+
+    <div id="invoice">
+        <table style="width:100%">
+            <tr>
+                <td style="width: 60%">  </td>
+                <td style="width: 20%" class="dt">{%- if invoice.refTransaction is not empty %}Réf. Transaction :{% endif %}</td>
+                <td style="width: 20%" class="dd">{{ invoice.refTransaction }}</td>
+            </tr>
+            <tr>
+                <td style="width: 60%"> {%- if invoice.buyer.companyName is not empty %}{{ invoice.buyer.companyName }}{%- endif %} </td>
+                <td style="width: 20%" class="dt">Date d'achat :</td>
+                <td style="width: 20%" class="dd">{{ invoice.dateAbo|date('d-m-Y') }}</td>
+            </tr>
+        </table>
+        <table style="width:100%">
+            <tr>
+                <td style="width:61%">
+                    {%- if invoice.buyer is not empty %}{{ invoice.buyer.firstName }} {{ invoice.buyer.lastName|upper }}{%- endif %} </td>
+                <td style="width:38%; text-align: center" class="invoice-total">Total {{ invoice.total.brutto|number_format(2, ',',' ') }} &euro;</td>
+            </tr>
+            <tr>
+                <td style="height: 20px;"> </td>
+            </tr>
+        </table>
+    </div>
+
+    {#<div id="buyer">#}
+        {#<div id="buyername">#}
+            {#<p>{{ invoice.buyer.firstName }},</p>#}
+        {#</div>#}
+        {#<div id="buyerprenom">#}
+            {#<p>{{ invoice.buyer.lastName }},</p>#}
+        {#</div>#}
+        {#<div id="buyersociete">#}
+            {#<p>{{ invoice.buyer.companyName }},</p>#}
+        {#</div>#}
+    {#</div>#}
+    {#{%- endif %}#}
+
+    {% include '_entry_list.html.twig' %}
+
+    <hr>
+
+    <div id="invoice-total">
+        <table style="width:100%">
+            <tr>
+                <td style="width: 69%"> </td>
+                <td style="width: 15%" class="dt"><strong>Prix HT</strong></td>
+                <td style="width: 15%" class="dd"><strong>{{ invoice.total.netto|number_format(2, ',',' ') }}</strong></td>
+            </tr>
+            {%- for tax, value in invoice.total.taxes %}
+            <tr>
+                <td style="width: 69%"> </td>
+                <td style="width: 15%" class="dt">{{ tax|default('TVA 0%') }}</td>
+                <td style="width: 15%" class="dd">{{ (value/100*invoice.total.netto)|number_format(2, ',',' ') }}</td>
+            </tr>
+            {%- endfor %}
+            <tr>
+                <td style="width: 69%"> </td>
+                <td style="width: 15%" class="dt"><strong>Prix TTC</strong></td>
+                <td style="width: 15%" class="dd"><strong>{{ invoice.total.brutto|number_format(2, ',',' ') }}</strong></td>
+            </tr>
+        </table>
+        <table style="width:100%">
+            <tr>
+                <td style="width:70%"> </td>
+                <td style="width:28%; text-align: center" class="invoice-total">Paiement {{ invoice.total.brutto|number_format(2, ',',' ') }} &euro;</td>
+            </tr>
+            <tr>
+                <td style="height: 10px;"> </td>
+            </tr>
+        </table>
+    </div>
+
+    {#{%- if invoice.notes is not empty %}#}
+    {#<div id="notes">#}
+        {#<strong>Notes:</strong>#}
+        {#<p>{{ invoice.notes|default('-') }}</p>#}
+    {#</div>#}
+    {#{%- endif %}#}
+
+{% endblock %}

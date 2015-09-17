@@ -250,7 +250,7 @@ class ControlClient {
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return array|bool
      */
     public function getCommandes($id){
@@ -270,7 +270,29 @@ class ControlClient {
     }
 
     /**
-     * @param $id
+     * @param int $idCommande
+     * @param int $idClient
+     * @return array|bool
+     */
+    public function getCommande($idCommande, $idClient){
+        $req = $this->db->prepare('SELECT idCommande as id, P.libelle as libelleProduit, E.libelle as libelleEvent, quantite, prix, datecommande, livrer, quantite*prix as total
+                                   FROM produit P, commande_produit C, evenement E
+                                   WHERE E.id = C.idEvent
+                                   AND P.id = C.idProduit
+                                   AND C.idCommande = :idCommande
+                                   AND C.idClient = :idClient');
+        $req->bindValue(':idCommande',$idCommande);
+        $req->bindValue(':idClient',$idClient);
+        $req->execute();
+        $commande = false;
+        if($result = $req->fetch()){
+            $commande = new Commande($result);
+        }
+        return $commande;
+    }
+
+    /**
+     * @param int $id
      * @return array|bool
      */
     public function getInvitations($id){

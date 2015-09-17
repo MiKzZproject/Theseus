@@ -1,0 +1,29 @@
+<table id="entries">
+        {% set taxname = "" %}
+        {% set taxvalue = "" %}
+        {% set taxe = "" %}
+    {%- for tax, value in invoice.total.taxes %}
+        {% set taxname = tax %}
+        {% set taxvalue = value %}
+    {% endfor %}
+    <thead>
+    <tr> 
+        <th class="col1 tittle">Description</th>
+        <th class="col2 tittle" style="text-align: center">Prix unitaire HT</th>
+        <th class="col3 tittle" style="text-align: center"> {{ taxname }} en % </th>
+        <th class="col4 tittle" style="text-align: center">{{ taxname }} en &euro;</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {%- for entry in invoice.entries %}
+        {% set taxe = taxvalue/100 * entry.unitPrice %}
+    <tr>
+        <td class="col1">{{ entry.description }}</td>
+        <td class="col2">{{ entry.unitPrice|number_format(2, ',',' ') }}</td>
+        <td class="col3">{{ taxvalue }}%</td>
+        <td class="col4">{{ taxe|number_format(2, ',',' ') }}</td>
+    </tr>
+    {%- endfor %}
+    </tbody>
+</table>
