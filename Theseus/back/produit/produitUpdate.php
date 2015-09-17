@@ -37,6 +37,8 @@ image : <br>
 <input id="image2" class="form-control" type="text" value="<?php echo $produit->getImage() ?>"><br><br>
 miniature : <br>
 <input id="miniature2" class="form-control" type="text" value="<?php echo $produit->getMiniature() ?>"><br><br>
+Nombre ventes: <br>
+<input id="nbVentes2" class="form-control" type="text" value="<?php echo $produit->getNbVentes() ?>"><br><br>
 
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

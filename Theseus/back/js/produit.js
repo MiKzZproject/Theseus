@@ -31,6 +31,7 @@ function produitAdd(){
     ab.stock = $('#stock').val();
     ab.image = $('#image').val();
     ab.miniature = $('#miniature').val();
+    ab.nbVentes = $('#nbVentes').val();
 
     var donnees = JSON.stringify(ab);
     $('#produitResult').load('produit/add.php', {donnees: donnees});
@@ -57,6 +58,7 @@ function produitUpdateValid(id){
     ab.stock = $('#stock2').val();
     ab.image = $('#image2').val();
     ab.miniature = $('#miniature2').val();
+    ab.nbVentes = $('#nbVentes2').val();
 
     var donnees = JSON.stringify(ab);
     $('#produitResult').load('produit/update.php', {donnees: donnees});

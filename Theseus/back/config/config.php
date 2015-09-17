@@ -9,7 +9,7 @@
 define("PROJET", "C:\\wamp\\www\\Theseus\\");
 
 require PROJET.'vendor/autoload.php';
-$db = \config\Db::getInstance();
+$bdd = \config\Db::getInstance();
 
 session_start();
 ?>

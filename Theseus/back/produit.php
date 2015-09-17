@@ -55,6 +55,8 @@ $cats = $controlCat->getCategories();
                 <input id="image" class="form-control" type="text"><br><br>
                 miniature : <br>
                 <input id="miniature" class="form-control" type="text"><br><br>
+                Nombre ventes: <br>
+                <input id="nbVentes" class="form-control" type="text"><br><br>
 
             </div>
             <div class="modal-footer">

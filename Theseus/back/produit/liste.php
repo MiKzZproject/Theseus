@@ -19,6 +19,7 @@ if($produits){
             <td>description</td>
             <td>prix</td>
             <td>stock</td>
+            <td>Nombre ventes</td>
             <td></td>
             <td></td>
         </tr>
@@ -36,6 +37,7 @@ if($produits){
                 <td><?php echo substr($produit->getDescription(),0,200); ?> ...</td>
                 <td><?php echo $produit->getPrix(); ?></td>
                 <td><?php echo $produit->getStock(); ?></td>
+                <td><?php echo $produit->getNbVentes(); ?></td>
                 <td ><span style="color:orange" class="glyphicon glyphicon-edit click" aria-hidden="true" data-toggle="modal" data-target="#updateProduitModal" onclick="produitUpdate('<?php echo $produit->getId() ?>')"></span></td>
                 <td><span style="color:red" class="glyphicon glyphicon-remove click" aria-hidden="true" onclick="produitDelete('<?php echo $produit->getId() ?>')"></span></td>
 

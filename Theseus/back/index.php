@@ -18,7 +18,6 @@
 
 <?php
 
-var_dump($_SESSION);
 if(isset($_SESSION['admin'])){
     ?>
     <button class="btn btn-warning" onclick="deconnexion()">Deconnection</button>
@@ -80,6 +79,7 @@ if(isset($_SESSION['admin'])){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="js/script.js"></script>
+<script src="js/produit.js"></script>
 
 </body>
 </html>
