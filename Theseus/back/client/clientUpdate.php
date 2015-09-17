@@ -41,6 +41,6 @@ Ratio <br>
 </table>
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <button type="button" onclick="clientUpdateValid('<?php echo $client->getId(); ?>')" class="btn btn-primary" data-dismiss="modal">Modifier le produit</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+    <button type="button" onclick="clientUpdateValid('<?php echo $client->getId(); ?>')" class="btn btn-primary" data-dismiss="modal">Modifier le client</button>
 </div>
