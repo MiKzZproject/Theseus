@@ -103,6 +103,26 @@ class ControlClient {
         return $clients;
     }
 
+    public function getClientsOpt($value,$type){
+        if(empty($value)){
+            $req = $this->db->prepare('SELECT * FROM client');
+        }else{
+            if(!$type){
+                $req = $this->db->prepare('SELECT * FROM client where nom like :nom');
+                $req->bindValue(':nom', '%'.$value.'%');
+            }else{
+                $req = $this->db->prepare('SELECT * FROM client where email like :email');
+                $req->bindValue(':email', '%'.$value.'%');
+            }
+        }
+        $req->execute();
+        $clients = false;
+        while($result = $req->fetch()){
+            $clients[] = new Client($result);
+        }
+        return $clients;
+    }
+
     /**
      * @param $array
      * @return bool|Client
@@ -127,6 +147,18 @@ class ControlClient {
     public function getClientByMail($email){
         $req = $this->db->prepare('SELECT id FROM client WHERE email = :login');
         $req->bindValue(':login', $email);
+        $req->execute();
+        $result = $req->fetch();
+        $client = false;
+        if($result){
+            $client = new Client($result);
+        }
+        return $client;
+    }
+
+    public function getClientById($id){
+        $req = $this->db->prepare('SELECT * FROM client WHERE id = :id');
+        $req->bindValue(':id', $id);
         $req->execute();
         $result = $req->fetch();
         $client = false;
@@ -165,20 +197,48 @@ class ControlClient {
                                                         email=:email,
                                                         pwd=:pwd,
                                                         newsletters=:newsletters,
-                                                        alerte=:alerte
+                                                        alerte=:alerte,
+                                                        ratio=:ratio,
                                                         WHERE id=:id');
         $req->bindValue(':id',$client->getId());
         $req->bindValue(':nom',$client->getNom());
         $req->bindValue(':prenom',$client->getPrenom());
+        $req->bindValue(':pwd',$client->getPwd());
         $req->bindValue(':dateNaissance',$client->getDateNaissance());
         $req->bindValue(':tel',$client->getTel());
         $req->bindValue(':email',$client->getEmail());
-        $req->bindValue(':pwd',$client->getPwd());
         $req->bindValue(':newsletters',$client->getNewsletters());
         $req->bindValue(':alerte',$client->getAlerte());
+        $req->bindValue(':ratio',$client->getRatio());
         return $req->execute();
     }
-
+    public function updateClientAdmin(Client $client){
+        $req = $this->db->prepare('UPDATE client SET  nom = :nom,
+                                                        prenom=:prenom,
+                                                        dateNaissance=:dateNaissance,
+                                                        tel=:tel,
+                                                        email=:email,
+                                                        pwd=:pwd,
+                                                        newsletters=:newsletters,
+                                                        alerte=:alerte,
+                                                        ratio=:ratio,
+                                                        dateDebutAbo=:dateDebutAbo,
+                                                        dateFinAbo=:dateFinAbo
+                                                        WHERE id=:id');
+        $req->bindValue(':id',$client->getId());
+        $req->bindValue(':nom',$client->getNom());
+        $req->bindValue(':prenom',$client->getPrenom());
+        $req->bindValue(':pwd',$client->getPwd());
+        $req->bindValue(':dateNaissance',$client->getDateNaissance());
+        $req->bindValue(':tel',$client->getTel());
+        $req->bindValue(':email',$client->getEmail());
+        $req->bindValue(':newsletters',$client->getNewsletters());
+        $req->bindValue(':alerte',$client->getAlerte());
+        $req->bindValue(':ratio',$client->getRatio());
+        $req->bindValue(':dateDebutAbo',$client->getDateDebutAbo());
+        $req->bindValue(':dateFinAbo',$client->getDateFinAbo());
+        return $req->execute();
+    }
     /**
      * @param $id
      * @return bool

@@ -24,6 +24,8 @@ class Client {
     private $dateDebutAbo;
     private $dateFinAbo;
     private $renew;
+    private $ratio;
+
 
     public function hydrate(array $array){
         foreach ($array as $cle => $valeur) {
@@ -79,9 +81,7 @@ class Client {
      */
     public function setDateNaissance($dateNaissance)
     {
-        $date = preg_split ("/-/",$dateNaissance);
-        $date = $date[2]."-".$date[1]."-".$date[0];
-        $this->dateNaissance = $date;
+        $this->dateNaissance = $dateNaissance;
     }
 
     /**
@@ -261,4 +261,22 @@ class Client {
         }
         return false;
     }
+
+    /**
+     * @param mixed $ratio
+     */
+    public function setRatio($ratio)
+    {
+        $this->ratio = $ratio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRatio()
+    {
+        return $this->ratio;
+    }
+
+
 } 

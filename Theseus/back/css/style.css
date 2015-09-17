@@ -17,7 +17,7 @@ h1{
     color:red;
 }
 #menu{
-    width :600px;
+    width :800px;
     margin: auto;
 }
 
@@ -35,10 +35,10 @@ h1{
 .block_recherche input,.block_recherche select{
     display:inline-block;
 }
-#produit_recherche{
+#produit_recherche,#client_recherche{
     width : 200px;
 }
-#produit_recherche_type{
+#produit_recherche_type,#client_recherche_type{
     width:100px;
 }
 

@@ -43,6 +43,7 @@ if(isset($_SESSION['admin'])){
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li id="menu_produit"><a onclick="window.location.hash='#produit';gestionPage('produit');">Produits</a></li>
+                        <li id="menu_client"><a onclick="window.location.hash='#client';gestionPage('client');">Clients</a></li>
                         <li id="menu_categorie"><a onclick="window.location.hash='#categorie';gestionPage('categorie');">Catégories</a></li>
                         <li id="menu_inscription"><a onclick="window.location.hash='#inscription';gestionPage('inscription');">Inscription</a></li>
                         <li id="menu_evenement"><a onclick="window.location.hash='#evenement';gestionPage('evenement');">Evènements</a></li>
@@ -81,6 +82,7 @@ if(isset($_SESSION['admin'])){
 <script src="js/script.js"></script>
 <script src="js/produit.js"></script>
 <script src="js/categorie.js"></script>
+<script src="js/client.js"></script>
 
 </body>
 </html>
