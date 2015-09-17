@@ -47,7 +47,6 @@ if(isset($_SESSION['admin'])){
                         <li id="menu_categorie"><a onclick="window.location.hash='#categorie';gestionPage('categorie');">Catégories</a></li>
                         <li id="menu_commande"><a onclick="window.location.hash='#commande';gestionPage('commande');">Commandes</a></li>
                         <li id="menu_evenement"><a onclick="window.location.hash='#evenement';gestionPage('evenement');">Evènements</a></li>
-                        <li id="menu_tirage"><a onclick="window.location.hash='#tirage';gestionPage('tirage');">Tirage au sort</a></li>
                         <li id="menu_newsletters"><a onclick="window.location.hash='#newsletters';gestionPage('newsletters');">Newsletters</a></li>
                         <li id="menu_admin"><a onclick="window.location.hash='#admin';gestionPage('admin');">Admin</a></li>
 
