@@ -5,7 +5,7 @@ $controlAdmin = new \control\ControlAdmin($bdd);
 if(isset($_POST['id']) && !$_POST['id'] == null){
     $controlAdmin->deleteAdmin($_POST['id']);
     ?>
-    <p class="bg-success"><br>Admin supprimer avec succès.<br><br></p>
+    <p class="bg-success"><br>Admin supprimé avec succès.<br><br></p>
 <?php
 }else{
     ?>

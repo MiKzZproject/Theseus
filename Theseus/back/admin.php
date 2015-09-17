@@ -66,7 +66,7 @@ if($_SESSION['admin']->getNiveau() == 1){
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                 <button type="button" onclick="adminAdd()" class="btn btn-primary">Ajouter l'admin</button>
             </div>
         </div>

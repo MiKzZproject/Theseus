@@ -41,6 +41,6 @@ Nombre ventes: <br>
 <input id="nbVentes2" class="form-control" type="text" value="<?php echo $produit->getNbVentes() ?>"><br><br>
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
     <button type="button" onclick="produitUpdateValid('<?php echo $produit->getId(); ?>')" class="btn btn-primary" data-dismiss="modal">Modifier le produit</button>
 </div>
