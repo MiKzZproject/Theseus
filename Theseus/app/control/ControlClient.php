@@ -71,8 +71,6 @@ class ControlClient {
                 return true;
             }
         }
-        session_unset();
-        session_destroy();
         return false;
     }
 

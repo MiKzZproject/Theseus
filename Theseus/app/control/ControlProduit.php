@@ -221,8 +221,7 @@ class ControlProduit {
                     FROM  produit P, categorie_produit C
                     where C.idProduit = P.id
                     and C.idCategorie = $categorie
-                    and P.libelle like '%$search%'
-                    or marque like '%$search%'";
+                    and (P.libelle like '%$search%' OR marque like '%$search%')";
         } else {
             $sql = "SELECT count(*) as count
                     FROM produit
@@ -273,8 +272,7 @@ class ControlProduit {
             $sql = "SELECT * FROM categorie_produit C, produit P
                     where C.idProduit = P.id
                     and C.idCategorie = $categorie
-                    and P.libelle like '%$search%'
-                    or marque like '%$search%'
+                    and (P.libelle like '%$search%' OR marque like '%$search%')
                     LIMIT ".$pageNb.",".$limit;
             $req = $this->db->prepare($sql);
             $req->execute();
