@@ -21,7 +21,7 @@
                     <h2> <?php echo $produit->getPrix(); ?> €</h2>
                 </th>
                 <th>
-                    <a href="events.php?idproduit=<?php echo $produit->getId(); ?>"><button type="button" class="btn btn-success">Voir les events</button></a>
+                    <a href="events.php?idproduit=<?php echo $produit->getId(); ?>"><button type="button" class="btn btn-success">Voir les évènements</button></a>
                 </th>
             </tr>
         </table>
@@ -51,7 +51,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary">Voir les évènements</button>
+                <a href="events.php?idproduit=<?php echo $produit->getId(); ?>"><button type="button" class="btn btn-primary">Voir les évènements</button></a>
             </div>
         </div>
     </div>
