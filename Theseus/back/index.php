@@ -80,6 +80,7 @@ if(isset($_SESSION['admin'])){
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="js/script.js"></script>
 <script src="js/produit.js"></script>
+<script src="js/categorie.js"></script>
 
 </body>
 </html>

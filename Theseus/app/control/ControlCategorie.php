@@ -63,9 +63,9 @@ class ControlCategorie {
      * @return bool
      */
     public function addCategorie($categorie){
-        $req = $this->db->prepare('INSERT INTO categorie values (null, :nom,:image)');
+        $req = $this->db->prepare('INSERT INTO categorie values (null, :nom,:description,:image)');
         $req->bindValue(':nom',$categorie->getNom());
-        $req->bindValue(':nom',$categorie->getDescription());
+        $req->bindValue(':description',$categorie->getDescription());
         $req->bindValue(':image',$categorie->getImage());
         return $req->execute();
     }
@@ -75,9 +75,11 @@ class ControlCategorie {
      * @return bool
      */
     public function updateCategorie($categorie) {
-        $req = $this->db->prepare('UPDATE categorie SET nom = :nom, image=:image WHERE id=:id');
+        var_dump($categorie);
+        $req = $this->db->prepare('UPDATE categorie SET nom = :nom,description = :description, image=:image WHERE id=:id');
         $req->bindValue(':id',$categorie->getId());
         $req->bindValue(':nom',$categorie->getNom());
+        $req->bindValue(':description',$categorie->getDescription());
         $req->bindValue(':image',$categorie->getImage());
         return $req->execute();
     }
