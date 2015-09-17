@@ -506,6 +506,7 @@
         })
         .done(function successSubscribeEvent(data) {
             $('#myModal'+id).modal('hide');
+                location.reload();
             if(data.prenium) {
                 UIkit.notify({
                     message: "Vous êtes inscrit pour cet évènement, vous recevrez votre invitation 48 heures avant le debut de l'évènement !",
@@ -540,8 +541,44 @@
                 });
             }
         });
-        return false;
     });
 
+
+    $(".unSubscribeEvent").click(function onSubscribeEvent(e) {
+        var id = e.target.getAttribute("data-id");
+        $.ajax({
+            method: "POST",
+            url: "desinscriptionEvent.php",
+            data: {idEvent : id}
+        })
+            .done(function successSubscribeEvent() {
+                $('#myModal'+id).modal('hide');
+                location.reload();
+                UIkit.notify({
+                    message: "Vous êtes désinscrit de cet évènement.",
+                    status: 'success',
+                    timeout: 5000,
+                    pos: 'top-center'
+                });
+            })
+            .fail(function errorSubscribeEvent(data) {
+                if (data.responseJSON.late) {
+                    UIkit.notify({
+                        message: "Désolé mais il est trop tard pour se désinscrire de cet évènement !",
+                        status: 'danger',
+                        timeout: 5000,
+                        pos: 'top-center'
+                    });
+                }
+                if (data.responseJSON.notLogged) {
+                    UIkit.notify({
+                        message: "Vous devez être connecté pour vous désinscrire d'un évènement !",
+                        status: 'danger',
+                        timeout: 5000,
+                        pos: 'top-center'
+                    });
+                }
+            });
+    });
 })();
 

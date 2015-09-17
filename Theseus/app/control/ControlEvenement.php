@@ -49,7 +49,7 @@ class ControlEvenement {
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return bool|Evenement
      */
     public function getEvenement($id){
@@ -99,7 +99,7 @@ class ControlEvenement {
     }
 
     /**
-     * @param $idEvent
+     * @param int $idEvent
      * @param Client $client
      * @return bool
      */
@@ -111,6 +111,21 @@ class ControlEvenement {
         $req->bindValue(':idClient',$client->getId());
         $req->bindValue(':idEvent',$idEvent);
         $req->bindValue(':participer',$client->isPrenium());
+        return $req->execute();
+    }
+
+    /**
+     * @param int $idEvent
+     * @param Client $client
+     * @return bool
+     */
+    public function desinscriptionEvenement($idEvent,$client){
+
+        $req = $this->db->prepare('DELETE FROM evenement_client
+                                   WHERE idEvenement = :idEvent
+                                   AND idClient = :idClient');
+        $req->bindValue(':idClient',$client->getId());
+        $req->bindValue(':idEvent',$idEvent);
         return $req->execute();
     }
 
@@ -252,5 +267,26 @@ class ControlEvenement {
             $evenements[] = $evenement;
         }
         return $evenements;
+    }
+
+    /**
+     * @param int $idEvent
+     * @param int $idClient
+     * @return bool
+     */
+    public function isSubscribed($idEvent, $idClient){
+        $sql = 'SELECT *
+                FROM evenement_client
+                WHERE idEvenement = :idEvent
+                AND idClient = :idClient';
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':idEvent',$idEvent);
+        $req->bindValue(':idClient',$idClient);
+        $req->execute();
+        $subscribe = false;
+        if($req->fetch()) {
+            $subscribe = true;
+        }
+        return $subscribe;
     }
 }
