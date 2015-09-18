@@ -29,18 +29,19 @@ if($clients){
     }
     ?>
 </table>
-    <select id="addClient" class="form-control">
-        <?php foreach($allClients as $client){
-        ?>
-            <option value="<?php echo $client->getId(); ?>"><?php echo $client->getNom(); ?></option>
-        <?php
-        }
-        ?>
-    </select>
-    <br><button class="btn" onclick="eventAddClient('<?php echo $array['id'] ?>',$('#addClient option:selected').val());">Associer le Client</button>
     <?php
 }else{
     ?>
         <div class="alert alert-warning" role="alert">Pas de résultat pour cette recherche.</div>
 <?php
 }
+?>
+<select id="addClient" class="form-control">
+    <?php foreach($allClients as $client){
+        ?>
+        <option value="<?php echo $client->getId(); ?>"><?php echo $client->getNom(); ?></option>
+    <?php
+    }
+    ?>
+</select>
+<br><button class="btn" onclick="eventAddClient('<?php echo $array['id'] ?>',$('#addClient option:selected').val());">Associer le Client</button>
