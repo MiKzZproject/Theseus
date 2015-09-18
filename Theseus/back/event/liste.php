@@ -13,7 +13,7 @@ if($events){
             <td>Image</td>
             <td>Libelle</td>
             <td>Lieu</td>
-            <td>Date de Début/td>
+            <td>Date de Début</td>
             <td>Date de fin</td>
             <td>Place</td>
             <td></td>
