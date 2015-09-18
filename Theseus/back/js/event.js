@@ -128,3 +128,11 @@ function eventAddClient(idEvent,idClient){
     var donnees = JSON.stringify(ab);
     $('#eventClientResult').load('event/eventAddClient.php', {donnees: donnees});
 }
+
+function eventTirage(idEvent){
+    var ab = {};
+    ab.id = id;
+
+    var donnees = JSON.stringify(ab);
+    $('#eventResult').load('event/tirageSort.php', {donnees: donnees});
+}

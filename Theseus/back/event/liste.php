@@ -20,6 +20,7 @@ if($events){
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
         </tr>
     <?php
     foreach($events as $event){
@@ -31,6 +32,7 @@ if($events){
             <td><?php echo $event->getDateDebut() ?></td>
             <td><?php echo $event->getDateFin() ?></td>
             <td><?php echo $event->getPlace() ?></td>
+            <td ><span style="color:purple" class="glyphicon glyphicon-gift click" aria-hidden="true" data-toggle="modal" data-target="#modalEventProduit" onclick="eventTirage('<?php echo $event->getId() ?>')"></span></td>
             <td ><span style="color:green" class="glyphicon glyphicon-th click" aria-hidden="true" data-toggle="modal" data-target="#modalEventProduit" onclick="eventProduit('<?php echo $event->getId() ?>')"></span></td>
             <td ><span style="color:blue" class="glyphicon glyphicon-user click" aria-hidden="true" data-toggle="modal" data-target="#modalEventClient" onclick="eventClient('<?php echo $event->getId() ?>')"></span></td>
             <td ><span style="color:orange" class="glyphicon glyphicon-edit click" aria-hidden="true" data-toggle="modal" data-target="#modalUpdateEvent" onclick="eventUpdate('<?php echo $event->getId() ?>')"></span></td>
