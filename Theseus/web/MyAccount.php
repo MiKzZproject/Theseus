@@ -253,7 +253,7 @@ include('template/header.php');
                             if( time() < $finAbo->getTimestamp()) {
                             ?>
                             <ul class="list-group MT15 ML10 MR10">
-                                <li class="list-group-item list-group-item-info">Date de fin d'abonnement : <?php echo $client->getDateFinAbo(); ?> </li>
+                                <li class="list-group-item list-group-item-info">Date de fin d'abonnement prenium : <?php echo $client->getDateFinAbo(); ?> </li>
                             </ul>
                         <?php } ?>
 

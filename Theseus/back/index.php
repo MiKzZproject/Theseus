@@ -85,6 +85,7 @@ if(isset($_SESSION['admin'])){
 <script src="js/categorie.js"></script>
 <script src="js/client.js"></script>
 <script src="js/admin.js"></script>
+<script src="js/newsletter.js"></script>
 
 </body>
 </html>

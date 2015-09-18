@@ -44,6 +44,19 @@ class ControlNewsletter {
     }
 
     /**
+     * @return array|bool
+     */
+    public function exportMail(){
+        $req = $this->db->prepare('SELECT mail FROM newsletter');
+        $req->execute();
+        $newsletters = false;
+        while($result = $req->fetch()){
+            $newsletters[] = $result['mail'];
+        }
+        return $newsletters;
+    }
+
+    /**
      * @param $email
      * @return bool|Newsletter
      */
