@@ -41,3 +41,6 @@ if($inscrits) {
     }
 }
 
+?>
+<div class="alert alert-success" role="alert">Tirage au sort effectuer.</div>
+
