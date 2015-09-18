@@ -131,7 +131,7 @@ function eventAddClient(idEvent,idClient){
 
 function eventTirage(idEvent){
     var ab = {};
-    ab.id = id;
+    ab.idEvent = idEvent;
 
     var donnees = JSON.stringify(ab);
     $('#eventResult').load('event/tirageSort.php', {donnees: donnees});

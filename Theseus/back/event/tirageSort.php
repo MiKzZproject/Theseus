@@ -23,3 +23,6 @@ for ($i = 0; $i < $event->getPlace() ;$i++){
 
 var_dump($tableau);
 var_dump($luck);
+
+?>
+<div class="alert alert-success" role="alert">Tirage au sort effectué.</div>
