@@ -325,4 +325,16 @@ class ControlEvenement {
         $req->bindValue(':idProduit',$idProduit);
         $req->execute();
     }
+
+    public function addEventProduit($idEvenement,$idProduit){
+        var_dump($idEvenement);
+        var_dump($idProduit);
+        $req = $this->db->prepare('INSERT INTO evenement_produit (idEvenement,idProduit,stock)
+                                    VALUES (:idEvenement,:idProduit,:stock)');
+        $req->bindValue(':idEvenement', $idEvenement);
+        $req->bindValue(':idProduit', $idProduit);
+        $req->bindValue(':stock', 34);
+
+        $req->execute();
+    }
 }

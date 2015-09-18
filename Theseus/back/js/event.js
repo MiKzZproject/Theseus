@@ -111,3 +111,12 @@ function eventProduitDelete(idEvent,idProduit){
     $('#eventProduitResult').load('event/produitDelete.php', {donnees: donnees});
 
 }
+
+function eventAddProduit(idEvent,idProduit){
+    var ab = {};
+    ab.idEvent = idEvent;
+    ab.idProduit = idProduit;
+
+    var donnees = JSON.stringify(ab);
+    $('#eventProduitResult').load('event/eventAddProduit.php', {donnees: donnees});
+}

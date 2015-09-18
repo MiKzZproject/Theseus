@@ -37,7 +37,7 @@ if($clients){
         }
         ?>
     </select>
-    <br><button class="btn">Associé le Client</button>
+    <br><button class="btn">Associer le Client</button>
     <?php
 }else{
     ?>

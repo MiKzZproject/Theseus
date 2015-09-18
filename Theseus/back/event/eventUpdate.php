@@ -17,21 +17,21 @@ Description : <br>
 <input id="description2" class="form-control" type="text" value="<?php echo $event->getDescription(); ?>"><br><br>
 Adresse : <br>
 <input id="adresse2" class="form-control" type="text" value="<?php echo $event->getAdresse(); ?>"><br><br>
-code postale : <br>
+Code postal : <br>
 <input id="cp2" class="form-control" type="text" value="<?php echo $event->getCp(); ?>"><br><br>
 Ville : <br>
 <input id="ville2" class="form-control" type="text" value="<?php echo $event->getVille(); ?>"><br><br>
-dateDebut : <br>
+Date de début : <br>
 <input id="dateDebut2" class="form-control" type="datetime-local" value="<?php echo date('Y-m-d',strtotime($event->getDateDebut())).'T'.date('H:i',strtotime($event->getDateDebut())); ?>"><br><br>
-dateFin : <br>
+Date de fin  : <br>
 <input id="dateFin2" class="form-control" type="datetime-local" value="<?php echo date('Y-m-d',strtotime($event->getDateFin())).'T'.date('H:i',strtotime($event->getDateFin())); ?>"><br><br>
-place <disponible></disponible>: <br>
+Place <disponible></disponible>: <br>
 <input id="place2" class="form-control" type="text" value="<?php echo $event->getPlace(); ?>"><br><br>
-image : <br>
+Image : <br>
 <input id="image2" class="form-control" type="text" value="<?php echo $event->getImage(); ?>"><br><br>
 Theme <disponible></disponible>: <br>
 <input id="theme2" class="form-control" type="text" value="<?php echo $event->getTheme(); ?>"><br><br>
-miniature : <br>
+Miniature : <br>
 <input id="miniature12" class="form-control" type="text" value="<?php echo $event->getMiniature1(); ?>"><br><br>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>

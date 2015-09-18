@@ -26,7 +26,7 @@ if($_SESSION['admin']->getNiveau() == 3 || $_SESSION['admin']->getNiveau() == 1)
                     <input id="image" class="form-control" type="text"><br><br>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                     <button type="button" onclick="categorieAdd()" class="btn btn-primary" data-dismiss="modal">Ajouter la catégorie</button>
                 </div>
             </div>
