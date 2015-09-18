@@ -1,12 +1,12 @@
 <?php
 
 require('../config/config.php');
-//$_POST['donnees'] = array('idEvent' => 4);
-//$array = json_decode($_POST['donnees'], true);
+$array = json_decode($_POST['donnees'], true);
+
 $controlClient = new \control\ControlClient($bdd);
 $controlEvent = new \control\ControlEvenement($bdd);
-$event = $controlEvent->getEvenement(4);
-$inscrits = $controlEvent->getInvitations(4);
+$event = $controlEvent->getEvenement($array['idEvent']);
+$inscrits = $controlEvent->getInvitations($array['idEvent']);
 $tableau = [];
 $luck = [];
 
@@ -26,7 +26,7 @@ if($inscrits) {
         $random = rand(0,$nbEntries-1);
         $idClient = $tableau[$random];
         $luck[] = $idClient;
-        $controlEvent->updateEventClient(4,$idClient);
+        $controlEvent->updateEventClient($array['idEvent'],$idClient);
         $client = $controlClient->getClientById($idClient);
         $client->setRatio($client->getRatio()-1);
         $controlClient->updateClient($client);
