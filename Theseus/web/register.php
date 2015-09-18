@@ -44,11 +44,13 @@ if (!$errors) {
     if(isset($_POST['alerte'])){
         $alerte = true;
     }
+    $date = preg_split ("/-/",$_POST['date']);
+    $date = $date[2]."-".$date[1]."-".$date[0];
 
     $client = new \model\Client(array(
         "nom" => $_POST['nom'],
         "prenom" => $_POST['prenom'],
-        "dateNaissance" => $_POST['date'],
+        "dateNaissance" => $date,
         "tel" => $_POST['tel'],
         "email" => $_POST['email'],
         "pwd" => $_POST['pwd'],
