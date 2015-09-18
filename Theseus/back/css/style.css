@@ -35,11 +35,11 @@ h1{
 .block_recherche input,.block_recherche select{
     display:inline-block;
 }
-#produit_recherche,#client_recherche{
+#produit_recherche,#client_recherche,#event_recherche{
     width : 200px;
 }
-#produit_recherche_type,#client_recherche_type{
-    width:100px;
+#produit_recherche_type,#client_recherche_type,#event_recherche_type{
+    width:150px;
 }
 
 .click:hover{

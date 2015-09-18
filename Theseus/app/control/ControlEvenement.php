@@ -63,11 +63,32 @@ class ControlEvenement {
         }
         return $event;
     }
+    public function getEventsOpt($value,$type){
+        if(empty($value)){
+            $req = $this->db->prepare('SELECT * FROM evenement');
+        }else{
+            if(!$type){
+                $req = $this->db->prepare('SELECT * FROM evenement where libelle like :libelle');
+                $req->bindValue(':libelle', '%'.$value.'%');
+            }else{
+                $req = $this->db->prepare('SELECT * FROM evenement where dateDebut like :date');
+                $req->bindValue(':date', '%'.$value.'%');
+            }
+        }
+        $req->execute();
+        $events = false;
+        while($result = $req->fetch()){
+            $event = new Evenement($result);
+            $events[] = $event;
+        }
+        return $events;
+    }
 
     /**
      * @param Evenement $evenement
      */
     public function addEvenement($evenement){
+        var_dump($evenement);
         $req = $this->db->prepare('INSERT INTO evenement (libelle,lieu,description,adresse,cp,ville,dateDebut,dateFin,place,image,theme,miniature1)
                                     VALUES (:libelle,
                                             :lieu,
@@ -91,7 +112,7 @@ class ControlEvenement {
         $req->bindValue(':dateFin',$evenement->getDateFin());
         $req->bindValue(':place',$evenement->getPlace());
         $req->bindValue(':image',$evenement->getImage());
-        $req->bindValue(':image',$evenement->getTheme());
+        $req->bindValue(':theme',$evenement->getTheme());
         $req->bindValue(':miniature1',$evenement->getMiniature1());
 
         $req->execute();
@@ -158,7 +179,7 @@ class ControlEvenement {
         $req->bindValue(':dateFin',$evenement->getDateFin());
         $req->bindValue(':place',$evenement->getPlace());
         $req->bindValue(':image',$evenement->getImage());
-        $req->bindValue(':image',$evenement->getTheme());
+        $req->bindValue(':theme',$evenement->getTheme());
         $req->bindValue(':miniature1',$evenement->getMiniature1());
 
         $req->execute();
@@ -172,7 +193,7 @@ class ControlEvenement {
         $req = $this->db->prepare('DELETE
                                     FROM evenement
                                     WHERE id = :id ');
-        $req->bindValue(':id',$id->getId());
+        $req->bindValue(':id',$id);
 
         $req->execute();
 
@@ -288,5 +309,22 @@ class ControlEvenement {
             $subscribe = true;
         }
         return $subscribe;
+    }
+
+    public function clientDelete($idEvent,$idClient){
+        $req = $this->db->prepare('DELETE FROM evenement_client
+                                    WHERE idEvenement = :idEvent AND idClient = :idClient');
+
+        $req->bindValue(':idEvent',$idEvent);
+        $req->bindValue(':idClient',$idClient);
+        $req->execute();
+    }
+    public function produitDelete($idEvent,$idProduit){
+        $req = $this->db->prepare('DELETE FROM evenement_produit
+                                    WHERE idEvenement = :idEvent AND idProduit = :idProduit');
+
+        $req->bindValue(':idEvent',$idEvent);
+        $req->bindValue(':idProduit',$idProduit);
+        $req->execute();
     }
 }

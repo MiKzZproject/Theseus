@@ -45,7 +45,6 @@ if(isset($_SESSION['admin'])){
                         <li id="menu_produit"><a onclick="window.location.hash='#produit';gestionPage('produit');">Produits</a></li>
                         <li id="menu_client"><a onclick="window.location.hash='#client';gestionPage('client');">Clients</a></li>
                         <li id="menu_categorie"><a onclick="window.location.hash='#categorie';gestionPage('categorie');">Catégories</a></li>
-                        <li id="menu_commande"><a onclick="window.location.hash='#commande';gestionPage('commande');">Commandes</a></li>
                         <li id="menu_evenement"><a onclick="window.location.hash='#evenement';gestionPage('evenement');">Evènements</a></li>
                         <li id="menu_newsletters"><a onclick="window.location.hash='#newsletters';gestionPage('newsletters');">Newsletters</a></li>
                         <li id="menu_admin"><a onclick="window.location.hash='#admin';gestionPage('admin');">Admin</a></li>
@@ -86,6 +85,7 @@ if(isset($_SESSION['admin'])){
 <script src="js/client.js"></script>
 <script src="js/admin.js"></script>
 <script src="js/newsletter.js"></script>
+<script src="js/event.js"></script>
 
 </body>
 </html>
