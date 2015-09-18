@@ -173,7 +173,7 @@ class ControlClient {
      * @return bool
      */
     public function addClient(Client $client){
-        $req = $this->db->prepare('INSERT INTO client values (null,:nom,:prenom,:dateNaissance,:tel,:email,:pwd, CURRENT_TIMESTAMP ,:newsletters,:alerte,null,null,null)');
+        $req = $this->db->prepare('INSERT INTO client values (null,:nom,:prenom,:dateNaissance,:tel,:email,:pwd, CURRENT_TIMESTAMP ,:newsletters,:alerte,null,null,null,2)');
         $req->bindValue(':nom',$client->getNom());
         $req->bindValue(':prenom',$client->getPrenom());
         $req->bindValue(':dateNaissance',$client->getDateNaissance());
@@ -209,7 +209,7 @@ class ControlClient {
         $req->bindValue(':email',$client->getEmail());
         $req->bindValue(':newsletters',$client->getNewsletters());
         $req->bindValue(':alerte',$client->getAlerte());
-        $req->bindValue(':ratio',0);
+        $req->bindValue(':ratio',$client->getRatio());
         return $req->execute();
     }
     public function updateClientAdmin(Client $client){

@@ -9,6 +9,7 @@
 namespace control;
 
 use config\Db;
+use model\Client;
 use model\Newsletter;
 
 /**
@@ -69,7 +70,7 @@ class ControlNewsletter {
         $req->execute();
         $newsletter = false;
         while($result = $req->fetch()){
-            $newsletter = new client($result);
+            $newsletter = new Client($result);
         }
         return $newsletter;
     }
