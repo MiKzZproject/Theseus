@@ -12,6 +12,7 @@ namespace control;
 use config\Db;
 use model\Client;
 use model\Evenement;
+use model\Inscrit;
 use model\Produit;
 
 /**
@@ -63,6 +64,28 @@ class ControlEvenement {
         }
         return $event;
     }
+
+    /**
+     * @param int $id
+     * @return bool|Evenement
+     */
+    public function getInscritEvenement($id){
+        $req = $this->db->prepare('SELECT * FROM evenement WHERE id = :id');
+        $req->bindValue(':id', $id);
+        $req->execute();
+        $result = $req->fetch();
+        $event = false;
+        if($result){
+            $event = new Evenement($result);
+        }
+        return $event;
+    }
+
+    /**
+     * @param int $value
+     * @param int $type
+     * @return bool|Evenement
+     */
     public function getEventsOpt($value,$type){
         if(empty($value)){
             $req = $this->db->prepare('SELECT * FROM evenement');
@@ -309,6 +332,24 @@ class ControlEvenement {
         return $subscribe;
     }
 
+    /**
+     * @param int $idEvent
+     * @return bool
+     */
+    public function getInvitations($id){
+        $req = $this->db->prepare('SELECT c.id as idClient, ratio
+                                   FROM evenement_client EC, client C
+                                   WHERE EC.idEvenement = :id
+                                   AND C.id = EC.idClient');
+        $req->bindValue(':id',$id);
+        $req->execute();
+        $invitations = false;
+        while($result = $req->fetch()){
+            $invitations[] = new Inscrit($result);
+        }
+        return $invitations;
+    }
+
     public function clientDelete($idEvent,$idClient){
         $req = $this->db->prepare('DELETE FROM evenement_client
                                     WHERE idEvenement = :idEvent AND idClient = :idClient');
@@ -327,8 +368,6 @@ class ControlEvenement {
     }
 
     public function addEventProduit($idEvenement,$idProduit){
-        var_dump($idEvenement);
-        var_dump($idProduit);
         $req = $this->db->prepare('INSERT INTO evenement_produit (idEvenement,idProduit,stock)
                                     VALUES (:idEvenement,:idProduit,:stock)');
         $req->bindValue(':idEvenement', $idEvenement);
