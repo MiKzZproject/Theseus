@@ -74,10 +74,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="event.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="event.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/back/js/event.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="16" selection-start="3614" selection-end="3614" vertical-scroll-proportion="0.7123077" vertical-offset="1781" max-vertical-offset="2431">
+            <state line="73" column="0" selection-start="2141" selection-end="2141" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="2431">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="newsletters.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/back/newsletters.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="0" selection-start="662" selection-end="662" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="476">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listeProduit.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/back/event/listeProduit.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="1" selection-start="979" selection-end="979" vertical-scroll-proportion="0.63829786" vertical-offset="222" max-vertical-offset="901">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/back/admin.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="0" selection-start="420" selection-end="545" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="1258">
               <folding />
             </state>
           </provider>
@@ -96,10 +123,8 @@
         <option value="$PROJECT_DIR$/back/event/eventUpdate.php" />
         <option value="$PROJECT_DIR$/back/categorie.php" />
         <option value="$PROJECT_DIR$/back/client/clientUpdate.php" />
-        <option value="$PROJECT_DIR$/back/produit.php" />
         <option value="$PROJECT_DIR$/back/js/produit.js" />
         <option value="$PROJECT_DIR$/back/event/addProduit.php" />
-        <option value="$PROJECT_DIR$/back/event/listeProduit.php" />
         <option value="$PROJECT_DIR$/back/event/listeClient.php" />
         <option value="$PROJECT_DIR$/back/event/eventAddClient.php" />
         <option value="$PROJECT_DIR$/app/control/ControlEvenement.php" />
@@ -107,6 +132,11 @@
         <option value="$PROJECT_DIR$/back/event/eventAddProduit.php" />
         <option value="$PROJECT_DIR$/back/event/liste.php" />
         <option value="$PROJECT_DIR$/back/js/event.js" />
+        <option value="$PROJECT_DIR$/back/produit.php" />
+        <option value="$PROJECT_DIR$/back/client.php" />
+        <option value="$PROJECT_DIR$/back/evenement.php" />
+        <option value="$PROJECT_DIR$/back/newsletters.php" />
+        <option value="$PROJECT_DIR$/back/event/listeProduit.php" />
       </list>
     </option>
   </component>
@@ -193,57 +223,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Theseus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Theseus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="back" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="event" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Theseus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Theseus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Theseus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Theseus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -342,11 +322,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/model/Categorie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/control/ControlCategorie.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
@@ -398,11 +373,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/back/deconnexion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/back/admin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
@@ -529,23 +499,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/back/categorie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="18" selection-start="1758" selection-end="1758" vertical-scroll-proportion="0.2782324" vertical-offset="357" max-vertical-offset="1122">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/back/client/clientUpdate.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="18" selection-start="840" selection-end="840" vertical-scroll-proportion="0.4729951" vertical-offset="102" max-vertical-offset="867">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/back/produit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="39" selection-start="3403" selection-end="3403" vertical-scroll-proportion="0.695581" vertical-offset="816" max-vertical-offset="1615">
           <folding />
         </state>
       </provider>
@@ -580,20 +536,6 @@
             <marker date="1442534891271" expanded="true" signature="-1:-1" placeholder="..." />
             <marker date="1442534891271" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/back/evenement.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="777" selection-end="777" vertical-scroll-proportion="5.269231" vertical-offset="494" max-vertical-offset="2227">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/back/client.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="35" selection-start="605" selection-end="605" vertical-scroll-proportion="0.44517186" vertical-offset="0" max-vertical-offset="901">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -665,13 +607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/back/event/listeProduit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="203" selection-end="203" vertical-scroll-proportion="0.19476268" vertical-offset="0" max-vertical-offset="867">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/back/event/produitDelete.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="650">
@@ -693,6 +628,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/back/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="420" selection-end="545" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="1258">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back/produit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="227" selection-end="311" vertical-scroll-proportion="0.19476268" vertical-offset="0" max-vertical-offset="1768">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back/categorie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="18" selection-start="1758" selection-end="1758" vertical-scroll-proportion="0.86252046" vertical-offset="0" max-vertical-offset="1122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back/evenement.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="6" selection-start="125" selection-end="125" vertical-scroll-proportion="0.111292966" vertical-offset="0" max-vertical-offset="2227">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back/client.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="2" selection-start="1348" selection-end="1469" vertical-scroll-proportion="0.6661211" vertical-offset="290" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back/js/event.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="0" selection-start="2141" selection-end="2141" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="2431">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/back/event/liste.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="42" selection-start="1056" selection-end="1056" vertical-scroll-proportion="-16.307692" vertical-offset="154" max-vertical-offset="952">
@@ -703,9 +680,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/back/js/event.js">
+    <entry file="file://$PROJECT_DIR$/back/newsletters.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="16" selection-start="3614" selection-end="3614" vertical-scroll-proportion="0.7123077" vertical-offset="1781" max-vertical-offset="2431">
+        <state line="22" column="0" selection-start="662" selection-end="662" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="476">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back/event/listeProduit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="1" selection-start="979" selection-end="979" vertical-scroll-proportion="0.63829786" vertical-offset="222" max-vertical-offset="901">
           <folding />
         </state>
       </provider>

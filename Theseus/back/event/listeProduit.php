@@ -28,15 +28,6 @@ if($produits){
     }
     ?>
 </table>
-    <select id="addProduit" class="form-control">
-        <?php foreach($allProduits as $produit){
-            ?>
-        <option value="<?php echo $produit->getId() ?>"><?php echo $produit->getLibelle() ?></option>
-        <?php
-    }
-    ?>
-    </select><br>
-    <button class="btn" onclick="eventAddProduit('<?php echo $array['id'] ?>',$('#addProduit option:selected').val());">Associer le Produit</button>
 
 <?php
 }else{
@@ -44,3 +35,13 @@ if($produits){
         <div class="alert alert-warning" role="alert">Pas de résultat pour cette recherche.</div>
 <?php
 }
+?>
+<select id="addProduit" class="form-control">
+    <?php foreach($allProduits as $produit){
+        ?>
+        <option value="<?php echo $produit->getId() ?>"><?php echo $produit->getLibelle() ?></option>
+    <?php
+    }
+    ?>
+</select><br>
+<button class="btn" onclick="eventAddProduit('<?php echo $array['id'] ?>',$('#addProduit option:selected').val());">Associer le Produit</button>
