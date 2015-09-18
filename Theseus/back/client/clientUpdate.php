@@ -22,7 +22,7 @@ Email <br>
 
 
 dateDebut <br>
-<input id="dateDebutAbo" class="form-control" type="datetime-local" value="<?php echo date('Y-m-d',strtotime($client->getDateDebutAbo())).'T'.date('H:i',strtotime($client->getDateDebutAbo())); ?>""><br><br>
+<input id="dateDebutAbo" class="form-control" type="datetime-local" value="<?php echo date('Y-m-d',strtotime($client->getDateDebutAbo())).'T'.date('H:i',strtotime($client->getDateDebutAbo())); ?>"><br><br>
 dateFin <br>
 <input id="dateFinAbo" class="form-control" type="datetime-local" value="<?php echo date('Y-m-d',strtotime($client->getDateFinAbo())).'T'.date('H:i',strtotime($client->getDateFinAbo())); ?>"><br><br>
 Ratio <br>

@@ -123,6 +123,18 @@ class ControlClient {
         return $clients;
     }
 
+    public function getClientByEvent($idEvent){
+        $req = $this->db->prepare('SELECT * FROM client where id in (select idClient from evenement_client where idEvenement = :idEvent)');
+        $req->bindValue(':idEvent', $idEvent);
+        $req->execute();
+
+        $clients = false;
+        while($result = $req->fetch()){
+            $clients[] = new Client($result);
+        }
+        return $clients;
+    }
+
     /**
      * @param $array
      * @return bool|Client

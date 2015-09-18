@@ -158,6 +158,17 @@ class ControlProduit {
             return $this->getProduitsPagination($page);
         }
     }
+    public function getProduitByEvent($idEvent){
+        $req = $this->db->prepare('SELECT * FROM produit where id in (select idProduit from evenement_produit where idEvenement = :idEvent)');
+        $req->bindValue(':idEvent', $idEvent);
+        $req->execute();
+
+        $produits = false;
+        while($result = $req->fetch()){
+            $produits[] = new Produit($result);
+        }
+        return $produits;
+    }
 
     /**
      * @return array|bool
