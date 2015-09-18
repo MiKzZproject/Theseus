@@ -88,7 +88,6 @@ class ControlEvenement {
      * @param Evenement $evenement
      */
     public function addEvenement($evenement){
-        var_dump($evenement);
         $req = $this->db->prepare('INSERT INTO evenement (libelle,lieu,description,adresse,cp,ville,dateDebut,dateFin,place,image,theme,miniature1)
                                     VALUES (:libelle,
                                             :lieu,
@@ -101,7 +100,7 @@ class ControlEvenement {
                                             :place,
                                             :image,
                                             :theme,
-                                            :miniature1');
+                                            :miniature1)');
         $req->bindValue(':libelle',$evenement->getLibelle());
         $req->bindValue(':lieu',$evenement->getLieu());
         $req->bindValue(':description',$evenement->getDescription());
@@ -116,7 +115,6 @@ class ControlEvenement {
         $req->bindValue(':miniature1',$evenement->getMiniature1());
 
         $req->execute();
-
     }
 
     /**
