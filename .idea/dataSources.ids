@@ -53,6 +53,7 @@
       <column name="dateDebutAbo" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="dateFinAbo" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="renew" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="ratio" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="adresse_ibfk_1" table="adresse" schema="" catalog="theseus" columns="idClient"/>
       <exported-key name="commande_produit_ibfk_2" table="commande_produit" schema="" catalog="theseus" columns="idClient"/>

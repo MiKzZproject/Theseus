@@ -198,7 +198,7 @@ class ControlClient {
                                                         pwd=:pwd,
                                                         newsletters=:newsletters,
                                                         alerte=:alerte,
-                                                        ratio=:ratio,
+                                                        ratio=:ratio
                                                         WHERE id=:id');
         $req->bindValue(':id',$client->getId());
         $req->bindValue(':nom',$client->getNom());
@@ -209,7 +209,7 @@ class ControlClient {
         $req->bindValue(':email',$client->getEmail());
         $req->bindValue(':newsletters',$client->getNewsletters());
         $req->bindValue(':alerte',$client->getAlerte());
-        $req->bindValue(':ratio',$client->getRatio());
+        $req->bindValue(':ratio',0);
         return $req->execute();
     }
     public function updateClientAdmin(Client $client){
@@ -218,7 +218,6 @@ class ControlClient {
                                                         dateNaissance=:dateNaissance,
                                                         tel=:tel,
                                                         email=:email,
-                                                        pwd=:pwd,
                                                         newsletters=:newsletters,
                                                         alerte=:alerte,
                                                         ratio=:ratio,
@@ -228,7 +227,6 @@ class ControlClient {
         $req->bindValue(':id',$client->getId());
         $req->bindValue(':nom',$client->getNom());
         $req->bindValue(':prenom',$client->getPrenom());
-        $req->bindValue(':pwd',$client->getPwd());
         $req->bindValue(':dateNaissance',$client->getDateNaissance());
         $req->bindValue(':tel',$client->getTel());
         $req->bindValue(':email',$client->getEmail());

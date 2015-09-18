@@ -26,7 +26,9 @@ if (!$errors) {
     $client->setNom($_POST['nom']);
     $client->setPrenom($_POST['prenom']);
     $client->setTel($_POST['tel']);
-    $client->setDateNaissance($_POST['date']);
+    $date = preg_split ("/-/",$_POST['date']);
+    $date = $date[2]."-".$date[1]."-".$date[0];
+    $client->setDateNaissance($date);
     if ($client->getEmail() != $_POST['email'] && $client->getNewsletters() == true) {
         $controlNewsletter = new control\ControlNewsletter($db);
         $newsletter = $controlNewsletter->getNewslettersByEmail($client->getEmail());
