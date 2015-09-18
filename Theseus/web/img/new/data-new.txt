@@ -1,0 +1,57 @@
+*Produit
+
+Libelle : Iphone 6 S
+
+Marque : Apple
+
+Modele : Iphone 6 S
+
+Description : 
+	Système : iOS 8.1.1
+	Interface utilisateur 	Non
+	Processeur : Apple A8
+	Nombre de coeurs : 2
+	Fréquence processeur : 1,4 GHz
+	Puce graphique 	Intégrée
+	Type de cartes supportées : Non
+	Mémoire vive (RAM) : 1024 Mo
+	Mémoire flash Libre (Mo) : 114000
+	Indice DAS (W/kg) : 0.91
+	Double SIM : Non
+
+Prix : 1050
+
+Stock : 260
+
+Image : img/new/iphone-6-S.jpg
+
+Miniature : img/new/iphone-6-S-thumbnail.jpg
+
+Nbventes : 170
+
+/************************************************/
+*Event
+
+Libelle : Vente de Smartphones de luxe
+
+Lieu : Le Chalet Porte Jaune
+
+Description : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum congue mi sed convallis. Mauris lacinia ultricies porttitor. In sit amet nisi diam. Nam eros sem, cursus ac viverra eu, vehicula ac mi. 
+
+Adresse : Avenue de Nogent-Bois de Vincenne
+
+Cp : 75012
+
+Ville : Paris
+
+dateDebut : 2016-03-10 19:30:00
+
+dateFin : 2016-03-11 02:00:00
+
+Place : 500
+
+Image : img/new/chalet-porte-jaune.jpg
+
+Theme : Smartphones de Luxe
+
+Miniature 1 : img/new/smart-luxe.jpg
