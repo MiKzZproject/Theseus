@@ -19,6 +19,7 @@ if($events){
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
         </tr>
     <?php
     foreach($events as $event){

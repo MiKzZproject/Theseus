@@ -37,7 +37,7 @@ if($clients){
         }
         ?>
     </select>
-    <br><button class="btn">Associer le Client</button>
+    <br><button class="btn" onclick="eventAddClient('<?php echo $array['id'] ?>',$('#addClient option:selected').val());">Associer le Client</button>
     <?php
 }else{
     ?>

@@ -36,8 +36,9 @@ if($produits){
     }
     ?>
     </select><br>
-    <button class="btn" onclick="eventAddProduit('<?php echo $array['id'] ?>','<?php echo $produit->getId(); ?>');">Associer le Produit</button>
-    <?php
+    <button class="btn" onclick="eventAddProduit('<?php echo $array['id'] ?>',$('#addProduit option:selected').val());">Associer le Produit</button>
+
+<?php
 }else{
     ?>
         <div class="alert alert-warning" role="alert">Pas de résultat pour cette recherche.</div>
