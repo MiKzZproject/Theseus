@@ -4,6 +4,8 @@ $controlProduit = new \control\ControlProduit($bdd);
 $controlCat = new \control\ControlCategorie($bdd);
 $produits = $controlProduit->getProduits();
 $cats = $controlCat->getCategories();
+
+if($_SESSION['admin']->getNiveau() == 3 || $_SESSION['admin']->getNiveau() == 1){
 ?>
 <h3>Gestion des produits</h3><br><br>
 
@@ -19,6 +21,13 @@ $cats = $controlCat->getCategories();
 </div>
     <span id="produitResult"></span>
     <span id="produitListe"></span>
+<?php
+    }else{
+    ?>
+    <p class="bg-warning"><br>Vous n'avez pas l'autorisation d'accéder à cette page.<br><br></p>
+<?php
+}
+?>
 
 <!-- Modal ADD PRODUIT -->
 <div class="modal fade" id="addProduitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

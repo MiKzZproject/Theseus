@@ -1,7 +1,7 @@
 <?php
 require('config/config.php');
 
-if($_SESSION['admin']->getNiveau() == 2 || $_SESSION['admin']->getNiveau() == 1){
+if($_SESSION['admin']->getNiveau() == 4 || $_SESSION['admin']->getNiveau() == 1){
     ?>
     <h3>Gestion des Clients</h3><br><br>
 

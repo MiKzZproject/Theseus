@@ -116,7 +116,23 @@ function eventAddProduit(idEvent,idProduit){
     var ab = {};
     ab.idEvent = idEvent;
     ab.idProduit = idProduit;
-
     var donnees = JSON.stringify(ab);
     $('#eventProduitResult').load('event/eventAddProduit.php', {donnees: donnees});
+}
+
+function eventAddClient(idEvent,idClient){
+    var ab = {};
+    ab.idEvent = idEvent;
+    ab.idClient = idClient;
+
+    var donnees = JSON.stringify(ab);
+    $('#eventClientResult').load('event/eventAddClient.php', {donnees: donnees});
+}
+
+function eventTirage(idEvent){
+    var ab = {};
+    ab.id = id;
+
+    var donnees = JSON.stringify(ab);
+    $('#eventResult').load('event/tirageSort.php', {donnees: donnees});
 }
