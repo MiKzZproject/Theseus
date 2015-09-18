@@ -340,7 +340,8 @@ class ControlEvenement {
         $req = $this->db->prepare('SELECT c.id as idClient, ratio
                                    FROM evenement_client EC, client C
                                    WHERE EC.idEvenement = :id
-                                   AND C.id = EC.idClient');
+                                   AND C.id = EC.idClient
+                                   AND EC.participer = 0');
         $req->bindValue(':id',$id);
         $req->execute();
         $invitations = false;
@@ -375,9 +376,20 @@ class ControlEvenement {
 
         $req->execute();
     }
+
     public function addEventClient($idEvenement,$idClient){
-        $req = $this->db->prepare('INSERT INTO evenement_client (idEvenement,idClient)
-                                    VALUES (:idEvenement,:idClient)');
+        $req = $this->db->prepare('INSERT INTO evenement_client (idEvenement,idClient,participer)
+                                    VALUES (:idEvenement,:idClient,1)');
+        $req->bindValue(':idEvenement', $idEvenement);
+        $req->bindValue(':idClient', $idClient);
+        $req->execute();
+    }
+
+    public function updateEventClient($idEvenement,$idClient){
+        $req = $this->db->prepare('UPDATE evenement_client
+                                    SET participer = 1
+                                    WHERE idEvenement = :idEvenement
+                                    AND idClient = :idClient');
         $req->bindValue(':idEvenement', $idEvenement);
         $req->bindValue(':idClient', $idClient);
 
